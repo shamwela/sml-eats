@@ -22,4 +22,8 @@
   h1 {
     @apply text-4xl;
   }
+
+  button {
+    @apply bg-blue-600;
+  }
 }
