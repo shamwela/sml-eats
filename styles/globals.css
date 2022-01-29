@@ -23,7 +23,12 @@
     @apply text-4xl;
   }
 
+  button,
+  img {
+    @apply rounded-lg;
+  }
+
   button {
-    @apply bg-blue-600;
+    @apply bg-blue-600 px-4 py-2;
   }
 }

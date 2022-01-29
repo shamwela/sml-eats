@@ -1,12 +1,13 @@
 import Image from 'next/image'
+import type { Item } from 'types/item'
 import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
 
 const SeafoodCocktail = ({
   cart,
   updateCart,
 }: {
-  cart: any
-  updateCart: any
+  cart: Item[]
+  updateCart: (item: Item) => void
 }) => {
   return (
     <>
