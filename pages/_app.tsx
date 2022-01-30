@@ -25,11 +25,20 @@ const restaurants = [
               additionalPrice: 3,
             },
           ],
-          // sizes: {
-          //   Large: 5,
-          //   Medium: 3,
-          //   Small: 0,
-          // },
+          sizes: [
+            {
+              name: 'Large',
+              additionalPrice: 5,
+            },
+            {
+              name: 'Medium',
+              additionalPrice: 3,
+            },
+            {
+              name: 'Small',
+              additionalPrice: 0,
+            },
+          ],
         },
         basePrice: 20,
         slug: 'seafood-cocktail',

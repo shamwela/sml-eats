@@ -13,16 +13,25 @@ const SeafoodCocktail = ({
   cart: Item[]
   updateCart: (item: Item) => void
 }) => {
-  const { basePrice } = restaurants[0].items[0]
-  const [additionalPrice, setAdditionalPrice] = useState(0)
+  const { basePrice, options } = restaurants[0].items[0]
+
+  const [crustPrice, setCrustPrice] = useState(0)
+  const [sizePrice, setSizePrice] = useState(0)
+
+  const additionalPrice = crustPrice + sizePrice
   const oneItemPrice = basePrice + additionalPrice
 
   const [quantity, setQuantity] = useState(1)
   const finalPrice = oneItemPrice * quantity
 
   const handleCrust = (event: ChangeEvent<HTMLInputElement>) => {
-    const additionalPrice = Number(event.target.value)
-    setAdditionalPrice(additionalPrice)
+    const crustPrice = Number(event.target.value)
+    setCrustPrice(crustPrice)
+  }
+
+  const handleSizePrice = (event: ChangeEvent<HTMLInputElement>) => {
+    const sizePrice = Number(event.target.value)
+    setSizePrice(sizePrice)
   }
 
   return (
@@ -36,8 +45,15 @@ const SeafoodCocktail = ({
         />
       </div>
 
-      {restaurants[0].items[0].options.crusts.map(
-        ({ name, additionalPrice }: any) => {
+      <h2>Choose crust</h2>
+      {options.crusts.map(
+        ({
+          name,
+          additionalPrice,
+        }: {
+          name: string
+          additionalPrice: number
+        }) => {
           return (
             <div key={name} className='flex items-center gap-x-4'>
               <input
@@ -46,6 +62,33 @@ const SeafoodCocktail = ({
                 id={name}
                 value={additionalPrice}
                 onChange={handleCrust}
+                defaultChecked={additionalPrice === 0 && true}
+              />
+              <label htmlFor={name}>{name}</label>
+              <div>+${additionalPrice}</div>
+            </div>
+          )
+        }
+      )}
+
+      <h2>Choose size</h2>
+      {options.sizes.map(
+        ({
+          name,
+          additionalPrice,
+        }: {
+          name: string
+          additionalPrice: number
+        }) => {
+          return (
+            <div key={name} className='flex items-center gap-x-4'>
+              <input
+                name='size'
+                type='radio'
+                id={name}
+                value={additionalPrice}
+                onChange={handleSizePrice}
+                defaultChecked={additionalPrice === 0 && true}
               />
               <label htmlFor={name}>{name}</label>
               <div>+${additionalPrice}</div>
@@ -85,7 +128,7 @@ const SeafoodCocktail = ({
             })
           }
         >
-          Add {quantity} to order ({finalPrice})
+          Add {quantity} to order (${finalPrice})
         </button>
       </div>
 
