@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import Image from 'next/image'
 import type { Item } from 'types/item'
@@ -14,19 +14,15 @@ const SeafoodCocktail = ({
   updateCart: (item: Item) => void
 }) => {
   const { basePrice } = restaurants[0].items[0]
+  const [additionalPrice, setAdditionalPrice] = useState(0)
+  const oneItemPrice = basePrice + additionalPrice
 
   const [quantity, setQuantity] = useState(1)
-  const [finalPrice, setFinalPrice] = useState(basePrice)
+  const finalPrice = oneItemPrice * quantity
 
-  const handleCheck = (
-    event: ChangeEvent<HTMLInputElement>,
-    additionalPrice: number
-  ) => {
-    if (event.target.checked) {
-      setFinalPrice(finalPrice + additionalPrice)
-    } else {
-      setFinalPrice(finalPrice - additionalPrice)
-    }
+  const handleCrust = (event: ChangeEvent<HTMLInputElement>) => {
+    const additionalPrice = Number(event.target.value)
+    setAdditionalPrice(additionalPrice)
   }
 
   return (
@@ -45,10 +41,13 @@ const SeafoodCocktail = ({
           return (
             <div key={name} className='flex items-center gap-x-4'>
               <input
-                type='checkbox'
-                onChange={(event) => handleCheck(event, additionalPrice)}
+                name='crust'
+                type='radio'
+                id={name}
+                value={additionalPrice}
+                onChange={handleCrust}
               />
-              <label>{name}</label>
+              <label htmlFor={name}>{name}</label>
               <div>+${additionalPrice}</div>
             </div>
           )
