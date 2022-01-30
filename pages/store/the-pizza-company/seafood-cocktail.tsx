@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 
+import Head from 'components/Head'
 import Image from 'next/image'
 import type { Item } from 'types/item'
 import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
@@ -36,6 +37,11 @@ const SeafoodCocktail = ({
 
   return (
     <>
+      <Head
+        title='Seafood Cocktail'
+        description='Seafood Cocktail'
+        imageUrl='/images/seafood-cocktail.jpeg'
+      />
       <h1>Seafood Cocktail</h1>
       <div className='max-w-md'>
         <Image
