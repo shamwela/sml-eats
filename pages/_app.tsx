@@ -15,15 +15,21 @@ const restaurants = [
         deliveryFee: 1,
         deliveryTime: 30,
         options: {
-          crusts: {
-            'Crispy Thin': 0,
-            'Extra Cheesy Sausage Bites': 3,
-          },
-          sizes: {
-            Large: 5,
-            Medium: 3,
-            Small: 0,
-          },
+          crusts: [
+            {
+              name: 'Crispy Thin',
+              additionalPrice: 0,
+            },
+            {
+              name: 'Extra Cheesy Sausage Bites',
+              additionalPrice: 3,
+            },
+          ],
+          // sizes: {
+          //   Large: 5,
+          //   Medium: 3,
+          //   Small: 0,
+          // },
         },
         basePrice: 20,
         slug: 'seafood-cocktail',
@@ -56,7 +62,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <a>The Pizza Company</a>
         </Link>
       </nav>
-      <Component {...pageProps} cart={cart} updateCart={updateCart} />
+      <Component
+        {...pageProps}
+        restaurants={restaurants}
+        cart={cart}
+        updateCart={updateCart}
+      />
     </>
   )
 }
