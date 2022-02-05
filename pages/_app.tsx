@@ -35,8 +35,9 @@ const restaurants: Restaurant[] = [
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [cart, setCart] = useState<CartItem[]>([])
 
-  const updateCart = (item: CartItem) => {
-    setCart((previousCart) => [...previousCart, item])
+  const updateCart = (newCartItem: CartItem) => {
+    const newCart = [...cart, newCartItem]
+    setCart(newCart)
   }
 
   return (
