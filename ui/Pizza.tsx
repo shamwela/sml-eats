@@ -4,32 +4,39 @@ import type { CartItem } from 'types/cartItem'
 import type { Item } from 'types/item'
 import Order from 'ui/Order'
 
-const options = {
-  crusts: [
-    {
-      name: 'Crispy Thin',
-      additionalPrice: 0,
-    },
-    {
-      name: 'Extra Cheesy Sausage Bites',
-      additionalPrice: 3,
-    },
-  ],
-  sizes: [
-    {
-      name: 'Large',
-      additionalPrice: 5,
-    },
-    {
-      name: 'Medium',
-      additionalPrice: 3,
-    },
-    {
-      name: 'Small',
-      additionalPrice: 0,
-    },
-  ],
-}
+const crusts = [
+  {
+    name: 'Crispy Thin',
+    additionalPrice: 0,
+  },
+  {
+    name: 'Extra Cheesy Sausage Bites',
+    additionalPrice: 3,
+  },
+  {
+    name: 'Extreme',
+    additionalPrice: 3,
+  },
+  {
+    name: 'Pan',
+    additionalPrice: 2,
+  },
+]
+
+const sizes = [
+  {
+    name: 'Large',
+    additionalPrice: 5,
+  },
+  {
+    name: 'Medium',
+    additionalPrice: 3,
+  },
+  {
+    name: 'Small',
+    additionalPrice: 0,
+  },
+]
 
 const PizzaOptions = ({
   pizza,
@@ -62,7 +69,7 @@ const PizzaOptions = ({
   return (
     <>
       <h2>Choose crust</h2>
-      {options.crusts.map(
+      {crusts.map(
         ({
           name,
           additionalPrice,
@@ -88,7 +95,7 @@ const PizzaOptions = ({
       )}
 
       <h2>Choose size</h2>
-      {options.sizes.map(
+      {sizes.map(
         ({
           name,
           additionalPrice,
