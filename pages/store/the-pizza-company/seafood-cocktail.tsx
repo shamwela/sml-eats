@@ -1,4 +1,3 @@
-import Cart from 'ui/Cart'
 import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
 import Image from 'next/image'
@@ -8,11 +7,9 @@ import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
 
 const SeafoodCocktail = ({
   restaurants,
-  cart,
   updateCart,
 }: {
   restaurants: Restaurant[]
-  cart: CartItem[]
   updateCart: (item: CartItem) => void
 }) => {
   const thePizzaCompany = restaurants.find(
@@ -38,7 +35,6 @@ const SeafoodCocktail = ({
         />
       </div>
       <Pizza pizza={seafoodCocktail} updateCart={updateCart} />
-      <Cart cart={cart} />
     </>
   )
 }

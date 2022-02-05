@@ -1,6 +1,7 @@
 import 'styles/globals.css'
 
 import type { AppProps } from 'next/app'
+import Cart from 'ui/Cart'
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
@@ -32,16 +33,10 @@ const restaurants: Restaurant[] = [
 ]
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const [cart, setCart] = useState<CartItem[] | undefined>(undefined)
+  const [cart, setCart] = useState<CartItem[]>([])
 
   const updateCart = (item: CartItem) => {
-    setCart((previousCart) => {
-      if (!previousCart) {
-        previousCart = []
-      }
-
-      return [...previousCart, item]
-    })
+    setCart((previousCart) => [...previousCart, item])
   }
 
   return (
@@ -53,6 +48,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Link href='/store/the-pizza-company'>
           <a>The Pizza Company</a>
         </Link>
+
+        <Cart cart={cart} />
       </nav>
       <Component
         {...pageProps}

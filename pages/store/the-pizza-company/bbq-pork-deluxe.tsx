@@ -1,5 +1,4 @@
 import BBQPorkDeluxeImage from 'public/images/bbq-pork-deluxe.jpeg'
-import Cart from 'ui/Cart'
 import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
 import Image from 'next/image'
@@ -8,11 +7,9 @@ import type { Restaurant } from 'types/restaurant'
 
 const BBQPorkDeluxe = ({
   restaurants,
-  cart,
   updateCart,
 }: {
   restaurants: Restaurant[]
-  cart: CartItem[]
   updateCart: (item: CartItem) => void
 }) => {
   const thePizzaCompany = restaurants.find(
@@ -38,7 +35,6 @@ const BBQPorkDeluxe = ({
         />
       </div>
       <Pizza pizza={bbqPorkDeluxe} updateCart={updateCart} />
-      <Cart cart={cart} />
     </>
   )
 }
