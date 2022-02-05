@@ -1,7 +1,7 @@
 import Cart from 'ui/Cart'
+import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
 import Image from 'next/image'
-import type { Item } from 'types/item'
 import Pizza from 'ui/Pizza'
 import type { Restaurant } from 'types/restaurant'
 import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
@@ -12,8 +12,8 @@ const SeafoodCocktail = ({
   updateCart,
 }: {
   restaurants: Restaurant[]
-  cart: Item[]
-  updateCart: (item: Item) => void
+  cart: CartItem[]
+  updateCart: (item: CartItem) => void
 }) => {
   // Improve this later
   const seafoodCocktail = restaurants[0].items[0]

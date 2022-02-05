@@ -1,4 +1,4 @@
-import { Item } from './item'
+import type { Item } from './item'
 
 export type Restaurant = {
   name: string

@@ -5,6 +5,4 @@ export type Item = {
   deliveryTime: number
   basePrice: number
   slug: string
-  quantity: number
-  finalPrice: number
 }

@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 
+import type { CartItem } from 'types/cartItem'
 import type { Item } from 'types/item'
 import Order from 'ui/Order'
 
@@ -35,7 +36,7 @@ const PizzaOptions = ({
   updateCart,
 }: {
   pizza: Item
-  updateCart: (item: Item) => void
+  updateCart: (item: CartItem) => void
 }) => {
   const handleCrust = (event: ChangeEvent<HTMLInputElement>) => {
     const crustPrice = Number(event.target.value)
@@ -109,7 +110,7 @@ const PizzaOptions = ({
         }
       )}
 
-      <Order name={name} oneItemPrice={oneItemPrice} updateCart={updateCart} />
+      <Order item={pizza} oneItemPrice={oneItemPrice} updateCart={updateCart} />
     </>
   )
 }

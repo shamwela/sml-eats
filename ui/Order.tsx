@@ -1,14 +1,15 @@
+import type { CartItem } from 'types/cartItem'
 import type { Item } from 'types/item'
 import { useState } from 'react'
 
 const Order = ({
-  name,
+  item,
   oneItemPrice,
   updateCart,
 }: {
-  name: string
+  item: Item
   oneItemPrice: number
-  updateCart: (item: Item) => void
+  updateCart: (item: CartItem) => void
 }) => {
   const [quantity, setQuantity] = useState(1)
   const finalPrice = oneItemPrice * quantity
@@ -21,6 +22,11 @@ const Order = ({
     setQuantity(quantity + 1)
   }
 
+  const addToOrder = () => {
+    const cartItem: CartItem = { ...item, quantity, finalPrice }
+    updateCart(cartItem)
+  }
+
   return (
     <div className='flex items-center gap-x-4'>
       <button disabled={quantity === 1 && true} onClick={decreaseQuantity}>
@@ -28,15 +34,7 @@ const Order = ({
       </button>
       <div>{quantity}</div>
       <button onClick={increaseQuantity}>+</button>
-      <button
-        onClick={() =>
-          updateCart({
-            name,
-            quantity,
-            finalPrice,
-          })
-        }
-      >
+      <button onClick={addToOrder}>
         Add {quantity} to order (${finalPrice})
       </button>
     </div>
