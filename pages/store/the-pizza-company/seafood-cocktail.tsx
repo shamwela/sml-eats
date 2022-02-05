@@ -1,3 +1,4 @@
+import Cart from 'ui/Cart'
 import Head from 'components/Head'
 import Image from 'next/image'
 import type { Item } from 'types/item'
@@ -32,19 +33,8 @@ const SeafoodCocktail = ({
           placeholder='blur'
         />
       </div>
-
       <Pizza pizza={seafoodCocktail} updateCart={updateCart} />
-      <h2>Cart</h2>
-      {!cart && <p>Your cart is empty.</p>}
-      {cart?.map(({ name, quantity, price }) => {
-        return (
-          <div key={name}>
-            <p>
-              {name} - {quantity} x ${price}
-            </p>
-          </div>
-        )
-      })}
+      <Cart cart={cart} />
     </>
   )
 }

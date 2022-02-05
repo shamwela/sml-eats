@@ -42,7 +42,7 @@ const PizzaOptions = ({
     setCrustPrice(crustPrice)
   }
 
-  const { basePrice } = pizza
+  const { name, basePrice } = pizza
 
   const [crustPrice, setCrustPrice] = useState(0)
   const [sizePrice, setSizePrice] = useState(0)
@@ -109,7 +109,7 @@ const PizzaOptions = ({
         }
       )}
 
-      <Order oneItemPrice={oneItemPrice} updateCart={updateCart} />
+      <Order name={name} oneItemPrice={oneItemPrice} updateCart={updateCart} />
     </>
   )
 }

@@ -13,11 +13,11 @@ const restaurants: Restaurant[] = [
     items: [
       {
         name: 'Seafood Cocktail',
+        slug: 'seafood-cocktail',
         category: 'Pizza',
         deliveryFee: 1,
         deliveryTime: 30,
         basePrice: 20,
-        slug: 'seafood-cocktail',
       },
     ],
   },

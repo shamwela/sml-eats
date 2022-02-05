@@ -2,9 +2,11 @@ import type { Item } from 'types/item'
 import { useState } from 'react'
 
 const Order = ({
+  name,
   oneItemPrice,
   updateCart,
 }: {
+  name: string
   oneItemPrice: number
   updateCart: (item: Item) => void
 }) => {
@@ -29,9 +31,9 @@ const Order = ({
       <button
         onClick={() =>
           updateCart({
-            name: 'Seafood Cocktail',
-            quantity: 1,
-            price: 20,
+            name,
+            quantity,
+            finalPrice,
           })
         }
       >
