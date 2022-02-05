@@ -35,7 +35,7 @@ const PizzaOptions = ({
   pizza,
   updateCart,
 }: {
-  pizza: Item
+  pizza: Item | undefined
   updateCart: (item: CartItem) => void
 }) => {
   const handleCrust = (event: ChangeEvent<HTMLInputElement>) => {
@@ -43,10 +43,13 @@ const PizzaOptions = ({
     setCrustPrice(crustPrice)
   }
 
-  const { name, basePrice } = pizza
-
   const [crustPrice, setCrustPrice] = useState(0)
   const [sizePrice, setSizePrice] = useState(0)
+
+  if (!pizza) {
+    return null
+  }
+  const { name, basePrice } = pizza
 
   const additionalPrice = crustPrice + sizePrice
   const oneItemPrice = basePrice + additionalPrice

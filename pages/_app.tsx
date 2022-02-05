@@ -20,6 +20,14 @@ const restaurants: Restaurant[] = [
         deliveryTime: 30,
         basePrice: 20,
       },
+      {
+        name: 'BBQ Pork Deluxe',
+        slug: 'bbq-pork-deluxe',
+        category: 'Pizza',
+        deliveryFee: 1,
+        deliveryTime: 30,
+        basePrice: 15,
+      },
     ],
   },
 ]

@@ -15,8 +15,12 @@ const SeafoodCocktail = ({
   cart: CartItem[]
   updateCart: (item: CartItem) => void
 }) => {
-  // Improve this later
-  const seafoodCocktail = restaurants[0].items[0]
+  const thePizzaCompany = restaurants.find(
+    (restaurant) => restaurant.name === 'The Pizza Company'
+  )
+  const seafoodCocktail = thePizzaCompany?.items.find(
+    (item) => item.name === 'Seafood Cocktail'
+  )
 
   return (
     <>
