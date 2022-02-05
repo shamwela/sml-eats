@@ -3,48 +3,23 @@ import 'styles/globals.css'
 import type { AppProps } from 'next/app'
 import type { Item } from 'types/item'
 import Link from 'next/link'
+import type { Restaurant } from 'types/restaurant'
 import { useState } from 'react'
 
-const restaurants = [
+const restaurants: Restaurant[] = [
   {
     name: 'The Pizza Company',
+    rating: 4,
     items: [
       {
         name: 'Seafood Cocktail',
         category: 'Pizza',
         deliveryFee: 1,
         deliveryTime: 30,
-        options: {
-          crusts: [
-            {
-              name: 'Crispy Thin',
-              additionalPrice: 0,
-            },
-            {
-              name: 'Extra Cheesy Sausage Bites',
-              additionalPrice: 3,
-            },
-          ],
-          sizes: [
-            {
-              name: 'Large',
-              additionalPrice: 5,
-            },
-            {
-              name: 'Medium',
-              additionalPrice: 3,
-            },
-            {
-              name: 'Small',
-              additionalPrice: 0,
-            },
-          ],
-        },
         basePrice: 20,
         slug: 'seafood-cocktail',
       },
     ],
-    review: 4,
   },
 ]
 

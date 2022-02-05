@@ -1,5 +1,8 @@
 export type Item = {
   name: string
-  quantity: number
-  price: number
+  category: string
+  deliveryFee: number
+  deliveryTime: number
+  basePrice: number
+  slug: string
 }

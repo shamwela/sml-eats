@@ -1,0 +1,117 @@
+import { ChangeEvent, useState } from 'react'
+
+import type { Item } from 'types/item'
+import Order from 'ui/Order'
+
+const options = {
+  crusts: [
+    {
+      name: 'Crispy Thin',
+      additionalPrice: 0,
+    },
+    {
+      name: 'Extra Cheesy Sausage Bites',
+      additionalPrice: 3,
+    },
+  ],
+  sizes: [
+    {
+      name: 'Large',
+      additionalPrice: 5,
+    },
+    {
+      name: 'Medium',
+      additionalPrice: 3,
+    },
+    {
+      name: 'Small',
+      additionalPrice: 0,
+    },
+  ],
+}
+
+const PizzaOptions = ({
+  pizza,
+  updateCart,
+}: {
+  pizza: Item
+  updateCart: (item: Item) => void
+}) => {
+  const handleCrust = (event: ChangeEvent<HTMLInputElement>) => {
+    const crustPrice = Number(event.target.value)
+    setCrustPrice(crustPrice)
+  }
+
+  const { basePrice } = pizza
+
+  const [crustPrice, setCrustPrice] = useState(0)
+  const [sizePrice, setSizePrice] = useState(0)
+
+  const additionalPrice = crustPrice + sizePrice
+  const oneItemPrice = basePrice + additionalPrice
+
+  const handleSizePrice = (event: ChangeEvent<HTMLInputElement>) => {
+    const sizePrice = Number(event.target.value)
+    setSizePrice(sizePrice)
+  }
+
+  return (
+    <>
+      <h2>Choose crust</h2>
+      {options.crusts.map(
+        ({
+          name,
+          additionalPrice,
+        }: {
+          name: string
+          additionalPrice: number
+        }) => {
+          return (
+            <div key={name} className='flex items-center gap-x-4'>
+              <input
+                name='crust'
+                type='radio'
+                id={name}
+                value={additionalPrice}
+                onChange={handleCrust}
+                defaultChecked={additionalPrice === 0 && true}
+              />
+              <label htmlFor={name}>{name}</label>
+              <div>+${additionalPrice}</div>
+            </div>
+          )
+        }
+      )}
+
+      <h2>Choose size</h2>
+      {options.sizes.map(
+        ({
+          name,
+          additionalPrice,
+        }: {
+          name: string
+          additionalPrice: number
+        }) => {
+          return (
+            <div key={name} className='flex items-center gap-x-4'>
+              <input
+                name='size'
+                type='radio'
+                id={name}
+                value={additionalPrice}
+                onChange={handleSizePrice}
+                defaultChecked={additionalPrice === 0 && true}
+              />
+              <label htmlFor={name}>{name}</label>
+              <div>+${additionalPrice}</div>
+            </div>
+          )
+        }
+      )}
+
+      <Order oneItemPrice={oneItemPrice} updateCart={updateCart} />
+    </>
+  )
+}
+
+export default PizzaOptions
