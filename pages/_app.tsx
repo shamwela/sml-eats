@@ -2,7 +2,6 @@ import 'styles/globals.css'
 
 import type { AppProps } from 'next/app'
 import type { CartItem } from 'types/cartItem'
-import type { Item } from 'types/item'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
 import { useState } from 'react'
