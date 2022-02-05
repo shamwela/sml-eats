@@ -1,13 +1,13 @@
-import type { Item } from 'types/item'
+import type { CartItem } from 'types/cartItem'
 
-const Cart = ({ cart }: { cart: Item[] }) => {
+const Cart = ({ cart }: { cart: CartItem[] }) => {
   if (!cart) {
     return <p>Your cart is empty.</p>
   }
 
   return (
     <>
-      <h2>Cart</h2>
+      <strong>Cart</strong>
       {cart?.map(({ name, quantity, finalPrice }) => {
         return (
           <div key={name}>

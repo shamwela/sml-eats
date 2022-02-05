@@ -46,9 +46,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Link href='/'>
           <a className='text-4xl font-bold'>SML Eats</a>
         </Link>
-        <Link href='/store/the-pizza-company'>
-          <a>The Pizza Company</a>
-        </Link>
 
         <Cart cart={cart} />
       </nav>
