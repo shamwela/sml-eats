@@ -10,7 +10,7 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
         description='SML Eats'
         imageUrl='/images/seafood-cocktail.jpeg'
       />
-      <h1>SML Eats</h1>
+
       <section className='flex flex-col gap-y-4'>
         {restaurants?.map(({ name, slug }) => {
           return (
