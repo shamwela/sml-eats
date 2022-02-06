@@ -1,4 +1,5 @@
 import type { CartItem } from 'types/cartItem'
+import { ChangeEvent } from 'react'
 import Link from 'next/link'
 
 const Cart = ({
@@ -21,6 +22,16 @@ const Cart = ({
     )
   }
 
+  const handleQuantityChange = (
+    name: string,
+    event: ChangeEvent<HTMLSelectElement>
+  ) => {
+    const quantity = Number(event.target.value)
+    changeItemQuantity(name, quantity)
+  }
+
+  const zeroToHundred = Array.from(Array(100).keys())
+
   return (
     <>
       <Link href='/'>
@@ -31,13 +42,14 @@ const Cart = ({
         return (
           <section key={name} className='flex justify-between'>
             <select
-              onChange={(event) =>
-                changeItemQuantity(name, Number(event.target.value))
-              }
+              value={quantity}
+              onChange={(event) => handleQuantityChange(name, event)}
             >
-              <option value='0'>Remove</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
+              {zeroToHundred.map((value) => (
+                <option value={value} key={value}>
+                  {value === 0 ? 'Remove' : value}
+                </option>
+              ))}
             </select>
             <span>{name}</span>
             <span>${finalPrice}</span>
