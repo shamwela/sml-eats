@@ -10,6 +10,7 @@ import { useState } from 'react'
 const restaurants: Restaurant[] = [
   {
     name: 'The Pizza Company',
+    slug: 'the-pizza-company',
     rating: 4,
     items: [
       {
@@ -27,6 +28,21 @@ const restaurants: Restaurant[] = [
         deliveryFee: 1,
         deliveryTime: 30,
         basePrice: 15,
+      },
+    ],
+  },
+  {
+    name: 'Starbucks',
+    slug: 'starbucks',
+    rating: 5,
+    items: [
+      {
+        name: 'Irish Cream Cold Brew',
+        slug: 'irish-cream-cold-brew',
+        category: 'coffee',
+        deliveryFee: 1,
+        deliveryTime: 15,
+        basePrice: 20,
       },
     ],
   },

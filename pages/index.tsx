@@ -1,7 +1,8 @@
 import Head from 'components/Head'
 import Link from 'next/link'
+import type { Restaurant } from 'types/restaurant'
 
-const Home = () => {
+const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
   return (
     <>
       <Head
@@ -10,9 +11,13 @@ const Home = () => {
         imageUrl='/images/seafood-cocktail.jpeg'
       />
       <h1>SML Eats</h1>
-      <Link href='/store/the-pizza-company'>
-        <a>The Pizza Company</a>
-      </Link>
+      {restaurants?.map(({ name, slug }) => {
+        return (
+          <Link key={slug} href={`/restaurant/${slug}`}>
+            <a>{name}</a>
+          </Link>
+        )
+      })}
     </>
   )
 }
