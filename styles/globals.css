@@ -31,6 +31,6 @@
 
   button,
   .button {
-    @apply bg-blue-600 px-4 py-2 text-center;
+    @apply inline-block bg-blue-600 px-4 py-2 text-center;
   }
 }

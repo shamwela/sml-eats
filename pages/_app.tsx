@@ -77,9 +77,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         updateCart={updateCart}
       />
 
-      <Link href='/cart'>
-        <a className='button fixed right-5 left-5 bottom-5'>View order</a>
-      </Link>
+      {cart.length > 0 && (
+        <Link href='/cart'>
+          <a className='button fixed right-5 left-5 bottom-5'>View order</a>
+        </Link>
+      )}
     </>
   )
 }
