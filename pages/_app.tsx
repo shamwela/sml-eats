@@ -1,7 +1,6 @@
 import 'styles/globals.css'
 
 import type { AppProps } from 'next/app'
-import Cart from 'ui/Cart'
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
@@ -70,8 +69,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Link href='/'>
           <a className='text-4xl font-bold'>SML Eats</a>
         </Link>
-
-        <Cart cart={cart} />
       </nav>
       <Component
         {...pageProps}
@@ -79,6 +76,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         cart={cart}
         updateCart={updateCart}
       />
+
+      <Link href='/cart'>
+        <a className='button fixed bottom-5 left-5 right-5'>View order</a>
+      </Link>
     </>
   )
 }

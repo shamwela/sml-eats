@@ -24,11 +24,13 @@
   }
 
   button,
+  .button,
   img {
     @apply rounded-lg;
   }
 
-  button {
-    @apply bg-blue-600 px-4 py-2;
+  button,
+  .button {
+    @apply bg-blue-600 px-4 py-2 text-center;
   }
 }
