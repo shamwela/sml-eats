@@ -11,13 +11,15 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
         imageUrl='/images/seafood-cocktail.jpeg'
       />
       <h1>SML Eats</h1>
-      {restaurants?.map(({ name, slug }) => {
-        return (
-          <Link key={slug} href={`/restaurant/${slug}`}>
-            <a>{name}</a>
-          </Link>
-        )
-      })}
+      <section className='flex flex-col gap-y-4'>
+        {restaurants?.map(({ name, slug }) => {
+          return (
+            <Link key={slug} href={`/restaurants/${slug}`}>
+              <a>{name}</a>
+            </Link>
+          )
+        })}
+      </section>
     </>
   )
 }
