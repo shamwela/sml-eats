@@ -78,7 +78,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       />
 
       <Link href='/cart'>
-        <a className='button fixed bottom-5 left-5 right-5'>View order</a>
+        <a className='button fixed right-5 left-5 bottom-5'>View order</a>
       </Link>
     </>
   )
