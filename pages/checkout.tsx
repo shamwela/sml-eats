@@ -1,5 +1,14 @@
+import Link from 'next/link'
+
 const Checkout = () => {
-  return <h1>This is a fake app. So, you can't checkout.</h1>
+  return (
+    <section className='flex flex-col gap-y-4'>
+      <h1>This is a fake app. So, you can't checkout.</h1>
+      <Link href='/'>
+        <a className='button'>Go back to home</a>
+      </Link>
+    </section>
+  )
 }
 
 export default Checkout
