@@ -44,6 +44,14 @@ const restaurants: Restaurant[] = [
         deliveryTime: 15,
         basePrice: 20,
       },
+      {
+        name: 'Iced Coffee',
+        slug: 'iced-coffee',
+        category: 'coffee',
+        deliveryFee: 1,
+        deliveryTime: 15,
+        basePrice: 15,
+      },
     ],
   },
 ]
