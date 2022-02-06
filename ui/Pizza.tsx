@@ -56,7 +56,7 @@ const PizzaOptions = ({
   if (!pizza) {
     return null
   }
-  const { name, basePrice } = pizza
+  const { basePrice } = pizza
 
   const additionalPrice = crustPrice + sizePrice
   const oneItemPrice = basePrice + additionalPrice
