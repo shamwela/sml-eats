@@ -1,7 +1,13 @@
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 
-const Cart = ({ cart }: { cart: CartItem[] }) => {
+const Cart = ({
+  cart,
+  changeItemQuantity,
+}: {
+  cart: CartItem[]
+  changeItemQuantity: (name: string, quantity: number) => void
+}) => {
   const isCartEmpty = cart.length === 0
 
   if (isCartEmpty) {
@@ -17,15 +23,25 @@ const Cart = ({ cart }: { cart: CartItem[] }) => {
 
   return (
     <>
-      <button>x</button>
-      <h1>Cart</h1>
+      <Link href='/'>
+        <a className='button'>x</a>
+      </Link>
+      <h1>Your cart</h1>
       {cart?.map(({ name, quantity, finalPrice }) => {
         return (
-          <div key={name}>
-            <p>
-              {quantity} x {name} = ${finalPrice}
-            </p>
-          </div>
+          <section key={name} className='flex justify-between'>
+            <select
+              onChange={(event) =>
+                changeItemQuantity(name, Number(event.target.value))
+              }
+            >
+              <option value='0'>Remove</option>
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+            </select>
+            <span>{name}</span>
+            <span>${finalPrice}</span>
+          </section>
         )
       })}
     </>

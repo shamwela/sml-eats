@@ -24,10 +24,10 @@ const sizes = [
 
 const IcedCoffee = ({
   restaurants,
-  updateCart,
+  addItem,
 }: {
   restaurants: Restaurant[]
-  updateCart: (item: CartItem) => void
+  addItem: (item: CartItem) => void
 }) => {
   const starbucks = restaurants.find(
     (restaurant) => restaurant.slug === 'starbucks'
@@ -76,11 +76,7 @@ const IcedCoffee = ({
         }
       )}
 
-      <Order
-        item={icedCoffee}
-        oneItemPrice={oneItemPrice}
-        updateCart={updateCart}
-      />
+      <Order item={icedCoffee} oneItemPrice={oneItemPrice} addItem={addItem} />
     </>
   )
 }

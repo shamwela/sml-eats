@@ -7,10 +7,10 @@ import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
 
 const SeafoodCocktail = ({
   restaurants,
-  updateCart,
+  addItem,
 }: {
   restaurants: Restaurant[]
-  updateCart: (item: CartItem) => void
+  addItem: (item: CartItem) => void
 }) => {
   const thePizzaCompany = restaurants.find(
     (restaurant) => restaurant.name === 'The Pizza Company'
@@ -34,7 +34,7 @@ const SeafoodCocktail = ({
           placeholder='blur'
         />
       </div>
-      <Pizza pizza={seafoodCocktail} updateCart={updateCart} />
+      <Pizza pizza={seafoodCocktail} addItem={addItem} />
     </>
   )
 }

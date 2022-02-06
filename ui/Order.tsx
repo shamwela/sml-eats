@@ -5,11 +5,11 @@ import { useState } from 'react'
 const Order = ({
   item,
   oneItemPrice,
-  updateCart,
+  addItem,
 }: {
   item: Item
   oneItemPrice: number
-  updateCart: (item: CartItem) => void
+  addItem: (item: CartItem) => void
 }) => {
   const [quantity, setQuantity] = useState(1)
   const finalPrice = oneItemPrice * quantity
@@ -23,8 +23,8 @@ const Order = ({
   }
 
   const addToOrder = () => {
-    const cartItem: CartItem = { ...item, quantity, finalPrice }
-    updateCart(cartItem)
+    const cartItem: CartItem = { ...item, quantity, oneItemPrice, finalPrice }
+    addItem(cartItem)
   }
 
   return (

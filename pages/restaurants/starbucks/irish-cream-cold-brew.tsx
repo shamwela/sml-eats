@@ -24,10 +24,10 @@ const sizes = [
 
 const IrishCreamColdBrew = ({
   restaurants,
-  updateCart,
+  addItem,
 }: {
   restaurants: Restaurant[]
-  updateCart: (item: CartItem) => void
+  addItem: (item: CartItem) => void
 }) => {
   const starbucks = restaurants.find(
     (restaurant) => restaurant.slug === 'starbucks'
@@ -83,7 +83,7 @@ const IrishCreamColdBrew = ({
       <Order
         item={irishCreamColdBrew}
         oneItemPrice={oneItemPrice}
-        updateCart={updateCart}
+        addItem={addItem}
       />
     </>
   )

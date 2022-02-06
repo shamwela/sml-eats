@@ -58,8 +58,19 @@ const restaurants: Restaurant[] = [
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [cart, setCart] = useState<CartItem[]>([])
 
-  const updateCart = (newCartItem: CartItem) => {
+  const addItem = (newCartItem: CartItem) => {
     const newCart = [...cart, newCartItem]
+    setCart(newCart)
+  }
+
+  const changeItemQuantity = (name: string, quantity: number) => {
+    const newCart = cart.map((item) => {
+      if (item.name === name) {
+        const finalPrice = item.oneItemPrice * quantity
+        return { ...item, quantity, finalPrice }
+      }
+      return item
+    })
     setCart(newCart)
   }
 
@@ -74,7 +85,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         {...pageProps}
         restaurants={restaurants}
         cart={cart}
-        updateCart={updateCart}
+        addItem={addItem}
+        changeItemQuantity={changeItemQuantity}
       />
 
       {cart.length > 0 && (

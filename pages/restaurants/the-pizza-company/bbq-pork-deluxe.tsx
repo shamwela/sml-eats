@@ -7,10 +7,10 @@ import type { Restaurant } from 'types/restaurant'
 
 const BBQPorkDeluxe = ({
   restaurants,
-  updateCart,
+  addItem,
 }: {
   restaurants: Restaurant[]
-  updateCart: (item: CartItem) => void
+  addItem: (item: CartItem) => void
 }) => {
   const thePizzaCompany = restaurants.find(
     (restaurant) => restaurant.name === 'The Pizza Company'
@@ -34,7 +34,7 @@ const BBQPorkDeluxe = ({
           placeholder='blur'
         />
       </div>
-      <Pizza pizza={bbqPorkDeluxe} updateCart={updateCart} />
+      <Pizza pizza={bbqPorkDeluxe} addItem={addItem} />
     </>
   )
 }
