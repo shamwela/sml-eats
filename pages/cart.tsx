@@ -2,6 +2,8 @@ import type { CartItem } from 'types/cartItem'
 import { ChangeEvent } from 'react'
 import Link from 'next/link'
 
+const zeroToHundred = Array.from(Array(100).keys())
+
 const Cart = ({
   cart,
   changeItemQuantity,
@@ -10,7 +12,6 @@ const Cart = ({
   changeItemQuantity: (name: string, quantity: number) => void
 }) => {
   const isCartEmpty = cart.length === 0
-
   if (isCartEmpty) {
     return (
       <section className='flex flex-col gap-y-5'>
@@ -30,7 +31,7 @@ const Cart = ({
     changeItemQuantity(name, quantity)
   }
 
-  const zeroToHundred = Array.from(Array(100).keys())
+  const checkoutPrice = cart.reduce((total, item) => total + item.finalPrice, 0)
 
   return (
     <>
@@ -56,6 +57,10 @@ const Cart = ({
           </section>
         )
       })}
+
+      <Link href='/checkout'>
+        <a className='button'>Go to checkout (${checkoutPrice})</a>
+      </Link>
     </>
   )
 }

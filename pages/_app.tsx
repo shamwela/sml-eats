@@ -64,13 +64,22 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }
 
   const changeItemQuantity = (name: string, quantity: number) => {
-    const newCart = cart.map((item) => {
-      if (item.name === name) {
-        const finalPrice = item.oneItemPrice * quantity
-        return { ...item, quantity, finalPrice }
-      }
-      return item
-    })
+    let newCart: CartItem[] = []
+
+    // If the quantity is 0, remove the item from the cart
+    if (quantity === 0) {
+      newCart = cart.filter((item) => item.name !== name)
+    } else {
+      // Otherwise, change the quantity
+      newCart = cart.map((item) => {
+        if (item.name === name) {
+          const finalPrice = item.oneItemPrice * quantity
+          return { ...item, quantity, finalPrice }
+        }
+        return item
+      })
+    }
+
     setCart(newCart)
   }
 
