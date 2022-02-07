@@ -12,11 +12,15 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
       />
 
       <section className='flex flex-col gap-y-4'>
-        {restaurants?.map(({ name, slug }) => {
+        {restaurants?.map(({ name, slug, rating }) => {
           return (
-            <Link key={slug} href={`/restaurants/${slug}`}>
-              <a>{name}</a>
-            </Link>
+            <section key={slug} className='flex justify-between'>
+              <Link href={`/restaurants/${slug}`}>
+                <a>{name}</a>
+              </Link>
+
+              <span>⭐ {rating}</span>
+            </section>
           )
         })}
       </section>
