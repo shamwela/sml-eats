@@ -10,11 +10,13 @@ const restaurants: Restaurant[] = [
   {
     name: 'The Pizza Company',
     slug: 'the-pizza-company',
+    path: '/restaurants/the-pizza-company',
     rating: 4,
     items: [
       {
         name: 'Seafood Cocktail',
         slug: 'seafood-cocktail',
+        path: '/restaurants/the-pizza-company/seafood-cocktail',
         category: 'Pizza',
         deliveryFee: 1,
         deliveryTime: 30,
@@ -23,6 +25,7 @@ const restaurants: Restaurant[] = [
       {
         name: 'BBQ Pork Deluxe',
         slug: 'bbq-pork-deluxe',
+        path: '/restaurants/the-pizza-company/bbq-pork-deluxe',
         category: 'Pizza',
         deliveryFee: 1,
         deliveryTime: 30,
@@ -33,11 +36,13 @@ const restaurants: Restaurant[] = [
   {
     name: 'Starbucks',
     slug: 'starbucks',
+    path: '/restaurants/starbucks',
     rating: 5,
     items: [
       {
         name: 'Irish Cream Cold Brew',
         slug: 'irish-cream-cold-brew',
+        path: '/restaurants/starbucks/irish-cream-cold-brew',
         category: 'coffee',
         deliveryFee: 1,
         deliveryTime: 15,
@@ -46,6 +51,7 @@ const restaurants: Restaurant[] = [
       {
         name: 'Iced Coffee',
         slug: 'iced-coffee',
+        path: '/restaurants/starbucks/iced-coffee',
         category: 'coffee',
         deliveryFee: 1,
         deliveryTime: 15,
