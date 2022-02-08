@@ -3,6 +3,8 @@ import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
 
 const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
+  const categories = restaurants.map(({ category }) => category)
+
   return (
     <>
       <Head
@@ -16,6 +18,7 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
           <a>Search</a>
         </Link>
 
+        <h2>Restaurants</h2>
         {restaurants?.map(({ name, slug, rating }) => {
           return (
             <section key={slug} className='flex justify-between'>
@@ -27,6 +30,15 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
             </section>
           )
         })}
+      </section>
+
+      <h2>Explore by category</h2>
+      <section className='flex flex-col gap-y-4'>
+        {categories.map((category) => (
+          <Link href='/' key={category}>
+            <a>{category}</a>
+          </Link>
+        ))}
       </section>
     </>
   )
