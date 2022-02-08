@@ -1,9 +1,14 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 
 import Head from 'components/Head'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
 
+type ItemToSearch = {
+  name: string
+  category: string
+  path: string
+}
 type Result = {
   name: string
   path: string
@@ -13,6 +18,18 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<Result[]>([])
 
+  // --- Later, move "itemsToSearch" to getStaticProps() or something ---
+  let itemsToSearch: ItemToSearch[] = []
+  restaurants.forEach(({ name, path, category }) => {
+    itemsToSearch.push({ name, path, category })
+  })
+  restaurants.forEach(({ items }) => {
+    items.forEach(({ name, path, category }) => {
+      itemsToSearch.push({ name, path, category })
+    })
+  })
+  // --- Later, move "itemsToSearch" to getStaticProps() or something ---
+
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value
     setQuery(query)
@@ -21,14 +38,19 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
   const search = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    // Improve this later
-    const nestedItems = restaurants.map((restaurant) =>
-      restaurant.items.map((item) => ({ name: item.name, path: item.path }))
-    )
-    const items = nestedItems.flat()
-    const results = items.filter((result) =>
-      result.name.toLowerCase().includes(query.toLowerCase())
-    )
+    const results: Result[] = itemsToSearch.filter((item) => {
+      const { name, category, path } = item
+
+      const matchesName = name.toLowerCase().includes(query.toLowerCase())
+      const matchesCategory = category
+        .toLowerCase()
+        .includes(query.toLowerCase())
+
+      if (matchesName || matchesCategory) {
+        const result = { name, path }
+        return result
+      }
+    })
 
     setResults(results)
   }

@@ -11,6 +11,7 @@ const restaurants: Restaurant[] = [
     name: 'The Pizza Company',
     slug: 'the-pizza-company',
     path: '/restaurants/the-pizza-company',
+    category: 'Pizza',
     rating: 4,
     items: [
       {
@@ -37,6 +38,7 @@ const restaurants: Restaurant[] = [
     name: 'Starbucks',
     slug: 'starbucks',
     path: '/restaurants/starbucks',
+    category: 'Coffee',
     rating: 5,
     items: [
       {
