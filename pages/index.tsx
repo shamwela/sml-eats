@@ -13,37 +13,35 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
         imageUrl='/images/seafood-cocktail.jpeg'
       />
 
-      <section className='flex flex-col gap-y-4'>
-        <button>
-          <Link href='/search'>
-            <a>Search food, drinks, etc</a>
-          </Link>
-        </button>
+      <button>
+        <Link href='/search'>
+          <a>Search</a>
+        </Link>
+      </button>
 
-        <h2>Restaurants</h2>
-        {restaurants?.map(({ name, slug, rating }) => {
-          return (
-            <section key={slug} className='flex justify-between'>
-              <Link href={`/restaurants/${slug}`}>
-                <a>{name}</a>
-              </Link>
-
-              <span>⭐ {rating}</span>
-            </section>
-          )
-        })}
-
-        <h2>Explore by category</h2>
-        {categories.map((category) => {
-          const href = '/search?query=' + category.toLowerCase()
-
-          return (
-            <Link href={href} key={category}>
-              <a>{category}</a>
+      <h2>Restaurants</h2>
+      {restaurants?.map(({ name, slug, rating }) => {
+        return (
+          <section key={slug} className='flex justify-between'>
+            <Link href={`/restaurants/${slug}`}>
+              <a>{name}</a>
             </Link>
-          )
-        })}
-      </section>
+
+            <span>⭐ {rating}</span>
+          </section>
+        )
+      })}
+
+      <h2>Explore by category</h2>
+      {categories.map((category) => {
+        const href = '/search?query=' + category.toLowerCase()
+
+        return (
+          <Link href={href} key={category}>
+            <a>{category}</a>
+          </Link>
+        )
+      })}
     </>
   )
 }

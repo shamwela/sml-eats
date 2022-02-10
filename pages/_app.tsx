@@ -93,13 +93,22 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <nav className='mb-4 flex flex-wrap items-center justify-center'>
-        <Link href='/'>
-          <a className='text-4xl font-bold'>SML Eats</a>
-        </Link>
+      <nav className='mb-4'>
+        <section className='mx-auto flex max-w-md justify-between'>
+          <Link href='/'>
+            <a className='text-4xl font-bold'>SML Eats</a>
+          </Link>
+          {cart.length > 0 && (
+            <Link href='/cart'>
+              <a className='button fixed right-5 left-5 bottom-5 md:static'>
+                View order
+              </a>
+            </Link>
+          )}
+        </section>
       </nav>
 
-      <main className='mx-auto max-w-md'>
+      <main className='mx-auto mb-24 flex max-w-md flex-col gap-y-4'>
         <Component
           {...pageProps}
           restaurants={restaurants}
@@ -108,12 +117,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           changeItemQuantity={changeItemQuantity}
         />
       </main>
-
-      {cart.length > 0 && (
-        <Link href='/cart'>
-          <a className='button fixed right-5 left-5 bottom-5'>View order</a>
-        </Link>
-      )}
     </>
   )
 }
