@@ -93,18 +93,21 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <nav className='flex flex-wrap items-center gap-x-4 py-4'>
+      <nav className='mb-4 flex flex-wrap items-center justify-center'>
         <Link href='/'>
           <a className='text-4xl font-bold'>SML Eats</a>
         </Link>
       </nav>
-      <Component
-        {...pageProps}
-        restaurants={restaurants}
-        cart={cart}
-        addItem={addItem}
-        changeItemQuantity={changeItemQuantity}
-      />
+
+      <main className='mx-auto max-w-md'>
+        <Component
+          {...pageProps}
+          restaurants={restaurants}
+          cart={cart}
+          addItem={addItem}
+          changeItemQuantity={changeItemQuantity}
+        />
+      </main>
 
       {cart.length > 0 && (
         <Link href='/cart'>
