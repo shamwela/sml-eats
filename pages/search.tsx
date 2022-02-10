@@ -82,7 +82,7 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
 
       <section className='flex flex-col gap-y-4'>
         <Link href='/'>
-          <a className='button max-w-fit'>x</a>
+          <a>x</a>
         </Link>
 
         <h1>Search</h1>

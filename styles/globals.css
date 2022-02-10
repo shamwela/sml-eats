@@ -5,12 +5,11 @@
 *,
 ::before,
 ::after {
-  color: white;
+  @apply text-secondary;
 }
 
 body {
-  @apply p-4;
-  background-color: #202020;
+  @apply bg-primary p-4;
 }
 
 h1,
@@ -36,11 +35,11 @@ img {
 button,
 .button,
 [type='submit'] {
-  @apply inline-block bg-blue-600 px-4 py-2 text-center;
+  @apply inline-block bg-accent px-4 py-2 text-center;
 }
 
 select,
 option,
 input {
-  @apply text-black;
+  @apply text-primary;
 }
