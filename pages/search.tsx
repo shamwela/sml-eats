@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 
 import Head from 'components/Head'
 import Link from 'next/link'
@@ -24,35 +24,39 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
 
   const [results, setResults] = useState<Result[]>([])
 
-  // --- Later, move "itemsToSearch" to getStaticProps() or something ---
-  let itemsToSearch: ItemToSearch[] = []
-  restaurants.forEach(({ name, path, category }) => {
-    itemsToSearch.push({ name, path, category })
-  })
-  restaurants.forEach(({ items }) => {
-    items.forEach(({ name, path, category }) => {
+  useEffect(() => {
+    // --- Later, move "itemsToSearch" to getStaticProps() or something ---
+    let itemsToSearch: ItemToSearch[] = []
+    restaurants.forEach(({ name, path, category }) => {
       itemsToSearch.push({ name, path, category })
     })
-  })
-  // --- Later, move "itemsToSearch" to getStaticProps() or something ---
+    restaurants.forEach(({ items }) => {
+      items.forEach(({ name, path, category }) => {
+        itemsToSearch.push({ name, path, category })
+      })
+    })
+    // --- Later, move "itemsToSearch" to getStaticProps() or something ---
 
-  const search = () => {
-    const results: Result[] = itemsToSearch.filter(
-      ({ name, category, path }) => {
-        const matchesName = name.toLowerCase().includes(query.toLowerCase())
-        const matchesCategory = category
-          .toLowerCase()
-          .includes(query.toLowerCase())
+    const search = () => {
+      const results: Result[] = itemsToSearch.filter(
+        ({ name, category, path }) => {
+          const matchesName = name.toLowerCase().includes(query.toLowerCase())
+          const matchesCategory = category
+            .toLowerCase()
+            .includes(query.toLowerCase())
 
-        if (matchesName || matchesCategory) {
-          const result = { name, path }
-          return result
+          if (matchesName || matchesCategory) {
+            const result = { name, path }
+            return result
+          }
         }
-      }
-    )
+      )
 
-    setResults(results)
-  }
+      setResults(results)
+    }
+
+    search()
+  }, [query, restaurants])
 
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value
@@ -63,8 +67,6 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
 
     if (query === '') {
       setResults([])
-    } else {
-      search()
     }
   }
 
