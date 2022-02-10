@@ -34,11 +34,15 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
 
       <h2>Explore by category</h2>
       <section className='flex flex-col gap-y-4'>
-        {categories.map((category) => (
-          <Link href={'/search?query=' + category.toLowerCase()} key={category}>
-            <a>{category}</a>
-          </Link>
-        ))}
+        {categories.map((category) => {
+          const href = '/search?query=' + category.toLowerCase()
+
+          return (
+            <Link href={href} key={category}>
+              <a>{category}</a>
+            </Link>
+          )
+        })}
       </section>
     </>
   )

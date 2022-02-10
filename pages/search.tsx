@@ -37,7 +37,7 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
     })
     // --- Later, move "itemsToSearch" to getStaticProps() or something ---
 
-    const search = () => {
+    const getResults = () => {
       const results: Result[] = itemsToSearch.filter(
         ({ name, category, path }) => {
           const matchesName = name.toLowerCase().includes(query.toLowerCase())
@@ -52,10 +52,16 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
         }
       )
 
-      setResults(results)
+      return results
     }
 
-    search()
+    // If there's no query, don't show any results
+    if (query === '') {
+      setResults([])
+    } else {
+      const results = getResults()
+      setResults(results)
+    }
   }, [query, restaurants])
 
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -64,10 +70,6 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
       pathname: '/search',
       query: { query },
     })
-
-    if (query === '') {
-      setResults([])
-    }
   }
 
   return (
@@ -82,6 +84,8 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
         <Link href='/'>
           <a className='button max-w-fit'>x</a>
         </Link>
+
+        <h1>Search</h1>
 
         {/* The user can search by restaurant name, item name, or category */}
         <input
