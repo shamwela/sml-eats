@@ -8,8 +8,8 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
   return (
     <>
       <Head
-        title='SML Eats'
-        description='SML Eats'
+        title='Home'
+        description='SML Eats home page'
         imageUrl='/images/seafood-cocktail.jpeg'
       />
 

@@ -1,3 +1,4 @@
+import Head from 'components/Head'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
 
@@ -8,6 +9,7 @@ const ThePizzaCompany = ({ restaurants }: { restaurants: Restaurant[] }) => {
 
   return (
     <>
+      <Head title='The Pizza Company' description='The Pizza Company' />
       <h1>The Pizza Company</h1>
       <article className='flex flex-col gap-y-4'>
         {thePizzaCompany?.items.map(({ name, slug }) => {

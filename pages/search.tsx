@@ -75,7 +75,7 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
   return (
     <>
       <Head
-        title='Search on SML Eats'
+        title='Search'
         description='Search on SML Eats'
         imageUrl='/images/seafood-cocktail.jpeg'
       />

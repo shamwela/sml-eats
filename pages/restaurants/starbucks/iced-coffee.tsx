@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react'
 
 import type { CartItem } from 'types/cartItem'
+import Head from 'components/Head'
 import IcedCoffeeImage from 'public/images/iced-coffee.png'
 import Image from 'next/image'
 import type { Item } from 'types/item'
@@ -46,6 +47,11 @@ const IcedCoffee = ({
 
   return (
     <>
+      <Head
+        title='Your cart'
+        description='Your cart'
+        imageUrl='/images/iced-coffee.png'
+      />
       <h1>Iced Coffee</h1>
       <div className='max-w-md'>
         <Image alt='Iced Coffee' src={IcedCoffeeImage} placeholder='blur' />

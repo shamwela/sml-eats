@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react'
 
 import type { CartItem } from 'types/cartItem'
+import Head from 'components/Head'
 import Image from 'next/image'
 import IrishCreamColdBrewImage from 'public/images/irish-cream-cold-brew.png'
 import type { Item } from 'types/item'
@@ -46,6 +47,11 @@ const IrishCreamColdBrew = ({
 
   return (
     <>
+      <Head
+        title='Your cart'
+        description='Your cart'
+        imageUrl='/images/irish-cream-cold-brew.png'
+      />
       <h1>Irish Cream Cold Brew</h1>
       <div className='max-w-md'>
         <Image

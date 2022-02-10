@@ -4,12 +4,13 @@ import { useRouter } from 'next/router'
 const CustomHead = ({
   title,
   description,
-  imageUrl,
+  imageUrl = '/images/sml-eats-open-graph.png',
 }: {
   title: string
   description: string
-  imageUrl: string
+  imageUrl?: string
 }) => {
+  const fullTitle = title + ' - SML Eats'
   const baseUrl = 'https://sml-eats.vercel.app'
   const fullImageUrl = baseUrl + imageUrl
 
@@ -18,10 +19,10 @@ const CustomHead = ({
 
   return (
     <Head>
-      <title>{title}</title>
+      <title>{fullTitle}</title>
       <meta name='robots' content='follow, index' />
-      <meta property='og:title' content={title} />
-      <meta name='twitter:title' content={title} />
+      <meta property='og:title' content={fullTitle} />
+      <meta name='twitter:title' content={fullTitle} />
 
       <meta name='description' content={description} />
       <meta property='og:description' content={description} />
