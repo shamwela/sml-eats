@@ -9,6 +9,7 @@
 }
 
 body {
+  @apply p-4;
   background-color: #202020;
 }
 

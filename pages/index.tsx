@@ -14,9 +14,11 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
       />
 
       <section className='flex flex-col gap-y-4'>
-        <Link href='/search'>
-          <a>Search</a>
-        </Link>
+        <button>
+          <Link href='/search'>
+            <a>Search food, drinks, etc</a>
+          </Link>
+        </button>
 
         <h2>Restaurants</h2>
         {restaurants?.map(({ name, slug, rating }) => {
@@ -30,10 +32,8 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
             </section>
           )
         })}
-      </section>
 
-      <h2>Explore by category</h2>
-      <section className='flex flex-col gap-y-4'>
+        <h2>Explore by category</h2>
         {categories.map((category) => {
           const href = '/search?query=' + category.toLowerCase()
 

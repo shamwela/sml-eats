@@ -12,7 +12,7 @@ const restaurants: Restaurant[] = [
     slug: 'the-pizza-company',
     path: '/restaurants/the-pizza-company',
     category: 'Pizza',
-    rating: 4,
+    rating: 4.9,
     items: [
       {
         name: 'Seafood Cocktail',
@@ -39,7 +39,7 @@ const restaurants: Restaurant[] = [
     slug: 'starbucks',
     path: '/restaurants/starbucks',
     category: 'Coffee',
-    rating: 5,
+    rating: 4.8,
     items: [
       {
         name: 'Irish Cream Cold Brew',
@@ -93,7 +93,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <nav className='flex flex-wrap items-center gap-x-4 border-b-2 p-4'>
+      <nav className='flex flex-wrap items-center gap-x-4 py-4'>
         <Link href='/'>
           <a className='text-4xl font-bold'>SML Eats</a>
         </Link>
