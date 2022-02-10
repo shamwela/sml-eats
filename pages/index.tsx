@@ -7,11 +7,7 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
 
   return (
     <>
-      <Head
-        title='Home'
-        description='SML Eats home page'
-        imageUrl='/images/seafood-cocktail.jpeg'
-      />
+      <Head title='Home' description='SML Eats home page' />
 
       <button>
         <Link href='/search'>
