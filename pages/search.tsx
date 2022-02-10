@@ -1,8 +1,9 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import Head from 'components/Head'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
+import { useRouter } from 'next/router'
 
 type ItemToSearch = {
   name: string
@@ -15,7 +16,12 @@ type Result = {
 }
 
 const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
-  const [query, setQuery] = useState('')
+  const router = useRouter()
+  let query = ''
+  if (typeof router.query.query === 'string') {
+    query = router.query.query
+  }
+
   const [results, setResults] = useState<Result[]>([])
 
   // --- Later, move "itemsToSearch" to getStaticProps() or something ---
@@ -30,29 +36,36 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
   })
   // --- Later, move "itemsToSearch" to getStaticProps() or something ---
 
-  const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const query = event.target.value
-    setQuery(query)
-  }
+  const search = () => {
+    const results: Result[] = itemsToSearch.filter(
+      ({ name, category, path }) => {
+        const matchesName = name.toLowerCase().includes(query.toLowerCase())
+        const matchesCategory = category
+          .toLowerCase()
+          .includes(query.toLowerCase())
 
-  const search = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-
-    const results: Result[] = itemsToSearch.filter((item) => {
-      const { name, category, path } = item
-
-      const matchesName = name.toLowerCase().includes(query.toLowerCase())
-      const matchesCategory = category
-        .toLowerCase()
-        .includes(query.toLowerCase())
-
-      if (matchesName || matchesCategory) {
-        const result = { name, path }
-        return result
+        if (matchesName || matchesCategory) {
+          const result = { name, path }
+          return result
+        }
       }
-    })
+    )
 
     setResults(results)
+  }
+
+  const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value
+    router.push({
+      pathname: '/search',
+      query: { query },
+    })
+
+    if (query === '') {
+      setResults([])
+    } else {
+      search()
+    }
   }
 
   return (
@@ -69,17 +82,14 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
         </Link>
 
         {/* The user can search by restaurant name, item name, or category */}
-        <form onSubmit={search}>
-          <input
-            type='search'
-            name='query'
-            placeholder='Food, drinks, etc'
-            value={query}
-            onChange={handleQueryChange}
-            required
-          />
-          <button type='submit'>Search</button>
-        </form>
+        <input
+          value={query}
+          onChange={handleQueryChange}
+          name='query'
+          type='search'
+          placeholder='Food, drinks, etc'
+          required
+        />
 
         {results.map(({ name, path }) => (
           <Link href={path} key={path}>
