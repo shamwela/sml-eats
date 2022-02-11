@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
+import ThePizzaCompanyImage from 'public/images/the-pizza-company.webp'
 import { useState } from 'react'
 
 const restaurants: Restaurant[] = [
@@ -13,6 +14,9 @@ const restaurants: Restaurant[] = [
     path: '/restaurants/the-pizza-company',
     category: 'Pizza',
     rating: 4.9,
+    imageProperties: {
+      src: ThePizzaCompanyImage
+    },
     items: [
       {
         name: 'Seafood Cocktail',
@@ -40,6 +44,9 @@ const restaurants: Restaurant[] = [
     path: '/restaurants/starbucks',
     category: 'Coffee',
     rating: 4.8,
+    imageProperties: {
+      src: ThePizzaCompanyImage
+    },
     items: [
       {
         name: 'Irish Cream Cold Brew',

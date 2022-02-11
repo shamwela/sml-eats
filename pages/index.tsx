@@ -1,4 +1,5 @@
 import Head from 'components/Head'
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
 
@@ -16,9 +17,10 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
       </button>
 
       <h2>Restaurants</h2>
-      {restaurants?.map(({ name, slug, rating }) => {
+      {restaurants?.map(({ name, slug, rating, imageProperties }) => {
         return (
           <section key={slug} className='flex justify-between'>
+            <Image src={imageProperties.src} alt={name} />
             <Link href={`/restaurants/${slug}`}>
               <a>{name}</a>
             </Link>
