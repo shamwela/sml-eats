@@ -19,14 +19,24 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
       <h2>Restaurants</h2>
       {restaurants?.map(({ name, slug, rating, imageProperties }) => {
         return (
-          <section key={slug} className='flex justify-between'>
-            <Image src={imageProperties.src} alt={name} />
-            <Link href={`/restaurants/${slug}`}>
-              <a>{name}</a>
-            </Link>
+          <Link key={slug} href={`/restaurants/${slug}`}>
+            <a>
+              <section className='flex flex-col'>
+                <div className='h-36 overflow-hidden'>
+                  <Image
+                    src={imageProperties.src}
+                    alt={name}
+                    placeholder='blur'
+                    className='object-cover'
+                  />
+                </div>
 
-            <span>⭐ {rating}</span>
-          </section>
+                <span className='text-3xl'>{name}</span>
+
+                <span>⭐ {rating}</span>
+              </section>
+            </a>
+          </Link>
         )
       })}
 
