@@ -17,22 +17,13 @@ const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
       </button>
 
       <h2>Restaurants</h2>
-      {restaurants?.map(({ name, slug, rating, imageProperties }) => {
+      {restaurants?.map(({ name, slug, rating, imageSource }) => {
         return (
           <Link key={slug} href={`/restaurants/${slug}`}>
             <a>
               <section className='flex flex-col'>
-                <div className='h-36 overflow-hidden'>
-                  <Image
-                    src={imageProperties.src}
-                    alt={name}
-                    placeholder='blur'
-                    className='object-cover'
-                  />
-                </div>
-
-                <span className='text-3xl'>{name}</span>
-
+                <Image src={imageSource} alt={name} placeholder='blur' />
+                <span>{name}</span>
                 <span>⭐ {rating}</span>
               </section>
             </a>
