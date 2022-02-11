@@ -3,7 +3,6 @@ import { ChangeEvent, useState } from 'react'
 import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
 import Image from 'next/image'
-import IrishCreamColdBrewImage from 'public/images/irish-cream-cold-brew.png'
 import type { Item } from 'types/item'
 import Order from 'ui/Order'
 import type { Restaurant } from 'types/restaurant'
@@ -36,6 +35,7 @@ const IrishCreamColdBrew = ({
   const irishCreamColdBrew = starbucks?.items.find(
     (item) => item.slug === 'irish-cream-cold-brew'
   ) as Item
+  const imageSource = irishCreamColdBrew?.imageSource || ''
   const { basePrice } = irishCreamColdBrew
   const [sizePrice, setSizePrice] = useState(0)
   const oneItemPrice = basePrice + sizePrice
@@ -56,7 +56,7 @@ const IrishCreamColdBrew = ({
       <div className='max-w-md'>
         <Image
           alt='Irish Cream Cold Brew'
-          src={IrishCreamColdBrewImage}
+          src={imageSource}
           placeholder='blur'
         />
       </div>

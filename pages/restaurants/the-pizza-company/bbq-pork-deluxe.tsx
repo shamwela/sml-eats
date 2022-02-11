@@ -1,4 +1,3 @@
-import BBQPorkDeluxeImage from 'public/images/bbq-pork-deluxe.jpeg'
 import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
 import Image from 'next/image'
@@ -18,6 +17,7 @@ const BBQPorkDeluxe = ({
   const bbqPorkDeluxe = thePizzaCompany?.items.find(
     (item) => item.name === 'BBQ Pork Deluxe'
   )
+  const imageSource = bbqPorkDeluxe?.imageSource || ''
 
   return (
     <>
@@ -28,11 +28,7 @@ const BBQPorkDeluxe = ({
       />
       <h1>BBQ Pork Deluxe</h1>
       <div className='max-w-md'>
-        <Image
-          alt='BBQ Pork Deluxe'
-          src={BBQPorkDeluxeImage}
-          placeholder='blur'
-        />
+        <Image alt='BBQ Pork Deluxe' src={imageSource} placeholder='blur' />
       </div>
       <Pizza pizza={bbqPorkDeluxe} addItem={addItem} />
     </>

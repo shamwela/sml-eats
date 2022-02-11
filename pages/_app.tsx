@@ -1,11 +1,15 @@
 import 'styles/globals.css'
 
 import type { AppProps } from 'next/app'
+import BBQPorkDeluxeImage from 'public/images/bbq-pork-deluxe.jpeg'
 import type { CartItem } from 'types/cartItem'
 import CoffeeImage from 'public/images/coffee.png'
+import IcedCoffeeImage from 'public/images/iced-coffee.png'
+import IrishCreamColdBrewImage from 'public/images/irish-cream-cold-brew.png'
 import Link from 'next/link'
 import PizzaImage from 'public/images/pizza.png'
 import type { Restaurant } from 'types/restaurant'
+import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
 import StarbucksImage from 'public/images/starbucks.webp'
 import ThePizzaCompanyImage from 'public/images/the-pizza-company.webp'
 import { useState } from 'react'
@@ -23,6 +27,7 @@ const restaurants: Restaurant[] = [
         name: 'Seafood Cocktail',
         slug: 'seafood-cocktail',
         path: '/restaurants/the-pizza-company/seafood-cocktail',
+        imageSource: SeafoodCocktailImage,
         category: 'Pizza',
         deliveryFee: 1,
         deliveryTime: 30,
@@ -32,6 +37,7 @@ const restaurants: Restaurant[] = [
         name: 'BBQ Pork Deluxe',
         slug: 'bbq-pork-deluxe',
         path: '/restaurants/the-pizza-company/bbq-pork-deluxe',
+        imageSource: BBQPorkDeluxeImage,
         category: 'Pizza',
         deliveryFee: 1,
         deliveryTime: 30,
@@ -51,6 +57,7 @@ const restaurants: Restaurant[] = [
         name: 'Irish Cream Cold Brew',
         slug: 'irish-cream-cold-brew',
         path: '/restaurants/starbucks/irish-cream-cold-brew',
+        imageSource: IrishCreamColdBrewImage,
         category: 'coffee',
         deliveryFee: 1,
         deliveryTime: 15,
@@ -60,6 +67,7 @@ const restaurants: Restaurant[] = [
         name: 'Iced Coffee',
         slug: 'iced-coffee',
         path: '/restaurants/starbucks/iced-coffee',
+        imageSource: IcedCoffeeImage,
         category: 'coffee',
         deliveryFee: 1,
         deliveryTime: 15,

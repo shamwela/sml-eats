@@ -3,7 +3,6 @@ import Head from 'components/Head'
 import Image from 'next/image'
 import Pizza from 'ui/Pizza'
 import type { Restaurant } from 'types/restaurant'
-import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
 
 const SeafoodCocktail = ({
   restaurants,
@@ -18,6 +17,7 @@ const SeafoodCocktail = ({
   const seafoodCocktail = thePizzaCompany?.items.find(
     (item) => item.name === 'Seafood Cocktail'
   )
+  const imageSource = seafoodCocktail?.imageSource || ''
 
   return (
     <>
@@ -28,11 +28,7 @@ const SeafoodCocktail = ({
       />
       <h1>Seafood Cocktail</h1>
       <div className='max-w-md'>
-        <Image
-          alt='Seafood Cocktail'
-          src={SeafoodCocktailImage}
-          placeholder='blur'
-        />
+        <Image alt='Seafood Cocktail' src={imageSource} placeholder='blur' />
       </div>
       <Pizza pizza={seafoodCocktail} addItem={addItem} />
     </>

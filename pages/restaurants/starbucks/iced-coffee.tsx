@@ -2,7 +2,6 @@ import { ChangeEvent, useState } from 'react'
 
 import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
-import IcedCoffeeImage from 'public/images/iced-coffee.png'
 import Image from 'next/image'
 import type { Item } from 'types/item'
 import Order from 'ui/Order'
@@ -36,6 +35,7 @@ const IcedCoffee = ({
   const icedCoffee = starbucks?.items.find(
     (item) => item.slug === 'iced-coffee'
   ) as Item
+  const imageSource = icedCoffee?.imageSource || ''
   const { basePrice } = icedCoffee
   const [sizePrice, setSizePrice] = useState(0)
   const oneItemPrice = basePrice + sizePrice
@@ -54,7 +54,7 @@ const IcedCoffee = ({
       />
       <h1>Iced Coffee</h1>
       <div className='max-w-md'>
-        <Image alt='Iced Coffee' src={IcedCoffeeImage} placeholder='blur' />
+        <Image alt='Iced Coffee' src={imageSource} placeholder='blur' />
       </div>
       <h2>Choose size</h2>
       {sizes.map(
