@@ -6,9 +6,10 @@ module.exports = {
   ],
   theme: {
     colors: {
-      primary: 'rgb(17 24 39)',
+      primary: '#111827',
+      'light-primary': '#1f2937',
       secondary: 'white',
-      accent: 'rgb(37 99 235)',
+      accent: '#2563eb',
     },
   },
 }

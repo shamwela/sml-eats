@@ -2,7 +2,9 @@ import 'styles/globals.css'
 
 import type { AppProps } from 'next/app'
 import type { CartItem } from 'types/cartItem'
+import CoffeeImage from 'public/images/coffee.png'
 import Link from 'next/link'
+import PizzaImage from 'public/images/pizza.png'
 import type { Restaurant } from 'types/restaurant'
 import StarbucksImage from 'public/images/starbucks.webp'
 import ThePizzaCompanyImage from 'public/images/the-pizza-company.webp'
@@ -66,6 +68,16 @@ const restaurants: Restaurant[] = [
     ],
   },
 ]
+const categoryImageProperties = [
+  {
+    name: 'Pizza',
+    imageSource: PizzaImage,
+  },
+  {
+    name: 'Coffee',
+    imageSource: CoffeeImage,
+  },
+]
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [cart, setCart] = useState<CartItem[]>([])
@@ -119,6 +131,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           cart={cart}
           addItem={addItem}
           changeItemQuantity={changeItemQuantity}
+          categoryImageProperties={categoryImageProperties}
         />
       </main>
     </>
