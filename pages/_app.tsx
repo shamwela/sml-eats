@@ -135,7 +135,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           {cart.length > 0 && (
             <Link href='/cart'>
               <a>
-                <button className='fixed right-5 left-5 bottom-5 z-10 flex items-center gap-x-2 justify-center md:static'>
+                <button className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static'>
                   <svg
                     aria-hidden='true'
                     focusable='false'
