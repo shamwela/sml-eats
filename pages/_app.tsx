@@ -14,6 +14,7 @@ import type { Restaurant } from 'types/restaurant'
 import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
 import StarbucksImage from 'public/images/starbucks.webp'
 import ThePizzaCompanyImage from 'public/images/the-pizza-company.webp'
+import { useRouter } from 'next/router'
 
 const restaurants: Restaurant[] = [
   {
@@ -125,6 +126,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     setCart(newCart)
   }
 
+  const { pathname } = useRouter()
+  const isNotCartPage = pathname !== '/cart'
+  const cartExists = cart.length > 0
+  const showCartButton = isNotCartPage && cartExists
+
   return (
     <>
       <nav className='mb-4'>
@@ -132,7 +138,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <Link href='/'>
             <a className='text-4xl font-bold'>SML Eats</a>
           </Link>
-          {cart.length > 0 && (
+
+          {showCartButton && (
             <Link href='/cart'>
               <a>
                 <button className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static'>
