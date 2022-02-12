@@ -91,7 +91,9 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
           onChange={handleQueryChange}
           name='query'
           type='search'
-          placeholder='Food, drinks, etc'
+          aria-label='Search'
+          placeholder='Pizza, coffee, etc'
+          autoComplete='false'
           required
         />
 

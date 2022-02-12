@@ -11,5 +11,10 @@ module.exports = {
       secondary: 'white',
       accent: '#2563eb',
     },
+    extend: {
+      borderRadius: {
+        custom: '0.5rem',
+      },
+    },
   },
 }

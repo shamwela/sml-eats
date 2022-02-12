@@ -29,17 +29,27 @@ h2 {
 button,
 .button,
 img {
-  @apply rounded-lg;
+  @apply rounded-custom;
+}
+
+button,
+.button,
+[type='submit'],
+input {
+  @apply px-4 py-2;
 }
 
 button,
 .button,
 [type='submit'] {
-  @apply inline-block bg-accent px-4 py-2 text-center;
+  @apply inline-block bg-accent text-center;
+}
+
+input {
+  @apply rounded-custom bg-light-primary outline-none focus:ring-2 focus:ring-accent;
 }
 
 select,
-option,
-input {
+option {
   @apply text-primary;
 }
