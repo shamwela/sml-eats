@@ -44,9 +44,9 @@ const Cart = ({
         <a className='button'>x</a>
       </Link>
       <h1>Your cart</h1>
-      {cart?.map(({ name, quantity, finalPrice }) => {
+      {cart?.map(({ name, quantity, finalPrice, path }) => {
         return (
-          <section key={name} className='flex justify-between'>
+          <section key={name} className='flex gap-x-4'>
             <select
               value={quantity}
               onChange={(event) => handleQuantityChange(name, event)}
@@ -57,8 +57,12 @@ const Cart = ({
                 </option>
               ))}
             </select>
-            <span>{name}</span>
-            <span>${finalPrice}</span>
+            <Link href={path}>
+              <a className='flex w-full justify-between'>
+                <span>{name}</span>
+                <span>${finalPrice}</span>
+              </a>
+            </Link>
           </section>
         )
       })}

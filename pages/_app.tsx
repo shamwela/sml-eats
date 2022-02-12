@@ -93,11 +93,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const [totalQuantity, setTotalQuantity] = useState(0)
 
   useEffect(() => {
-    const totalQuantity = cart.reduce(
+    const newTotalQuantity = cart.reduce(
       (previousQuantity, cartItem) => previousQuantity + cartItem.quantity,
       0
     )
-    setTotalQuantity(totalQuantity)
+    setTotalQuantity(newTotalQuantity)
   }, [cart])
 
   const addItem = (newCartItem: CartItem) => {
