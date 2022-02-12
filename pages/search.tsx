@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 
+import Close from 'ui/Close'
 import Head from 'components/Head'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
@@ -81,10 +82,7 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
       />
 
       <section className='flex flex-col gap-y-4'>
-        <Link href='/'>
-          <a>x</a>
-        </Link>
-
+        <Close />
         <h1>Search</h1>
 
         {/* The user can search by restaurant name, item name, or category */}
