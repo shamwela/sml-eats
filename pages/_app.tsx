@@ -85,7 +85,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <main className='mx-auto mb-24 flex max-w-4xl flex-col gap-y-4'>
         <Component
           {...pageProps}
-          // restaurants={restaurants}
           cart={cart}
           addItem={addItem}
           changeItemQuantity={changeItemQuantity}
