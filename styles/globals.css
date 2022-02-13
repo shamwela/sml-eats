@@ -46,7 +46,11 @@ button,
 }
 
 input {
-  @apply appearance-none rounded-custom bg-light-primary outline-none focus:ring-2 focus:ring-accent;
+  @apply rounded-custom bg-light-primary outline-none focus:ring-2 focus:ring-accent;
+}
+
+input[type='search'] {
+  @apply appearance-none;
 }
 
 select,
