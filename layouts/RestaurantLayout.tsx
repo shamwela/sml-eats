@@ -1,5 +1,6 @@
 import Head from 'components/Head'
 import Image from 'next/image'
+import ItemContainer from 'ui/ItemContainer'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
 
@@ -8,27 +9,24 @@ type RestaurantLayoutProps = {
 }
 
 const RestaurantLayout = ({ restaurant }: RestaurantLayoutProps) => {
-  const { name, imageSource } = restaurant
+  const { name: restaurantName, items } = restaurant
 
   return (
     <>
-      <Head title={name} />
-      <Image alt={name} src={imageSource} placeholder='blur' />
-      <h1>The Pizza Company</h1>
-      <article className='flex flex-col gap-y-4'>
-        {/* {thePizzaCompany?.items.map(({ name, slug, imageSource }) => {
-          const href = '/restaurants/the-pizza-company/' + slug
-
+      <Head title={restaurantName} />
+      <h1>{restaurantName}</h1>
+      <ItemContainer>
+        {items.map(({ name, path, imageSource }) => {
           return (
-            <Link key={name} href={href}>
+            <Link key={path} href={path}>
               <a>
                 <Image alt={name} src={imageSource} placeholder='blur' />
                 <span>{name}</span>
               </a>
             </Link>
           )
-        })} */}
-      </article>
+        })}
+      </ItemContainer>
     </>
   )
 }
