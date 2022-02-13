@@ -3,11 +3,11 @@ import { useRouter } from 'next/router'
 
 const CustomHead = ({
   title,
-  description,
+  description = title,
   imageUrl = '/images/sml-eats-open-graph.png',
 }: {
   title: string
-  description: string
+  description?: string
   imageUrl?: string
 }) => {
   const fullTitle = title + ' - SML Eats'

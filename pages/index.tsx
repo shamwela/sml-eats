@@ -1,5 +1,6 @@
 import Head from 'components/Head'
 import Image from 'next/image'
+import ItemContainer from 'ui/ItemContainer'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
 
@@ -26,7 +27,7 @@ const Home = ({
       </button>
 
       <h2>Popular near you</h2>
-      <section className='grid grid-cols-2 gap-4'>
+      <ItemContainer>
         {restaurants?.map(({ name, slug, rating, imageSource }) => {
           return (
             <Link key={slug} href={`/restaurants/${slug}`}>
@@ -40,15 +41,15 @@ const Home = ({
             </Link>
           )
         })}
-      </section>
+      </ItemContainer>
 
       <h2>Explore by category</h2>
-      <section className='flex gap-4'>
+      <ItemContainer>
         {categoryImageProperties.map(({ name, imageSource }) => {
           const href = '/search?query=' + name.toLowerCase()
           return (
             <Link href={href} key={name}>
-              <a className='w-1/2'>
+              <a>
                 <section className='flex h-20 rounded-lg bg-light-primary p-4'>
                   <span>{name}</span>
                   <Image
@@ -61,7 +62,7 @@ const Home = ({
             </Link>
           )
         })}
-      </section>
+      </ItemContainer>
     </>
   )
 }
