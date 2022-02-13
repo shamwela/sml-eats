@@ -3,81 +3,12 @@ import 'styles/globals.css'
 import { useEffect, useState } from 'react'
 
 import type { AppProps } from 'next/app'
-import BBQPorkDeluxeImage from 'public/images/bbq-pork-deluxe.jpeg'
 import type { CartItem } from 'types/cartItem'
 import CoffeeImage from 'public/images/coffee.png'
-import IcedCoffeeImage from 'public/images/iced-coffee.png'
-import IrishCreamColdBrewImage from 'public/images/irish-cream-cold-brew.png'
 import Link from 'next/link'
 import PizzaImage from 'public/images/pizza.png'
-import type { Restaurant } from 'types/restaurant'
-import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
-import StarbucksImage from 'public/images/starbucks.webp'
-import ThePizzaCompanyImage from 'public/images/the-pizza-company.webp'
 import { useRouter } from 'next/router'
 
-const restaurants: Restaurant[] = [
-  {
-    name: 'The Pizza Company',
-    slug: 'the-pizza-company',
-    path: '/restaurants/the-pizza-company',
-    category: 'Pizza',
-    rating: 4.9,
-    imageSource: ThePizzaCompanyImage,
-    items: [
-      {
-        name: 'Seafood Cocktail',
-        slug: 'seafood-cocktail',
-        path: '/restaurants/the-pizza-company/seafood-cocktail',
-        imageSource: SeafoodCocktailImage,
-        category: 'Pizza',
-        deliveryFee: 1,
-        deliveryTime: 30,
-        basePrice: 20,
-      },
-      {
-        name: 'BBQ Pork Deluxe',
-        slug: 'bbq-pork-deluxe',
-        path: '/restaurants/the-pizza-company/bbq-pork-deluxe',
-        imageSource: BBQPorkDeluxeImage,
-        category: 'Pizza',
-        deliveryFee: 1,
-        deliveryTime: 30,
-        basePrice: 15,
-      },
-    ],
-  },
-  {
-    name: 'Starbucks',
-    slug: 'starbucks',
-    path: '/restaurants/starbucks',
-    category: 'Coffee',
-    rating: 4.8,
-    imageSource: StarbucksImage,
-    items: [
-      {
-        name: 'Irish Cream Cold Brew',
-        slug: 'irish-cream-cold-brew',
-        path: '/restaurants/starbucks/irish-cream-cold-brew',
-        imageSource: IrishCreamColdBrewImage,
-        category: 'coffee',
-        deliveryFee: 1,
-        deliveryTime: 15,
-        basePrice: 20,
-      },
-      {
-        name: 'Iced Coffee',
-        slug: 'iced-coffee',
-        path: '/restaurants/starbucks/iced-coffee',
-        imageSource: IcedCoffeeImage,
-        category: 'coffee',
-        deliveryFee: 1,
-        deliveryTime: 15,
-        basePrice: 15,
-      },
-    ],
-  },
-]
 const categoryImageProperties = [
   {
     name: 'Pizza',
@@ -167,7 +98,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <main className='mx-auto mb-24 flex max-w-4xl flex-col gap-y-4'>
         <Component
           {...pageProps}
-          restaurants={restaurants}
+          // restaurants={restaurants}
           cart={cart}
           addItem={addItem}
           changeItemQuantity={changeItemQuantity}

@@ -1,0 +1,70 @@
+import BBQPorkDeluxeImage from 'public/images/bbq-pork-deluxe.jpeg'
+import IcedCoffeeImage from 'public/images/iced-coffee.png'
+import IrishCreamColdBrewImage from 'public/images/irish-cream-cold-brew.png'
+import type { Restaurant } from 'types/restaurant'
+import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
+import StarbucksImage from 'public/images/starbucks.webp'
+import ThePizzaCompanyImage from 'public/images/the-pizza-company.webp'
+
+export const restaurants: Restaurant[] = [
+  {
+    name: 'The Pizza Company',
+    slug: 'the-pizza-company',
+    path: '/restaurants/the-pizza-company',
+    category: 'Pizza',
+    rating: 3.9,
+    imageSource: ThePizzaCompanyImage,
+    items: [
+      {
+        name: 'Seafood Cocktail',
+        slug: 'seafood-cocktail',
+        path: '/restaurants/the-pizza-company/seafood-cocktail',
+        imageSource: SeafoodCocktailImage,
+        category: 'Pizza',
+        deliveryFee: 0,
+        deliveryTime: 29,
+        basePrice: 19,
+      },
+      {
+        name: 'BBQ Pork Deluxe',
+        slug: 'bbq-pork-deluxe',
+        path: '/restaurants/the-pizza-company/bbq-pork-deluxe',
+        imageSource: BBQPorkDeluxeImage,
+        category: 'Pizza',
+        deliveryFee: 0,
+        deliveryTime: 29,
+        basePrice: 14,
+      },
+    ],
+  },
+  {
+    name: 'Starbucks',
+    slug: 'starbucks',
+    path: '/restaurants/starbucks',
+    category: 'Coffee',
+    rating: 3.8,
+    imageSource: StarbucksImage,
+    items: [
+      {
+        name: 'Irish Cream Cold Brew',
+        slug: 'irish-cream-cold-brew',
+        path: '/restaurants/starbucks/irish-cream-cold-brew',
+        imageSource: IrishCreamColdBrewImage,
+        category: 'coffee',
+        deliveryFee: 0,
+        deliveryTime: 14,
+        basePrice: 19,
+      },
+      {
+        name: 'Iced Coffee',
+        slug: 'iced-coffee',
+        path: '/restaurants/starbucks/iced-coffee',
+        imageSource: IcedCoffeeImage,
+        category: 'coffee',
+        deliveryFee: 0,
+        deliveryTime: 14,
+        basePrice: 14,
+      },
+    ],
+  },
+]
