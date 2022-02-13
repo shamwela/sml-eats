@@ -1,21 +1,23 @@
+import CoffeeImage from 'public/images/coffee.png'
 import Head from 'components/Head'
 import Image from 'next/image'
 import ItemContainer from 'ui/ItemContainer'
 import Link from 'next/link'
+import PizzaImage from 'public/images/pizza.png'
 import type { Restaurant } from 'types/restaurant'
 
-type CategoryImageProperty = {
-  name: string
-  imageSource: StaticImageData
-}
+const categoryImageProperties = [
+  {
+    name: 'Pizza',
+    imageSource: PizzaImage,
+  },
+  {
+    name: 'Coffee',
+    imageSource: CoffeeImage,
+  },
+]
 
-const Home = ({
-  restaurants,
-  categoryImageProperties,
-}: {
-  restaurants: Restaurant[]
-  categoryImageProperties: CategoryImageProperty[]
-}) => {
+const Home = ({ restaurants }: { restaurants: Restaurant[] }) => {
   return (
     <>
       <Head title='Home' description='SML Eats home page' />
