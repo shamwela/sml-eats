@@ -7,7 +7,7 @@ const Close = () => {
     <button
       onClick={() => router.back()}
       aria-label='Close'
-      className='max-w-fit bg-primary p-2'
+      className='max-w-fit bg-transparent p-2'
     >
       <svg
         width='24px'

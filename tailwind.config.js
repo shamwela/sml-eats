@@ -10,6 +10,7 @@ module.exports = {
       'light-primary': '#1f2937',
       secondary: 'white',
       accent: '#2563eb',
+      transparent: 'transparent',
     },
     extend: {
       borderRadius: {

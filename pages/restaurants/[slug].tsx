@@ -45,12 +45,15 @@ const RestaurantPage = ({ restaurant }: RestaurantPageProps) => {
       <Head title={restaurantName} />
       <h1>{restaurantName}</h1>
       <ItemContainer>
-        {items.map(({ name, path, imageSource }) => {
+        {items.map(({ name, path, imageSource, basePrice }) => {
           return (
             <Link key={path} href={path}>
               <a>
-                <Image alt={name} src={imageSource} placeholder='blur' />
-                <span>{name}</span>
+                <section className='flex flex-col'>
+                  <Image alt={name} src={imageSource} placeholder='blur' />
+                  <span>{name}</span>
+                  <span>${basePrice}</span>
+                </section>
               </a>
             </Link>
           )
