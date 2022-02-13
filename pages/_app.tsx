@@ -164,7 +164,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         </section>
       </nav>
 
-      <main className='mx-auto mb-24 flex max-w-md flex-col gap-y-4'>
+      <main className='mx-auto mb-24 flex max-w-4xl flex-col gap-y-4'>
         <Component
           {...pageProps}
           restaurants={restaurants}

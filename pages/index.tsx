@@ -15,8 +15,6 @@ const Home = ({
   restaurants: Restaurant[]
   categoryImageProperties: CategoryImageProperty[]
 }) => {
-  const categories = restaurants.map(({ category }) => category)
-
   return (
     <>
       <Head title='Home' description='SML Eats home page' />
@@ -27,20 +25,22 @@ const Home = ({
         </Link>
       </button>
 
-      <h2>Restaurants</h2>
-      {restaurants?.map(({ name, slug, rating, imageSource }) => {
-        return (
-          <Link key={slug} href={`/restaurants/${slug}`}>
-            <a>
-              <section className='flex flex-col'>
-                <Image src={imageSource} alt={name} placeholder='blur' />
-                <span>{name}</span>
-                <span>⭐ {rating}</span>
-              </section>
-            </a>
-          </Link>
-        )
-      })}
+      <h2>Popular near you</h2>
+      <section className='grid grid-cols-2 gap-4'>
+        {restaurants?.map(({ name, slug, rating, imageSource }) => {
+          return (
+            <Link key={slug} href={`/restaurants/${slug}`}>
+              <a>
+                <section className='flex flex-col'>
+                  <Image src={imageSource} alt={name} placeholder='blur' />
+                  <span>{name}</span>
+                  <span>⭐ {rating}</span>
+                </section>
+              </a>
+            </Link>
+          )
+        })}
+      </section>
 
       <h2>Explore by category</h2>
       <section className='flex gap-4'>
