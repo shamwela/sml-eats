@@ -3,7 +3,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import Close from 'ui/Close'
 import Head from 'components/Head'
 import Link from 'next/link'
-import type { Restaurant } from 'types/restaurant'
+import { restaurants } from 'data/restaurants'
 import { useRouter } from 'next/router'
 
 type ItemToSearch = {
@@ -11,12 +11,13 @@ type ItemToSearch = {
   category: string
   path: string
 }
+
 type Result = {
   name: string
   path: string
 }
 
-const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
+const Search = () => {
   const router = useRouter()
   let query = ''
   if (typeof router.query.query === 'string') {
@@ -63,7 +64,7 @@ const Search = ({ restaurants }: { restaurants: Restaurant[] }) => {
       const results = getResults()
       setResults(results)
     }
-  }, [query, restaurants])
+  }, [query])
 
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value
