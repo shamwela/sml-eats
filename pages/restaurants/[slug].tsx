@@ -16,7 +16,7 @@ export const getStaticPaths = () => {
 }
 
 export const getStaticProps = (context: { params: { slug: string } }) => {
-  const currentPageSlug = context.params?.slug
+  const currentPageSlug = context.params.slug
   const restaurant = restaurants.find(({ slug }) => slug === currentPageSlug)
 
   return {
@@ -30,7 +30,7 @@ type RestaurantPageProps = {
   restaurant: Restaurant
 }
 
-const RestaurantPage = ({ restaurant }) => {
+const RestaurantPage = ({ restaurant }: RestaurantPageProps) => {
   return <RestaurantLayout restaurant={restaurant} />
 }
 
