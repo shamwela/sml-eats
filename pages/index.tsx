@@ -10,11 +10,11 @@ const Home = () => {
     <>
       <Head title='Home' description='SML Eats home page' />
 
-      <button>
-        <Link href='/search'>
-          <a>Search</a>
-        </Link>
-      </button>
+      <Link href='/search'>
+        <a>
+          <button className='w-full md:max-w-fit'>Search</button>
+        </a>
+      </Link>
 
       <h2>Popular near you</h2>
       <ItemContainer>
