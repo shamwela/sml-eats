@@ -5,7 +5,7 @@ import Head from 'components/Head'
 import Image from 'next/image'
 import type { Item } from 'types/item'
 import Order from 'ui/Order'
-import type { Restaurant } from 'types/restaurant'
+import { restaurants } from 'data/restaurants'
 
 const sizes = [
   {
@@ -22,13 +22,11 @@ const sizes = [
   },
 ]
 
-const IcedCoffee = ({
-  restaurants,
-  addItem,
-}: {
-  restaurants: Restaurant[]
+type IcedCoffeeProps = {
   addItem: (item: CartItem) => void
-}) => {
+}
+
+const IcedCoffee = ({ addItem }: IcedCoffeeProps) => {
   const starbucks = restaurants.find(
     (restaurant) => restaurant.slug === 'starbucks'
   )
@@ -47,11 +45,7 @@ const IcedCoffee = ({
 
   return (
     <>
-      <Head
-        title='Your cart'
-        description='Your cart'
-        imageUrl='/images/iced-coffee.png'
-      />
+      <Head title='Starbucks Iced Coffee' imageUrl='/images/iced-coffee.png' />
       <h1>Iced Coffee</h1>
       <div className='max-w-md'>
         <Image alt='Iced Coffee' src={imageSource} placeholder='blur' />
