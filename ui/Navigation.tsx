@@ -25,10 +25,18 @@ const Navigation = ({ cart }: NavigationProps) => {
   const showCartButton = isNotCartPage && cartExists
 
   return (
-    <nav className='mb-4 flex flex-wrap justify-center gap-4'>
+    <nav className='mb-4 flex flex-wrap justify-center gap-6'>
       <Link href='/'>
         <a className='text-4xl font-bold'>SML Eats</a>
       </Link>
+
+      {pathname !== '/search' && (
+        <Link href='/search'>
+          <a>
+            <button>Search</button>
+          </a>
+        </Link>
+      )}
 
       {showCartButton && (
         <Link href='/cart'>
