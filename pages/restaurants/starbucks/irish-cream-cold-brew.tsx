@@ -5,7 +5,7 @@ import Head from 'components/Head'
 import Image from 'next/image'
 import type { Item } from 'types/item'
 import Order from 'ui/Order'
-import type { Restaurant } from 'types/restaurant'
+import { restaurants } from 'data/restaurants'
 
 const sizes = [
   {
@@ -23,10 +23,8 @@ const sizes = [
 ]
 
 const IrishCreamColdBrew = ({
-  restaurants,
   addItem,
 }: {
-  restaurants: Restaurant[]
   addItem: (item: CartItem) => void
 }) => {
   const starbucks = restaurants.find(
@@ -48,8 +46,7 @@ const IrishCreamColdBrew = ({
   return (
     <>
       <Head
-        title='Your cart'
-        description='Your cart'
+        title='Irish Cream Cold Brew'
         imageUrl='/images/irish-cream-cold-brew.png'
       />
       <h1>Irish Cream Cold Brew</h1>

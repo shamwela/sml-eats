@@ -45,7 +45,7 @@ const IcedCoffee = ({ addItem }: IcedCoffeeProps) => {
 
   return (
     <>
-      <Head title='Starbucks Iced Coffee' imageUrl='/images/iced-coffee.png' />
+      <Head title='Iced Coffee' imageUrl='/images/iced-coffee.png' />
       <h1>Iced Coffee</h1>
       <div className='max-w-md'>
         <Image alt='Iced Coffee' src={imageSource} placeholder='blur' />

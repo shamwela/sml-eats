@@ -2,15 +2,9 @@ import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
 import Image from 'next/image'
 import Pizza from 'ui/Pizza'
-import type { Restaurant } from 'types/restaurant'
+import { restaurants } from 'data/restaurants'
 
-const BBQPorkDeluxe = ({
-  restaurants,
-  addItem,
-}: {
-  restaurants: Restaurant[]
-  addItem: (item: CartItem) => void
-}) => {
+const BBQPorkDeluxe = ({ addItem }: { addItem: (item: CartItem) => void }) => {
   const thePizzaCompany = restaurants.find(
     (restaurant) => restaurant.name === 'The Pizza Company'
   )
@@ -21,11 +15,7 @@ const BBQPorkDeluxe = ({
 
   return (
     <>
-      <Head
-        title='BBQ Pork Deluxe'
-        description='BBQ Pork Deluxe'
-        imageUrl='/images/bbq-pork-deluxe.jpeg'
-      />
+      <Head title='BBQ Pork Deluxe' imageUrl='/images/bbq-pork-deluxe.jpeg' />
       <h1>BBQ Pork Deluxe</h1>
       <div className='max-w-md'>
         <Image alt='BBQ Pork Deluxe' src={imageSource} placeholder='blur' />

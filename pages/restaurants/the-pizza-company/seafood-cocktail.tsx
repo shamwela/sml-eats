@@ -2,13 +2,11 @@ import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
 import Image from 'next/image'
 import Pizza from 'ui/Pizza'
-import type { Restaurant } from 'types/restaurant'
+import { restaurants } from 'data/restaurants'
 
 const SeafoodCocktail = ({
-  restaurants,
   addItem,
 }: {
-  restaurants: Restaurant[]
   addItem: (item: CartItem) => void
 }) => {
   const thePizzaCompany = restaurants.find(
@@ -21,11 +19,7 @@ const SeafoodCocktail = ({
 
   return (
     <>
-      <Head
-        title='Seafood Cocktail'
-        description='Seafood Cocktail'
-        imageUrl='/images/seafood-cocktail.jpeg'
-      />
+      <Head title='Seafood Cocktail' imageUrl='/images/seafood-cocktail.jpeg' />
       <h1>Seafood Cocktail</h1>
       <div className='max-w-md'>
         <Image alt='Seafood Cocktail' src={imageSource} placeholder='blur' />
