@@ -41,6 +41,8 @@ const CustomHead = ({
 
       <meta property='og:type' content='website' />
       <meta property='og:site_name' content='SML Eats' />
+
+      <link rel='icon' type='image/x-icon' href='/favicon.ico' />
     </Head>
   )
 }
