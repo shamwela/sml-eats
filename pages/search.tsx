@@ -100,7 +100,7 @@ const Search = () => {
             <section key={path} className='flex flex-col gap-2'>
               <Link href={path}>
                 <a>
-                  <section className='flex flex-col'>
+                  <section className='flex flex-col gap-y-2'>
                     <Image alt={name} src={imageSource} placeholder='blur' />
                     <span className='font-bold'>{name}</span>
                     <span>{category}</span>
