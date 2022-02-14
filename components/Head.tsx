@@ -11,7 +11,7 @@ const CustomHead = ({
   imageUrl?: string
 }) => {
   const fullTitle = title + ' - SML Eats'
-  const baseUrl = 'https://sml-eats.vercel.app'
+  const baseUrl = 'https://smleats.vercel.app'
   const fullImageUrl = baseUrl + imageUrl
 
   const { asPath } = useRouter()
