@@ -95,33 +95,38 @@ const Search = () => {
           required
         />
 
-        {results.map(({ name, path, imageSource, category, items }) => (
-          <section key={path}>
-            <Link href={path}>
-              <a>
-                <section className='flex flex-col'>
-                  <Image alt={name} src={imageSource} placeholder='blur' />
-                  <span className='font-bold'>{name}</span>
-                  <span>{category}</span>
-                </section>
-              </a>
-            </Link>
-
-            <section className='flex gap-x-4'>
-              {items.map(({ imageSource, name, basePrice, path }) => (
-                <Link key={path} href={path}>
-                  <a>
-                    <section className='flex flex-col'>
-                      <Image alt={name} src={imageSource} placeholder='blur' />
-                      <span>{name}</span>
-                      <span>${basePrice}</span>
-                    </section>
-                  </a>
-                </Link>
-              ))}
+        <section className='grid grid-cols-2 md:grid-cols-4'>
+          {results.map(({ name, path, imageSource, category, items }) => (
+            <section key={path}>
+              <Link href={path}>
+                <a>
+                  <section className='flex flex-col'>
+                    <Image alt={name} src={imageSource} placeholder='blur' />
+                    <span className='font-bold'>{name}</span>
+                    <span>{category}</span>
+                  </section>
+                </a>
+              </Link>
+              <section className='flex gap-x-4'>
+                {items.map(({ imageSource, name, basePrice, path }) => (
+                  <Link key={path} href={path}>
+                    <a>
+                      <section className='flex flex-col'>
+                        <Image
+                          alt={name}
+                          src={imageSource}
+                          placeholder='blur'
+                        />
+                        <span>{name}</span>
+                        <span>${basePrice}</span>
+                      </section>
+                    </a>
+                  </Link>
+                ))}
+              </section>
             </section>
-          </section>
-        ))}
+          ))}
+        </section>
       </section>
     </>
   )
