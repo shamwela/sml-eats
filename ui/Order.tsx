@@ -29,12 +29,35 @@ const Order = ({
 
   return (
     <div className='flex items-center gap-x-4'>
-      <button disabled={quantity === 1 && true} onClick={decreaseQuantity}>
-        -
+      <button
+        disabled={quantity === 1 && true}
+        onClick={decreaseQuantity}
+        className='rounded-full bg-light-primary p-2'
+      >
+        <svg
+          aria-hidden='true'
+          focusable='false'
+          viewBox='0 0 24 24'
+          className='h-6'
+        >
+          <path d='M19.333 11H4.667v2h14.666z'></path>
+        </svg>
       </button>
       <div>{quantity}</div>
-      <button onClick={increaseQuantity}>+</button>
-      <button onClick={addToOrder}>
+      <button
+        onClick={increaseQuantity}
+        className='rounded-full bg-light-primary p-2'
+      >
+        <svg
+          aria-hidden='true'
+          focusable='false'
+          viewBox='0 0 24 24'
+          className='h-6'
+        >
+          <path d='M19.333 11H13V4.665h-2v6.333H4.667v2H11v6.334h2v-6.334h6.333z'></path>
+        </svg>
+      </button>
+      <button onClick={addToOrder} className='w-full'>
         Add {quantity} to order (${finalPrice})
       </button>
     </div>

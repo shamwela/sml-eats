@@ -57,3 +57,7 @@ select,
 option {
   @apply text-primary;
 }
+
+svg {
+  fill: currentColor;
+}
