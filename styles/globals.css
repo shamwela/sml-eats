@@ -45,12 +45,12 @@ button,
   @apply inline-block bg-accent text-center;
 }
 
-input {
-  @apply rounded-custom bg-light-primary outline-none focus:ring-2 focus:ring-accent;
+input[type='radio'] {
+  @apply h-4 w-4 accent-accent;
 }
 
 input[type='search'] {
-  @apply appearance-none;
+  @apply appearance-none rounded-custom bg-light-primary outline-none focus:ring-2 focus:ring-accent;
 }
 
 select,
