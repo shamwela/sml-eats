@@ -2,20 +2,11 @@ import { ChangeEvent, useEffect, useState } from 'react'
 
 import Close from 'ui/Close'
 import Head from 'components/Head'
+import Image from 'next/image'
 import Link from 'next/link'
+import type { Restaurant } from 'types/restaurant'
 import { restaurants } from 'data/restaurants'
 import { useRouter } from 'next/router'
-
-type ItemToSearch = {
-  name: string
-  category: string
-  path: string
-}
-
-type Result = {
-  name: string
-  path: string
-}
 
 const Search = () => {
   const router = useRouter()
@@ -24,37 +15,43 @@ const Search = () => {
     query = router.query.query
   }
 
-  const [results, setResults] = useState<Result[]>([])
+  const [results, setResults] = useState<Restaurant[]>([])
 
   useEffect(() => {
-    // --- Later, move "itemsToSearch" to getStaticProps() or something ---
-    let itemsToSearch: ItemToSearch[] = []
-    restaurants.forEach(({ name, path, category }) => {
-      itemsToSearch.push({ name, path, category })
-    })
-    restaurants.forEach(({ items }) => {
-      items.forEach(({ name, path, category }) => {
-        itemsToSearch.push({ name, path, category })
-      })
-    })
-    // --- Later, move "itemsToSearch" to getStaticProps() or something ---
-
     const getResults = () => {
-      const results: Result[] = itemsToSearch.filter(
-        ({ name, category, path }) => {
+      const matchedRestaurants = restaurants.filter((restaurant) => {
+        const { name, category } = restaurant
+
+        const matchesName = name.toLowerCase().includes(query.toLowerCase())
+        const matchesCategory = category
+          .toLowerCase()
+          .includes(query.toLowerCase())
+
+        if (matchesName || matchesCategory) {
+          return restaurant
+        }
+      })
+
+      const finalRestaurants = matchedRestaurants.filter((restaurant) => {
+        const { items } = restaurant
+
+        const matchedItems = items.filter((item) => {
+          const { name, category } = item
+
           const matchesName = name.toLowerCase().includes(query.toLowerCase())
           const matchesCategory = category
             .toLowerCase()
             .includes(query.toLowerCase())
 
           if (matchesName || matchesCategory) {
-            const result = { name, path }
-            return result
+            return item
           }
-        }
-      )
+        })
 
-      return results
+        return matchedItems
+      })
+
+      return finalRestaurants
     }
 
     // If there's no query, don't show any results
@@ -98,10 +95,32 @@ const Search = () => {
           required
         />
 
-        {results.map(({ name, path }) => (
-          <Link href={path} key={path}>
-            <a>{name}</a>
-          </Link>
+        {results.map(({ name, path, imageSource, category, items }) => (
+          <section key={path}>
+            <Link href={path}>
+              <a>
+                <section className='flex flex-col'>
+                  <Image alt={name} src={imageSource} placeholder='blur' />
+                  <span className='font-bold'>{name}</span>
+                  <span>{category}</span>
+                </section>
+              </a>
+            </Link>
+
+            <section className='flex gap-x-4'>
+              {items.map(({ imageSource, name, basePrice, path }) => (
+                <Link key={path} href={path}>
+                  <a>
+                    <section className='flex flex-col'>
+                      <Image alt={name} src={imageSource} placeholder='blur' />
+                      <span>{name}</span>
+                      <span>${basePrice}</span>
+                    </section>
+                  </a>
+                </Link>
+              ))}
+            </section>
+          </section>
         ))}
       </section>
     </>
