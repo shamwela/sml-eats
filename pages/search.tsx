@@ -97,7 +97,7 @@ const Search = () => {
 
         <section className='grid grid-cols-2 md:grid-cols-4'>
           {results.map(({ name, path, imageSource, category, items }) => (
-            <section key={path}>
+            <section key={path} className='flex flex-col gap-2'>
               <Link href={path}>
                 <a>
                   <section className='flex flex-col'>
@@ -107,11 +107,12 @@ const Search = () => {
                   </section>
                 </a>
               </Link>
+
               <section className='flex gap-x-4'>
                 {items.map(({ imageSource, name, basePrice, path }) => (
                   <Link key={path} href={path}>
                     <a>
-                      <section className='flex flex-col'>
+                      <section className='flex flex-col rounded-custom p-4 shadow-lg bg-light-primary'>
                         <Image
                           alt={name}
                           src={imageSource}
