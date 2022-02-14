@@ -95,7 +95,7 @@ const Search = () => {
           required
         />
 
-        <section className='grid md:grid-cols-4'>
+        <section className='grid gap-4 md:grid-cols-4'>
           {results.map(({ name, path, imageSource, category, items }) => (
             <section key={path} className='flex flex-col gap-2'>
               <Link href={path}>
