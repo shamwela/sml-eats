@@ -26,6 +26,11 @@ const Navigation = ({ cart }: NavigationProps) => {
   const cartExists = cart.length > 0
   const showCartButton = isNotCartPage && cartExists
 
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(newTheme)
+  }
+
   return (
     <nav className='top-0 z-10 flex flex-wrap justify-center gap-6 bg-white py-4 dark:bg-gray-900 md:sticky'>
       <Link href='/'>
@@ -64,16 +69,7 @@ const Navigation = ({ cart }: NavigationProps) => {
         </Link>
       )}
 
-      <span>Current theme is {theme}.</span>
-
-      <button
-        className='rounded-md bg-black px-4 py-2  font-semibold text-white dark:bg-white dark:text-black'
-        onClick={() => {
-          setTheme(theme === 'light' ? 'dark' : 'light')
-        }}
-      >
-        Change Theme
-      </button>
+      <button onClick={toggleTheme}>Change theme</button>
     </nav>
   )
 }
