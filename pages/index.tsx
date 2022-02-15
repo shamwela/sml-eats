@@ -22,6 +22,7 @@ const Home = () => {
                   <Image
                     alt={name}
                     src={imageSource}
+                    placeholder='blur'
                     className='object-contain'
                   />
                 </section>
