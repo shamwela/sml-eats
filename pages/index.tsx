@@ -10,23 +10,6 @@ const Home = () => {
     <>
       <Head title='Home' description='SML Eats home page' />
 
-      <h2>Popular near you</h2>
-      <ItemContainer>
-        {restaurants?.map(({ name, slug, rating, imageSource }) => {
-          return (
-            <Link key={slug} href={`/restaurants/${slug}`}>
-              <a>
-                <section className='flex flex-col'>
-                  <Image src={imageSource} alt={name} placeholder='blur' />
-                  <span>{name}</span>
-                  <span>⭐ {rating}</span>
-                </section>
-              </a>
-            </Link>
-          )
-        })}
-      </ItemContainer>
-
       <h2>Explore by category</h2>
       <ItemContainer>
         {categoryImageProperties.map(({ name, imageSource }) => {
@@ -41,6 +24,23 @@ const Home = () => {
                     src={imageSource}
                     className='object-contain'
                   />
+                </section>
+              </a>
+            </Link>
+          )
+        })}
+      </ItemContainer>
+
+      <h2>Popular near you</h2>
+      <ItemContainer>
+        {restaurants?.map(({ name, slug, rating, imageSource }) => {
+          return (
+            <Link key={slug} href={`/restaurants/${slug}`}>
+              <a>
+                <section className='flex flex-col'>
+                  <Image src={imageSource} alt={name} placeholder='blur' />
+                  <span>{name}</span>
+                  <span>⭐ {rating}</span>
                 </section>
               </a>
             </Link>
