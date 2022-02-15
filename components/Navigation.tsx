@@ -25,7 +25,7 @@ const Navigation = ({ cart }: NavigationProps) => {
   const showCartButton = isNotCartPage && cartExists
 
   return (
-    <nav className='mb-4 flex flex-wrap justify-center gap-6'>
+    <nav className='top-0 z-10 flex flex-wrap justify-center gap-6 bg-primary py-4 md:sticky'>
       <Link href='/'>
         <a className='text-4xl font-bold'>SML Eats</a>
       </Link>

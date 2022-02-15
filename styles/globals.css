@@ -9,7 +9,7 @@
 }
 
 body {
-  @apply bg-primary p-4;
+  @apply bg-primary px-4;
 }
 
 h1,
