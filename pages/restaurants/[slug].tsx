@@ -1,6 +1,6 @@
 import Head from 'components/Head'
 import Image from 'next/image'
-import ItemContainer from 'ui/ItemContainer'
+import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
 import type { Restaurant } from 'types/restaurant'
 import { restaurants } from 'data/restaurants'

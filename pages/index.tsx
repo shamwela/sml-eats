@@ -1,6 +1,6 @@
 import Head from 'components/Head'
 import Image from 'next/image'
-import ItemContainer from 'ui/ItemContainer'
+import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
 import { categoryImageProperties } from 'data/categoryImageProperties'
 import { restaurants } from 'data/restaurants'

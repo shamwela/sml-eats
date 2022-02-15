@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import type { AppProps } from 'next/app'
 import type { CartItem } from 'types/cartItem'
-import Navigation from 'ui/Navigation'
+import Navigation from 'components/Navigation'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [cart, setCart] = useState<CartItem[]>([])

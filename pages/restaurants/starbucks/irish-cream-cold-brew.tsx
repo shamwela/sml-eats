@@ -4,7 +4,7 @@ import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
 import Image from 'next/image'
 import type { Item } from 'types/item'
-import Order from 'ui/Order'
+import Order from 'components/Order'
 import { restaurants } from 'data/restaurants'
 
 const sizes = [

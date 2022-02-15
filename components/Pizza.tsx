@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react'
 
 import type { CartItem } from 'types/cartItem'
 import type { Item } from 'types/item'
-import Order from 'ui/Order'
+import Order from 'components/Order'
 
 const crusts = [
   {

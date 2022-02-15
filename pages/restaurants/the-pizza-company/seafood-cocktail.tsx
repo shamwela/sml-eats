@@ -1,7 +1,7 @@
 import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
 import Image from 'next/image'
-import Pizza from 'ui/Pizza'
+import Pizza from 'components/Pizza'
 import { restaurants } from 'data/restaurants'
 
 const SeafoodCocktail = ({
