@@ -1,6 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 
-import Close from 'ui/Close'
 import Head from 'components/Head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -76,7 +75,6 @@ const Search = () => {
       <Head title='Search' description='Search on SML Eats' />
 
       <section className='flex flex-col gap-y-4'>
-        <Close />
         <h1>Search</h1>
 
         {/* The user can search by restaurant name, item name, or category */}

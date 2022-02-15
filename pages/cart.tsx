@@ -1,6 +1,5 @@
 import type { CartItem } from 'types/cartItem'
 import { ChangeEvent } from 'react'
-import Close from 'ui/Close'
 import Head from 'components/Head'
 import Link from 'next/link'
 
@@ -41,8 +40,7 @@ const Cart = ({
   return (
     <>
       <Head title='Your cart' description='Your cart' />
-      
-      <Close />
+
       <h1>Your cart</h1>
       {cart?.map(({ name, quantity, finalPrice, path }) => {
         return (
