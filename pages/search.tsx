@@ -73,11 +73,7 @@ const Search = () => {
 
   return (
     <>
-      <Head
-        title='Search'
-        description='Search on SML Eats'
-        imageUrl='/images/seafood-cocktail.jpeg'
-      />
+      <Head title='Search' description='Search on SML Eats' />
 
       <section className='flex flex-col gap-y-4'>
         <Close />
