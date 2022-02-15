@@ -3,6 +3,7 @@ import Head from 'components/Head'
 import Image from 'next/image'
 import Pizza from 'components/Pizza'
 import { restaurants } from 'data/restaurants'
+import ItemLayout from 'layouts/Item'
 
 const BBQPorkDeluxe = ({ addItem }: { addItem: (item: CartItem) => void }) => {
   const thePizzaCompany = restaurants.find(
@@ -16,11 +17,14 @@ const BBQPorkDeluxe = ({ addItem }: { addItem: (item: CartItem) => void }) => {
   return (
     <>
       <Head title='BBQ Pork Deluxe' imageUrl='/images/bbq-pork-deluxe.jpeg' />
-      <h1>BBQ Pork Deluxe</h1>
-      <div className='max-w-md'>
-        <Image alt='BBQ Pork Deluxe' src={imageSource} placeholder='blur' />
-      </div>
-      <Pizza pizza={bbqPorkDeluxe} addItem={addItem} />
+
+      <ItemLayout>
+        <h1>BBQ Pork Deluxe</h1>
+        <div className='max-w-md'>
+          <Image alt='BBQ Pork Deluxe' src={imageSource} placeholder='blur' />
+        </div>
+        <Pizza pizza={bbqPorkDeluxe} addItem={addItem} />
+      </ItemLayout>
     </>
   )
 }

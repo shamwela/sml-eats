@@ -77,7 +77,6 @@ const Search = () => {
       <section className='flex flex-col gap-y-4'>
         <h1>Search</h1>
 
-        {/* The user can search by restaurant name, item name, or category */}
         <input
           value={query}
           onChange={handleQueryChange}
@@ -89,7 +88,7 @@ const Search = () => {
           required
         />
 
-        <section className='grid gap-4 md:grid-cols-4'>
+        <section className='grid gap-4 md:grid-cols-2'>
           {results.map(({ name, path, imageSource, category, items }) => (
             <section key={path} className='flex flex-col gap-2'>
               <Link href={path}>
@@ -97,7 +96,7 @@ const Search = () => {
                   <section className='flex flex-col gap-y-2'>
                     <Image alt={name} src={imageSource} placeholder='blur' />
                     <span className='font-bold'>{name}</span>
-                    <span>{category}</span>
+                    <span>Category: {category}</span>
                   </section>
                 </a>
               </Link>
