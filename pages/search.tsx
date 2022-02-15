@@ -105,7 +105,7 @@ const Search = () => {
                 {items.map(({ imageSource, name, basePrice, path }) => (
                   <Link key={path} href={path}>
                     <a>
-                      <section className='flex flex-col rounded-custom bg-light-primary p-4 shadow-lg'>
+                      <section className='flex flex-col rounded-custom bg-light-elevation p-4 shadow-lg dark:bg-dark-elevation'>
                         <Image
                           alt={name}
                           src={imageSource}
