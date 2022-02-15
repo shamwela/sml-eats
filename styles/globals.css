@@ -5,11 +5,11 @@
 *,
 ::before,
 ::after {
-  @apply text-secondary;
+  @apply dark:text-white;
 }
 
 body {
-  @apply bg-primary px-4;
+  @apply px-4 dark:bg-gray-900;
 }
 
 h1,
@@ -40,9 +40,10 @@ input {
 }
 
 button,
-.button,
+/* REMOVE THIS CLASS later */
+.button,  
 [type='submit'] {
-  @apply inline-block bg-accent text-center;
+  @apply inline-block bg-accent text-center text-white;
 }
 
 input[type='radio'] {
@@ -50,12 +51,12 @@ input[type='radio'] {
 }
 
 input[type='search'] {
-  @apply appearance-none rounded-custom bg-light-primary outline-none focus:ring-2 focus:ring-accent;
+  @apply appearance-none rounded-custom bg-light-elevation outline-none focus:ring-2 focus:ring-accent dark:bg-dark-elevation;
 }
 
 select,
 option {
-  @apply text-primary;
+  @apply dark:text-white;
 }
 
 select {

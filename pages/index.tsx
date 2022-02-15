@@ -17,7 +17,7 @@ const Home = () => {
           return (
             <Link href={href} key={name}>
               <a>
-                <section className='flex h-20 rounded-lg bg-light-primary p-4'>
+                <section className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation'>
                   <span className='self-center'>{name}</span>
                   <Image
                     alt={name}

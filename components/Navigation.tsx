@@ -3,12 +3,14 @@ import { useEffect, useState } from 'react'
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useTheme } from 'next-themes'
 
 type NavigationProps = {
   cart: CartItem[]
 }
 
 const Navigation = ({ cart }: NavigationProps) => {
+  const { theme, setTheme } = useTheme()
   const [totalQuantity, setTotalQuantity] = useState(0)
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const Navigation = ({ cart }: NavigationProps) => {
   const showCartButton = isNotCartPage && cartExists
 
   return (
-    <nav className='top-0 z-10 flex flex-wrap justify-center gap-6 bg-primary py-4 md:sticky'>
+    <nav className='top-0 z-10 flex flex-wrap justify-center gap-6 bg-white py-4 dark:bg-gray-900 md:sticky'>
       <Link href='/'>
         <a className='text-4xl font-bold'>SML Eats</a>
       </Link>
@@ -61,6 +63,17 @@ const Navigation = ({ cart }: NavigationProps) => {
           </a>
         </Link>
       )}
+
+      <span>Current theme is {theme}.</span>
+
+      <button
+        className='rounded-md bg-black px-4 py-2  font-semibold text-white dark:bg-white dark:text-black'
+        onClick={() => {
+          setTheme(theme === 'light' ? 'dark' : 'light')
+        }}
+      >
+        Change Theme
+      </button>
     </nav>
   )
 }

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import type { AppProps } from 'next/app'
 import type { CartItem } from 'types/cartItem'
 import Navigation from 'components/Navigation'
+import { ThemeProvider } from 'next-themes'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [cart, setCart] = useState<CartItem[]>([])
@@ -48,7 +49,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }
 
   return (
-    <>
+    <ThemeProvider attribute='class' defaultTheme='system'>
       <Navigation cart={cart} />
       <main className='mx-auto mb-24 flex max-w-4xl flex-col gap-y-4'>
         <Component
@@ -58,7 +59,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           changeItemQuantity={changeItemQuantity}
         />
       </main>
-    </>
+    </ThemeProvider>
   )
 }
 

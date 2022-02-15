@@ -1,18 +1,17 @@
 module.exports = {
+  darkMode: 'class',
   content: [
     './components/**/*.{ts,tsx}',
     './pages/**/*.{ts,tsx}',
     './ui/**/*.{ts,tsx}',
   ],
   theme: {
-    colors: {
-      primary: '#111827',
-      'light-primary': '#1f2937',
-      secondary: 'white',
-      accent: '#2563eb',
-      transparent: 'transparent',
-    },
     extend: {
+      colors: {
+        'light-elevation': '#f1f5f9',
+        'dark-elevation': '#1e293b',
+        accent: '#2563eb',
+      },
       borderRadius: {
         custom: '0.5rem',
       },
