@@ -18,7 +18,7 @@ const Home = () => {
             <Link href={href} key={name}>
               <a>
                 <section className='flex h-20 rounded-lg bg-light-primary p-4'>
-                  <span>{name}</span>
+                  <span className='self-center'>{name}</span>
                   <Image
                     alt={name}
                     src={imageSource}
