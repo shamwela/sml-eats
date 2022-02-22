@@ -7,6 +7,7 @@ import type { Item } from 'types/item'
 import Order from 'components/Order'
 import { restaurants } from 'data/restaurants'
 import ItemLayout from 'layouts/Item'
+import type { SelectedOption } from 'types/selectedOptions'
 
 const sizes = [
   {
@@ -39,9 +40,24 @@ const IcedCoffee = ({ addItem }: IcedCoffeeProps) => {
   const [sizePrice, setSizePrice] = useState(0)
   const oneItemPrice = basePrice + sizePrice
 
+  const [selectedOptions, setSelectedOptions] = useState<SelectedOption[]>([
+    {
+      name: 'Size',
+      value: 'Small',
+    },
+  ])
+
   const handleSizePrice = (event: ChangeEvent<HTMLInputElement>) => {
     const sizePrice = Number(event.target.value)
     setSizePrice(sizePrice)
+
+    const selectedOptions: SelectedOption[] = [
+      {
+        name: 'Size',
+        value: event.target.id,
+      },
+    ]
+    setSelectedOptions(selectedOptions)
   }
 
   return (
@@ -83,6 +99,7 @@ const IcedCoffee = ({ addItem }: IcedCoffeeProps) => {
           item={icedCoffee}
           oneItemPrice={oneItemPrice}
           addItem={addItem}
+          selectedOptions={selectedOptions}
         />
       </ItemLayout>
     </>

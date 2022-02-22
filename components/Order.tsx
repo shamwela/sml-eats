@@ -1,16 +1,21 @@
 import type { CartItem } from 'types/cartItem'
 import type { Item } from 'types/item'
 import { useState } from 'react'
+import { SelectedOptions } from 'types/selectedOptions'
+
+type OrderProps = {
+  item: Item
+  oneItemPrice: number
+  addItem: (item: CartItem) => void
+  selectedOptions: SelectedOptions
+}
 
 const Order = ({
   item,
   oneItemPrice,
   addItem,
-}: {
-  item: Item
-  oneItemPrice: number
-  addItem: (item: CartItem) => void
-}) => {
+  selectedOptions,
+}: OrderProps) => {
   const [quantity, setQuantity] = useState(1)
   const finalPrice = oneItemPrice * quantity
 
@@ -23,7 +28,13 @@ const Order = ({
   }
 
   const addToOrder = () => {
-    const cartItem: CartItem = { ...item, quantity, oneItemPrice, finalPrice }
+    const cartItem: CartItem = {
+      ...item,
+      quantity,
+      oneItemPrice,
+      finalPrice,
+      selectedOptions,
+    }
     addItem(cartItem)
   }
 
@@ -32,7 +43,7 @@ const Order = ({
       <button
         disabled={quantity === 1 && true}
         onClick={decreaseQuantity}
-        className='rounded-full bg-light-primary p-2'
+        className='bg-light-primary rounded-full p-2'
       >
         <svg
           aria-hidden='true'
@@ -46,7 +57,7 @@ const Order = ({
       <div>{quantity}</div>
       <button
         onClick={increaseQuantity}
-        className='rounded-full bg-light-primary p-2'
+        className='bg-light-primary rounded-full p-2'
       >
         <svg
           aria-hidden='true'

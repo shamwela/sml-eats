@@ -42,7 +42,7 @@ const Cart = ({
       <Head title='Your cart' description='Your cart' />
 
       <h1>Your cart</h1>
-      {cart?.map(({ name, quantity, finalPrice, path }) => {
+      {cart.map(({ name, quantity, finalPrice, path, selectedOptions }) => {
         return (
           <section key={name} className='flex gap-x-4'>
             <select
@@ -58,6 +58,13 @@ const Cart = ({
             <Link href={path}>
               <a className='flex w-full justify-between'>
                 <span>{name}</span>
+                {selectedOptions?.map(({ name, value }) => {
+                  return (
+                    <span key={name}>
+                      <strong>{name}</strong>: <span>{value}</span>
+                    </span>
+                  )
+                })}
                 <span>${finalPrice}</span>
               </a>
             </Link>
