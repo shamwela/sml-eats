@@ -44,6 +44,7 @@ const Navigation = ({ cart }: NavigationProps) => {
             </a>
           </Link>
         )}
+        <button onClick={toggleTheme}>Change theme</button>
         {showCartButton && (
           <Link href='/cart'>
             <a>
@@ -67,7 +68,6 @@ const Navigation = ({ cart }: NavigationProps) => {
             </a>
           </Link>
         )}
-        <button onClick={toggleTheme}>Change theme</button>
       </div>
     </nav>
   )

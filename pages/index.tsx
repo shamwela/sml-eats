@@ -8,7 +8,7 @@ import { restaurants } from 'data/restaurants'
 const Home = () => {
   return (
     <>
-      <Head title='Home' description='SML Eats home page' />
+      <Head title='Order food online' />
 
       <h2>Explore by category</h2>
       <ItemContainer>
