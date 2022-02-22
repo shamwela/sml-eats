@@ -35,7 +35,7 @@ const Navigation = ({ cart }: NavigationProps) => {
     <nav className='top-0 z-10 bg-white py-4 dark:bg-gray-900 md:sticky'>
       <div className='mx-auto flex max-w-4xl flex-wrap items-center gap-4'>
         <Link href='/'>
-          <a className='text-xl font-bold md:text-3xl'>SML Eats</a>
+          <a className='text-xl font-bold md:text-4xl'>SML Eats</a>
         </Link>
         {pathname !== '/search' && (
           <Link href='/search'>
