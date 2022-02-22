@@ -10,16 +10,16 @@ import ItemLayout from 'layouts/Item'
 
 const sizes = [
   {
-    name: 'Large',
-    additionalPrice: 4,
+    name: 'Small',
+    additionalPrice: 0,
   },
   {
     name: 'Medium',
     additionalPrice: 2,
   },
   {
-    name: 'Small',
-    additionalPrice: 0,
+    name: 'Large',
+    additionalPrice: 4,
   },
 ]
 

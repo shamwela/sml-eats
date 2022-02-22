@@ -10,6 +10,10 @@ const crusts = [
     additionalPrice: 0,
   },
   {
+    name: 'Pan',
+    additionalPrice: 2,
+  },
+  {
     name: 'Extra Cheesy Sausage Bites',
     additionalPrice: 3,
   },
@@ -17,24 +21,20 @@ const crusts = [
     name: 'Extreme',
     additionalPrice: 3,
   },
-  {
-    name: 'Pan',
-    additionalPrice: 2,
-  },
 ]
 
 const sizes = [
   {
-    name: 'Large',
-    additionalPrice: 5,
+    name: 'Small',
+    additionalPrice: 0,
   },
   {
     name: 'Medium',
     additionalPrice: 3,
   },
   {
-    name: 'Small',
-    additionalPrice: 0,
+    name: 'Large',
+    additionalPrice: 5,
   },
 ]
 
