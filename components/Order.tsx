@@ -1,13 +1,13 @@
 import type { CartItem } from 'types/cartItem'
 import type { Item } from 'types/item'
 import { useState } from 'react'
-import { SelectedOptions } from 'types/selectedOptions'
+import { SelectedOption } from 'types/selectedOptions'
 
 type OrderProps = {
   item: Item
   oneItemPrice: number
   addItem: (item: CartItem) => void
-  selectedOptions: SelectedOptions
+  selectedOptions: SelectedOption[]
 }
 
 const Order = ({
