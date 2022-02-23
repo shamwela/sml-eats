@@ -67,6 +67,34 @@ export const restaurants: Restaurant[] = [
         deliveryFee: 0,
         deliveryTime: 15,
         basePrice: 20,
+        options: [
+          {
+            name: 'Size',
+            inputs: [
+              {
+                name: 'Small',
+                additionalPrice: 0,
+              },
+              {
+                name: 'Medium',
+                additionalPrice: 2,
+              },
+            ],
+          },
+          {
+            name: 'Size',
+            inputs: [
+              {
+                name: 'Small',
+                additionalPrice: 0,
+              },
+              {
+                name: 'Medium',
+                additionalPrice: 2,
+              },
+            ],
+          },
+        ],
       },
     ],
   },

@@ -84,7 +84,7 @@ const IcedCoffee = ({ addItem }: IcedCoffeeProps) => {
           item={icedCoffee}
           oneItemPrice={oneItemPrice}
           addItem={addItem}
-          selectedOptions={selectedOptions}
+          inputs={selectedOptions}
         />
       </ItemLayout>
     </>

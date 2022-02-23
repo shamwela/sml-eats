@@ -1,3 +1,5 @@
+import type { Option } from './option'
+
 export type Item = {
   name: string
   slug: string
@@ -7,4 +9,5 @@ export type Item = {
   deliveryFee: number
   deliveryTime: number
   basePrice: number
+  options: Option[]
 }
