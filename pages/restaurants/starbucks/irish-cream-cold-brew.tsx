@@ -1,33 +1,18 @@
 import { ChangeEvent, useState } from 'react'
-
-import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
 import Image from 'next/image'
 import type { Item } from 'types/item'
 import Order from 'components/Order'
 import { restaurants } from 'data/restaurants'
 import ItemLayout from 'layouts/Item'
+import { sizes } from 'data/coffee'
+import type { AddItem } from 'types/addItem'
 
-const sizes = [
-  {
-    name: 'Small',
-    additionalPrice: 0,
-  },
-  {
-    name: 'Medium',
-    additionalPrice: 2,
-  },
-  {
-    name: 'Large',
-    additionalPrice: 4,
-  },
-]
+type IrishCreamColdBrewProps = {
+  addItem: AddItem
+}
 
-const IrishCreamColdBrew = ({
-  addItem,
-}: {
-  addItem: (item: CartItem) => void
-}) => {
+const IrishCreamColdBrew = ({ addItem }: IrishCreamColdBrewProps) => {
   const starbucks = restaurants.find(
     (restaurant) => restaurant.slug === 'starbucks'
   )

@@ -1,6 +1,4 @@
 import { ChangeEvent, useState } from 'react'
-
-import type { CartItem } from 'types/cartItem'
 import Head from 'components/Head'
 import Image from 'next/image'
 import type { Item } from 'types/item'
@@ -8,24 +6,11 @@ import Order from 'components/Order'
 import { restaurants } from 'data/restaurants'
 import ItemLayout from 'layouts/Item'
 import type { SelectedOption } from 'types/selectedOptions'
-
-const sizes = [
-  {
-    name: 'Small',
-    additionalPrice: 0,
-  },
-  {
-    name: 'Medium',
-    additionalPrice: 2,
-  },
-  {
-    name: 'Large',
-    additionalPrice: 4,
-  },
-]
+import { sizes } from 'data/coffee'
+import type { AddItem } from 'types/addItem'
 
 type IcedCoffeeProps = {
-  addItem: (item: CartItem) => void
+  addItem: AddItem
 }
 
 const IcedCoffee = ({ addItem }: IcedCoffeeProps) => {
