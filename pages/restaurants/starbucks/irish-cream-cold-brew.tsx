@@ -74,6 +74,7 @@ const IrishCreamColdBrew = ({ addItem }: IrishCreamColdBrewProps) => {
           item={irishCreamColdBrew}
           oneItemPrice={oneItemPrice}
           addItem={addItem}
+          inputs={[]}
         />
       </ItemLayout>
     </>
