@@ -22,7 +22,16 @@ const Item = ({ restaurantName, itemName, addItem }: ItemProps) => {
   const basePrice = item?.basePrice
   const name = item?.name
   const options = item?.options
-  const [selectedOptions, setSelectedOptions] = useState<Option[]>([])
+
+  const initialSelectedOptions = options?.map((option) => {
+    const name = option.name
+    const inputs = option.inputs.filter((input) => input.additionalPrice === 0)
+    return { name, inputs }
+  })
+
+  const [selectedOptions, setSelectedOptions] = useState<Option[]>(
+    initialSelectedOptions ?? []
+  )
 
   // Fix this later
   if (!imageSource || !basePrice || !name || !options) {
@@ -41,7 +50,31 @@ const Item = ({ restaurantName, itemName, addItem }: ItemProps) => {
   const oneItemPrice = basePrice + additionalPrice
 
   const eventHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    // do stuffs here later
+    const {
+      name: optionName,
+      id: inputName,
+      value: additionalPrice,
+    } = event.target
+
+    const newSelectedOptions: Option[] = selectedOptions.map(
+      (selectedOption) => {
+        if (selectedOption.name !== optionName) {
+          return selectedOption
+        } else {
+          return {
+            name: optionName,
+            inputs: [
+              {
+                name: inputName,
+                additionalPrice: Number(additionalPrice),
+              },
+            ],
+          }
+        }
+      }
+    )
+
+    setSelectedOptions(newSelectedOptions)
   }
 
   return (
@@ -63,9 +96,10 @@ const Item = ({ restaurantName, itemName, addItem }: ItemProps) => {
                   <div key={name} className='flex items-center gap-x-4'>
                     <input
                       key={name}
-                      name={name}
+                      name={option.name}
                       id={name}
                       value={additionalPrice}
+                      onChange={eventHandler}
                       defaultChecked={additionalPrice === 0 && true}
                       type='radio'
                     />
@@ -77,8 +111,6 @@ const Item = ({ restaurantName, itemName, addItem }: ItemProps) => {
             </div>
           )
         })}
-
-        {/* Other stuffs will be here later */}
 
         <Order
           item={item}
