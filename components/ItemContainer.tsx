@@ -1,6 +1,6 @@
-import React from 'react'
+import { ReactNode } from 'react'
 
-const ItemContainer = ({ children }: { children: React.ReactNode }) => {
+const ItemContainer = ({ children }: { children: ReactNode }) => {
   return (
     <section className='grid grid-cols-2 gap-4 md:grid-cols-4'>
       {children}

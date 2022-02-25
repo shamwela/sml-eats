@@ -104,47 +104,6 @@ export const restaurants: Restaurant[] = [
           },
         ],
       },
-
-      // Delete this object later
-      {
-        name: 'Test Coffee',
-        slug: 'iced-coffee',
-        slugs: ['starbucks', 'test-coffee'],
-        path: '/restaurants/starbucks/iced-coffee',
-        imageSource: IcedCoffeeImage,
-        category: 'coffee',
-        deliveryFee: 0,
-        deliveryTime: 15,
-        basePrice: 20,
-        options: [
-          {
-            name: 'Crusts',
-            inputs: [
-              {
-                name: 'Crispy Thin',
-                additionalPrice: 0,
-              },
-              {
-                name: 'Pan',
-                additionalPrice: 2,
-              },
-            ],
-          },
-          {
-            name: 'Size',
-            inputs: [
-              {
-                name: 'Small',
-                additionalPrice: 0,
-              },
-              {
-                name: 'Medium',
-                additionalPrice: 2,
-              },
-            ],
-          },
-        ],
-      },
     ],
   },
 ]
