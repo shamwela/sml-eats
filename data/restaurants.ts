@@ -20,7 +20,9 @@ export const restaurants: Restaurant[] = [
       {
         name: 'Seafood Cocktail',
         slug: 'seafood-cocktail',
+        slugs: ['the-pizza-company', 'seafood-cocktail'],
         path: '/restaurants/the-pizza-company/seafood-cocktail',
+
         imageSource: SeafoodCocktailImage,
         category: 'Pizza',
         deliveryFee: 0,
@@ -31,6 +33,7 @@ export const restaurants: Restaurant[] = [
       {
         name: 'BBQ Pork Deluxe',
         slug: 'bbq-pork-deluxe',
+        slugs: ['the-pizza-company', 'bbq-pork-deluxe'],
         path: '/restaurants/the-pizza-company/bbq-pork-deluxe',
         imageSource: BBQPorkDeluxeImage,
         category: 'Pizza',
@@ -53,6 +56,7 @@ export const restaurants: Restaurant[] = [
       {
         name: 'Irish Cream Cold Brew',
         slug: 'irish-cream-cold-brew',
+        slugs: ['starbucks', 'irish-cream-cold-brew'],
         path: '/restaurants/starbucks/irish-cream-cold-brew',
         imageSource: IrishCreamColdBrewImage,
         category: 'coffee',
@@ -64,6 +68,7 @@ export const restaurants: Restaurant[] = [
       {
         name: 'Iced Coffee',
         slug: 'iced-coffee',
+        slugs: ['starbucks', 'iced-coffee'],
         path: '/restaurants/starbucks/iced-coffee',
         imageSource: IcedCoffeeImage,
         category: 'coffee',
@@ -99,9 +104,12 @@ export const restaurants: Restaurant[] = [
           },
         ],
       },
+
+      // Delete this object later
       {
         name: 'Test Coffee',
         slug: 'iced-coffee',
+        slugs: ['starbucks', 'test-coffee'],
         path: '/restaurants/starbucks/iced-coffee',
         imageSource: IcedCoffeeImage,
         category: 'coffee',
