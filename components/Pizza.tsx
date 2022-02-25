@@ -120,7 +120,12 @@ const PizzaOptions = ({
         }
       )}
 
-      <Order item={pizza} oneItemPrice={oneItemPrice} addItem={addItem} />
+      <Order
+        item={pizza}
+        oneItemPrice={oneItemPrice}
+        addItem={addItem}
+        inputs={[]} // Fix this later
+      />
     </>
   )
 }
