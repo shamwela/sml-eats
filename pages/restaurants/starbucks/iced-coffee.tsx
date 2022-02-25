@@ -5,7 +5,6 @@ import type { Item } from 'types/item'
 import Order from 'components/Order'
 import { restaurants } from 'data/restaurants'
 import ItemLayout from 'layouts/Item'
-import type { SelectedOption } from 'types/selectedOptions'
 import { sizes } from 'data/coffee'
 import type { AddItem } from 'types/addItem'
 
@@ -25,10 +24,11 @@ const IcedCoffee = ({ addItem }: IcedCoffeeProps) => {
   const [sizePrice, setSizePrice] = useState(0)
   const oneItemPrice = basePrice + sizePrice
 
-  const [selectedOptions, setSelectedOptions] = useState<SelectedOption[]>([
+  const [selectedOptions, setSelectedOptions] = useState([
     {
       name: 'Size',
       value: 'Small',
+      additionalPrice: 0,
     },
   ])
 
@@ -36,10 +36,11 @@ const IcedCoffee = ({ addItem }: IcedCoffeeProps) => {
     const sizePrice = Number(event.target.value)
     setSizePrice(sizePrice)
 
-    const selectedOptions: SelectedOption[] = [
+    const selectedOptions = [
       {
         name: 'Size',
         value: event.target.id,
+        additionalPrice: sizePrice,
       },
     ]
     setSelectedOptions(selectedOptions)
