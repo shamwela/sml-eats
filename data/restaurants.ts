@@ -5,6 +5,8 @@ import type { Restaurant } from 'types/restaurant'
 import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
 import StarbucksImage from 'public/images/starbucks.webp'
 import ThePizzaCompanyImage from 'public/images/the-pizza-company.webp'
+import { pizzaOptions } from './pizzaOptions'
+import { coffeeOptions } from './coffeeOptions'
 
 export const restaurants: Restaurant[] = [
   {
@@ -28,7 +30,7 @@ export const restaurants: Restaurant[] = [
         deliveryFee: 0,
         deliveryTime: 30,
         basePrice: 20,
-        options: [],
+        options: pizzaOptions,
       },
       {
         name: 'BBQ Pork Deluxe',
@@ -40,7 +42,7 @@ export const restaurants: Restaurant[] = [
         deliveryFee: 0,
         deliveryTime: 30,
         basePrice: 15,
-        options: [],
+        options: pizzaOptions,
       },
     ],
   },
@@ -63,7 +65,7 @@ export const restaurants: Restaurant[] = [
         deliveryFee: 0,
         deliveryTime: 15,
         basePrice: 20,
-        options: [],
+        options: coffeeOptions,
       },
       {
         name: 'Iced Coffee',
@@ -75,34 +77,7 @@ export const restaurants: Restaurant[] = [
         deliveryFee: 0,
         deliveryTime: 15,
         basePrice: 20,
-        options: [
-          {
-            name: 'Crusts',
-            inputs: [
-              {
-                name: 'Crispy Thin',
-                additionalPrice: 0,
-              },
-              {
-                name: 'Pan',
-                additionalPrice: 2,
-              },
-            ],
-          },
-          {
-            name: 'Size',
-            inputs: [
-              {
-                name: 'Small',
-                additionalPrice: 0,
-              },
-              {
-                name: 'Medium',
-                additionalPrice: 2,
-              },
-            ],
-          },
-        ],
+        options: coffeeOptions,
       },
     ],
   },
