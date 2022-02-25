@@ -26,6 +26,7 @@ export const restaurants: Restaurant[] = [
         deliveryFee: 0,
         deliveryTime: 30,
         basePrice: 20,
+        options: [],
       },
       {
         name: 'BBQ Pork Deluxe',
@@ -36,6 +37,7 @@ export const restaurants: Restaurant[] = [
         deliveryFee: 0,
         deliveryTime: 30,
         basePrice: 15,
+        options: [],
       },
     ],
   },
@@ -57,6 +59,7 @@ export const restaurants: Restaurant[] = [
         deliveryFee: 0,
         deliveryTime: 15,
         basePrice: 20,
+        options: [],
       },
       {
         name: 'Iced Coffee',
