@@ -68,7 +68,7 @@ const Cart = ({
                     return (
                       <div key={optionName}>
                         {/* For example, Size: Large */}
-                        <strong>{optionName}</strong>: {inputName}
+                        {optionName}: {inputName}
                       </div>
                     )
                   })}

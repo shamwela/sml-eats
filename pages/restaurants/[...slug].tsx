@@ -13,7 +13,7 @@ export const getStaticPaths = () => {
   const paths = items.map(({ slugs }) => {
     const path = {
       params: {
-        slug: slugs,
+        slug: slugs, // This is not a typo
       },
     }
 
