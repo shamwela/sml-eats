@@ -48,25 +48,17 @@ type ItemPageProps = {
 }
 
 const ItemPage = ({ item, addItem }: ItemPageProps) => {
-  const imageSource = item?.imageSource
-  const basePrice = item?.basePrice
-  const name = item?.name
-  const options = item?.options
+  const { imageSource, basePrice, name, options } = item
 
-  const initialSelectedOptions = options?.map((option) => {
+  const initialSelectedOptions: Option[] = options.map((option) => {
     const name = option.name
+
+    // Items with zero additional price should be the initial selected options
     const inputs = option.inputs.filter((input) => input.additionalPrice === 0)
     return { name, inputs }
   })
 
-  const [selectedOptions, setSelectedOptions] = useState<Option[]>(
-    initialSelectedOptions ?? []
-  )
-
-  // Fix this later
-  if (!imageSource || !basePrice || !name || !options) {
-    return null
-  }
+  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions)
 
   const inputs = selectedOptions.map((option) => option.inputs).flat()
   const additionalPrices = inputs.map((input) => input.additionalPrice)
@@ -113,6 +105,7 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
 
       <section className='mx-auto flex max-w-md flex-col gap-4'>
         <h1>{name}</h1>
+        <span>Base price: ${basePrice}</span>
         <div className='max-w-md'>
           <Image alt={name} src={imageSource} placeholder='blur' />
         </div>
