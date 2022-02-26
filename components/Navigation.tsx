@@ -71,6 +71,14 @@ const Navigation = ({ cart }: NavigationProps) => {
             </a>
           </Link>
         )}
+
+        {pathname !== '/delivery-details' && (
+          <Link href='/delivery-details'>
+            <a>
+              <button>Delivery details</button>
+            </a>
+          </Link>
+        )}
       </div>
     </nav>
   )
