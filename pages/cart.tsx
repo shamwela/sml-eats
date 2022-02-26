@@ -41,40 +41,48 @@ const Cart = ({
     <>
       <Head title='Your cart' description='Your cart' />
 
-      <h1>Your cart</h1>
-      {cart.map(({ name, quantity, finalPrice, path, selectedOptions }) => {
-        return (
-          <section key={name} className='flex gap-x-4'>
-            <select
-              value={quantity}
-              onChange={(event) => handleQuantityChange(name, event)}
-            >
-              {zeroToHundred.map((value) => (
-                <option value={value} key={value}>
-                  {value === 0 ? 'Remove' : value}
-                </option>
-              ))}
-            </select>
-            <Link href={path}>
-              <a className='flex w-full justify-between'>
-                <span>{name}</span>
-                {selectedOptions?.map(({ name, value }) => {
-                  return (
-                    <span key={name}>
-                      <strong>{name}</strong>: <span>{value}</span>
-                    </span>
-                  )
-                })}
-                <span>${finalPrice}</span>
-              </a>
-            </Link>
-          </section>
-        )
-      })}
+      <div className='mx-auto flex max-w-md flex-col gap-4'>
+        <h1>Your cart</h1>
+        {cart.map(({ name, quantity, finalPrice, path, selectedOptions }) => {
+          return (
+            <section key={name} className='flex  items-start gap-x-8'>
+              <select
+                value={quantity}
+                onChange={(event) => handleQuantityChange(name, event)}
+              >
+                {zeroToHundred.map((value) => (
+                  <option value={value} key={value}>
+                    {value === 0 ? 'Remove' : value}
+                  </option>
+                ))}
+              </select>
+              <Link href={path}>
+                <a>
+                  <strong>{name}</strong>
+                  {selectedOptions.map(({ name, inputs }) => {
+                    const optionName = name
 
-      <Link href='/checkout'>
-        <a className='button'>Go to checkout (${checkoutPrice})</a>
-      </Link>
+                    // Since there will be only 1 input
+                    const inputName = inputs[0].name
+
+                    return (
+                      <div key={optionName}>
+                        {/* For example, Size: Large */}
+                        <strong>{optionName}</strong>: {inputName}
+                      </div>
+                    )
+                  })}
+                </a>
+              </Link>
+
+              <span>${finalPrice}</span>
+            </section>
+          )
+        })}
+        <Link href='/checkout'>
+          <a className='button'>Go to checkout (${checkoutPrice})</a>
+        </Link>
+      </div>
     </>
   )
 }

@@ -37,6 +37,7 @@ const Navigation = ({ cart }: NavigationProps) => {
         <Link href='/'>
           <a className='text-xl font-bold md:text-4xl'>SML Eats</a>
         </Link>
+
         {pathname !== '/search' && (
           <Link href='/search'>
             <a>
@@ -44,7 +45,9 @@ const Navigation = ({ cart }: NavigationProps) => {
             </a>
           </Link>
         )}
+
         <button onClick={toggleTheme}>Change theme</button>
+
         {showCartButton && (
           <Link href='/cart'>
             <a>

@@ -146,7 +146,7 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
           item={item}
           oneItemPrice={oneItemPrice}
           addItem={addItem}
-          inputs={inputs}
+          selectedOptions={selectedOptions}
         />
       </section>
     </>

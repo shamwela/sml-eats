@@ -1,17 +1,22 @@
 import type { Item } from 'types/item'
 import type { AddItem } from 'types/addItem'
 import { useState } from 'react'
-import type { Input } from 'types/input'
 import type { CartItem } from 'types/cartItem'
+import type { Option } from 'types/option'
 
 type OrderProps = {
   item: Item
   oneItemPrice: number
   addItem: AddItem
-  inputs: Input[]
+  selectedOptions: Option[]
 }
 
-const Order = ({ item, oneItemPrice, addItem, inputs }: OrderProps) => {
+const Order = ({
+  item,
+  oneItemPrice,
+  addItem,
+  selectedOptions,
+}: OrderProps) => {
   const [quantity, setQuantity] = useState(1)
   const finalPrice = oneItemPrice * quantity
 
@@ -29,7 +34,7 @@ const Order = ({ item, oneItemPrice, addItem, inputs }: OrderProps) => {
       quantity,
       oneItemPrice,
       finalPrice,
-      selectedOptions: inputs,
+      selectedOptions,
     }
     addItem(cartItem)
   }
