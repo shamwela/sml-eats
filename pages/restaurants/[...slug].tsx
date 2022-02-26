@@ -119,7 +119,7 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
 
         {options.map((option) => {
           return (
-            <div key={option.name}>
+            <div key={option.name} className='flex flex-col gap-4'>
               <h2>Choose {option.name}</h2>
               {option.inputs.map(({ name, additionalPrice }) => {
                 return (
