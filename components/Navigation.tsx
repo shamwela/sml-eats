@@ -46,7 +46,17 @@ const Navigation = ({ cart }: NavigationProps) => {
           </Link>
         )}
 
-        <button onClick={toggleTheme}>Change theme</button>
+        <button onClick={toggleTheme}>
+          Change theme
+        </button>
+
+        {pathname !== '/delivery-details' && (
+          <Link href='/delivery-details'>
+            <a>
+              <button>Delivery details</button>
+            </a>
+          </Link>
+        )}
 
         {showCartButton && (
           <Link href='/cart'>
@@ -68,14 +78,6 @@ const Navigation = ({ cart }: NavigationProps) => {
                 </svg>
                 Cart • {totalQuantity}
               </button>
-            </a>
-          </Link>
-        )}
-
-        {pathname !== '/delivery-details' && (
-          <Link href='/delivery-details'>
-            <a>
-              <button>Delivery details</button>
             </a>
           </Link>
         )}
