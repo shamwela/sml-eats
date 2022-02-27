@@ -15,8 +15,6 @@ export const restaurants: Restaurant[] = [
     category: 'Pizza',
     rating: 4.9,
     imageSource: ThePizzaCompanyImage,
-    location:
-      'No. (359/363), ground floor, corner of 31th street & Bo Gyoke Aung San Road, Yangon',
     deliveryTime: 30,
     deliveryFee: 2,
     items: [
@@ -48,7 +46,6 @@ export const restaurants: Restaurant[] = [
     category: 'Coffee',
     rating: 4.8,
     imageSource: StarbucksImage,
-    location: 'Imaginary Street, Yangon',
     deliveryTime: 20,
     deliveryFee: 1,
     items: [

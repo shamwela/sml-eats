@@ -38,15 +38,31 @@ type RestaurantPageProps = {
 }
 
 const RestaurantPage = ({ restaurant }: RestaurantPageProps) => {
-  const { name: restaurantName, location, items } = restaurant
+  const {
+    name: restaurantName,
+    rating,
+    deliveryTime,
+    deliveryFee,
+    items,
+  } = restaurant
 
   return (
     <>
       <Head title={restaurantName} />
       <h1>{restaurantName}</h1>
-      <p>
-        <strong>Location</strong>: {location}
-      </p>
+
+      <div className='flex flex-col'>
+        <span>
+          <strong>Rating</strong>: {rating}
+        </span>
+        <span>
+          <strong>Delivery time</strong>: {deliveryTime} minutes
+        </span>
+        <span>
+          <strong>Delivery fee</strong>: ${deliveryFee}
+        </span>
+      </div>
+
       <ItemContainer>
         {items.map(({ name, path, imageSource, basePrice }) => {
           return (

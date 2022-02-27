@@ -6,7 +6,6 @@ export type Restaurant = {
   category: string
   rating: number
   imageSource: StaticImageData
-  location: string
   deliveryTime: number
   deliveryFee: number
   items: Item[]
