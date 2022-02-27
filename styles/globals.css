@@ -68,3 +68,8 @@ select {
 svg {
   fill: currentColor;
 }
+
+input[type='radio'],
+label {
+  @apply cursor-pointer;
+}
