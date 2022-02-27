@@ -1,12 +1,13 @@
 import Head from 'components/Head'
+import { useLocalStorage } from 'usehooks-ts'
 import { useState } from 'react'
 
 const DeliveryDetails = () => {
-  const [address, setAddress] = useState('')
+  const [address, setAddress] = useLocalStorage('address', '')
   const [showAddressInput, setShowAddressInput] = useState(false)
 
   // Convert 24 hour format to 12 hour format later
-  const [time, setTime] = useState('')
+  const [time, setTime] = useLocalStorage('time', '')
   const [showTimeInput, setShowTimeInput] = useState(false)
 
   return (
