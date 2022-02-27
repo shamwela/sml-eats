@@ -89,9 +89,9 @@ const Search = () => {
         />
 
         <section className='grid gap-4 md:grid-cols-2'>
-          {results.map(({ name, path, imageSource, category, items }) => (
-            <section key={path} className='flex flex-col gap-2'>
-              <Link href={path}>
+          {results.map(({ name, slug, imageSource, category, items }) => (
+            <section key={slug} className='flex flex-col gap-2'>
+              <Link href={'/restaurants/' + slug}>
                 <a>
                   <section className='flex flex-col gap-y-2'>
                     <Image alt={name} src={imageSource} placeholder='blur' />

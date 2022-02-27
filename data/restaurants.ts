@@ -12,7 +12,6 @@ export const restaurants: Restaurant[] = [
   {
     name: 'The Pizza Company',
     slug: 'the-pizza-company',
-    path: '/restaurants/the-pizza-company',
     category: 'Pizza',
     rating: 4.9,
     imageSource: ThePizzaCompanyImage,
@@ -49,7 +48,6 @@ export const restaurants: Restaurant[] = [
   {
     name: 'Starbucks',
     slug: 'starbucks',
-    path: '/restaurants/starbucks',
     category: 'Coffee',
     rating: 4.8,
     imageSource: StarbucksImage,
