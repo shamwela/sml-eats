@@ -9,5 +9,5 @@ export type Item = {
   description: string
   category: string
   basePrice: number
-  options: Option[]
+  options?: Option[]
 }

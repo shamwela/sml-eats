@@ -1,6 +1,6 @@
 import BBQPorkDeluxeImage from 'public/images/bbq-pork-deluxe.jpeg'
-import IcedCoffeeImage from 'public/images/iced-coffee.png'
-import IrishCreamColdBrewImage from 'public/images/irish-cream-cold-brew.png'
+import IcedCoffeeImage from 'public/images/iced-coffee.webp'
+import ButterCroissantImage from 'public/images/butter-croissant.webp'
 import type { Restaurant } from 'types/restaurant'
 import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
 import StarbucksImage from 'public/images/starbucks.webp'
@@ -54,14 +54,15 @@ export const restaurants: Restaurant[] = [
     deliveryFee: 1,
     items: [
       {
-        name: 'Irish Cream Cold Brew',
-        slug: 'irish-cream-cold-brew',
-        slugs: ['starbucks', 'irish-cream-cold-brew'],
-        path: '/restaurants/starbucks/irish-cream-cold-brew',
-        imageSource: IrishCreamColdBrewImage,
-        category: 'coffee',
-        basePrice: 20,
-        options: coffeeOptions,
+        name: 'Butter Croissant',
+        slug: 'buttter-croissant',
+        slugs: ['starbucks', 'butter-croissant'],
+        path: '/restaurants/starbucks/butter-croissant',
+        imageSource: ButterCroissantImage,
+        description:
+          'Classic butter croissant with soft, flaky layers and a golden-brown crust.',
+        category: 'pastry',
+        basePrice: 4,
       },
       {
         name: 'Iced Coffee',
@@ -69,6 +70,8 @@ export const restaurants: Restaurant[] = [
         slugs: ['starbucks', 'iced-coffee'],
         path: '/restaurants/starbucks/iced-coffee',
         imageSource: IcedCoffeeImage,
+        description:
+          'Freshly brewed Starbucks Iced Coffee Blend served chilled and sweetened over ice. An absolutely, seriously, refreshingly lift to any day.',
         category: 'coffee',
         basePrice: 20,
         options: coffeeOptions,
