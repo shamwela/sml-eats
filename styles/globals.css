@@ -2,74 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
-::before,
-::after {
-  @apply dark:text-white;
-}
+@layer base {
+  *,
+  ::before,
+  ::after {
+    @apply dark:text-white;
+  }
 
-body {
-  @apply px-4 dark:bg-gray-900;
-}
+  body {
+    @apply px-4 dark:bg-gray-900;
+  }
 
-h1,
-h2,
-h3 {
-  @apply font-bold;
-}
+  h1,
+  h2,
+  h3 {
+    @apply font-bold;
+  }
 
-h1 {
-  @apply text-4xl;
-}
+  h1 {
+    @apply text-4xl;
+  }
 
-h2 {
-  @apply text-3xl;
-}
+  h2 {
+    @apply text-3xl;
+  }
 
-button,
-.button,
-img {
-  @apply rounded-custom;
-}
+  button,
+  .button,
+  img {
+    @apply rounded-custom;
+  }
 
-button,
-.button,
-[type='submit'],
-input {
-  @apply px-4 py-2;
-}
+  button,
+  .button,
+  [type='submit'],
+  input {
+    @apply px-4 py-2;
+  }
 
-button,
-/* REMOVE THIS CLASS later */
-.button,  
-[type='submit'] {
-  @apply inline-block bg-accent text-center text-white;
-}
+  button,
+  [type='submit'] {
+    @apply inline-block bg-accent text-center text-white;
+  }
 
-input[type='radio'] {
-  @apply h-4 w-4 accent-accent;
-}
+  input[type='radio'] {
+    @apply h-4 w-4 accent-accent;
+  }
 
-input[type='search'],
-input[type='text'],
-input[type='time'] {
-  @apply appearance-none rounded-custom bg-light-elevation outline-none focus:ring-2 focus:ring-accent dark:bg-dark-elevation;
-}
+  input[type='search'],
+  input[type='text'],
+  input[type='time'] {
+    @apply appearance-none rounded-custom bg-light-elevation outline-none focus:ring-2 focus:ring-accent dark:bg-dark-elevation;
+  }
 
-select,
-option {
-  @apply dark:text-white;
-}
+  select,
+  option {
+    @apply dark:text-white;
+  }
 
-select {
-  @apply w-14 rounded-custom px-2 outline-none focus:ring-2 focus:ring-accent;
-}
+  select {
+    @apply w-14 rounded-custom px-2 outline-none focus:ring-2 focus:ring-accent;
+  }
 
-svg {
-  fill: currentColor;
-}
+  svg {
+    fill: currentColor;
+  }
 
-input[type='radio'],
-label {
-  @apply cursor-pointer;
+  input[type='radio'],
+  label {
+    @apply cursor-pointer;
+  }
 }
