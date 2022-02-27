@@ -17,17 +17,16 @@ export const restaurants: Restaurant[] = [
     imageSource: ThePizzaCompanyImage,
     location:
       'No. (359/363), ground floor, corner of 31th street & Bo Gyoke Aung San Road, Yangon',
+    deliveryTime: 30,
+    deliveryFee: 2,
     items: [
       {
         name: 'Seafood Cocktail',
         slug: 'seafood-cocktail',
         slugs: ['the-pizza-company', 'seafood-cocktail'],
         path: '/restaurants/the-pizza-company/seafood-cocktail',
-
         imageSource: SeafoodCocktailImage,
         category: 'Pizza',
-        deliveryFee: 0,
-        deliveryTime: 30,
         basePrice: 20,
         options: pizzaOptions,
       },
@@ -38,8 +37,6 @@ export const restaurants: Restaurant[] = [
         path: '/restaurants/the-pizza-company/bbq-pork-deluxe',
         imageSource: BBQPorkDeluxeImage,
         category: 'Pizza',
-        deliveryFee: 0,
-        deliveryTime: 30,
         basePrice: 15,
         options: pizzaOptions,
       },
@@ -52,6 +49,8 @@ export const restaurants: Restaurant[] = [
     rating: 4.8,
     imageSource: StarbucksImage,
     location: 'Imaginary Street, Yangon',
+    deliveryTime: 20,
+    deliveryFee: 1,
     items: [
       {
         name: 'Irish Cream Cold Brew',
@@ -60,8 +59,6 @@ export const restaurants: Restaurant[] = [
         path: '/restaurants/starbucks/irish-cream-cold-brew',
         imageSource: IrishCreamColdBrewImage,
         category: 'coffee',
-        deliveryFee: 0,
-        deliveryTime: 15,
         basePrice: 20,
         options: coffeeOptions,
       },
@@ -72,8 +69,6 @@ export const restaurants: Restaurant[] = [
         path: '/restaurants/starbucks/iced-coffee',
         imageSource: IcedCoffeeImage,
         category: 'coffee',
-        deliveryFee: 0,
-        deliveryTime: 15,
         basePrice: 20,
         options: coffeeOptions,
       },

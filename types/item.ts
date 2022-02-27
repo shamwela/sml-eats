@@ -4,11 +4,9 @@ export type Item = {
   name: string
   slug: string
   slugs: string[] // This is for [...slug].tsx
-  path: string
+  path: string // Added this because I don't want to do complex logic inside
   imageSource: StaticImageData
   category: string
-  deliveryFee: number
-  deliveryTime: number
   basePrice: number
   options: Option[]
 }
