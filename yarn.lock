@@ -2006,6 +2006,11 @@ use-subscription@1.5.1:
   dependencies:
     object-assign "^4.1.1"
 
+usehooks-ts@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/usehooks-ts/-/usehooks-ts-2.4.1.tgz#90066cbc4ee509de190c00d91a8aace81f7ba95d"
+  integrity sha512-8H+qEX/5KiLr7diCZ485dJMTyr9Ta815Dw8zTV2b8PiiTy6breZF1TQ7/j+QoGuy9RMs8CToqAO05dztWuxcFA==
+
 util-deprecate@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"

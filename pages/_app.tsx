@@ -1,27 +1,12 @@
 import 'styles/globals.css'
-
-import { useEffect, useState } from 'react'
-
 import type { AppProps } from 'next/app'
 import type { CartItem } from 'types/cartItem'
 import Navigation from 'components/Navigation'
 import { ThemeProvider } from 'next-themes'
+import { useLocalStorage } from 'usehooks-ts'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const [cart, setCart] = useState<CartItem[]>([])
-
-  useEffect(() => {
-    const cartJSONString = window.localStorage.getItem('cart')
-    if (cartJSONString) {
-      const cart: CartItem[] = JSON.parse(cartJSONString)
-      setCart(cart)
-    }
-  }, [])
-
-  useEffect(() => {
-    const cartJSONString = JSON.stringify(cart)
-    window.localStorage.setItem('cart', cartJSONString)
-  }, [cart])
+  const [cart, setCart] = useLocalStorage<CartItem[]>('cart', [])
 
   const addItem = (newCartItem: CartItem) => {
     const newCart = [...cart, newCartItem]
