@@ -48,7 +48,8 @@ type ItemPageProps = {
 }
 
 const ItemPage = ({ item, addItem }: ItemPageProps) => {
-  const { imageSource, description, basePrice, name, options } = item
+  const { imageSource, description, basePrice, name } = item
+  const options = item.options ?? []
 
   const initialSelectedOptions: Option[] = options.map((option) => {
     const name = option.name
