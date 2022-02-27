@@ -10,6 +10,7 @@ const Cart = ({
   changeItemQuantity,
 }: {
   cart: CartItem[]
+  // eslint-disable-next-line no-unused-vars
   changeItemQuantity: (name: string, quantity: number) => void
 }) => {
   const isCartEmpty = cart.length === 0
