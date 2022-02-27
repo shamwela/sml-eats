@@ -24,6 +24,8 @@ export const restaurants: Restaurant[] = [
         slugs: ['the-pizza-company', 'seafood-cocktail'],
         path: '/restaurants/the-pizza-company/seafood-cocktail',
         imageSource: SeafoodCocktailImage,
+        description:
+          'Ingredients: pineapple, ham, fresh shrimp, crab sticks, thousand island sauce, and fresh prawns.',
         category: 'Pizza',
         basePrice: 20,
         options: pizzaOptions,
@@ -34,6 +36,8 @@ export const restaurants: Restaurant[] = [
         slugs: ['the-pizza-company', 'bbq-pork-deluxe'],
         path: '/restaurants/the-pizza-company/bbq-pork-deluxe',
         imageSource: BBQPorkDeluxeImage,
+        description:
+          'Ingredients: pork, onion, BBQ sauce, green capsicums, red capsicum, italian sausage.',
         category: 'Pizza',
         basePrice: 15,
         options: pizzaOptions,

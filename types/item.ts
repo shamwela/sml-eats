@@ -6,6 +6,7 @@ export type Item = {
   slugs: string[] // This is for [...slug].tsx
   path: string // Added this because I don't want to do complex logic inside
   imageSource: StaticImageData
+  description: string
   category: string
   basePrice: number
   options: Option[]

@@ -48,7 +48,7 @@ type ItemPageProps = {
 }
 
 const ItemPage = ({ item, addItem }: ItemPageProps) => {
-  const { imageSource, basePrice, name, options } = item
+  const { imageSource, description, basePrice, name, options } = item
 
   const initialSelectedOptions: Option[] = options.map((option) => {
     const name = option.name
@@ -104,11 +104,12 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
       <Head title={name} />
 
       <section className='mx-auto flex max-w-md flex-col gap-4'>
-        <h1>{name}</h1>
-        <span>Base price: ${basePrice}</span>
         <div className='max-w-md'>
           <Image alt={name} src={imageSource} placeholder='blur' />
         </div>
+        <h1>{name}</h1>
+        <span>{description}</span>
+        <span>Base price: ${basePrice}</span>
 
         {options.map((option) => {
           return (
