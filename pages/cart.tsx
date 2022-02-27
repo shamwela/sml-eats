@@ -21,7 +21,7 @@ const Cart = ({
         <section className='flex flex-col gap-y-5'>
           <h1>Your cart is empty.</h1>
           <Link href='/'>
-            <a className='button'>Find food</a>
+            <a>Find food</a>
           </Link>
         </section>
       </>

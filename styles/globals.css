@@ -28,13 +28,11 @@
   }
 
   button,
-  .button,
   img {
     @apply rounded-custom;
   }
 
   button,
-  .button,
   [type='submit'],
   input {
     @apply px-4 py-2;
