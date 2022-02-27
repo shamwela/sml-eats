@@ -40,7 +40,7 @@ const Navigation = ({ cart }: NavigationProps) => {
 
         {pathname !== '/search' && (
           <Link href='/search'>
-            <a>
+            <a aria-label='Search'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 className='h-5 w-5'
