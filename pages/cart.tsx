@@ -81,7 +81,11 @@ const Cart = ({
           )
         })}
         <Link href='/checkout'>
-          <a className='button'>Go to checkout (${checkoutPrice})</a>
+          <a>
+            <button className='w-full'>
+              Go to checkout (${checkoutPrice})
+            </button>
+          </a>
         </Link>
       </div>
     </>
