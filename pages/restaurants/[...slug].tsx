@@ -128,7 +128,9 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
                       defaultChecked={additionalPrice === 0 && true}
                       type='radio'
                     />
-                    <label htmlFor={name}>{name}</label>
+                    <label htmlFor={name} className='mr-auto'>
+                      {name}
+                    </label>
                     <div>+${additionalPrice}</div>
                   </div>
                 )
