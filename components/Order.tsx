@@ -3,6 +3,7 @@ import type { AddItem } from 'types/addItem'
 import { useState } from 'react'
 import type { CartItem } from 'types/cartItem'
 import type { Option } from 'types/option'
+import { useRouter } from 'next/router'
 
 type OrderProps = {
   item: Item
@@ -28,6 +29,7 @@ const Order = ({
     setQuantity(quantity + 1)
   }
 
+  const router = useRouter()
   const addToOrder = () => {
     const cartItem: CartItem = {
       ...item,
@@ -37,6 +39,8 @@ const Order = ({
       selectedOptions,
     }
     addItem(cartItem)
+
+    router.back()
   }
 
   return (
