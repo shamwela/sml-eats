@@ -47,7 +47,10 @@
     @apply h-4 w-4 accent-accent;
   }
 
-  input {
+  input[type='search'],
+  input[type='text'],
+  input[type='time'],
+  input[type='datetime-local'] {
     @apply appearance-none rounded-custom bg-light-elevation outline-none focus:ring-2 focus:ring-accent dark:bg-dark-elevation;
   }
 
