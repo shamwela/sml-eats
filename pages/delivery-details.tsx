@@ -1,60 +1,88 @@
 import Head from 'components/Head'
 import { useLocalStorage } from 'usehooks-ts'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const DeliveryDetails = () => {
   const [address, setAddress] = useLocalStorage('address', '')
   const [showAddressInput, setShowAddressInput] = useState(false)
 
-  // Convert 24 hour format to 12 hour format later
   const [time, setTime] = useLocalStorage('time', '')
   const [showTimeInput, setShowTimeInput] = useState(false)
+
+  const [formattedTime, setFormattedTime] = useState('')
+  useEffect(() => {
+    if (time === '') {
+      setFormattedTime('')
+    } else {
+      const newFormattedTime = new Intl.DateTimeFormat('en-US', {
+        dateStyle: 'full',
+        timeStyle: 'medium',
+      }).format(new Date(time))
+      setFormattedTime(newFormattedTime)
+    }
+  }, [time])
 
   return (
     <>
       <Head title='Delivery details' />
 
-      <h1>Delivery details</h1>
-
-      {!showAddressInput && (
-        <div className='flex gap-4'>
-          <h2>Address: {address}</h2>
-          <button onClick={() => setShowAddressInput(true)}>Change</button>
+      <div className='mx-auto flex max-w-md flex-col gap-y-[inherit]'>
+        <h1>Delivery details</h1>
+        <div className='flex items-center justify-between gap-x-4'>
+          {!showAddressInput && (
+            <>
+              <span>
+                <strong>Address</strong>: {address}
+              </span>
+              <button
+                onClick={() => {
+                  setAddress('')
+                  setShowAddressInput(true)
+                }}
+              >
+                Change
+              </button>
+            </>
+          )}
+          {showAddressInput && (
+            <>
+              <input
+                value={address}
+                onChange={(event) => setAddress(event.target.value)}
+                placeholder='Enter delivery address'
+                aria-label='Enter delivery address'
+                type='text'
+                className='w-full'
+              />
+              <button onClick={() => setShowAddressInput(false)}>Done</button>
+            </>
+          )}
         </div>
-      )}
 
-      {showAddressInput && (
-        <>
-          <input
-            value={address}
-            onChange={(event) => setAddress(event.target.value)}
-            placeholder='Enter delivery address'
-            aria-label='Enter delivery address'
-            type='text'
-          />
-          <button onClick={() => setShowAddressInput(false)}>Done</button>
-        </>
-      )}
-
-      {!showTimeInput && (
-        <div className='flex gap-4'>
-          <h2>Time: {time}</h2>
-          <button onClick={() => setShowTimeInput(true)}>Change</button>
+        <div className='flex items-center justify-between gap-x-4'>
+          {!showTimeInput && (
+            <>
+              <span>
+                <strong>Time</strong>: {formattedTime}
+              </span>
+              <button onClick={() => setShowTimeInput(true)}>Change</button>
+            </>
+          )}
+          {showTimeInput && (
+            <>
+              <input
+                value={time}
+                onChange={(event) => setTime(event.target.value)}
+                placeholder='Enter time'
+                aria-label='Enter time'
+                type='datetime-local'
+                className='w-full'
+              />
+              <button onClick={() => setShowTimeInput(false)}>Done</button>
+            </>
+          )}
         </div>
-      )}
-
-      {showTimeInput && (
-        <>
-          <input
-            value={time}
-            onChange={(event) => setTime(event.target.value)}
-            placeholder='Enter time'
-            aria-label='Enter time'
-            type='time'
-          />
-          <button onClick={() => setShowTimeInput(false)}>Done</button>
-        </>
-      )}
+      </div>
     </>
   )
 }
