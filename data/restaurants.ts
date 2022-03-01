@@ -62,7 +62,7 @@ export const restaurants: Restaurant[] = [
         description:
           'Classic butter croissant with soft, flaky layers and a golden-brown crust.',
         category: 'pastry',
-        basePrice: 4,
+        basePrice: 4.35,
       },
       {
         name: 'Iced Coffee',
@@ -73,7 +73,7 @@ export const restaurants: Restaurant[] = [
         description:
           'Freshly brewed Starbucks Iced Coffee Blend served chilled and sweetened over ice. An absolutely, seriously, refreshingly lift to any day.',
         category: 'coffee',
-        basePrice: 20,
+        basePrice: 4.35,
         options: coffeeOptions,
       },
     ],
