@@ -14,7 +14,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }
 
   const changeItemQuantity = (name: string, quantity: number) => {
-    let newCart: CartItem[] = []
+    let newCart = cart
 
     // If the quantity is 0, remove the item from the cart
     if (quantity === 0) {
