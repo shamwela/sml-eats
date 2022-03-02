@@ -34,7 +34,7 @@ const Home = () => {
 
       <h2>Popular near you</h2>
       <ItemContainer>
-        {restaurants?.map(({ name, slug, rating, imageSource }) => {
+        {restaurants.map(({ name, slug, rating, imageSource }) => {
           return (
             <Link key={slug} href={`/restaurants/${slug}`}>
               <a>
