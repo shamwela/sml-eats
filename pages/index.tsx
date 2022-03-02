@@ -41,7 +41,7 @@ const Home = () => {
                 <section className='flex flex-col gap-y-1'>
                   <Image src={imageSource} alt={name} placeholder='blur' />
 
-                  <div className='flex justify-between'>
+                  <div className='flex justify-between items-start'>
                     <span>{name}</span>
                     <div className='flex items-center'>
                       <svg
