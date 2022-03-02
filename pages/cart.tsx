@@ -35,39 +35,39 @@ const Cart = ({
           </Link>
         </div>
       ) : (
-        <div className='mx-auto flex max-w-md flex-col gap-4'>
+        <div className='mx-auto flex max-w-sm flex-col gap-4'>
           <h1>Your cart</h1>
           {cart.map(({ name, quantity, finalPrice, path, selectedOptions }) => {
             return (
-              <section key={name} className='flex  items-start gap-x-8'>
-                <select
-                  value={quantity}
-                  onChange={(event) => handleQuantityChange(name, event)}
-                >
-                  {zeroToHundred.map((value) => (
-                    <option value={value} key={value}>
-                      {value === 0 ? 'Remove' : value}
-                    </option>
-                  ))}
-                </select>
-                <Link href={path}>
-                  <a>
-                    <strong>{name}</strong>
-                    {selectedOptions.map(({ name, inputs }) => {
-                      const optionName = name
-
-                      // Since there will be only 1 input
-                      const inputName = inputs[0].name
-
-                      return (
-                        <div key={optionName}>
-                          {/* For example, Size: Large */}
-                          {optionName}: {inputName}
-                        </div>
-                      )
-                    })}
-                  </a>
-                </Link>
+              <section key={name} className='flex justify-between'>
+                <div className='flex items-start gap-x-4'>
+                  <select
+                    value={quantity}
+                    onChange={(event) => handleQuantityChange(name, event)}
+                  >
+                    {zeroToHundred.map((value) => (
+                      <option value={value} key={value}>
+                        {value === 0 ? 'Remove' : value}
+                      </option>
+                    ))}
+                  </select>
+                  <Link href={path}>
+                    <a>
+                      <strong>{name}</strong>
+                      {selectedOptions.map(({ name, inputs }) => {
+                        const optionName = name
+                        // Since there will be only 1 input
+                        const inputName = inputs[0].name
+                        return (
+                          <div key={optionName}>
+                            {/* For example, Size: Large */}
+                            {optionName}: {inputName}
+                          </div>
+                        )
+                      })}
+                    </a>
+                  </Link>
+                </div>
 
                 <span>${finalPrice}</span>
               </section>
