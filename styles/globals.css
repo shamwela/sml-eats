@@ -60,7 +60,7 @@
   }
 
   select {
-    @apply w-14 rounded-custom px-2 outline-none focus:ring-2 focus:ring-accent;
+    @apply bg-light-elevation dark:bg-dark-elevation w-14 rounded-custom px-2 outline-none focus:ring-2 focus:ring-accent;
   }
 
   svg {
