@@ -14,10 +14,13 @@ const DeliveryDetails = () => {
     if (time === '') {
       setFormattedTime('')
     } else {
-      const newFormattedTime = new Intl.DateTimeFormat('en-US', {
+      const dateObject = new Date(time)
+      const formatter = new Intl.DateTimeFormat('en-GB', {
         dateStyle: 'full',
-        timeStyle: 'medium',
-      }).format(new Date(time))
+        timeStyle: 'short',
+        hour12: true,
+      })
+      const newFormattedTime = formatter.format(dateObject)
       setFormattedTime(newFormattedTime)
     }
   }, [time])
