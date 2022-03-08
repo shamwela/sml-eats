@@ -1,5 +1,5 @@
-import { ChangeEvent, useEffect, useState } from 'react'
-
+import { useEffect, useState } from 'react'
+import type { ChangeEvent } from 'react'
 import Head from 'components/Head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -11,15 +11,35 @@ const Search = () => {
   const router = useRouter()
   let query = ''
   if (typeof router.query.query === 'string') {
-    query = router.query.query
+    query = router.query.query.trim()
   }
-
   const [results, setResults] = useState<Restaurant[]>([])
 
   useEffect(() => {
-    const getResults = () => {
-      const matchedRestaurants = restaurants.filter((restaurant) => {
-        const { name, category } = restaurant
+    // If there's no query, don't show any results
+    if (query === '') {
+      setResults([])
+      return
+    }
+
+    const matchedRestaurants = restaurants.filter((restaurant) => {
+      const { name, category } = restaurant
+
+      const matchesName = name.toLowerCase().includes(query.toLowerCase())
+      const matchesCategory = category
+        .toLowerCase()
+        .includes(query.toLowerCase())
+
+      if (matchesName || matchesCategory) {
+        return restaurant
+      }
+    })
+
+    const finalRestaurants = matchedRestaurants.filter((restaurant) => {
+      const { items } = restaurant
+
+      const matchedItems = items.filter((item) => {
+        const { name, category } = item
 
         const matchesName = name.toLowerCase().includes(query.toLowerCase())
         const matchesCategory = category
@@ -27,39 +47,14 @@ const Search = () => {
           .includes(query.toLowerCase())
 
         if (matchesName || matchesCategory) {
-          return restaurant
+          return item
         }
       })
 
-      const finalRestaurants = matchedRestaurants.filter((restaurant) => {
-        const { items } = restaurant
+      return matchedItems
+    })
 
-        const matchedItems = items.filter((item) => {
-          const { name, category } = item
-
-          const matchesName = name.toLowerCase().includes(query.toLowerCase())
-          const matchesCategory = category
-            .toLowerCase()
-            .includes(query.toLowerCase())
-
-          if (matchesName || matchesCategory) {
-            return item
-          }
-        })
-
-        return matchedItems
-      })
-
-      return finalRestaurants
-    }
-
-    // If there's no query, don't show any results
-    if (query === '') {
-      setResults([])
-    } else {
-      const results = getResults()
-      setResults(results)
-    }
+    setResults(finalRestaurants)
   }, [query])
 
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +67,7 @@ const Search = () => {
 
   return (
     <>
-      <Head title='Search' description='Search on SML Eats' />
+      <Head title='Search' />
 
       <section className='flex flex-col gap-y-4'>
         <h1>Search</h1>
