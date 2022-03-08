@@ -27,20 +27,20 @@ const Cart = ({
     <>
       <Head title='Your cart' />
 
-      {cart.length === 0 ? (
-        <div className='flex flex-col gap-y-4'>
-          <h1>Your cart is empty.</h1>
-          <Link href='/'>
-            <a>Find food</a>
-          </Link>
-        </div>
-      ) : (
-        <div className='mx-auto flex max-w-sm flex-col gap-4'>
-          <h1>Your cart</h1>
-          {cart.map(({ name, quantity, finalPrice, path, selectedOptions }) => {
-            return (
-              <section key={name} className='flex justify-between'>
-                <div className='flex items-start gap-x-4'>
+      <div className='mx-auto flex flex-col gap-y-[inherit] w-full max-w-md'>
+        {cart.length === 0 ? (
+          <>
+            <h1>Your cart is empty.</h1>
+            <Link href='/'>
+              <a>Find food</a>
+            </Link>
+          </>
+        ) : (
+          <>
+            <h1>Your cart</h1>
+            {cart.map(
+              ({ name, quantity, finalPrice, path, selectedOptions }) => (
+                <section key={name} className='flex items-start gap-x-4'>
                   <select
                     value={quantity}
                     onChange={(event) => handleQuantityChange(name, event)}
@@ -67,21 +67,20 @@ const Cart = ({
                       })}
                     </a>
                   </Link>
-                </div>
-
-                <span>${finalPrice}</span>
-              </section>
-            )
-          })}
-          <Link href='/checkout'>
-            <a>
-              <button className='w-full'>
-                Go to checkout (${checkoutPrice})
-              </button>
-            </a>
-          </Link>
-        </div>
-      )}
+                  <span className='ml-auto'>${finalPrice}</span>
+                </section>
+              )
+            )}
+            <Link href='/checkout'>
+              <a>
+                <button className='w-full'>
+                  Go to checkout (${checkoutPrice})
+                </button>
+              </a>
+            </Link>
+          </>
+        )}
+      </div>
     </>
   )
 }
