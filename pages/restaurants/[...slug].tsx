@@ -6,18 +6,24 @@ import { ChangeEvent, useState } from 'react'
 import type { Option } from 'types/option'
 import Head from 'components/Head'
 import Order from 'components/Order'
+import type { GetStaticPaths } from 'next'
 
-export const getStaticPaths = () => {
-  const items = restaurants.map((restaurant) => restaurant.items).flat()
+export const getStaticPaths: GetStaticPaths = () => {
+  // This type is just inferred from usage. Don't worry.
+  let paths: { params: { slug: string[] } }[] = []
 
-  const paths = items.map(({ slugs }) => {
-    const path = {
-      params: {
-        slug: slugs, // This is not a typo
-      },
-    }
+  restaurants.forEach((restaurant) => {
+    restaurant.items.forEach((item) => {
+      const slugs = [restaurant.slug, item.slug]
 
-    return path
+      const path = {
+        params: {
+          slug: slugs, // This isn't a typo
+        },
+      }
+
+      paths.push(path)
+    })
   })
 
   return {

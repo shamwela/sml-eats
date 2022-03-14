@@ -15,13 +15,10 @@ export const restaurants: Restaurant[] = [
     category: 'Pizza',
     rating: 4.9,
     imageSource: ThePizzaCompanyImage,
-    deliveryTime: 30,
-    deliveryFee: 2,
     items: [
       {
         name: 'Seafood Cocktail',
         slug: 'seafood-cocktail',
-        slugs: ['the-pizza-company', 'seafood-cocktail'],
         path: '/restaurants/the-pizza-company/seafood-cocktail',
         imageSource: SeafoodCocktailImage,
         description:
@@ -33,7 +30,6 @@ export const restaurants: Restaurant[] = [
       {
         name: 'BBQ Pork Deluxe',
         slug: 'bbq-pork-deluxe',
-        slugs: ['the-pizza-company', 'bbq-pork-deluxe'],
         path: '/restaurants/the-pizza-company/bbq-pork-deluxe',
         imageSource: BBQPorkDeluxeImage,
         description:
@@ -50,13 +46,10 @@ export const restaurants: Restaurant[] = [
     category: 'Coffee',
     rating: 4.8,
     imageSource: StarbucksImage,
-    deliveryTime: 20,
-    deliveryFee: 1,
     items: [
       {
         name: 'Butter Croissant',
         slug: 'buttter-croissant',
-        slugs: ['starbucks', 'butter-croissant'],
         path: '/restaurants/starbucks/butter-croissant',
         imageSource: ButterCroissantImage,
         description:
@@ -67,7 +60,6 @@ export const restaurants: Restaurant[] = [
       {
         name: 'Iced Coffee',
         slug: 'iced-coffee',
-        slugs: ['starbucks', 'iced-coffee'],
         path: '/restaurants/starbucks/iced-coffee',
         imageSource: IcedCoffeeImage,
         description:
