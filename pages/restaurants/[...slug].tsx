@@ -6,9 +6,8 @@ import { ChangeEvent, useState } from 'react'
 import type { Option } from 'types/option'
 import Head from 'components/Head'
 import Order from 'components/Order'
-import type { GetStaticPaths } from 'next'
 
-export const getStaticPaths: GetStaticPaths = () => {
+export const getStaticPaths = () => {
   // This type is just inferred from usage. Don't worry.
   let paths: { params: { slug: string[] } }[] = []
 

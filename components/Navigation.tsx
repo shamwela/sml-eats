@@ -76,7 +76,6 @@ const Navigation = ({ cart }: NavigationProps) => {
           <Link href='/cart'>
             <a>
               <button className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static'>
-                {/* Cart icon */}
                 <svg
                   aria-hidden='true'
                   focusable='false'

@@ -49,7 +49,7 @@ export const restaurants: Restaurant[] = [
     items: [
       {
         name: 'Butter Croissant',
-        slug: 'buttter-croissant',
+        slug: 'butter-croissant',
         path: '/restaurants/starbucks/butter-croissant',
         imageSource: ButterCroissantImage,
         description:
@@ -70,4 +70,23 @@ export const restaurants: Restaurant[] = [
       },
     ],
   },
+  // {
+  //   name: "McDonald's",
+  //   slug: 'mcdonalds',
+  //   category: 'Fast Food',
+  //   rating: 4.7,
+  //   imageSource: ,
+  //   items: [
+  //     {
+  //       name: '',
+  //       slug: '',
+  //       path: '/restaurants/mcdonalds/',
+  //       imageSource: ,
+  //       description:
+  //         '',
+  //       category: '',
+  //       basePrice: ,
+  //     }
+  //   ],
+  // },
 ]
