@@ -33,13 +33,13 @@ export const getStaticPaths: GetStaticPaths = () => {
 }
 
 export const getStaticProps = (context: { params: { slug: string[] } }) => {
-  const currentSlugArray = context.params.slug
-
   const items = restaurants.map((restaurant) => restaurant.items).flat()
-  const item = items.find(
-    ({ slugs }) => slugs.join('') === currentSlugArray.join('')
-    // Used join here because arrays can't be checked if they're equal
-  )
+
+  // For example, ['the-pizza-company', 'seafood-cocktail']
+  const currentSlugArray = context.params.slug
+  const slugString = currentSlugArray.join('')
+
+  const item = items.find((item) => slugString.endsWith(item.slug))
 
   return {
     props: {
