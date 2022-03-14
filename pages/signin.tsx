@@ -1,10 +1,9 @@
 import Head from 'components/Head'
-import React, { useEffect, useState } from 'react'
 import { auth, signInWithGoogle } from '../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/router'
 
-const Login = () => {
+const SignIn = () => {
   const [user, loading, error] = useAuthState(auth)
   const router = useRouter()
 
@@ -23,11 +22,11 @@ const Login = () => {
 
   return (
     <>
-      <Head title='Login' />
+      <Head title='Sign in' />
 
-      <button onClick={signInWithGoogle}>Login with Google</button>
+      <button onClick={signInWithGoogle}>Sign in with Google</button>
     </>
   )
 }
 
-export default Login
+export default SignIn

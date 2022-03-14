@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-
+import { auth, logout } from '../firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -30,6 +31,8 @@ const Navigation = ({ cart }: NavigationProps) => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
     setTheme(newTheme)
   }
+
+  const [user] = useAuthState(auth)
 
   return (
     <nav className='top-0 z-10 bg-white py-4 dark:bg-gray-900 md:sticky'>
@@ -90,6 +93,14 @@ const Navigation = ({ cart }: NavigationProps) => {
                 Cart • {totalQuantity}
               </button>
             </a>
+          </Link>
+        )}
+
+        {user ? (
+          <button onClick={logout}>Sign out</button>
+        ) : (
+          <Link href='/signin'>
+            <a>Sign in</a>
           </Link>
         )}
       </div>
