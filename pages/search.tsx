@@ -35,9 +35,7 @@ const Search = () => {
       }
     })
 
-    const finalRestaurants = matchedRestaurants.filter((restaurant) => {
-      const { items } = restaurant
-
+    const finalRestaurants = matchedRestaurants.filter(({ items }) => {
       const matchedItems = items.filter((item) => {
         const { name, category } = item
 
@@ -69,53 +67,44 @@ const Search = () => {
     <>
       <Head title='Search' />
 
-      <section className='flex flex-col gap-y-4'>
-        <h1>Search</h1>
+      <h1>Search</h1>
 
-        <input
-          value={query}
-          onChange={handleQueryChange}
-          name='query'
-          type='search'
-          aria-label='Search'
-          placeholder='Pizza, coffee, etc'
-          autoComplete='false'
-          required
-        />
+      <input
+        value={query}
+        onChange={handleQueryChange}
+        type='search'
+        aria-label='Search'
+        placeholder='Pizza, coffee, etc'
+      />
 
-        <section className='grid gap-4 md:grid-cols-2'>
-          {results.map(({ name, slug, imageSource, category, items }) => (
-            <section key={slug} className='flex flex-col gap-2'>
-              <Link href={'/restaurants/' + slug}>
-                <a>
-                  <section className='flex flex-col gap-y-2'>
-                    <Image alt={name} src={imageSource} placeholder='blur' />
-                    <span className='font-bold'>{name}</span>
-                    <span>Category: {category}</span>
-                  </section>
-                </a>
-              </Link>
+      <section className='grid gap-4 md:grid-cols-2'>
+        {results.map(({ name, slug, imageSource, category, items }) => (
+          <section key={slug} className='flex flex-col gap-2'>
+            <Link href={'/restaurants/' + slug}>
+              <a>
+                <section className='flex flex-col gap-y-2'>
+                  <Image alt={name} src={imageSource} placeholder='blur' />
+                  <span className='font-bold'>{name}</span>
+                  <span>Category: {category}</span>
+                </section>
+              </a>
+            </Link>
 
-              <section className='flex gap-x-4'>
-                {items.map(({ imageSource, name, basePrice, path }) => (
-                  <Link key={path} href={path}>
-                    <a>
-                      <section className='flex flex-col rounded-custom bg-light-elevation p-4 shadow-lg dark:bg-dark-elevation'>
-                        <Image
-                          alt={name}
-                          src={imageSource}
-                          placeholder='blur'
-                        />
-                        <span>{name}</span>
-                        <span>${basePrice}</span>
-                      </section>
-                    </a>
-                  </Link>
-                ))}
-              </section>
+            <section className='flex gap-x-4'>
+              {items.map(({ imageSource, name, basePrice, path }) => (
+                <Link key={path} href={path}>
+                  <a>
+                    <section className='flex flex-col rounded-custom bg-light-elevation p-4 shadow-lg dark:bg-dark-elevation'>
+                      <Image alt={name} src={imageSource} placeholder='blur' />
+                      <span>{name}</span>
+                      <span>${basePrice}</span>
+                    </section>
+                  </a>
+                </Link>
+              ))}
             </section>
-          ))}
-        </section>
+          </section>
+        ))}
       </section>
     </>
   )
