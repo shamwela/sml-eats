@@ -5,14 +5,14 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth'
-import {
-  getFirestore,
-  query,
-  getDocs,
-  collection,
-  where,
-  addDoc,
-} from 'firebase/firestore'
+// import {
+//   getFirestore,
+//   query,
+//   getDocs,
+//   collection,
+//   where,
+//   addDoc,
+// } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCRRRJB5Vt8PJQPmSOuJ63hBN_aStZZRRM',
@@ -24,23 +24,24 @@ const firebaseConfig = {
 }
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
-const db = getFirestore(app)
+// const db = getFirestore(app)
 const googleProvider = new GoogleAuthProvider()
 
 const signInWithGoogle = async () => {
   try {
-    const res = await signInWithPopup(auth, googleProvider)
-    const user = res.user
-    const q = query(collection(db, 'users'), where('uid', '==', user.uid))
-    const docs = await getDocs(q)
-    if (docs.docs.length === 0) {
-      await addDoc(collection(db, 'users'), {
-        uid: user.uid,
-        name: user.displayName,
-        authProvider: 'google',
-        email: user.email,
-      })
-    }
+    // const { user } = await signInWithPopup(auth, googleProvider)
+    signInWithPopup(auth, googleProvider)
+
+    // const q = query(collection(db, 'users'), where('uid', '==', user.uid))
+    // const docs = await getDocs(q)
+    // if (docs.docs.length === 0) {
+    //   await addDoc(collection(db, 'users'), {
+    //     uid: user.uid,
+    //     name: user.displayName,
+    //     authProvider: 'google',
+    //     email: user.email,
+    //   })
+    // }
   } catch (error: any) {
     console.error(error)
     alert(error.message)
@@ -51,4 +52,9 @@ const logout = () => {
   signOut(auth)
 }
 
-export { auth, db, signInWithGoogle, logout }
+export {
+  auth,
+  // db,
+  signInWithGoogle,
+  logout,
+}

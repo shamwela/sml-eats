@@ -70,23 +70,4 @@ export const restaurants: Restaurant[] = [
       },
     ],
   },
-  // {
-  //   name: "McDonald's",
-  //   slug: 'mcdonalds',
-  //   category: 'Fast Food',
-  //   rating: 4.7,
-  //   imageSource: ,
-  //   items: [
-  //     {
-  //       name: '',
-  //       slug: '',
-  //       path: '/restaurants/mcdonalds/',
-  //       imageSource: ,
-  //       description:
-  //         '',
-  //       category: '',
-  //       basePrice: ,
-  //     }
-  //   ],
-  // },
 ]
