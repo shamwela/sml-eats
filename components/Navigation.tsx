@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { auth, logout } from '../firebase'
+import { auth, signOut } from '../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
@@ -96,7 +96,7 @@ const Navigation = ({ cart }: NavigationProps) => {
         )}
 
         {user ? (
-          <button onClick={logout}>Sign out</button>
+          <button onClick={signOut}>Sign out</button>
         ) : (
           <Link href='/signin'>
             <a>Sign in</a>
