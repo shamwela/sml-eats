@@ -14,11 +14,11 @@ export const getStaticPaths: GetStaticPaths = () => {
 
   restaurants.forEach((restaurant) => {
     restaurant.items.forEach((item) => {
-      const slugs = [restaurant.slug, item.slug]
+      const slugArray = [restaurant.slug, item.slug]
 
       const path = {
         params: {
-          slug: slugs, // This isn't a typo
+          slug: slugArray,
         },
       }
 
@@ -37,9 +37,9 @@ export const getStaticProps = (context: { params: { slug: string[] } }) => {
 
   // For example, ['the-pizza-company', 'seafood-cocktail']
   const currentSlugArray = context.params.slug
-  const slugString = currentSlugArray.join('')
-
-  const item = items.find((item) => slugString.endsWith(item.slug))
+  const item = items.find(
+    ({ slug }) => slug === currentSlugArray[currentSlugArray.length - 1]
+  )
 
   return {
     props: {
