@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@heroicons/react': ^1.0.6
   '@types/node': ^17.0.13
   '@types/react': ^17.0.38
   autoprefixer: ^10.4.2
@@ -21,6 +22,7 @@ specifiers:
   usehooks-ts: ^2.4.1
 
 dependencies:
+  '@heroicons/react': 1.0.6_react@17.0.2
   firebase: 9.6.8
   next: 12.1.0_react-dom@17.0.2+react@17.0.2
   next-themes: 0.1.1_caa633a00319350dbda42996613fe26c
@@ -564,6 +566,14 @@ packages:
       long: 4.0.0
       protobufjs: 6.11.2
       yargs: 16.2.0
+    dev: false
+
+  /@heroicons/react/1.0.6_react@17.0.2:
+    resolution: {integrity: sha512-JJCXydOFWMDpCP4q13iEplA503MQO3xLoZiKum+955ZCtHINWnx26CUxVxxFQu/uLb4LW3ge15ZpzIkXKkJ8oQ==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      react: 17.0.2
     dev: false
 
   /@humanwhocodes/config-array/0.9.5:

@@ -5,6 +5,7 @@ import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
+import { MenuAlt4Icon, XIcon } from '@heroicons/react/solid'
 
 type NavigationProps = {
   cart: CartItem[]
@@ -33,10 +34,22 @@ const Navigation = ({ cart }: NavigationProps) => {
   }
 
   const [user] = useAuthState(auth)
+  const [showMenu, setShowMenu] = useState(false)
 
   return (
     <nav className='top-0 z-10 bg-white py-4 dark:bg-gray-900 md:sticky'>
       <div className='mx-auto flex max-w-4xl flex-wrap items-center gap-x-4 gap-y-2'>
+        <MenuAlt4Icon onClick={() => setShowMenu(true)} />
+        {showMenu && (
+          <div className='fixed inset-0 bg-gray-900 z-20 p-4 flex flex-col gap-y-4'>
+            <XIcon onClick={() => setShowMenu(false)} />
+
+            <Link href='/profile'>
+              <a>Profile</a>
+            </Link>
+          </div>
+        )}
+
         <Link href='/'>
           <a className='text-xl font-bold md:text-4xl'>SML Eats</a>
         </Link>
