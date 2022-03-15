@@ -40,7 +40,7 @@
 
   button,
   [type='submit'] {
-    @apply inline-block bg-accent text-center text-white;
+    @apply bg-accent text-center text-white;
   }
 
   input[type='radio'] {

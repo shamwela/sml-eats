@@ -11,6 +11,7 @@ import {
   SearchIcon,
   ShoppingCartIcon,
 } from '@heroicons/react/solid'
+import ButtonLink from './ButtonLink'
 
 type NavigationProps = {
   cart: CartItem[]
@@ -71,33 +72,26 @@ const Navigation = ({ cart }: NavigationProps) => {
 
         <div className='flex gap-x-[inherit]'>
           {pathname !== '/delivery-details' && (
-            <Link href='/delivery-details'>
-              <a>
-                <button>Delivery details</button>
-              </a>
-            </Link>
+            <ButtonLink href='/delivery-details'>Delivery details</ButtonLink>
           )}
 
           <button onClick={toggleTheme}>Change theme</button>
         </div>
 
         {showCartButton && (
-          <Link href='/cart'>
-            <a>
-              <button className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static'>
-                <ShoppingCartIcon />
-                Cart • {totalQuantity}
-              </button>
-            </a>
-          </Link>
+          <ButtonLink
+            href='/cart'
+            className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static'
+          >
+            <ShoppingCartIcon />
+            <span>Cart • {totalQuantity}</span>
+          </ButtonLink>
         )}
 
         {user ? (
           <button onClick={signOut}>Sign out</button>
         ) : (
-          <Link href='/signin'>
-            <a>Sign in</a>
-          </Link>
+          <ButtonLink href='/signin'>Sign in</ButtonLink>
         )}
       </div>
     </nav>
