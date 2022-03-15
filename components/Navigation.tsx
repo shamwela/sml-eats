@@ -61,13 +61,8 @@ const Navigation = ({ cart }: NavigationProps) => {
           <a className='text-xl font-bold md:text-4xl'>SML Eats</a>
         </Link>
 
-        {pathname !== '/delivery-details' && (
-          <ButtonLink href='/delivery-details'>Delivery details</ButtonLink>
-        )}
-
-        {pathname !== '/search' && (
-          <ButtonLink href='/search'>Search</ButtonLink>
-        )}
+        <ButtonLink href='/delivery-details'>Delivery details</ButtonLink>
+        <ButtonLink href='/search'>Search</ButtonLink>
 
         {showCartButton && (
           <ButtonLink

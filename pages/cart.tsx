@@ -70,13 +70,7 @@ const Cart = ({
                 </section>
               )
             )}
-            <Link href='/checkout'>
-              <a>
-                <button className='w-full'>
-                  Go to checkout (${checkoutPrice})
-                </button>
-              </a>
-            </Link>
+            <ButtonLink href='/checkout'>Go to checkout (${checkoutPrice})</ButtonLink>
           </>
         )}
       </div>
