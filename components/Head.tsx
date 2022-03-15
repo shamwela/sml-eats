@@ -1,7 +1,7 @@
-import Head from 'next/head'
+import NextHead from 'next/head'
 import { useRouter } from 'next/router'
 
-const CustomHead = ({
+const Head = ({
   title,
   description = title,
   imageUrl = '/images/sml-eats-open-graph.png',
@@ -18,7 +18,7 @@ const CustomHead = ({
   const fullUrl = baseUrl + asPath
 
   return (
-    <Head>
+    <NextHead>
       <title>{fullTitle}</title>
       <meta name='robots' content='follow, index' />
       <meta property='og:title' content={fullTitle} />
@@ -43,8 +43,8 @@ const CustomHead = ({
       <meta property='og:site_name' content='SML Eats' />
 
       <link rel='icon' type='image/x-icon' href='/favicon.ico' />
-    </Head>
+    </NextHead>
   )
 }
 
-export default CustomHead
+export default Head
