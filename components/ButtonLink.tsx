@@ -12,7 +12,8 @@ const ButtonLink = ({ href, className, children }: ButtonLinkProps) => {
     <Link href={href}>
       <a
         className={
-          'px-4 py-2 rounded-custom bg-accent inline-block ' + className
+          'px-4 py-2 rounded-custom bg-accent inline-block text-center ' +
+          className
         }
       >
         {children}
