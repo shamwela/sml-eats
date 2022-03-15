@@ -4,6 +4,7 @@ import { useState } from 'react'
 import type { CartItem } from 'types/cartItem'
 import type { Option } from 'types/option'
 import { useRouter } from 'next/router'
+import { MinusIcon, PlusIcon } from '@heroicons/react/solid'
 
 type OrderProps = {
   item: Item
@@ -50,28 +51,14 @@ const Order = ({
         onClick={decreaseQuantity}
         className='bg-light-primary rounded-full p-2'
       >
-        <svg
-          aria-hidden='true'
-          focusable='false'
-          viewBox='0 0 24 24'
-          className='h-6'
-        >
-          <path d='M19.333 11H4.667v2h14.666z'></path>
-        </svg>
+        <MinusIcon />
       </button>
       <div>{quantity}</div>
       <button
         onClick={increaseQuantity}
         className='bg-light-primary rounded-full p-2'
       >
-        <svg
-          aria-hidden='true'
-          focusable='false'
-          viewBox='0 0 24 24'
-          className='h-6'
-        >
-          <path d='M19.333 11H13V4.665h-2v6.333H4.667v2H11v6.334h2v-6.334h6.333z'></path>
-        </svg>
+        <PlusIcon />
       </button>
       <button onClick={addToOrder} className='w-full'>
         Add {quantity} to order (${finalPrice})
