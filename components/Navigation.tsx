@@ -5,12 +5,7 @@ import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
-import {
-  MenuAlt4Icon,
-  XIcon,
-  SearchIcon,
-  ShoppingCartIcon,
-} from '@heroicons/react/solid'
+import { MenuAlt4Icon, XIcon, ShoppingCartIcon } from '@heroicons/react/solid'
 import ButtonLink from './ButtonLink'
 
 type NavigationProps = {
@@ -52,9 +47,13 @@ const Navigation = ({ cart }: NavigationProps) => {
           <div className='fixed inset-0 bg-gray-900 z-20 p-4 flex flex-col gap-y-4'>
             <XIcon onClick={closeMenu} className='cursor-pointer' />
 
-            <Link href='/profile'>
-              <a onClick={closeMenu}>Profile</a>
-            </Link>
+            {user && (
+              <Link href='/profile'>
+                <a onClick={closeMenu}>Profile</a>
+              </Link>
+            )}
+
+            <button onClick={toggleTheme}>Change theme</button>
           </div>
         )}
 
@@ -62,21 +61,13 @@ const Navigation = ({ cart }: NavigationProps) => {
           <a className='text-xl font-bold md:text-4xl'>SML Eats</a>
         </Link>
 
-        {pathname !== '/search' && (
-          <Link href='/search'>
-            <a aria-label='Search'>
-              <SearchIcon />
-            </a>
-          </Link>
+        {pathname !== '/delivery-details' && (
+          <ButtonLink href='/delivery-details'>Delivery details</ButtonLink>
         )}
 
-        <div className='flex gap-x-[inherit]'>
-          {pathname !== '/delivery-details' && (
-            <ButtonLink href='/delivery-details'>Delivery details</ButtonLink>
-          )}
-
-          <button onClick={toggleTheme}>Change theme</button>
-        </div>
+        {pathname !== '/search' && (
+          <ButtonLink href='/search'>Search</ButtonLink>
+        )}
 
         {showCartButton && (
           <ButtonLink
