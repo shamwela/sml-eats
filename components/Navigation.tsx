@@ -40,17 +40,19 @@ const Navigation = ({ cart }: NavigationProps) => {
 
   const [user] = useAuthState(auth)
   const [showMenu, setShowMenu] = useState(false)
+  const openMenu = () => setShowMenu(true)
+  const closeMenu = () => setShowMenu(false)
 
   return (
     <nav className='top-0 z-10 bg-white py-4 dark:bg-gray-900 md:sticky'>
       <div className='mx-auto flex max-w-4xl flex-wrap items-center gap-x-4 gap-y-2'>
-        <MenuAlt4Icon onClick={() => setShowMenu(true)} />
+        <MenuAlt4Icon onClick={openMenu} className='cursor-pointer' />
         {showMenu && (
           <div className='fixed inset-0 bg-gray-900 z-20 p-4 flex flex-col gap-y-4'>
-            <XIcon onClick={() => setShowMenu(false)} />
+            <XIcon onClick={closeMenu} className='cursor-pointer' />
 
             <Link href='/profile'>
-              <a>Profile</a>
+              <a onClick={closeMenu}>Profile</a>
             </Link>
           </div>
         )}
