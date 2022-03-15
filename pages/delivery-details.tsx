@@ -25,6 +25,15 @@ const DeliveryDetails = () => {
     }
   }, [time])
 
+  const today = new Date()
+
+  // This is a hack (https://stackoverflow.com/a/67874053/12552212)
+  const todayDOMString = today.toISOString().split('.')[0]
+
+  const nextWeek = new Date()
+  nextWeek.setDate(today.getDate() + 7)
+  const nextWeekDOMString = nextWeek.toISOString().split('.')[0]
+
   return (
     <>
       <Head title='Delivery details' />
@@ -79,6 +88,8 @@ const DeliveryDetails = () => {
                 placeholder='Enter time'
                 aria-label='Enter time'
                 type='datetime-local'
+                min={todayDOMString}
+                max={nextWeekDOMString}
                 className='w-full'
               />
               <button onClick={() => setShowTimeInput(false)}>Done</button>
