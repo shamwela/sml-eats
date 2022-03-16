@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { auth, signOut } from 'utilities/firebase'
+import { auth } from 'utilities/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import { MenuAlt4Icon, XIcon, ShoppingCartIcon } from '@heroicons/react/solid'
 import ButtonLink from './ButtonLink'
+import SignInSignOutArea from './SignInSignOutArea'
 
 type NavigationProps = {
   cart: CartItem[]
@@ -74,11 +75,7 @@ const Navigation = ({ cart }: NavigationProps) => {
           </ButtonLink>
         )}
 
-        {user ? (
-          <button onClick={signOut}>Sign out</button>
-        ) : (
-          <ButtonLink href='/signin'>Sign in</ButtonLink>
-        )}
+        <SignInSignOutArea />
       </div>
     </nav>
   )
