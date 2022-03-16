@@ -2,6 +2,7 @@ import Head from 'components/Head'
 import { auth, signInWithGoogle } from 'utilities/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/router'
+import LoadingPlaceholder from 'components/LoadingPlaceholder'
 
 const SignIn = () => {
   const [user, loading, error] = useAuthState(auth)
@@ -11,19 +12,12 @@ const SignIn = () => {
     router.push('/')
   }
 
-  // Improve the following logics later
-  if (loading) {
-    return <p>Loading please wait</p>
-  }
-
-  if (error) {
-    return <p>There was an error. Please try again.</p>
-  }
-
   return (
     <>
       <Head title='Sign in' />
 
+      {loading && <LoadingPlaceholder />}
+      {error && <p>There was an error. Please try again.</p>}
       <button onClick={signInWithGoogle}>Sign in with Google</button>
     </>
   )
