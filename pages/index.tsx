@@ -2,7 +2,7 @@ import Head from 'components/Head'
 import Image from 'next/image'
 import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
-import { categoryImageProperties } from 'data/categoryImageProperties'
+import { categories } from 'data/categories'
 import { restaurants } from 'data/restaurants'
 import { StarIcon } from '@heroicons/react/solid'
 
@@ -13,7 +13,7 @@ const Home = () => {
 
       <h2>Explore by category</h2>
       <ItemContainer>
-        {categoryImageProperties.map(({ name, imageSource }) => {
+        {categories.map(({ name, imageSource }) => {
           const href = '/search?query=' + name.toLowerCase()
           return (
             <Link href={href} key={name}>
