@@ -13,7 +13,7 @@ export const categories = [
     imageSource: CoffeeImage,
   },
   {
-    name: 'Fast Food',
+    name: 'Fast food',
     imageSource: FastFoodImage,
   },
   {
