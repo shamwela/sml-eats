@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { auth, signOut } from '../firebase'
+import { auth, signOut } from 'utilities/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'

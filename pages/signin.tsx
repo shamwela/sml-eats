@@ -1,5 +1,5 @@
 import Head from 'components/Head'
-import { auth, signInWithGoogle } from '../firebase'
+import { auth, signInWithGoogle } from 'utilities/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/router'
 

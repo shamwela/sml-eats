@@ -1,5 +1,5 @@
 import Head from 'components/Head'
-import { auth } from '../firebase'
+import { auth } from 'utilities/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
 const Profile = () => {
