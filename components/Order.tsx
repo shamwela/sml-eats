@@ -47,6 +47,7 @@ const Order = ({
   return (
     <div className='flex items-center gap-x-4'>
       <button
+        aria-label='Decrease quantity'
         disabled={quantity === 1 && true}
         onClick={decreaseQuantity}
         className='bg-light-primary rounded-full p-2'
@@ -55,6 +56,7 @@ const Order = ({
       </button>
       <div>{quantity}</div>
       <button
+        aria-label='Increase quantity'
         onClick={increaseQuantity}
         className='bg-light-primary rounded-full p-2'
       >
