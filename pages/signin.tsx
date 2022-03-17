@@ -7,10 +7,7 @@ import LoadingPlaceholder from 'components/LoadingPlaceholder'
 const SignIn = () => {
   const [user, loading, error] = useAuthState(auth)
   const router = useRouter()
-
-  if (user) {
-    router.push('/')
-  }
+  if (user) router.push('/')
 
   return (
     <>
