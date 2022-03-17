@@ -45,7 +45,7 @@ const Navigation = ({ cart }: NavigationProps) => {
       <div className='mx-auto flex max-w-4xl flex-wrap items-center gap-x-4 gap-y-2'>
         <MenuAlt4Icon onClick={openMenu} className='cursor-pointer' />
         {showMenu && (
-          <div className='fixed inset-0 bg-white dark:bg-gray-900 z-20 p-4 flex flex-col gap-y-4'>
+          <div className='fixed inset-0 bg-white dark:bg-gray-900 z-20 p-4 flex flex-col gap-y-6'>
             <XIcon onClick={closeMenu} className='cursor-pointer' />
 
             {user && (
