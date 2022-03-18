@@ -63,8 +63,7 @@
   }
 
   svg {
-    fill: currentColor;
-    @apply w-6;
+    @apply w-6 fill-current;
   }
 
   input[type='radio'],
