@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import { MenuAlt4Icon, XIcon, ShoppingCartIcon } from '@heroicons/react/solid'
-import ButtonLink from './ButtonLink'
 import SignInSignOutArea from './SignInSignOutArea'
 
 type NavigationProps = {
@@ -62,17 +61,21 @@ const Navigation = ({ cart }: NavigationProps) => {
           <a className='text-xl font-bold md:text-4xl'>SML Eats</a>
         </Link>
 
-        <ButtonLink href='/delivery-details'>Delivery details</ButtonLink>
-        <ButtonLink href='/search'>Search</ButtonLink>
+        <Link href='/delivery-details'>
+          <a className='button'>Delivery details</a>
+        </Link>
+
+        <Link href='/search'>
+          <a className='button'>Search</a>
+        </Link>
 
         {showCartButton && (
-          <ButtonLink
-            href='/cart'
-            className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static'
-          >
-            <ShoppingCartIcon />
-            <span>Cart • {totalQuantity}</span>
-          </ButtonLink>
+          <Link href='/cart'>
+            <a className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static button'>
+              <ShoppingCartIcon />
+              <span>Cart • {totalQuantity}</span>
+            </a>
+          </Link>
         )}
 
         <SignInSignOutArea />

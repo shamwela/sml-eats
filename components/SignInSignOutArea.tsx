@@ -1,6 +1,6 @@
 import { auth, signOut } from 'utilities/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import ButtonLink from './ButtonLink'
+import Link from 'next/link'
 
 const SignInSignOutArea = () => {
   const [user, loading, error] = useAuthState(auth)
@@ -10,7 +10,11 @@ const SignInSignOutArea = () => {
   if (user) {
     return <button onClick={signOut}>Sign out</button>
   } else {
-    return <ButtonLink href='/signin'>Sign in</ButtonLink>
+    return (
+      <Link href='/signin'>
+        <a className='button'>Sign in</a>
+      </Link>
+    )
   }
 }
 

@@ -27,20 +27,19 @@
     @apply text-3xl;
   }
 
-  button,
   img {
     @apply rounded-custom;
   }
 
   button,
-  [type='submit'],
+  .button,
   input {
     @apply px-4 py-2;
   }
 
   button,
-  [type='submit'] {
-    @apply bg-accent text-center text-white;
+  .button {
+    @apply rounded-custom bg-accent text-center text-white;
   }
 
   input[type='radio'] {

@@ -2,7 +2,6 @@ import type { CartItem } from 'types/cartItem'
 import { ChangeEvent } from 'react'
 import Head from 'components/Head'
 import Link from 'next/link'
-import ButtonLink from 'components/ButtonLink'
 
 const zeroToHundred = Array.from(Array(100).keys())
 
@@ -32,7 +31,9 @@ const Cart = ({
         {cart.length === 0 ? (
           <>
             <h1>Your cart is empty.</h1>
-            <ButtonLink href='/'>Find food</ButtonLink>
+            <Link href='/'>
+              <a className='button'>Find food</a>
+            </Link>
           </>
         ) : (
           <>
@@ -70,7 +71,9 @@ const Cart = ({
                 </section>
               )
             )}
-            <ButtonLink href='/checkout'>Go to checkout (${checkoutPrice})</ButtonLink>
+            <Link href='/checkout'>
+              <a className='button'>Go to checkout (${checkoutPrice})</a>
+            </Link>
           </>
         )}
       </div>
