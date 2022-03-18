@@ -13,6 +13,7 @@ const SignIn = () => {
     <>
       <Head title='Sign in' />
 
+      <h1 className='self-center'>Sign in</h1>
       {loading && <LoadingPlaceholder />}
       {error && <p>There was an error. Please try again.</p>}
       <button onClick={signInWithGoogle}>Sign in with Google</button>
