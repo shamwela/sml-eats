@@ -44,7 +44,7 @@ const DeliveryDetails = () => {
           {!showAddressInput && (
             <>
               <span>
-                <strong>Address</strong>: {address}
+                <strong>Address</strong>: {!address ? 'Not set' : address}
               </span>
               <button
                 onClick={() => {
@@ -75,7 +75,8 @@ const DeliveryDetails = () => {
           {!showTimeInput && (
             <>
               <span>
-                <strong>Time</strong>: {formattedTime}
+                <strong>Time</strong>:{' '}
+                {!formattedTime ? 'Not set' : formattedTime}
               </span>
               <button onClick={() => setShowTimeInput(true)}>Change</button>
             </>
