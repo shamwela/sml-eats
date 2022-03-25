@@ -6,10 +6,10 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   switch (request.method) {
     case 'POST':
+      const slug = request.body.slug
       const something = await db
         .collection('favorite-restaurants')
-        .insertOne({ liked: true })
-      response.json(something)
+        .insertOne({ slug })
 
     case 'GET':
       const restaurants = await db
