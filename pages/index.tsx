@@ -7,17 +7,9 @@ import { restaurants } from 'data/restaurants'
 import { StarIcon } from '@heroicons/react/solid'
 
 const Home = () => {
-  const favorite = async () => {
-    await fetch('/api/restaurants', { method: 'POST' })
-    console.log('Favorited')
-  }
-
   return (
     <>
       <Head title='Order food online' />
-
-      <button onClick={favorite}>Favorite</button>
-
       <h2>Explore by category</h2>
       <ItemContainer>
         {categories.map(({ name, imageSource }) => {
