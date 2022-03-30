@@ -38,24 +38,12 @@ type RestaurantPageProps = {
 }
 
 const RestaurantPage = ({ restaurant }: RestaurantPageProps) => {
-  const { name: restaurantName, slug, rating, items } = restaurant
-
-  const favorite = () => {
-    fetch('/api/restaurants', {
-      method: 'POST',
-      body: JSON.stringify({ slug }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    console.log('Favorited')
-  }
+  const { name: restaurantName, rating, items } = restaurant
 
   return (
     <>
       <Head title={restaurantName} />
       <h1>{restaurantName}</h1>
-      <button onClick={favorite}>Favorite</button>
       <span>
         <strong>Rating</strong>: {rating}
       </span>
