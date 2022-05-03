@@ -1,0 +1,34 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Restaurant {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String
+  category    String
+  rating      Decimal
+  imageSource String
+  items       Item[]
+}
+
+model Item {
+  id          String @id @default(cuid())
+  name        String
+  slug        String
+  path        String
+  imageSource String
+
+  description  String
+  category     String
+  basePrice    Int
+  Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
+  restaurantId String?
+}
