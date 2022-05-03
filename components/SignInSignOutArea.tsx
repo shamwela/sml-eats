@@ -1,21 +1,23 @@
-import { auth, signOut } from 'utilities/firebase'
+import { auth, signOut, signInWithGoogle } from 'utilities/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import Link from 'next/link'
 
 const SignInSignOutArea = () => {
-  const [user, loading, error] = useAuthState(auth)
-
-  if (loading || error) return null
+  let [user, loading, error] = useAuthState(auth)
 
   if (user) {
     return <button onClick={signOut}>Sign out</button>
-  } else {
+  }
+  if (loading) {
+    return null
+  }
+  if (error) {
     return (
-      <Link href='/signin'>
-        <a className='button'>Sign in</a>
-      </Link>
+      <p className='text-red-500'>
+        Sorry, something went wrong with our servers. Please try again later.
+      </p>
     )
   }
+  return <button onClick={signInWithGoogle}>Continue with Google</button>
 }
 
 export default SignInSignOutArea
