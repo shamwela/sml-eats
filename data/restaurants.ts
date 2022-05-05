@@ -1,7 +1,6 @@
 import BBQPorkDeluxeImage from 'public/images/bbq-pork-deluxe.jpeg'
 import IcedCoffeeImage from 'public/images/iced-coffee.webp'
 import ButterCroissantImage from 'public/images/butter-croissant.webp'
-import type { Restaurant } from 'types/restaurant'
 import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
 import StarbucksImage from 'public/images/starbucks.webp'
 import ThePizzaCompanyImage from 'public/images/the-pizza-company.webp'
@@ -14,7 +13,7 @@ import BaskinRobbinsImage from 'public/images/baskin-robbins.webp'
 import OneScoopSundaeImage from 'public/images/1-scoop-sundae.webp'
 import TwoScoopSundaeImage from 'public/images/2-scoop-sundae.webp'
 
-export const restaurants: Restaurant[] = [
+export const restaurants = [
   {
     name: 'The Pizza Company',
     slug: 'the-pizza-company',
