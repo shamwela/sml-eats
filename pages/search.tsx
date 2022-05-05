@@ -3,17 +3,37 @@ import type { ChangeEvent } from 'react'
 import Head from 'components/Head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { restaurants } from 'data/restaurants'
 import { useRouter } from 'next/router'
-import type { Restaurant } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
+import { InferGetStaticPropsType } from 'next'
+import type { Restaurant, Item } from '@prisma/client'
 
-const Search = () => {
+const prisma = new PrismaClient()
+
+export const getStaticProps = async () => {
+  const restaurants = await prisma.restaurant.findMany({
+    include: { items: true },
+  })
+  return {
+    props: { restaurants },
+  }
+}
+
+const Search = ({
+  restaurants,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter()
   let query = ''
   if (typeof router.query.query === 'string') {
     query = router.query.query.trim()
   }
-  const [results, setResults] = useState<Restaurant[]>([])
+
+  // The type of Restaurant that contains items
+  const [results, setResults] = useState<
+    (Restaurant & {
+      items: Item[]
+    })[]
+  >([])
 
   useEffect(() => {
     // If there's no query, don't show any results
@@ -53,7 +73,7 @@ const Search = () => {
     })
 
     setResults(finalRestaurants)
-  }, [query])
+  }, [query, restaurants])
 
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value
