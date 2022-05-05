@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from 'react'
 import type { Option } from 'types/option'
 import Head from 'components/Head'
 import Order from 'components/Order'
-import { Item, PrismaClient } from '@prisma/client'
+import { Item, PrismaClient, Prisma } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -61,14 +61,16 @@ type ItemPageProps = {
 
 const ItemPage = ({ item, addItem }: ItemPageProps) => {
   const { imageSource, description, basePrice, name } = item
-  const options = item.options ?? []
-  console.log(options)
+  const options = item.options as Prisma.JsonArray
 
   const initialSelectedOptions: Option[] = options.map((option) => {
+    // @ts-ignore
     const name = option.name
 
     // Items with zero additional price should be the initial selected options
+    // @ts-ignore
     const inputs = option.inputs.filter((input) => input.additionalPrice === 0)
+
     return { name, inputs }
   })
 
@@ -127,13 +129,17 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
 
         {options.map((option) => {
           return (
+            // @ts-ignore
             <div key={option.name} className='flex flex-col gap-4'>
+              {/* @ts-ignore */}
               <h2>Choose {option.name}</h2>
+              {/* @ts-ignore */}
               {option.inputs.map(({ name, additionalPrice }) => {
                 return (
                   <div key={name} className='flex items-center gap-x-4'>
                     <input
                       key={name}
+                      //  @ts-ignore
                       name={option.name}
                       id={name}
                       value={additionalPrice}
@@ -153,6 +159,7 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
         })}
 
         <Order
+          // @ts-ignore
           item={item}
           oneItemPrice={oneItemPrice}
           addItem={addItem}
