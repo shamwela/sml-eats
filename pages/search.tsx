@@ -3,9 +3,9 @@ import type { ChangeEvent } from 'react'
 import Head from 'components/Head'
 import Image from 'next/image'
 import Link from 'next/link'
-import type { Restaurant } from 'types/restaurant'
 import { restaurants } from 'data/restaurants'
 import { useRouter } from 'next/router'
+import type { Restaurant } from '@prisma/client'
 
 const Search = () => {
   const router = useRouter()
