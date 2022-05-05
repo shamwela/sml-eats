@@ -1,11 +1,13 @@
 import Head from 'components/Head'
-import Image from 'next/image'
 import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
-import type { Restaurant } from 'types/restaurant'
-import { restaurants } from 'data/restaurants'
+import { PrismaClient } from '@prisma/client'
+import { InferGetStaticPropsType } from 'next'
 
-export const getStaticPaths = () => {
+const prisma = new PrismaClient()
+
+export const getStaticPaths = async () => {
+  const restaurants = await prisma.restaurant.findMany()
   const paths = restaurants.map(({ slug }) => {
     const path = {
       params: {
@@ -22,8 +24,11 @@ export const getStaticPaths = () => {
   }
 }
 
-export const getStaticProps = (context: { params: { slug: string } }) => {
+export const getStaticProps = async (context: any) => {
   const currentPageSlug = context.params.slug
+  const restaurants = await prisma.restaurant.findMany({
+    include: { items: true },
+  })
   const restaurant = restaurants.find(({ slug }) => slug === currentPageSlug)
 
   return {
@@ -33,11 +38,13 @@ export const getStaticProps = (context: { params: { slug: string } }) => {
   }
 }
 
-type RestaurantPageProps = {
-  restaurant: Restaurant
-}
+const RestaurantPage = ({
+  restaurant,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  if (!restaurant) {
+    return <p>Sorry. This restaurant isn't found.</p>
+  }
 
-const RestaurantPage = ({ restaurant }: RestaurantPageProps) => {
   const { name: restaurantName, rating, items } = restaurant
 
   return (
@@ -53,7 +60,7 @@ const RestaurantPage = ({ restaurant }: RestaurantPageProps) => {
             <Link key={path} href={path}>
               <a>
                 <section className='flex flex-col'>
-                  <Image alt={name} src={imageSource} placeholder='blur' />
+                  <img alt={name} src={imageSource} />
                   <span>{name}</span>
                   <span>${basePrice}</span>
                 </section>

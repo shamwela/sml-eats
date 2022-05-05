@@ -1,16 +1,18 @@
-import { restaurants } from 'data/restaurants'
 import type { AddItem } from 'types/addItem'
-import type { Item } from 'types/item'
-import Image from 'next/image'
 import { ChangeEvent, useState } from 'react'
 import type { Option } from 'types/option'
 import Head from 'components/Head'
 import Order from 'components/Order'
+import { Item, PrismaClient } from '@prisma/client'
 
-export const getStaticPaths = () => {
+const prisma = new PrismaClient()
+
+export const getStaticPaths = async () => {
   // This type is just inferred from usage. Don't worry.
   let paths: { params: { slug: string[] } }[] = []
-
+  const restaurants = await prisma.restaurant.findMany({
+    include: { items: true },
+  })
   restaurants.forEach((restaurant) => {
     restaurant.items.forEach((item) => {
       const slugArray = [restaurant.slug, item.slug]
@@ -31,7 +33,12 @@ export const getStaticPaths = () => {
   }
 }
 
-export const getStaticProps = (context: { params: { slug: string[] } }) => {
+export const getStaticProps = async (context: {
+  params: { slug: string[] }
+}) => {
+  const restaurants = await prisma.restaurant.findMany({
+    include: { items: true },
+  })
   const items = restaurants.map((restaurant) => restaurant.items).flat()
 
   // For example, ['the-pizza-company', 'seafood-cocktail']
@@ -55,6 +62,7 @@ type ItemPageProps = {
 const ItemPage = ({ item, addItem }: ItemPageProps) => {
   const { imageSource, description, basePrice, name } = item
   const options = item.options ?? []
+  console.log(options)
 
   const initialSelectedOptions: Option[] = options.map((option) => {
     const name = option.name
@@ -111,7 +119,7 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
 
       <section className='mx-auto flex max-w-md flex-col gap-4'>
         <div className='max-w-md'>
-          <Image alt={name} src={imageSource} placeholder='blur' />
+          <img alt={name} src={imageSource} />
         </div>
         <h1>{name}</h1>
         <span>{description}</span>
