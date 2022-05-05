@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { PrismaClient } from '@prisma/client'
 import { InferGetStaticPropsType } from 'next'
-import type { Restaurant, Item } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -28,12 +27,7 @@ const Search = ({
     query = router.query.query.trim()
   }
 
-  // The type of Restaurant that contains items
-  const [results, setResults] = useState<
-    (Restaurant & {
-      items: Item[]
-    })[]
-  >([])
+  const [results, setResults] = useState<typeof restaurants>([])
 
   useEffect(() => {
     // If there's no query, don't show any results
