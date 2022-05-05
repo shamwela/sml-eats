@@ -10,25 +10,25 @@ datasource db {
 }
 
 model Restaurant {
-  id          String  @id @default(cuid())
+  id          String @id @default(cuid())
   name        String
   slug        String
   category    String
-  rating      Decimal
+  rating      Float
   imageSource String
   items       Item[]
 }
 
 model Item {
-  id          String @id @default(cuid())
-  name        String
-  slug        String
-  path        String
-  imageSource String
-
+  id           String      @id @default(cuid())
+  name         String
+  slug         String
+  path         String
+  imageSource  String
   description  String
   category     String
   basePrice    Int
+  options      Json?
   Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
   restaurantId String?
 }

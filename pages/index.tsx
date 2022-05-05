@@ -3,10 +3,22 @@ import Image from 'next/image'
 import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
 import { categories } from 'data/categories'
-import { restaurants } from 'data/restaurants'
 import { StarIcon } from '@heroicons/react/solid'
+import { PrismaClient } from '@prisma/client'
+import { InferGetStaticPropsType } from 'next'
 
-const Home = () => {
+const prisma = new PrismaClient()
+
+export const getStaticProps = async () => {
+  const restaurants = await prisma.restaurant.findMany()
+  return {
+    props: { restaurants },
+  }
+}
+
+const Home = ({
+  restaurants,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head title='Order food online' />
@@ -39,7 +51,7 @@ const Home = () => {
             <Link key={slug} href={`/restaurants/${slug}`}>
               <a>
                 <section className='flex flex-col gap-y-1'>
-                  <Image src={imageSource} alt={name} placeholder='blur' />
+                  <img alt={name} src={imageSource} />
 
                   <div className='flex justify-between items-start'>
                     <span>{name}</span>
