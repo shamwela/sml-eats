@@ -4,12 +4,11 @@ A food delivery app
 
 https://smleats.vercel.app
 
-## Technologies used
+## Tech stack
 
+- MySQL on PlanetScale
+- Others on Vercel
+- Prisma
 - Next.js
 - TypeScript
 - Tailwind CSS
-- ESLint
-- Prettier
-- Vercel
-- and more.
