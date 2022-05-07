@@ -1,7 +1,7 @@
 import NextImage from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import type { ImageProps } from 'next/image'
-import reactImageSize from 'react-image-size'
+const reactImageSize = require('react-image-size') // used require because there's no type for this package
 
 const Image = (props: ImageProps) => {
   const { src } = props
