@@ -4,6 +4,7 @@ import type { Option } from 'types/option'
 import Head from 'components/Head'
 import Order from 'components/Order'
 import { Item, PrismaClient, Prisma } from '@prisma/client'
+import Image from 'components/Image'
 
 const prisma = new PrismaClient()
 
@@ -121,7 +122,7 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
 
       <section className='mx-auto flex max-w-md flex-col gap-4'>
         <div className='max-w-md'>
-          <img alt={name} src={imageSource} />
+          <Image alt={name} src={imageSource} />
         </div>
         <h1>{name}</h1>
         <span>{description}</span>

@@ -1,23 +1,18 @@
-import CoffeeImage from 'public/images/coffee.png'
-import PizzaImage from 'public/images/pizza.png'
-import FastFoodImage from 'public/images/fast-food.png'
-import DessertImage from 'public/images/dessert.png'
-
 export const categories = [
   {
     name: 'Pizza',
-    imageSource: PizzaImage,
+    imageSource: '/images/pizza.png',
   },
   {
     name: 'Coffee',
-    imageSource: CoffeeImage,
+    imageSource: '/images/coffee.png',
   },
   {
     name: 'Fast food',
-    imageSource: FastFoodImage,
+    imageSource: '/images/fast-food.png',
   },
   {
     name: 'Dessert',
-    imageSource: DessertImage,
+    imageSource: '/images/dessert.png',
   },
 ]

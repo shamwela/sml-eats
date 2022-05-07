@@ -1,5 +1,6 @@
 import Head from 'components/Head'
-import Image from 'next/image'
+import Image from 'components/Image'
+import NextImage from 'next/image'
 import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
 import { categories } from 'data/categories'
@@ -31,10 +32,12 @@ const Home = ({
               <a>
                 <section className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation justify-center'>
                   <span className='self-center'>{name}</span>
-                  <Image
+                  <NextImage
                     alt={name}
                     src={imageSource}
-                    placeholder='blur'
+                    width={144}
+                    height={168}
+                    priority
                     className='object-contain'
                   />
                 </section>
@@ -51,8 +54,7 @@ const Home = ({
             <Link key={slug} href={`/restaurants/${slug}`}>
               <a>
                 <section className='flex flex-col gap-y-1'>
-                  <img alt={name} src={imageSource} />
-
+                  <Image alt={name} src={imageSource} />
                   <div className='flex justify-between items-start'>
                     <span>{name}</span>
                     <div className='flex items-center'>

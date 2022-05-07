@@ -3,6 +3,7 @@ import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
 import { PrismaClient } from '@prisma/client'
 import { InferGetStaticPropsType } from 'next'
+import Image from 'components/Image'
 
 const prisma = new PrismaClient()
 
@@ -60,7 +61,7 @@ const RestaurantPage = ({
             <Link key={path} href={path}>
               <a>
                 <section className='flex flex-col'>
-                  <img alt={name} src={imageSource} />
+                  <Image alt={name} src={imageSource} />
                   <span>{name}</span>
                   <span>${basePrice}</span>
                 </section>
