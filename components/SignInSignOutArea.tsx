@@ -2,7 +2,7 @@ import { auth, signOut, signInWithGoogle } from 'utilities/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
 const SignInSignOutArea = () => {
-  let [user, loading, error] = useAuthState(auth)
+  const [user, loading, error] = useAuthState(auth)
 
   if (user) {
     return <button onClick={signOut}>Sign out</button>
