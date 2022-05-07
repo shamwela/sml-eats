@@ -1,14 +1,17 @@
 import NextImage from 'next/image'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useLayoutEffect, useRef } from 'react'
 import type { ImageProps } from 'next/image'
 import reactImageSize from 'react-image-size'
 
 const Image = (props: ImageProps) => {
   const { src } = props
-  const width = useRef(0)
-  const height = useRef(0)
-  useEffect(() => {
+  const width = useRef<number | undefined>(0)
+  const height = useRef<number | undefined>(0)
+  useLayoutEffect(() => {
+    // If the src is a static import, width and height aren't needed
     if (typeof src !== 'string') {
+      width.current = undefined
+      height.current = undefined
       return
     }
     const getWidthAndHeight = async () => {
@@ -20,7 +23,7 @@ const Image = (props: ImageProps) => {
   }, [src])
 
   const [isLoading, setLoading] = useState(true)
-  let finalClassName = 'duration-700 ease-in-out group-hover:opacity-75 '
+  let finalClassName = 'duration-700 ease-in-out '
   if (isLoading) {
     finalClassName += 'scale-110 blur-2xl grayscale'
   } else {
