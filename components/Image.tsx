@@ -1,13 +1,16 @@
 import NextImage from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import type { ImageProps } from 'next/image'
-const reactImageSize = require('react-image-size') // used require because there's no type for this package
+import reactImageSize from 'react-image-size'
 
 const Image = (props: ImageProps) => {
   const { src } = props
-  const width = useRef(100)
-  const height = useRef(100)
+  const width = useRef(0)
+  const height = useRef(0)
   useEffect(() => {
+    if (typeof src !== 'string') {
+      return
+    }
     const getWidthAndHeight = async () => {
       const size = await reactImageSize(src)
       width.current = size.width
