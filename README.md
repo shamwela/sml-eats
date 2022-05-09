@@ -8,7 +8,7 @@ https://smleats.vercel.app
 
 - Database is MySQL and is hosted on PlanetScale
 - Authentication with Firebase
-- Front-end is hosted on Vercel
+- Front-end and back-end are hosted on Vercel
 - ORM is Prisma
 - Full-stack framework is Next.js
 - Static types with TypeScript
