@@ -76,11 +76,9 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
   const options = item.options
 
   const initialSelectedOptions: Option[] = options.map((option) => {
-    // @ts-ignore
     const name = option.name
 
     // Items with zero additional price should be the initial selected options
-    // @ts-ignore
     const inputs = option.inputs.filter((input) => input.additionalPrice === 0)
 
     return { name, inputs }
@@ -146,17 +144,13 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
 
         {options.map((option) => {
           return (
-            // @ts-ignore
             <div key={option.name} className='flex flex-col gap-4'>
-              {/* @ts-ignore */}
               <h2>Choose {option.name}</h2>
-              {/* @ts-ignore */}
               {option.inputs.map(({ name, additionalPrice }) => {
                 return (
                   <div key={name} className='flex items-center gap-x-4'>
                     <input
                       key={name}
-                      //  @ts-ignore
                       name={option.name}
                       id={name}
                       value={additionalPrice}
@@ -176,7 +170,6 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
         })}
 
         <Order
-          // @ts-ignore
           item={item}
           oneItemPrice={oneItemPrice}
           addItem={addItem}
