@@ -3,8 +3,8 @@ import { ChangeEvent, useState } from 'react'
 import type { Option } from 'types/option'
 import Head from 'components/Head'
 import Order from 'components/Order'
-import { Item, PrismaClient, Prisma } from '@prisma/client'
-import Image from 'components/Image'
+import { Item, PrismaClient } from '@prisma/client'
+import Image from 'next/image'
 
 const prisma = new PrismaClient()
 
@@ -38,7 +38,17 @@ export const getStaticProps = async (context: {
   params: { slug: string[] }
 }) => {
   const restaurants = await prisma.restaurant.findMany({
-    include: { items: true },
+    include: {
+      items: {
+        include: {
+          options: {
+            include: {
+              inputs: true,
+            },
+          },
+        },
+      },
+    },
   })
   const items = restaurants.map((restaurant) => restaurant.items).flat()
 
@@ -61,8 +71,9 @@ type ItemPageProps = {
 }
 
 const ItemPage = ({ item, addItem }: ItemPageProps) => {
-  const { imageSource, description, basePrice, name } = item
-  const options = item.options as Prisma.JsonArray
+  const { imageSource, imageWidth, imageHeight, description, basePrice, name } =
+    item
+  const options = item.options
 
   const initialSelectedOptions: Option[] = options.map((option) => {
     // @ts-ignore
@@ -122,7 +133,12 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
 
       <section className='mx-auto flex max-w-md flex-col gap-4'>
         <div className='max-w-md'>
-          <Image alt={name} src={imageSource} />
+          <Image
+            alt={name}
+            src={imageSource}
+            width={imageWidth}
+            height={imageHeight}
+          />
         </div>
         <h1>{name}</h1>
         <span>{description}</span>

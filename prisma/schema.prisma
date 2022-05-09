@@ -1,21 +1,24 @@
-generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["referentialIntegrity"]
-}
-
 datasource db {
   provider             = "mysql"
   url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
 }
 
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
 model Restaurant {
-  id          String @id @default(cuid())
+  id          String   @id @default(cuid())
   name        String
   slug        String
-  category    String
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  String
   rating      Float
   imageSource String
+  imageWidth  Int
+  imageHeight Int
   items       Item[]
 }
 
@@ -25,10 +28,39 @@ model Item {
   slug         String
   path         String
   imageSource  String
+  imageWidth   Int
+  imageHeight  Int
   description  String
-  category     String
-  basePrice    Int
-  options      Json?
+  category     Category    @relation(fields: [categoryId], references: [id])
+  basePrice    Float
+  options      Option[]
   Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
   restaurantId String?
+  categoryId   String
+}
+
+model Option {
+  id     String  @id @default(cuid())
+  name   String
+  inputs Input[]
+  Item   Item?   @relation(fields: [itemId], references: [id])
+  itemId String?
+}
+
+model Input {
+  id              String  @id @default(cuid())
+  name            String
+  additionalPrice Float
+  Option          Option? @relation(fields: [optionId], references: [id])
+  optionId        String?
+}
+
+model Category {
+  id          String       @id @default(cuid())
+  name        String
+  imageSource String
+  imageWidth  Int
+  imageHeight Int
+  Restaurant  Restaurant[]
+  Item        Item[]
 }

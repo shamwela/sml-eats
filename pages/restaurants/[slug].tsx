@@ -3,7 +3,7 @@ import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
 import { PrismaClient } from '@prisma/client'
 import { InferGetStaticPropsType } from 'next'
-import Image from 'components/Image'
+import Image from 'next/image'
 
 const prisma = new PrismaClient()
 
@@ -56,19 +56,26 @@ const RestaurantPage = ({
         <strong>Rating</strong>: {rating}
       </span>
       <ItemContainer>
-        {items.map(({ name, path, imageSource, basePrice }) => {
-          return (
-            <Link key={path} href={path}>
-              <a>
-                <section className='flex flex-col'>
-                  <Image alt={name} src={imageSource} />
-                  <span>{name}</span>
-                  <span>${basePrice}</span>
-                </section>
-              </a>
-            </Link>
-          )
-        })}
+        {items.map(
+          ({ name, path, imageSource, imageWidth, imageHeight, basePrice }) => {
+            return (
+              <Link key={path} href={path}>
+                <a>
+                  <section className='flex flex-col'>
+                    <Image
+                      alt={name}
+                      src={imageSource}
+                      width={imageWidth}
+                      height={imageHeight}
+                    />
+                    <span>{name}</span>
+                    <span>${basePrice}</span>
+                  </section>
+                </a>
+              </Link>
+            )
+          }
+        )}
       </ItemContainer>
     </>
   )

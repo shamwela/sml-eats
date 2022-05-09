@@ -48,30 +48,32 @@ const Home = ({
 
       <h2>Popular near you</h2>
       <ItemContainer>
-        {restaurants.map(({ name, slug, rating, imageSource }) => {
-          return (
-            <Link key={slug} href={`/restaurants/${slug}`}>
-              <a>
-                <section className='flex flex-col gap-y-1'>
-                  <Image
-                    alt={name}
-                    src={imageSource}
-                    width={550}
-                    height={440}
-                    priority
-                  />
-                  <div className='flex justify-between items-start'>
-                    <span>{name}</span>
-                    <div className='flex items-center'>
-                      <StarIcon />
-                      <span>{rating}</span>
+        {restaurants.map(
+          ({ name, slug, rating, imageSource, imageWidth, imageHeight }) => {
+            return (
+              <Link key={slug} href={`/restaurants/${slug}`}>
+                <a>
+                  <section className='flex flex-col gap-y-1'>
+                    <Image
+                      alt={name}
+                      src={imageSource}
+                      width={imageWidth}
+                      height={imageHeight}
+                      priority
+                    />
+                    <div className='flex justify-between items-start'>
+                      <span>{name}</span>
+                      <div className='flex items-center'>
+                        <StarIcon />
+                        <span>{rating}</span>
+                      </div>
                     </div>
-                  </div>
-                </section>
-              </a>
-            </Link>
-          )
-        })}
+                  </section>
+                </a>
+              </Link>
+            )
+          }
+        )}
       </ItemContainer>
     </>
   )
