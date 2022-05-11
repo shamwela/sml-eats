@@ -13,13 +13,16 @@ model Restaurant {
   id          String   @id @default(cuid())
   name        String
   slug        String
-  category    Category @relation(fields: [categoryId], references: [id])
-  categoryId  String
   rating      Float
   imageSource String
   imageWidth  Int
   imageHeight Int
   items       Item[]
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  String
+
+  // Adding index to foreign keys improves performance
+  @@index([categoryId])
 }
 
 model Item {
@@ -31,12 +34,15 @@ model Item {
   imageWidth   Int
   imageHeight  Int
   description  String
-  category     Category    @relation(fields: [categoryId], references: [id])
   basePrice    Float
   options      Option[]
   Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
   restaurantId String?
+  category     Category    @relation(fields: [categoryId], references: [id])
   categoryId   String
+
+  @@index([restaurantId])
+  @@index([categoryId])
 }
 
 model Option {
@@ -45,6 +51,8 @@ model Option {
   inputs Input[]
   Item   Item?   @relation(fields: [itemId], references: [id])
   itemId String?
+
+  @@index([itemId])
 }
 
 model Input {
@@ -53,6 +61,8 @@ model Input {
   additionalPrice Float
   Option          Option? @relation(fields: [optionId], references: [id])
   optionId        String?
+
+  @@index([optionId])
 }
 
 model Category {
