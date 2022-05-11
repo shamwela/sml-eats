@@ -1,6 +1,6 @@
-import { Category } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 
-export const categories: Category[] = [
+export const categories: Prisma.CategoryCreateInput[] = [
   {
     name: 'Pizza',
     imageSource: '/images/pizza.png',
