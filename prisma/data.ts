@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client'
 
-export const categories: Prisma.CategoryCreateInput[] = [
+export const categories: Prisma.CategoryCreateManyInput[] = [
   {
     name: 'Pizza',
     imageSource: '/images/pizza.png',
@@ -27,7 +27,7 @@ export const categories: Prisma.CategoryCreateInput[] = [
   },
 ]
 
-export const inputs = [
+export const inputs: Prisma.InputCreateManyInput[] = [
   // Coffee inputs, not pizza inputs
   {
     name: 'Small',
@@ -81,7 +81,7 @@ export const inputs = [
   },
 ]
 
-export const options: Prisma.OptionCreateInput[] = [
+export const options: Prisma.OptionCreateManyInput[] = [
   // The first option is Coffee Size, the last option is Pizza Size
   // A better way should be used later
   {
@@ -89,13 +89,32 @@ export const options: Prisma.OptionCreateInput[] = [
   },
   {
     name: 'Crust',
+    itemId: 1,
   },
   {
+    // Pizza Size
     name: 'Size',
+    itemId: 1,
   },
 ]
 
-export const restaurants = [
+export const items: Prisma.ItemCreateManyInput[] = [
+  {
+    name: 'Seafood Cocktail',
+    slug: 'seafood-cocktail',
+    path: '/restaurants/the-pizza-company/seafood-cocktail',
+    imageSource: '/images/seafood-cocktail.jpeg',
+    imageWidth: 1016,
+    imageHeight: 934,
+    description:
+      'Ingredients: pineapple, ham, fresh shrimp, crab sticks, thousand island sauce, and fresh prawns.',
+    categoryId: 1,
+    basePrice: 20,
+    restaurantId: 1,
+  },
+]
+
+export const restaurants: Prisma.RestaurantCreateManyInput[] = [
   {
     name: 'The Pizza Company',
     slug: 'the-pizza-company',

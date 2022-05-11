@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { categories, inputs, options, restaurants } from './data'
+import { categories, inputs, options, items, restaurants } from './data'
 
 const prisma = new PrismaClient()
 
@@ -8,12 +8,14 @@ const load = async () => {
     await prisma.category.deleteMany()
     await prisma.input.deleteMany()
     await prisma.option.deleteMany()
+    await prisma.item.deleteMany()
     await prisma.restaurant.deleteMany()
 
     // Reset auto increment to 1
     await prisma.$queryRaw`alter table Category auto_increment = 1`
     await prisma.$queryRaw`alter table Input auto_increment = 1`
     await prisma.$queryRaw`alter table Option auto_increment = 1`
+    await prisma.$queryRaw`alter table Item auto_increment = 1`
     await prisma.$queryRaw`alter table Restaurant auto_increment = 1`
 
     await prisma.category.createMany({
@@ -24,6 +26,9 @@ const load = async () => {
     })
     await prisma.option.createMany({
       data: options,
+    })
+    await prisma.item.createMany({
+      data: items,
     })
     await prisma.restaurant.createMany({
       data: restaurants,
