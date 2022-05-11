@@ -1,6 +1,6 @@
-const { Prisma } = require('@prisma/client')
+import { Category } from '@prisma/client'
 
-const categories = [
+export const categories: Category[] = [
   {
     name: 'Pizza',
     imageSource: '/images/pizza.png',
@@ -27,7 +27,7 @@ const categories = [
   },
 ]
 
-const restaurants = [
+export const restaurants = [
   {
     name: 'The Pizza Company',
     slug: 'the-pizza-company',
@@ -38,8 +38,3 @@ const restaurants = [
     imageHeight: 440,
   },
 ]
-
-module.exports = {
-  categories,
-  restaurants,
-}

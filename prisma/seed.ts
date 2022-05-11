@@ -1,6 +1,5 @@
-// @ts-ignore
-const { PrismaClient } = require('@prisma/client')
-const { categories, restaurants } = require('./data.ts')
+import { PrismaClient } from '@prisma/client'
+import { categories, restaurants } from './data'
 
 const prisma = new PrismaClient()
 
