@@ -27,6 +27,74 @@ export const categories: Prisma.CategoryCreateInput[] = [
   },
 ]
 
+export const inputs = [
+  // Coffee inputs, not pizza inputs
+  {
+    name: 'Small',
+    additionalPrice: 0,
+    optionId: 1,
+  },
+  {
+    name: 'Medium',
+    additionalPrice: 2,
+    optionId: 1,
+  },
+  {
+    name: 'Large',
+    additionalPrice: 4,
+    optionId: 1,
+  },
+  {
+    name: 'Crispy Thin',
+    additionalPrice: 0,
+    optionId: 2,
+  },
+  {
+    name: 'Pan',
+    additionalPrice: 2,
+    optionId: 2,
+  },
+  {
+    name: 'Extra Cheesy Sausage Bites',
+    additionalPrice: 3,
+    optionId: 2,
+  },
+  {
+    name: 'Extreme',
+    additionalPrice: 3,
+    optionId: 2,
+  },
+  {
+    name: 'Small',
+    additionalPrice: 0,
+    optionId: 3,
+  },
+  {
+    name: 'Medium',
+    additionalPrice: 3,
+    optionId: 3,
+  },
+  {
+    name: 'Large',
+    additionalPrice: 5,
+    optionId: 3,
+  },
+]
+
+export const options: Prisma.OptionCreateInput[] = [
+  // The first option is Coffee Size, the last option is Pizza Size
+  // A better way should be used later
+  {
+    name: 'Size',
+  },
+  {
+    name: 'Crust',
+  },
+  {
+    name: 'Size',
+  },
+]
+
 export const restaurants = [
   {
     name: 'The Pizza Company',
