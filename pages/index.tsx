@@ -2,9 +2,8 @@ import Head from 'components/Head'
 import Image from 'next/image'
 import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
-import { categories } from 'data/categories'
 import { StarIcon } from '@heroicons/react/solid'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, Restaurant } from '@prisma/client'
 import { InferGetStaticPropsType } from 'next'
 
 const prisma = new PrismaClient()
@@ -24,7 +23,7 @@ const Home = ({
       <Head title='Order food online' />
       <h2>Explore by category</h2>
       <ItemContainer>
-        {categories.map(({ name, imageSource }) => {
+        {/* {categories.map(({ name, imageSource }) => {
           const href = '/search?query=' + name.toLowerCase()
           return (
             <Link href={href} key={name}>
@@ -43,7 +42,7 @@ const Home = ({
               </a>
             </Link>
           )
-        })}
+        })} */}
       </ItemContainer>
 
       <h2>Popular near you</h2>

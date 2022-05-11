@@ -10,7 +10,7 @@ generator client {
 }
 
 model Restaurant {
-  id          String   @id @default(cuid())
+  id          Int      @id @default(autoincrement())
   name        String
   slug        String
   rating      Float
@@ -19,14 +19,14 @@ model Restaurant {
   imageHeight Int
   items       Item[]
   category    Category @relation(fields: [categoryId], references: [id])
-  categoryId  String
+  categoryId  Int
 
   // Adding index to foreign keys improves performance
   @@index([categoryId])
 }
 
 model Item {
-  id           String      @id @default(cuid())
+  id           Int         @id @default(autoincrement())
   name         String
   slug         String
   path         String
@@ -37,36 +37,36 @@ model Item {
   basePrice    Float
   options      Option[]
   Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
-  restaurantId String?
+  restaurantId Int?
   category     Category    @relation(fields: [categoryId], references: [id])
-  categoryId   String
+  categoryId   Int
 
   @@index([restaurantId])
   @@index([categoryId])
 }
 
 model Option {
-  id     String  @id @default(cuid())
+  id     Int     @id @default(autoincrement())
   name   String
   inputs Input[]
   Item   Item?   @relation(fields: [itemId], references: [id])
-  itemId String?
+  itemId Int?
 
   @@index([itemId])
 }
 
 model Input {
-  id              String  @id @default(cuid())
+  id              Int     @id @default(autoincrement())
   name            String
   additionalPrice Float
   Option          Option? @relation(fields: [optionId], references: [id])
-  optionId        String?
+  optionId        Int?
 
   @@index([optionId])
 }
 
 model Category {
-  id          String       @id @default(cuid())
+  id          Int          @id @default(autoincrement())
   name        String
   imageSource String
   imageWidth  Int

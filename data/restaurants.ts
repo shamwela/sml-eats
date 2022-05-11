@@ -13,7 +13,7 @@ import BaskinRobbinsImage from 'public/images/baskin-robbins.webp'
 import OneScoopSundaeImage from 'public/images/1-scoop-sundae.webp'
 import TwoScoopSundaeImage from 'public/images/2-scoop-sundae.webp'
 
-export const restaurants = [
+const restaurants = [
   {
     name: 'The Pizza Company',
     slug: 'the-pizza-company',
