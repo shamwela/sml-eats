@@ -69,14 +69,14 @@ const Navigation = ({ cart }: NavigationProps) => {
           <a className='button'>Search</a>
         </Link>
 
-        {showCartButton && (
+        {showCartButton ? (
           <Link href='/cart'>
             <a className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static button'>
               <ShoppingCartIcon />
               <span>Cart • {totalQuantity}</span>
             </a>
           </Link>
-        )}
+        ) : null}
 
         <SignInSignOutArea />
       </div>

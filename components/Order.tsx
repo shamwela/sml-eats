@@ -1,10 +1,9 @@
-import type { Item } from 'types/item'
 import type { AddItem } from 'types/addItem'
 import { useState } from 'react'
 import type { CartItem } from 'types/cartItem'
-import type { Option } from 'types/option'
 import { useRouter } from 'next/router'
 import { MinusIcon, PlusIcon } from '@heroicons/react/solid'
+import type { Item, Option } from '@prisma/client'
 
 type OrderProps = {
   item: Item

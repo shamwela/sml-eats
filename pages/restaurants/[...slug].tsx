@@ -1,9 +1,8 @@
 import type { AddItem } from 'types/addItem'
 import { ChangeEvent, useState } from 'react'
-import type { Option } from 'types/option'
 import Head from 'components/Head'
 import Order from 'components/Order'
-import { Item, PrismaClient } from '@prisma/client'
+import { Item, Option, Input, PrismaClient } from '@prisma/client'
 import Image from 'next/image'
 
 const prisma = new PrismaClient()
@@ -65,17 +64,23 @@ export const getStaticProps = async (context: {
   }
 }
 
-type ItemPageProps = {
-  item: Item
+const ItemPage = ({
+  item,
+  addItem,
+}: {
+  // This type is inferred from the return value of getStaticProps
+  item: Item & {
+    options: (Option & {
+      inputs: Input[]
+    })[]
+  }
   addItem: AddItem
-}
-
-const ItemPage = ({ item, addItem }: ItemPageProps) => {
+}) => {
   const { imageSource, imageWidth, imageHeight, description, basePrice, name } =
     item
   const options = item.options
 
-  const initialSelectedOptions: Option[] = options.map((option) => {
+  const initialSelectedOptions = options.map((option) => {
     const name = option.name
 
     // Items with zero additional price should be the initial selected options
@@ -104,7 +109,7 @@ const ItemPage = ({ item, addItem }: ItemPageProps) => {
       value: additionalPrice,
     } = event.target
 
-    const newSelectedOptions: Option[] = selectedOptions.map(
+    const newSelectedOptions = selectedOptions.map(
       (selectedOption) => {
         if (selectedOption.name !== optionName) {
           return selectedOption

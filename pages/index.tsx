@@ -3,19 +3,21 @@ import Image from 'next/image'
 import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
 import { StarIcon } from '@heroicons/react/solid'
-import { PrismaClient, Restaurant } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import { InferGetStaticPropsType } from 'next'
 
 const prisma = new PrismaClient()
 
 export const getStaticProps = async () => {
+  const categories = await prisma.category.findMany()
   const restaurants = await prisma.restaurant.findMany()
   return {
-    props: { restaurants },
+    props: { categories, restaurants },
   }
 }
 
 const Home = ({
+  categories,
   restaurants,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -23,7 +25,7 @@ const Home = ({
       <Head title='Order food online' />
       <h2>Explore by category</h2>
       <ItemContainer>
-        {/* {categories.map(({ name, imageSource }) => {
+        {categories.map(({ name, imageSource, imageWidth, imageHeight }) => {
           const href = '/search?query=' + name.toLowerCase()
           return (
             <Link href={href} key={name}>
@@ -33,8 +35,8 @@ const Home = ({
                   <Image
                     alt={name}
                     src={imageSource}
-                    width={144}
-                    height={168}
+                    width={imageWidth}
+                    height={imageHeight}
                     priority
                     className='object-contain'
                   />
@@ -42,7 +44,7 @@ const Home = ({
               </a>
             </Link>
           )
-        })} */}
+        })}
       </ItemContainer>
 
       <h2>Popular near you</h2>
