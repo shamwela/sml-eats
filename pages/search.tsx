@@ -11,7 +11,7 @@ const prisma = new PrismaClient()
 
 export const getStaticProps = async () => {
   const restaurants = await prisma.restaurant.findMany({
-    include: { items: true },
+    include: { category: true, items: { include: { category: true } } },
   })
   return {
     props: { restaurants },
@@ -40,7 +40,7 @@ const Search = ({
       const { name, category } = restaurant
 
       const matchesName = name.toLowerCase().includes(query.toLowerCase())
-      const matchesCategory = category
+      const matchesCategory = category.name
         .toLowerCase()
         .includes(query.toLowerCase())
 
@@ -54,7 +54,7 @@ const Search = ({
         const { name, category } = item
 
         const matchesName = name.toLowerCase().includes(query.toLowerCase())
-        const matchesCategory = category
+        const matchesCategory = category.name
           .toLowerCase()
           .includes(query.toLowerCase())
 
@@ -99,7 +99,7 @@ const Search = ({
                 <section className='flex flex-col gap-y-2'>
                   <Image alt={name} src={imageSource} placeholder='blur' />
                   <span className='font-bold'>{name}</span>
-                  <span>Category: {category}</span>
+                  <span>Category: {category.name}</span>
                 </section>
               </a>
             </Link>

@@ -3,13 +3,13 @@ import { useState } from 'react'
 import type { CartItem } from 'types/cartItem'
 import { useRouter } from 'next/router'
 import { MinusIcon, PlusIcon } from '@heroicons/react/solid'
-import type { Item, Option } from '@prisma/client'
+import type { Item, Option, Input } from '@prisma/client'
 
 type OrderProps = {
   item: Item
   oneItemPrice: number
   addItem: AddItem
-  selectedOptions: Option[]
+  selectedOptions: (Option & { inputs: Input[] })[]
 }
 
 const Order = ({

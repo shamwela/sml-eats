@@ -81,12 +81,10 @@ const ItemPage = ({
   const options = item.options
 
   const initialSelectedOptions = options.map((option) => {
-    const name = option.name
-
     // Items with zero additional price should be the initial selected options
     const inputs = option.inputs.filter((input) => input.additionalPrice === 0)
-
-    return { name, inputs }
+    option.inputs = inputs
+    return option
   })
 
   const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions)
@@ -103,29 +101,16 @@ const ItemPage = ({
   const oneItemPrice = basePrice + additionalPrice
 
   const eventHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const {
-      name: optionName,
-      id: inputName,
-      value: additionalPrice,
-    } = event.target
+    const { name: optionName } = event.target
 
-    const newSelectedOptions = selectedOptions.map(
-      (selectedOption) => {
-        if (selectedOption.name !== optionName) {
-          return selectedOption
-        } else {
-          return {
-            name: optionName,
-            inputs: [
-              {
-                name: inputName,
-                additionalPrice: Number(additionalPrice),
-              },
-            ],
-          }
-        }
+    const newSelectedOptions = selectedOptions.map((selectedOption) => {
+      if (selectedOption.name !== optionName) {
+        return selectedOption
+      } else {
+        selectedOption.name = optionName
+        return selectedOption
       }
-    )
+    })
 
     setSelectedOptions(newSelectedOptions)
   }
@@ -157,7 +142,6 @@ const ItemPage = ({
                     <input
                       key={name}
                       name={option.name}
-                      id={name}
                       value={additionalPrice}
                       onChange={eventHandler}
                       defaultChecked={additionalPrice === 0 && true}
