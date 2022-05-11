@@ -27,7 +27,12 @@ const Navigation = ({ cart }: NavigationProps) => {
   const { pathname } = useRouter()
   const isNotCartPage = pathname !== '/cart'
   const cartExists = cart.length > 0
-  const showCartButton = isNotCartPage && cartExists
+  
+  // This is the code to fix this issue (https://github.com/vercel/next.js/discussions/35773).
+  const [isSSR, setIsSSR] = useState(true)
+  useEffect(() => setIsSSR(false), [])
+
+  const showCartButton = isNotCartPage && cartExists && !isSSR
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'

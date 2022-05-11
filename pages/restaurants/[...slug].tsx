@@ -56,6 +56,7 @@ export const getStaticProps = async (context: {
   const item = items.find(
     ({ slug }) => slug === currentSlugArray[currentSlugArray.length - 1]
   )
+  console.log(item.options[0].inputs)
 
   return {
     props: {
@@ -76,9 +77,16 @@ const ItemPage = ({
   }
   addItem: AddItem
 }) => {
-  const { imageSource, imageWidth, imageHeight, description, basePrice, name } =
-    item
-  const options = item.options
+  const {
+    imageSource,
+    imageWidth,
+    imageHeight,
+    description,
+    basePrice,
+    name,
+    options,
+  } = item
+  console.log(options[0].inputs)
 
   const initialSelectedOptions = options.map((option) => {
     // Items with zero additional price should be the initial selected options
