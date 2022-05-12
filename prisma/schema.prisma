@@ -21,7 +21,7 @@ model Restaurant {
   category    Category @relation(fields: [categoryId], references: [id])
   categoryId  Int
 
-  // Adding index to foreign keys improves performance
+  // Adding index to foreign keys make it faster and cheaper to query
   @@index([categoryId])
 }
 
