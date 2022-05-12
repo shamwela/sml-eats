@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 const Profile = () => {
   const [user, loading, error] = useAuthState(auth)
   const router = useRouter()
-  
+
   useEffect(() => {
     if (!user) {
       router.push('/')
@@ -19,14 +19,20 @@ const Profile = () => {
     <>
       <Head title='Profile' />
 
-      {loading && <LoadingPlaceholder />}
-      {error && <p>There was an error. Please try again.</p>}
-      {user && (
-        <>
-          <span>Name: {user.displayName}</span>
-          <span>Email: {user.email}</span>
-        </>
-      )}
+      {(() => {
+        if (user) {
+          return (
+            <>
+              <span>Name: {user.displayName}</span>
+              <span>Email: {user.email}</span>
+            </>
+          )
+        } else if (loading) {
+          return <LoadingPlaceholder />
+        } else if (error) {
+          alert(error)
+        }
+      })()}
     </>
   )
 }
