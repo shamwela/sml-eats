@@ -11,7 +11,10 @@ const prisma = new PrismaClient()
 
 export const getStaticProps = async () => {
   const restaurants = await prisma.restaurant.findMany({
-    include: { category: true, items: { include: { category: true } } },
+    include: {
+      category: true,
+      items: { include: { category: true } },
+    },
   })
   return {
     props: { restaurants },
