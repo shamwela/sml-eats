@@ -44,12 +44,13 @@ export const getStaticProps = async (context: {
   params: { slug: string[] }
 }) => {
   // For example, ['the-pizza-company', 'seafood-cocktail']
-  const currentSlugArray = context.params.slug
-  const currentSlug = currentSlugArray[currentSlugArray.length - 1]
+  const slugArray = context.params.slug
+  // For example, 'seafood-cocktail'
+  const itemSlug = slugArray[1]
 
   const item = await prisma.item.findUnique({
     where: {
-      slug: currentSlug,
+      slug: itemSlug,
     },
     include: {
       options: {
