@@ -146,27 +146,26 @@ const ItemPage = ({
         <span>Base price: ${basePrice}</span>
 
         {options.map((option) => {
+          const { id, name, inputs } = option
+
           return (
-            <div key={option.name} className='flex flex-col gap-4'>
-              <h2>Choose {option.name}</h2>
-              {option.inputs.map(({ name, additionalPrice }) => {
-                return (
-                  <div key={name} className='flex items-center gap-x-4'>
-                    <input
-                      key={name}
-                      name={option.name}
-                      value={additionalPrice}
-                      onChange={eventHandler}
-                      defaultChecked={additionalPrice === 0 && true}
-                      type='radio'
-                    />
-                    <label htmlFor={name} className='mr-auto'>
-                      {name}
-                    </label>
-                    <div>+${additionalPrice}</div>
-                  </div>
-                )
-              })}
+            <div key={id} className='flex flex-col gap-4'>
+              <h2>Choose {name}</h2>
+              {inputs.map(({ id, name, additionalPrice }) => (
+                <div key={id} className='flex items-center gap-x-4'>
+                  <input
+                    name={option.name}
+                    value={additionalPrice}
+                    onChange={eventHandler}
+                    defaultChecked={additionalPrice === 0 && true}
+                    type='radio'
+                  />
+                  <label htmlFor={name} className='mr-auto'>
+                    {name}
+                  </label>
+                  <div>+${additionalPrice}</div>
+                </div>
+              ))}
             </div>
           )
         })}

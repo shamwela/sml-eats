@@ -95,8 +95,8 @@ const Search = ({
       />
 
       <div className='grid gap-4 md:grid-cols-2'>
-        {results.map(({ name, slug, imageSource, category, items }) => (
-          <div key={slug} className='flex flex-col gap-2'>
+        {results.map(({ id, name, slug, imageSource, category, items }) => (
+          <div key={id} className='flex flex-col gap-2'>
             <Link href={'/restaurants/' + slug}>
               <a>
                 <div className='flex flex-col gap-y-2'>
@@ -108,8 +108,8 @@ const Search = ({
             </Link>
 
             <div className='flex gap-x-4'>
-              {items.map(({ imageSource, name, basePrice, path }) => (
-                <Link key={path} href={path}>
+              {items.map(({ id, imageSource, name, basePrice, path }) => (
+                <Link key={id} href={path}>
                   <a>
                     <div className='flex flex-col rounded-custom bg-light-elevation p-4 shadow-lg dark:bg-dark-elevation'>
                       <Image alt={name} src={imageSource} placeholder='blur' />

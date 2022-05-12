@@ -57,9 +57,17 @@ const RestaurantPage = ({
       </span>
       <ItemContainer>
         {items.map(
-          ({ name, path, imageSource, imageWidth, imageHeight, basePrice }) => {
+          ({
+            id,
+            name,
+            path,
+            imageSource,
+            imageWidth,
+            imageHeight,
+            basePrice,
+          }) => {
             return (
-              <Link key={path} href={path}>
+              <Link key={id} href={path}>
                 <a>
                   <div className='flex flex-col'>
                     <Image

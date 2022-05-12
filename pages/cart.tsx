@@ -45,8 +45,8 @@ const Cart = ({
             <>
               <h1>Your cart</h1>
               {cart.map(
-                ({ name, quantity, finalPrice, path, selectedOptions }) => (
-                  <div key={name} className='flex items-start gap-x-4'>
+                ({ id, name, quantity, finalPrice, path, selectedOptions }) => (
+                  <div key={id} className='flex items-start gap-x-4'>
                     <select
                       value={quantity}
                       onChange={(event) => handleQuantityChange(name, event)}
@@ -60,12 +60,12 @@ const Cart = ({
                     <Link href={path}>
                       <a>
                         <strong>{name}</strong>
-                        {selectedOptions.map(({ name, inputs }) => {
+                        {selectedOptions.map(({ id, name, inputs }) => {
                           const optionName = name
                           // Since there will be only 1 input
                           const inputName = inputs[0].name
                           return (
-                            <div key={optionName}>
+                            <div key={id}>
                               {/* For example, Size: Large */}
                               {optionName}: {inputName}
                             </div>
