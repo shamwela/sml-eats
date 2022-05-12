@@ -9,15 +9,18 @@ import { InferGetStaticPropsType } from 'next'
 const prisma = new PrismaClient()
 
 export const getStaticProps = async () => {
-  const categories = await prisma.category.findMany()
-  const restaurants = await prisma.restaurant.findMany()
+  const restaurants = await prisma.restaurant.findMany({
+    include: {
+      category: true,
+    },
+  })
+
   return {
-    props: { categories, restaurants },
+    props: { restaurants },
   }
 }
 
 const Home = ({
-  categories,
   restaurants,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -25,10 +28,12 @@ const Home = ({
       <Head title='Order food online' />
       <h2>Explore by category</h2>
       <ItemContainer>
-        {categories.map(({ name, imageSource, imageWidth, imageHeight }) => {
+        {restaurants.map(({ category }) => {
+          const { id, name, imageSource, imageWidth, imageHeight } = category
           const href = '/search?query=' + name.toLowerCase()
+
           return (
-            <Link href={href} key={name}>
+            <Link href={href} key={id}>
               <a>
                 <section className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation justify-center'>
                   <span className='self-center'>{name}</span>
@@ -50,9 +55,17 @@ const Home = ({
       <h2>Popular near you</h2>
       <ItemContainer>
         {restaurants.map(
-          ({ name, slug, rating, imageSource, imageWidth, imageHeight }) => {
+          ({
+            id,
+            name,
+            slug,
+            rating,
+            imageSource,
+            imageWidth,
+            imageHeight,
+          }) => {
             return (
-              <Link key={slug} href={`/restaurants/${slug}`}>
+              <Link key={id} href={'/restaurants/' + slug}>
                 <a>
                   <section className='flex flex-col gap-y-1'>
                     <Image
