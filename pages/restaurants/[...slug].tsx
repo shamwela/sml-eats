@@ -2,7 +2,7 @@ import type { AddItem } from 'types/addItem'
 import { ChangeEvent, useState } from 'react'
 import Head from 'components/Head'
 import Order from 'components/Order'
-import { Item, Option, Input, PrismaClient, Prisma } from '@prisma/client'
+import { Item, Option, Input, PrismaClient } from '@prisma/client'
 import Image from 'next/image'
 
 const prisma = new PrismaClient()
@@ -53,7 +53,7 @@ export const getStaticProps = async (context: {
     },
   })
 
-  console.log('Inside getStaticProps', item?.options[0].inputs)
+  // console.log('Inside getStaticProps', item?.options[0].inputs)
 
   return {
     props: {
@@ -74,7 +74,6 @@ const ItemPage = ({
   }
   addItem: AddItem
 }) => {
-  console.log('Before JSX', item)
   const {
     imageSource,
     imageWidth,
@@ -84,6 +83,11 @@ const ItemPage = ({
     name,
     options,
   } = item
+
+  // All inputs are included in the getStaticProps
+  // Only one input for each option is included here
+  // Should fix this later
+  // console.log('Inside ItemPage', options)
 
   const initialSelectedOptions = options.map((option) => {
     // Items with zero additional price should be the initial selected options
@@ -138,7 +142,6 @@ const ItemPage = ({
         <span>Base price: ${basePrice}</span>
 
         {options.map((option) => {
-          console.log('Inside JSX', options)
           return (
             <div key={option.name} className='flex flex-col gap-4'>
               <h2>Choose {option.name}</h2>
