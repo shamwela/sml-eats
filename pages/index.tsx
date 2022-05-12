@@ -35,7 +35,7 @@ const Home = ({
           return (
             <Link href={href} key={id}>
               <a>
-                <section className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation justify-center'>
+                <div className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation justify-center'>
                   <span className='self-center'>{name}</span>
                   <Image
                     alt={name}
@@ -45,7 +45,7 @@ const Home = ({
                     priority
                     className='object-contain'
                   />
-                </section>
+                </div>
               </a>
             </Link>
           )

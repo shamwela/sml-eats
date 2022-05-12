@@ -46,7 +46,7 @@ const Cart = ({
               <h1>Your cart</h1>
               {cart.map(
                 ({ name, quantity, finalPrice, path, selectedOptions }) => (
-                  <section key={name} className='flex items-start gap-x-4'>
+                  <div key={name} className='flex items-start gap-x-4'>
                     <select
                       value={quantity}
                       onChange={(event) => handleQuantityChange(name, event)}
@@ -74,7 +74,7 @@ const Cart = ({
                       </a>
                     </Link>
                     <span className='ml-auto'>${finalPrice}</span>
-                  </section>
+                  </div>
                 )
               )}
               <Link href='/checkout'>

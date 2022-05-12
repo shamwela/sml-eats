@@ -5,11 +5,7 @@ type ItemContainerProps = {
 }
 
 const ItemContainer = ({ children }: ItemContainerProps) => {
-  return (
-    <section className='grid grid-cols-2 gap-4 md:grid-cols-4'>
-      {children}
-    </section>
-  )
+  return <div className='grid grid-cols-2 gap-4 md:grid-cols-4'>{children}</div>
 }
 
 export default ItemContainer

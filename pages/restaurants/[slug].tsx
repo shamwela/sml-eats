@@ -61,7 +61,7 @@ const RestaurantPage = ({
             return (
               <Link key={path} href={path}>
                 <a>
-                  <section className='flex flex-col'>
+                  <div className='flex flex-col'>
                     <Image
                       alt={name}
                       src={imageSource}
@@ -70,7 +70,7 @@ const RestaurantPage = ({
                     />
                     <span>{name}</span>
                     <span>${basePrice}</span>
-                  </section>
+                  </div>
                 </a>
               </Link>
             )
