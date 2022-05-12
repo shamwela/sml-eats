@@ -28,7 +28,7 @@ model Restaurant {
 model Item {
   id           Int         @id @default(autoincrement())
   name         String
-  slug         String
+  slug         String      @unique
   path         String
   imageSource  String
   imageWidth   Int

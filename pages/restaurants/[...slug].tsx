@@ -2,7 +2,7 @@ import type { AddItem } from 'types/addItem'
 import { ChangeEvent, useState } from 'react'
 import Head from 'components/Head'
 import Order from 'components/Order'
-import { Item, Option, Input, PrismaClient } from '@prisma/client'
+import { Item, Option, Input, PrismaClient, Prisma } from '@prisma/client'
 import Image from 'next/image'
 
 const prisma = new PrismaClient()
@@ -36,27 +36,24 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: {
   params: { slug: string[] }
 }) => {
-  const restaurants = await prisma.restaurant.findMany({
+  // For example, ['the-pizza-company', 'seafood-cocktail']
+  const currentSlugArray = context.params.slug
+  const currentSlug = currentSlugArray[currentSlugArray.length - 1]
+
+  const item = await prisma.item.findUnique({
+    where: {
+      slug: currentSlug,
+    },
     include: {
-      items: {
+      options: {
         include: {
-          options: {
-            include: {
-              inputs: true,
-            },
-          },
+          inputs: true,
         },
       },
     },
   })
-  const items = restaurants.map((restaurant) => restaurant.items).flat()
 
-  // For example, ['the-pizza-company', 'seafood-cocktail']
-  const currentSlugArray = context.params.slug
-  const item = items.find(
-    ({ slug }) => slug === currentSlugArray[currentSlugArray.length - 1]
-  )
-  console.log(item.options[0].inputs)
+  console.log('Inside getStaticProps', item?.options[0].inputs)
 
   return {
     props: {
@@ -77,6 +74,7 @@ const ItemPage = ({
   }
   addItem: AddItem
 }) => {
+  console.log('Before JSX', item)
   const {
     imageSource,
     imageWidth,
@@ -86,7 +84,6 @@ const ItemPage = ({
     name,
     options,
   } = item
-  console.log(options[0].inputs)
 
   const initialSelectedOptions = options.map((option) => {
     // Items with zero additional price should be the initial selected options
@@ -141,6 +138,7 @@ const ItemPage = ({
         <span>Base price: ${basePrice}</span>
 
         {options.map((option) => {
+          console.log('Inside JSX', options)
           return (
             <div key={option.name} className='flex flex-col gap-4'>
               <h2>Choose {option.name}</h2>
