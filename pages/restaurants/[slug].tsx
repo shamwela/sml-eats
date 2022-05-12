@@ -46,7 +46,6 @@ const RestaurantPage = ({
   if (!restaurant) {
     return <p>Sorry. This restaurant isn't found.</p>
   }
-
   const { name: restaurantName, rating, items } = restaurant
 
   return (

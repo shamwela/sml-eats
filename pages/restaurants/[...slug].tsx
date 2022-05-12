@@ -2,8 +2,9 @@ import type { AddItem } from 'types/addItem'
 import { ChangeEvent, useState } from 'react'
 import Head from 'components/Head'
 import Order from 'components/Order'
-import { Item, Option, Input, PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import Image from 'next/image'
+import type { NestedItem } from 'types/nestedItem'
 
 const prisma = new PrismaClient()
 
@@ -74,12 +75,7 @@ const ItemPage = ({
   item,
   addItem,
 }: {
-  // This type is inferred from the return value of getStaticProps
-  item: Item & {
-    options: (Option & {
-      inputs: Input[]
-    })[]
-  }
+  item: NestedItem
   addItem: AddItem
 }) => {
   const {

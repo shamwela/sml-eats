@@ -1,8 +1,9 @@
-import type { Item, Option, Input } from '@prisma/client'
+import type { Item } from '@prisma/client'
+import type { NestedOption } from './nestedOption'
 
-export interface CartItem extends Item {
+export type CartItem = Item & {
   oneItemPrice: number // oneItemPrice = basePrice + additionalPrice(s)
   quantity: number
   finalPrice: number
-  selectedOptions: (Option & { inputs: Input[] })[]
+  selectedOptions: NestedOption[]
 }
