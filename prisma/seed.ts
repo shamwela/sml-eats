@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { categories, inputs, options, items, restaurants } from './data'
+import { categories, inputs, options, items, restaurants } from './seedData'
 
 const prisma = new PrismaClient()
 
