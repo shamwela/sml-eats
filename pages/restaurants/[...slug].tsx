@@ -8,24 +8,31 @@ import Image from 'next/image'
 const prisma = new PrismaClient()
 
 export const getStaticPaths = async () => {
-  // This type is just inferred from usage. Don't worry.
-  let paths: { params: { slug: string[] } }[] = []
   const restaurants = await prisma.restaurant.findMany({
-    include: { items: true },
-  })
-  restaurants.forEach((restaurant) => {
-    restaurant.items.forEach((item) => {
-      const slugArray = [restaurant.slug, item.slug]
-
-      const path = {
-        params: {
-          slug: slugArray,
+    select: {
+      slug: true,
+      items: {
+        select: {
+          slug: true,
         },
-      }
-
-      paths.push(path)
-    })
+      },
+    },
   })
+
+  const paths = restaurants
+    .map((restaurant) => {
+      return restaurant.items.map((item) => {
+        // For example, ['the-pizza-company', 'seafood-cocktail']
+        const slugArray = [restaurant.slug, item.slug]
+        const path = {
+          params: {
+            slug: slugArray,
+          },
+        }
+        return path
+      })
+    })
+    .flat()
 
   return {
     paths,
