@@ -3,10 +3,8 @@ import Image from 'next/image'
 import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
 import { StarIcon } from '@heroicons/react/solid'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from 'prisma/prismaClient'
 import { InferGetStaticPropsType } from 'next'
-
-const prisma = new PrismaClient()
 
 export const getStaticProps = async () => {
   const categories = await prisma.category.findMany()

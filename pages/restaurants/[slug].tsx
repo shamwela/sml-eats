@@ -1,11 +1,9 @@
 import Head from 'components/Head'
 import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from 'prisma/prismaClient'
 import { InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
-
-const prisma = new PrismaClient()
 
 export const getStaticPaths = async () => {
   const restaurants = await prisma.restaurant.findMany({

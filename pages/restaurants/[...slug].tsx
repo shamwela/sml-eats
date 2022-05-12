@@ -2,11 +2,9 @@ import type { AddItem } from 'types/addItem'
 import { ChangeEvent, useState } from 'react'
 import Head from 'components/Head'
 import Order from 'components/Order'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from 'prisma/prismaClient'
 import Image from 'next/image'
 import type { NestedItem } from 'types/nestedItem'
-
-const prisma = new PrismaClient()
 
 export const getStaticPaths = async () => {
   const restaurants = await prisma.restaurant.findMany({

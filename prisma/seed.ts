@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client'
+import { prisma } from 'prisma/prismaClient'
 import { categories, inputs, options, items, restaurants } from './seedData'
-
-const prisma = new PrismaClient()
 
 const main = async () => {
   await prisma.category.deleteMany()

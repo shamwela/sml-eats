@@ -4,10 +4,8 @@ import Head from 'components/Head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from 'prisma/prismaClient'
 import { InferGetStaticPropsType } from 'next'
-
-const prisma = new PrismaClient()
 
 export const getStaticProps = async () => {
   const restaurants = await prisma.restaurant.findMany({
