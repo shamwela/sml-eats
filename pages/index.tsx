@@ -9,18 +9,16 @@ import { InferGetStaticPropsType } from 'next'
 const prisma = new PrismaClient()
 
 export const getStaticProps = async () => {
-  const restaurants = await prisma.restaurant.findMany({
-    include: {
-      category: true,
-    },
-  })
+  const categories = await prisma.category.findMany()
+  const restaurants = await prisma.restaurant.findMany()
 
   return {
-    props: { restaurants },
+    props: { categories, restaurants },
   }
 }
 
 const Home = ({
+  categories,
   restaurants,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -28,28 +26,29 @@ const Home = ({
       <Head title='Order food online' />
       <h2>Explore by category</h2>
       <ItemContainer>
-        {restaurants.map(({ category }) => {
-          const { id, name, imageSource, imageWidth, imageHeight } = category
-          const href = '/search?query=' + name.toLowerCase()
+        {categories.map(
+          ({ id, name, imageSource, imageWidth, imageHeight }) => {
+            const href = '/search?query=' + name.toLowerCase()
 
-          return (
-            <Link href={href} key={id}>
-              <a>
-                <div className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation justify-center'>
-                  <span className='self-center'>{name}</span>
-                  <Image
-                    alt={name}
-                    src={imageSource}
-                    width={imageWidth}
-                    height={imageHeight}
-                    priority
-                    className='object-contain'
-                  />
-                </div>
-              </a>
-            </Link>
-          )
-        })}
+            return (
+              <Link href={href} key={id}>
+                <a>
+                  <div className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation justify-center'>
+                    <span className='self-center'>{name}</span>
+                    <Image
+                      alt={name}
+                      src={imageSource}
+                      width={imageWidth}
+                      height={imageHeight}
+                      priority
+                      className='object-contain'
+                    />
+                  </div>
+                </a>
+              </Link>
+            )
+          }
+        )}
       </ItemContainer>
 
       <h2>Popular near you</h2>
