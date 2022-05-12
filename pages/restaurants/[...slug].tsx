@@ -60,7 +60,8 @@ export const getStaticProps = async (context: {
     },
   })
 
-  // console.log('Inside getStaticProps', item?.options[0].inputs)
+  if (!item) return
+  // console.log('Inside getStaticProps', item.options[0].inputs)
 
   return {
     props: {
@@ -76,6 +77,11 @@ const ItemPage = ({
   item: NestedItem
   addItem: AddItem
 }) => {
+  // All inputs are included in the getStaticProps
+  // Only one input for each option is included here
+  // Should fix this later
+  // console.log('Inside ItemPage', item.options[0].inputs)
+
   const {
     imageSource,
     imageWidth,
@@ -85,11 +91,6 @@ const ItemPage = ({
     name,
     options,
   } = item
-
-  // All inputs are included in the getStaticProps
-  // Only one input for each option is included here
-  // Should fix this later
-  // console.log('Inside ItemPage', options)
 
   const initialSelectedOptions = options.map((option) => {
     // Items with zero additional price should be the initial selected options
