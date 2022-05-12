@@ -120,6 +120,7 @@ const Search = ({
                         src={imageSource}
                         width={imageWidth}
                         height={imageHeight}
+                        objectFit='cover'
                         priority
                       />
                       <span className='font-bold'>{name}</span>
