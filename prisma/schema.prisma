@@ -11,10 +11,10 @@ generator client {
 
 model Restaurant {
   id          Int      @id @default(autoincrement())
-  name        String
-  slug        String
+  name        String   @unique
+  slug        String   @unique
   rating      Float
-  imageSource String
+  imageSource String   @unique
   imageWidth  Int
   imageHeight Int
   items       Item[]
@@ -27,13 +27,13 @@ model Restaurant {
 
 model Item {
   id           Int         @id @default(autoincrement())
-  name         String
+  name         String      @unique
   slug         String      @unique
-  path         String
-  imageSource  String
+  path         String      @unique
+  imageSource  String      @unique
   imageWidth   Int
   imageHeight  Int
-  description  String
+  description  String      @unique
   basePrice    Float
   options      Option[]
   Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
@@ -67,8 +67,8 @@ model Input {
 
 model Category {
   id          Int          @id @default(autoincrement())
-  name        String
-  imageSource String
+  name        String       @unique
+  imageSource String       @unique
   imageWidth  Int
   imageHeight Int
   Restaurant  Restaurant[]
