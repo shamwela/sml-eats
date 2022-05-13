@@ -153,6 +153,7 @@ const ItemPage = ({
               {inputs.map(({ id, name, additionalPrice }) => (
                 <div key={id} className='flex items-center gap-x-4'>
                   <input
+                    id={name}
                     name={option.name}
                     value={additionalPrice}
                     onChange={eventHandler}
