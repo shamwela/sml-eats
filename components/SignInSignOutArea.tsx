@@ -4,9 +4,6 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 const SignInSignOutArea = () => {
   const [user, loading, error] = useAuthState(auth)
 
-  if (user) {
-    return <button onClick={signOut}>Sign out</button>
-  }
   if (loading) {
     return null
   }
@@ -17,7 +14,11 @@ const SignInSignOutArea = () => {
       </p>
     )
   }
-  return <button onClick={signInWithGoogle}>Continue with Google</button>
+  if (user) {
+    return <button onClick={signOut}>Sign out</button>
+  } else {
+    return <button onClick={signInWithGoogle}>Continue with Google</button>
+  }
 }
 
 export default SignInSignOutArea
