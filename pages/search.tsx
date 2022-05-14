@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 import type { ChangeEvent } from 'react'
 import Head from 'components/Head'
 import Image from 'next/image'
@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { prisma } from 'prisma/prismaClient'
 import { InferGetStaticPropsType } from 'next'
+import LoadingPlaceholder from 'components/LoadingPlaceholder'
 
 export const getStaticProps = async () => {
   const restaurants = await prisma.restaurant.findMany({
@@ -28,6 +29,7 @@ const Search = ({
     query = router.query.query.trim()
   }
 
+  const [isPending, startTransition] = useTransition()
   const [results, setResults] = useState<typeof restaurants | undefined>(
     undefined
   )
@@ -68,7 +70,8 @@ const Search = ({
       return matchedItems
     })
 
-    setResults(finalRestaurants)
+    // Setting results is interruptible
+    startTransition(() => setResults(finalRestaurants))
   }, [query, restaurants])
 
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -94,6 +97,7 @@ const Search = ({
       />
 
       <div className='grid gap-4 md:grid-cols-2'>
+        {isPending && <LoadingPlaceholder />}
         {/* If the user searched and found no results */}
         {query !== '' && results?.length === 0 ? (
           <span>

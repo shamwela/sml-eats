@@ -20,9 +20,11 @@ model Restaurant {
   items       Item[]
   category    Category @relation(fields: [categoryId], references: [id])
   categoryId  Int
+  user        User?    @relation(fields: [userId], references: [id])
+  userId      String?
 
   // Adding index to foreign keys make it faster and cheaper to query
-  @@index([categoryId])
+  @@index([categoryId, userId])
 }
 
 model Item {
@@ -73,4 +75,9 @@ model Category {
   imageHeight Int
   Restaurant  Restaurant[]
   Item        Item[]
+}
+
+model User {
+  id          String       @id
+  restaurants Restaurant[]
 }
