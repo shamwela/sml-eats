@@ -1,5 +1,3 @@
-import IcedCoffeeImage from 'public/images/iced-coffee.webp'
-import ButterCroissantImage from 'public/images/butter-croissant.webp'
 import SubwayImage from 'public/images/subway.webp'
 import OvenRoastedTurkeyFootlongRegularSubImage from 'public/images/oven-roasted-turkey-footlong-regular-sub.webp'
 import SteakAndCheeseFootlongRegularSubImage from 'public/images/steak-&-cheese-footlong-regular-sub.webp'
@@ -8,31 +6,6 @@ import OneScoopSundaeImage from 'public/images/1-scoop-sundae.webp'
 import TwoScoopSundaeImage from 'public/images/2-scoop-sundae.webp'
 
 const restaurants = [
-  {
-    items: [
-      {
-        name: 'Butter Croissant',
-        slug: 'butter-croissant',
-        path: '/restaurants/starbucks/butter-croissant',
-        imageSource: ButterCroissantImage,
-        description:
-          'Classic butter croissant with soft, flaky layers and a golden-brown crust.',
-        category: 'pastry',
-        basePrice: 4,
-      },
-      {
-        name: 'Iced Coffee',
-        slug: 'iced-coffee',
-        path: '/restaurants/starbucks/iced-coffee',
-        imageSource: IcedCoffeeImage,
-        description:
-          'Freshly brewed Starbucks Iced Coffee Blend served chilled and sweetened over ice. An absolutely, seriously, refreshingly lift to any day.',
-        category: 'coffee',
-        basePrice: 4,
-        // options: coffeeOptions,
-      },
-    ],
-  },
   {
     name: 'Subway',
     slug: 'subway',

@@ -125,6 +125,32 @@ export const items: Prisma.ItemCreateManyInput[] = [
     basePrice: 15,
     restaurantId: 1,
   },
+  {
+    name: 'Butter Croissant',
+    slug: 'butter-croissant',
+    path: '/restaurants/starbucks/butter-croissant',
+    imageSource: '/images/butter-croissant.webp',
+    imageWidth: 550,
+    imageHeight: 550,
+    description:
+      'Classic butter croissant with soft, flaky layers and a golden-brown crust.',
+    categoryId: 4,
+    basePrice: 4,
+    restaurantId: 2,
+  },
+  {
+    name: 'Iced Coffee',
+    slug: 'iced-coffee',
+    path: '/restaurants/starbucks/iced-coffee',
+    imageSource: '/images/iced-coffee.webp',
+    imageWidth: 550,
+    imageHeight: 550,
+    description:
+      'Freshly brewed Starbucks Iced Coffee Blend served chilled and sweetened over ice. An absolutely, seriously, refreshingly lift to any day.',
+    categoryId: 2,
+    basePrice: 4,
+    restaurantId: 2,
+  },
 ]
 
 export const restaurants: Prisma.RestaurantCreateManyInput[] = [
