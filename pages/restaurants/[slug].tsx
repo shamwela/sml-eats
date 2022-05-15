@@ -43,13 +43,13 @@ const RestaurantPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (!restaurant) return null
   const { name: restaurantName, rating, items } = restaurant
-  const addToFavorites = () => {}
+  // const addToFavorites = () => {}
 
   return (
     <>
       <Head title={restaurantName} />
       <h1>{restaurantName}</h1>
-      <button onClick={addToFavorites}>Add to favorites</button>
+      {/* <button onClick={addToFavorites}>Add to favorites</button> */}
       <span>
         <strong>Rating</strong>: {rating}
       </span>
