@@ -1,9 +1,5 @@
-import BBQPorkDeluxeImage from 'public/images/bbq-pork-deluxe.jpeg'
 import IcedCoffeeImage from 'public/images/iced-coffee.webp'
 import ButterCroissantImage from 'public/images/butter-croissant.webp'
-import SeafoodCocktailImage from 'public/images/seafood-cocktail.jpeg'
-import StarbucksImage from 'public/images/starbucks.webp'
-import ThePizzaCompanyImage from 'public/images/the-pizza-company.webp'
 import SubwayImage from 'public/images/subway.webp'
 import OvenRoastedTurkeyFootlongRegularSubImage from 'public/images/oven-roasted-turkey-footlong-regular-sub.webp'
 import SteakAndCheeseFootlongRegularSubImage from 'public/images/steak-&-cheese-footlong-regular-sub.webp'
@@ -13,42 +9,6 @@ import TwoScoopSundaeImage from 'public/images/2-scoop-sundae.webp'
 
 const restaurants = [
   {
-    name: 'The Pizza Company',
-    slug: 'the-pizza-company',
-    category: 'Pizza',
-    rating: 4.9,
-    imageSource: ThePizzaCompanyImage,
-    items: [
-      {
-        name: 'Seafood Cocktail',
-        slug: 'seafood-cocktail',
-        path: '/restaurants/the-pizza-company/seafood-cocktail',
-        imageSource: SeafoodCocktailImage,
-        description:
-          'Ingredients: pineapple, ham, fresh shrimp, crab sticks, thousand island sauce, and fresh prawns.',
-        category: 'Pizza',
-        basePrice: 20,
-        // options: pizzaOptions,
-      },
-      {
-        name: 'BBQ Pork Deluxe',
-        slug: 'bbq-pork-deluxe',
-        path: '/restaurants/the-pizza-company/bbq-pork-deluxe',
-        imageSource: BBQPorkDeluxeImage,
-        description:
-          'Ingredients: pork, onion, BBQ sauce, green capsicums, red capsicum, italian sausage.',
-        category: 'Pizza',
-        basePrice: 15,
-        // options: pizzaOptions,
-      },
-    ],
-  },
-  {
-    name: 'Starbucks',
-    slug: 'starbucks',
-    category: 'Coffee',
-    rating: 4.8,
-    imageSource: StarbucksImage,
     items: [
       {
         name: 'Butter Croissant',

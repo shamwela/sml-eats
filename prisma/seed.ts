@@ -1,4 +1,4 @@
-import { prisma } from 'prisma/prismaClient'
+import { prisma } from './prismaClient'
 import { categories, inputs, options, items, restaurants } from './seedData'
 
 const main = async () => {

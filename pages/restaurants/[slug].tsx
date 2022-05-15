@@ -41,15 +41,15 @@ export const getStaticProps = async (context: any) => {
 const RestaurantPage = ({
   restaurant,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  if (!restaurant) {
-    return <p>Sorry. This restaurant isn't found.</p>
-  }
+  if (!restaurant) return null
   const { name: restaurantName, rating, items } = restaurant
+  const addToFavorites = () => {}
 
   return (
     <>
       <Head title={restaurantName} />
       <h1>{restaurantName}</h1>
+      <button onClick={addToFavorites}>Add to favorites</button>
       <span>
         <strong>Rating</strong>: {rating}
       </span>
@@ -63,24 +63,23 @@ const RestaurantPage = ({
             imageWidth,
             imageHeight,
             basePrice,
-          }) => {
-            return (
-              <Link key={id} href={path}>
-                <a>
-                  <div className='flex flex-col'>
-                    <Image
-                      alt={name}
-                      src={imageSource}
-                      width={imageWidth}
-                      height={imageHeight}
-                    />
-                    <span>{name}</span>
-                    <span>${basePrice}</span>
-                  </div>
-                </a>
-              </Link>
-            )
-          }
+          }) => (
+            <Link key={id} href={path}>
+              <a>
+                <div className='flex flex-col'>
+                  <Image
+                    alt={name}
+                    src={imageSource}
+                    width={imageWidth}
+                    height={imageHeight}
+                    priority
+                  />
+                  <span>{name}</span>
+                  <span>${basePrice}</span>
+                </div>
+              </a>
+            </Link>
+          )
         )}
       </ItemContainer>
     </>

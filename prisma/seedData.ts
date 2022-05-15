@@ -112,6 +112,19 @@ export const items: Prisma.ItemCreateManyInput[] = [
     basePrice: 20,
     restaurantId: 1,
   },
+  {
+    name: 'BBQ Pork Deluxe',
+    slug: 'bbq-pork-deluxe',
+    path: '/restaurants/the-pizza-company/bbq-pork-deluxe',
+    imageSource: '/images/bbq-pork-deluxe.jpeg',
+    imageWidth: 1016,
+    imageHeight: 934,
+    description:
+      'Ingredients: pork, onion, BBQ sauce, green capsicums, red capsicum, italian sausage.',
+    categoryId: 1,
+    basePrice: 15,
+    restaurantId: 1,
+  },
 ]
 
 export const restaurants: Prisma.RestaurantCreateManyInput[] = [
@@ -121,6 +134,15 @@ export const restaurants: Prisma.RestaurantCreateManyInput[] = [
     categoryId: 1,
     rating: 4.9,
     imageSource: '/images/the-pizza-company.webp',
+    imageWidth: 550,
+    imageHeight: 440,
+  },
+  {
+    name: 'Starbucks',
+    slug: 'starbucks',
+    categoryId: 2,
+    rating: 4.8,
+    imageSource: '/images/starbucks.webp',
     imageWidth: 550,
     imageHeight: 440,
   },

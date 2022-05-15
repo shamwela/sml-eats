@@ -39,7 +39,7 @@
 
   button,
   .button {
-    @apply rounded-custom bg-accent text-center text-white;
+    @apply rounded-custom bg-accent text-center text-white max-w-fit;
   }
 
   input[type='radio'] {
