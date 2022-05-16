@@ -19,19 +19,23 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }
 
   const changeItemQuantity = (id: number, quantity: number) => {
+    // Because this function is mixing 2 concerns, improve this later
     if (quantity === 0) {
       removeItem(id)
       return
+    } else {
+      const newCart = cart.map((item) => {
+        if (item.id === id) {
+          // Must re-calculate the final price
+          const finalPrice = item.oneItemPrice * quantity
+          // Also change the quantity
+          return { ...item, quantity, finalPrice }
+        } else {
+          return item
+        }
+      })
+      setCart(newCart)
     }
-
-    const newCart = cart.map((item) => {
-      if (item.id === id) {
-        const finalPrice = item.oneItemPrice * quantity
-        return { ...item, quantity, finalPrice }
-      }
-      return item
-    })
-    setCart(newCart)
   }
 
   return (
