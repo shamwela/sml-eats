@@ -34,7 +34,7 @@ model Item {
   imageSource  String      @unique
   imageWidth   Int
   imageHeight  Int
-  description  String      @unique
+  description  String      @db.TinyText
   basePrice    Float
   options      Option[]
   Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
