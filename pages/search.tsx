@@ -40,22 +40,10 @@ const Search = ({
       return
     }
 
-    const matchedRestaurants = restaurants.filter((restaurant) => {
-      const { name, category } = restaurant
-
-      const matchesName = name.toLowerCase().includes(query.toLowerCase())
-      const matchesCategory = category.name
-        .toLowerCase()
-        .includes(query.toLowerCase())
-
-      if (matchesName || matchesCategory) {
-        return restaurant
-      }
-    })
-
-    const finalRestaurants = matchedRestaurants.filter(({ items }) => {
-      const matchedItems = items.filter((item) => {
-        const { name, category } = item
+    // Generating results is interruptible
+    startTransition(() => {
+      const matchedRestaurants = restaurants.filter((restaurant) => {
+        const { name, category } = restaurant
 
         const matchesName = name.toLowerCase().includes(query.toLowerCase())
         const matchesCategory = category.name
@@ -63,15 +51,27 @@ const Search = ({
           .includes(query.toLowerCase())
 
         if (matchesName || matchesCategory) {
-          return item
+          return restaurant
         }
       })
+      const finalRestaurants = matchedRestaurants.filter(({ items }) => {
+        const matchedItems = items.filter((item) => {
+          const { name, category } = item
 
-      return matchedItems
+          const matchesName = name.toLowerCase().includes(query.toLowerCase())
+          const matchesCategory = category.name
+            .toLowerCase()
+            .includes(query.toLowerCase())
+
+          if (matchesName || matchesCategory) {
+            return item
+          }
+        })
+
+        return matchedItems
+      })
+      setResults(finalRestaurants)
     })
-
-    // Setting results is interruptible
-    startTransition(() => setResults(finalRestaurants))
   }, [query, restaurants])
 
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
