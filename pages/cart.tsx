@@ -12,18 +12,18 @@ const Cart = ({
 }: {
   cart: CartItem[]
   // eslint-disable-next-line no-unused-vars
-  changeItemQuantity: (name: string, quantity: number) => void
+  changeItemQuantity: (id: number, quantity: number) => void
 }) => {
   // This is the code to fix this issue (https://github.com/vercel/next.js/discussions/35773).
   const [isSSR, setIsSSR] = useState(true)
   useEffect(() => setIsSSR(false), [])
 
   const handleQuantityChange = (
-    name: string,
+    id: number,
     event: ChangeEvent<HTMLSelectElement>
   ) => {
     const quantity = Number(event.target.value)
-    changeItemQuantity(name, quantity)
+    changeItemQuantity(id, quantity)
   }
 
   const checkoutPrice = cart.reduce((total, item) => total + item.finalPrice, 0)
@@ -49,7 +49,7 @@ const Cart = ({
                   <div key={id} className='flex items-start gap-x-4'>
                     <select
                       value={quantity}
-                      onChange={(event) => handleQuantityChange(name, event)}
+                      onChange={(event) => handleQuantityChange(id, event)}
                     >
                       {zeroToHundred.map((value) => (
                         <option value={value} key={value}>

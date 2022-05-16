@@ -13,23 +13,24 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     setCart(newCart)
   }
 
-  const changeItemQuantity = (name: string, quantity: number) => {
-    let newCart = cart
+  const removeItem = (id: number) => {
+    const newCart = cart.filter((cartItem) => cartItem.id !== id)
+    setCart(newCart)
+  }
 
-    // If the quantity is 0, remove the item from the cart
+  const changeItemQuantity = (id: number, quantity: number) => {
     if (quantity === 0) {
-      newCart = cart.filter((item) => item.name !== name)
-    } else {
-      // Otherwise, change the quantity
-      newCart = cart.map((item) => {
-        if (item.name === name) {
-          const finalPrice = item.oneItemPrice * quantity
-          return { ...item, quantity, finalPrice }
-        }
-        return item
-      })
+      removeItem(id)
+      return
     }
 
+    const newCart = cart.map((item) => {
+      if (item.id === id) {
+        const finalPrice = item.oneItemPrice * quantity
+        return { ...item, quantity, finalPrice }
+      }
+      return item
+    })
     setCart(newCart)
   }
 
