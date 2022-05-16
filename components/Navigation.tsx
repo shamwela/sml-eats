@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { auth } from 'utilities/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import type { CartItem } from 'types/cartItem'
@@ -8,26 +8,20 @@ import { useTheme } from 'next-themes'
 import { MenuAlt4Icon, XIcon, ShoppingCartIcon } from '@heroicons/react/solid'
 import SignInSignOutArea from './SignInSignOutArea'
 
-type NavigationProps = {
-  cart: CartItem[]
-}
-
-const Navigation = ({ cart }: NavigationProps) => {
+const Navigation = ({ cart }: { cart: CartItem[] }) => {
   const { theme, setTheme } = useTheme()
-  const [totalQuantity, setTotalQuantity] = useState(0)
-
-  useEffect(() => {
-    const newTotalQuantity = cart.reduce(
-      (previousQuantity, cartItem) => previousQuantity + cartItem.quantity,
-      0
-    )
-    setTotalQuantity(newTotalQuantity)
-  }, [cart])
-
+  const totalQuantity = useMemo(
+    () =>
+      cart.reduce(
+        (previousQuantity, cartItem) => previousQuantity + cartItem.quantity,
+        0
+      ),
+    [cart]
+  )
   const { pathname } = useRouter()
   const isNotCartPage = pathname !== '/cart'
   const cartExists = cart.length > 0
-  
+
   // This is the code to fix this issue (https://github.com/vercel/next.js/discussions/35773).
   const [isSSR, setIsSSR] = useState(true)
   useEffect(() => setIsSSR(false), [])
@@ -61,19 +55,15 @@ const Navigation = ({ cart }: NavigationProps) => {
             <button onClick={toggleTheme}>Change theme</button>
           </div>
         )}
-
         <Link href='/'>
           <a className='text-xl font-bold md:text-4xl'>SML Eats</a>
         </Link>
-
         <Link href='/delivery-details'>
           <a className='button'>Delivery details</a>
         </Link>
-
         <Link href='/search'>
           <a className='button'>Search</a>
         </Link>
-
         {showCartButton ? (
           <Link href='/cart'>
             <a className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static button'>
