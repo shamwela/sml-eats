@@ -86,6 +86,7 @@ export const options: Prisma.OptionCreateManyInput[] = [
   // A better way should be used later
   {
     name: 'Size',
+    itemId: 4,
   },
   {
     name: 'Crust',
@@ -151,6 +152,58 @@ export const items: Prisma.ItemCreateManyInput[] = [
     basePrice: 4,
     restaurantId: 2,
   },
+  {
+    name: 'Oven Roasted Turkey Footlong Regular Sub',
+    slug: 'oven-roasted-turkey-footlong-regular-sub',
+    path: '/restaurants/subway/oven-roasted-turkey-footlong-regular-sub',
+    imageSource: '/images/oven-roasted-turkey-footlong-regular-sub.webp',
+    imageWidth: 660,
+    imageHeight: 440,
+    description:
+      'If a classic is what you crave, our thin-sliced Oven Roasted Turkey is the sandwich for you. It’s full of flavor and made to order with your choice of crisp veggies, served on our freshly baked, Hearty Multigrain bread.',
+    categoryId: 3,
+    basePrice: 10,
+    restaurantId: 3,
+  },
+  {
+    name: 'Steak & Cheese Footlong Regular Sub',
+    slug: 'steak-&-cheese-footlong-regular-sub',
+    path: '/restaurants/subway/steak-&-cheese-footlong-regular-sub',
+    imageSource: '/images/steak-&-cheese-footlong-regular-sub.webp',
+    imageWidth: 660,
+    imageHeight: 440,
+    description:
+      'Our Steak & Cheese sandwich is where warm, delicious steak gets topped with melty cheesiness.',
+    categoryId: 3,
+    basePrice: 11,
+    restaurantId: 3,
+  },
+  {
+    name: '1 Scoop Sundae',
+    slug: '1-scoop-sundae',
+    path: '/restaurants/baskin-robbins/1-scoop-sundae',
+    imageSource: '/images/1-scoop-sundae.webp',
+    imageWidth: 550,
+    imageHeight: 440,
+    description:
+      'Your choice of a 2.5 oz. scoop of ice cream topped with your choice of wet topping, chopped almonds, and a cherry. Delivered products will not include whipped cream.',
+    categoryId: 4,
+    basePrice: 5,
+    restaurantId: 4,
+  },
+  {
+    name: '2 Scoop Sundae',
+    slug: '2-scoop-sundae',
+    path: '/restaurants/baskin-robbins/2-scoop-sundae',
+    imageSource: '/images/2-scoop-sundae.webp',
+    imageWidth: 550,
+    imageHeight: 440,
+    description:
+      'Your choice of 2-2.5 oz. scoops of ice cream topped with your choice of wet topping, chopped almonds, and a cherry. Delivered products will not include whipped cream.',
+    categoryId: 4,
+    basePrice: 7,
+    restaurantId: 4,
+  },
 ]
 
 export const restaurants: Prisma.RestaurantCreateManyInput[] = [
@@ -169,6 +222,24 @@ export const restaurants: Prisma.RestaurantCreateManyInput[] = [
     categoryId: 2,
     rating: 4.8,
     imageSource: '/images/starbucks.webp',
+    imageWidth: 550,
+    imageHeight: 440,
+  },
+  {
+    name: 'Subway',
+    slug: 'subway',
+    categoryId: 3,
+    rating: 4.8,
+    imageSource: '/images/subway.webp',
+    imageWidth: 550,
+    imageHeight: 440,
+  },
+  {
+    name: 'Baskin-Robbins',
+    slug: 'baskin-robbins',
+    categoryId: 4,
+    rating: 4.3,
+    imageSource: '/images/baskin-robbins.webp',
     imageWidth: 550,
     imageHeight: 440,
   },
