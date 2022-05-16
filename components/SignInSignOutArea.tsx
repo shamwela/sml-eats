@@ -1,5 +1,5 @@
-import { signOut, signInWithGoogle } from 'utilities/firebase'
 import { useAuthenticationState } from 'utilities/firebase'
+import { signIn, signOut } from 'utilities/firebase'
 
 const SignInSignOutArea = () => {
   const [user, loading, error] = useAuthenticationState()
@@ -17,7 +17,7 @@ const SignInSignOutArea = () => {
   if (user) {
     return <button onClick={signOut}>Sign out</button>
   } else {
-    return <button onClick={signInWithGoogle}>Continue with Google</button>
+    return <button onClick={signIn}>Continue with Google</button>
   }
 }
 
