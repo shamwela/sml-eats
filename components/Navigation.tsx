@@ -1,6 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
-import { auth } from 'utilities/firebase'
-import { useAuthState } from 'react-firebase-hooks/auth'
+import { useAuthenticationState } from 'utilities/firebase'
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -33,7 +32,7 @@ const Navigation = ({ cart }: { cart: CartItem[] }) => {
     setTheme(newTheme)
   }
 
-  const [user] = useAuthState(auth)
+  const [user] = useAuthenticationState()
   const [showMenu, setShowMenu] = useState(false)
   const openMenu = () => setShowMenu(true)
   const closeMenu = () => setShowMenu(false)

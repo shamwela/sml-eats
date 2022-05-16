@@ -1,8 +1,8 @@
-import { auth, signOut, signInWithGoogle } from 'utilities/firebase'
-import { useAuthState } from 'react-firebase-hooks/auth'
+import { signOut, signInWithGoogle } from 'utilities/firebase'
+import { useAuthenticationState } from 'utilities/firebase'
 
 const SignInSignOutArea = () => {
-  const [user, loading, error] = useAuthState(auth)
+  const [user, loading, error] = useAuthenticationState()
 
   if (loading) {
     return null

@@ -1,12 +1,11 @@
 import Head from 'components/Head'
-import { auth } from 'utilities/firebase'
-import { useAuthState } from 'react-firebase-hooks/auth'
+import { useAuthenticationState } from 'utilities/firebase'
 import LoadingPlaceholder from 'components/LoadingPlaceholder'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 const Profile = () => {
-  const [user, loading, error] = useAuthState(auth)
+  const [user, loading, error] = useAuthenticationState()
   const router = useRouter()
 
   useEffect(() => {
