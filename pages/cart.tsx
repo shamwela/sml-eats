@@ -1,6 +1,6 @@
 import type { CartItem } from 'types/cartItem'
 import type { ChangeEvent } from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Head from 'components/Head'
 import Link from 'next/link'
 
@@ -26,13 +26,15 @@ const Cart = ({
     changeItemQuantity(id, quantity)
   }
 
-  const checkoutPrice = cart.reduce((total, item) => total + item.finalPrice, 0)
+  const checkoutPrice = useMemo(
+    () => cart.reduce((total, item) => total + item.finalPrice, 0),
+    [cart]
+  )
 
   return (
     <>
       <Head title='Your cart' />
-
-      {!isSSR ? (
+      {!isSSR && (
         <div className='mx-auto flex flex-col gap-y-[inherit] w-full max-w-md'>
           {cart.length === 0 ? (
             <>
@@ -83,7 +85,7 @@ const Cart = ({
             </>
           )}
         </div>
-      ) : null}
+      )}
     </>
   )
 }

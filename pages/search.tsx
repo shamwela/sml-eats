@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { prisma } from 'prisma/prismaClient'
 import { InferGetStaticPropsType } from 'next'
-import LoadingPlaceholder from 'components/LoadingPlaceholder'
+import Spinner from 'components/Spinner'
 
 export const getStaticProps = async () => {
   const restaurants = await prisma.restaurant.findMany({
@@ -97,7 +97,7 @@ const Search = ({
       />
 
       <div className='grid gap-4 md:grid-cols-2'>
-        {isPending && <LoadingPlaceholder />}
+        {isPending && <Spinner />}
         {/* If the user searched and found no results */}
         {query !== '' && results?.length === 0 ? (
           <span>

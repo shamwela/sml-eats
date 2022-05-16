@@ -32,14 +32,14 @@ const Order = ({
 
   const router = useRouter()
   const addToOrder = () => {
-    const cartItem: CartItem = {
+    const newCartItem: CartItem = {
       ...item,
       quantity,
       oneItemPrice,
       finalPrice,
       selectedOptions,
     }
-    addItem(cartItem)
+    addItem(newCartItem)
 
     router.back()
   }

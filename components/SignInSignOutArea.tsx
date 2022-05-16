@@ -8,16 +8,12 @@ const SignInSignOutArea = () => {
     return null
   }
   if (error) {
-    return (
-      <p className='text-red-500'>
-        Sorry, something went wrong with our servers. Please try again later.
-      </p>
-    )
+    alert(error.message)
   }
-  if (user) {
-    return <button onClick={signOut}>Sign out</button>
-  } else {
+  if (!user) {
     return <button onClick={signIn}>Continue with Google</button>
+  } else {
+    return <button onClick={signOut}>Sign out</button>
   }
 }
 

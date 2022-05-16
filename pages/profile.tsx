@@ -1,6 +1,6 @@
 import Head from 'components/Head'
 import { useAuthenticationState } from 'utilities/firebase'
-import LoadingPlaceholder from 'components/LoadingPlaceholder'
+import Spinner from 'components/Spinner'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
@@ -27,7 +27,7 @@ const Profile = () => {
             </>
           )
         } else if (loading) {
-          return <LoadingPlaceholder />
+          return <Spinner />
         } else if (error) {
           alert(error)
         }
