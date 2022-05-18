@@ -5,14 +5,25 @@ const apiHandler: NextApiHandler = async (request, response) => {
   if (request.method === 'POST') {
     const restaurantId = request.body.restaurantId as number
     const userId = request.body.userId as string
-    console.log(prisma.restaurantsOnUsers)
 
-    await prisma.restaurantsOnUsers.create({
-      data: {
-        restaurantId: restaurantId,
-        userId: userId,
+    const restaurantUserObject = await prisma.restaurantsOnUsers.findFirst({
+      where: {
+        restaurantId,
+        userId,
       },
     })
+
+    // If the restaurant is already on the user's favorites, do nothing
+    if (restaurantUserObject) {
+      return
+    } else {
+      await prisma.restaurantsOnUsers.create({
+        data: {
+          restaurantId,
+          userId,
+        },
+      })
+    }
   }
 }
 
