@@ -6,8 +6,12 @@ import { useRouter } from 'next/router'
 const Profile = () => {
   const [user, loading, error] = useAuthenticationState()
   const router = useRouter()
-  if (!user) router.push('/')
-  if (error) alert(error.message)
+  if (!user) {
+    router.push('/')
+  }
+  if (error) {
+    alert(error.message)
+  }
 
   return (
     <>
