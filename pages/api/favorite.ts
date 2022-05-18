@@ -24,6 +24,16 @@ const apiHandler: NextApiHandler = async (request, response) => {
         },
       })
     }
+  } else if (request.method === 'DELETE') {
+    const restaurantId = request.body.restaurantId as number
+    const userId = request.body.userId as string
+
+    await prisma.restaurantsOnUsers.deleteMany({
+      where: {
+        restaurantId,
+        userId,
+      },
+    })
   }
 }
 

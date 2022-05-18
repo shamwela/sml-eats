@@ -29,6 +29,9 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   const userId = user.uid
 
   const addToFavorites = async () => {
+    // This might lead to bugs
+    // Fix later
+    setFavorited(true)
     await fetch('/api/favorite', {
       body: JSON.stringify({
         restaurantId,
@@ -42,6 +45,7 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   }
 
   const unFavorite = async () => {
+    setFavorited(false)
     await fetch('/api/favorite', {
       body: JSON.stringify({
         restaurantId,
