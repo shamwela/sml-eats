@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { prisma } from 'prisma/prismaClient'
 import { InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
+import { useAuthenticationState } from 'utilities/firebase'
 
 export const getStaticPaths = async () => {
   const restaurants = await prisma.restaurant.findMany({
@@ -41,15 +42,33 @@ export const getStaticProps = async (context: any) => {
 const RestaurantPage = ({
   restaurant,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const [user, loading, error] = useAuthenticationState()
+
   if (!restaurant) return null
-  const { name: restaurantName, rating, items } = restaurant
-  // const addToFavorites = () => {}
+  const { id: restaurantId, name: restaurantName, rating, items } = restaurant
+
+  const addToFavorites = (restaurantId: number, userId: string) => {
+    fetch('/api/restaurant', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        restaurantId,
+        userId,
+      }),
+    })
+  }
 
   return (
     <>
       <Head title={restaurantName} />
       <h1>{restaurantName}</h1>
-      {/* <button onClick={addToFavorites}>Add to favorites</button> */}
+      {user && (
+        <button onClick={() => addToFavorites(restaurantId, user.uid)}>
+          Add to favorites
+        </button>
+      )}
       <span>
         <strong>Rating</strong>: {rating}
       </span>

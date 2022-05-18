@@ -10,17 +10,17 @@ generator client {
 }
 
 model Restaurant {
-  id          Int      @id @default(autoincrement())
-  name        String   @unique
-  slug        String   @unique
+  id          Int                  @id @default(autoincrement())
+  name        String               @unique
+  slug        String               @unique
   rating      Float
-  imageSource String   @unique
+  imageSource String               @unique
   imageWidth  Int
   imageHeight Int
   items       Item[]
-  category    Category @relation(fields: [categoryId], references: [id])
+  category    Category             @relation(fields: [categoryId], references: [id])
   categoryId  Int
-  users       User[]
+  users       RestaurantsOnUsers[]
 
   // Adding index to foreign keys make it faster and cheaper to query
   @@index([categoryId])
@@ -77,6 +77,15 @@ model Category {
 }
 
 model User {
-  id          String       @id
-  restaurants Restaurant[]
+  id          String               @id
+  restaurants RestaurantsOnUsers[]
+}
+
+model RestaurantsOnUsers {
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId Int
+  User         User       @relation(fields: [userId], references: [id])
+  userId       String
+
+  @@id([restaurantId, userId])
 }
