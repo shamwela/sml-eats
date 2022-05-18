@@ -12,9 +12,8 @@ const SignInSignOutArea = () => {
   }
   if (!user) {
     return <button onClick={signIn}>Continue with Google</button>
-  } else {
-    return <button onClick={signOut}>Sign out</button>
   }
+  return <button onClick={signOut}>Sign out</button>
 }
 
 export default SignInSignOutArea
