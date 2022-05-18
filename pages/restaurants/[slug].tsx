@@ -48,7 +48,7 @@ const RestaurantPage = ({
   const { id: restaurantId, name: restaurantName, rating, items } = restaurant
 
   const addToFavorites = (restaurantId: number, userId: string) => {
-    fetch('/api/restaurant', {
+    fetch('/api/favorite', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

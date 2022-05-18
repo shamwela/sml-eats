@@ -7,7 +7,7 @@ const apiHandler: NextApiHandler = async (request, response) => {
     const userId = request.body.userId as string
     console.log(prisma.restaurantsOnUsers)
 
-    const something = await prisma.restaurantsOnUsers.create({
+    await prisma.restaurantsOnUsers.create({
       data: {
         restaurantId: restaurantId,
         userId: userId,

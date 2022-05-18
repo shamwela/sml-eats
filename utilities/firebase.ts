@@ -19,10 +19,26 @@ const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 export const useAuthenticationState = () => useAuthState(auth)
 
-export const signIn = () => {
+export const signIn = async () => {
   const googleAuthProvider = new GoogleAuthProvider()
   try {
-    signInWithPopup(auth, googleAuthProvider)
+    await signInWithPopup(auth, googleAuthProvider)
+    const { currentUser } = auth
+    if (!currentUser) {
+      alert('Sorry, there was an error. Please try again later.')
+      return
+    }
+    const userId = currentUser.uid
+
+    // This is mixing two concerns
+    // Fix this later?
+    await fetch('/api/create-user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId }),
+    })
   } catch (error: any) {
     alert(error.message)
   }
