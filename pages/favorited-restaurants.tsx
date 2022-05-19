@@ -1,28 +1,17 @@
 import Head from 'components/Head'
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useAuthenticationState } from 'utilities/firebase'
 import type { Restaurant } from '@prisma/client'
 import RestaurantImageGroup from 'components/RestaurantImageGroup'
 import Link from 'next/link'
 import ItemContainer from 'components/ItemContainer'
+import Spinner from 'components/Spinner'
 
 const FavoritedRestaurants = () => {
   const [user, loading, error] = useAuthenticationState()
   const [favoritedRestaurants, setFavoritedRestaurants] = useState<
-    Restaurant[]
-  >([])
-  const router = useRouter()
-
-  // useEffect(() => {
-  //   if (!user) {
-  //     router.push('/')
-  //   }
-  // }, [user, router])
-
-  if (error) {
-    alert(error.message)
-  }
+    Restaurant[] | undefined
+  >(undefined)
 
   useEffect(() => {
     if (!user) {
@@ -46,6 +35,16 @@ const FavoritedRestaurants = () => {
     getFavoritedRestaurants()
   }, [user])
 
+  if (loading) {
+    return <Spinner />
+  }
+  if (error) {
+    alert(error.message)
+  }
+  if (!favoritedRestaurants) {
+    return null
+  }
+
   return (
     <>
       <Head title='Favorited restaurants' />
@@ -53,7 +52,7 @@ const FavoritedRestaurants = () => {
         <>
           <h1>No favorites saved.</h1>
           <Link href='/'>
-            <a>Find some favorites</a>
+            <a className='button'>Find some favorites</a>
           </Link>
         </>
       ) : (
