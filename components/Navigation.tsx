@@ -72,6 +72,9 @@ const Navigation = ({ cart }: { cart: CartItem[] }) => {
           </Link>
         )}
 
+        <Link href='/favorited-restaurants'>
+          <a>Favorites</a>
+        </Link>
         <SignInSignOutArea />
       </div>
     </nav>

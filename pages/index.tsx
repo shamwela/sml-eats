@@ -2,9 +2,9 @@ import Head from 'components/Head'
 import Image from 'next/image'
 import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
-import { StarIcon } from '@heroicons/react/solid'
 import { prisma } from 'prisma/prismaClient'
 import { InferGetStaticPropsType } from 'next'
+import RestaurantImageGroup from 'components/RestaurantImageGroup'
 
 export const getStaticProps = async () => {
   const categories = await prisma.category.findMany()
@@ -51,40 +51,9 @@ const Home = ({
 
       <h2>Popular near you</h2>
       <ItemContainer>
-        {restaurants.map(
-          ({
-            id,
-            name,
-            slug,
-            rating,
-            imageSource,
-            imageWidth,
-            imageHeight,
-          }) => {
-            return (
-              <Link key={id} href={'/restaurants/' + slug}>
-                <a>
-                  <section className='flex flex-col gap-y-1'>
-                    <Image
-                      alt={name}
-                      src={imageSource}
-                      width={imageWidth}
-                      height={imageHeight}
-                      priority
-                    />
-                    <div className='flex justify-between items-start'>
-                      <span>{name}</span>
-                      <div className='flex items-center'>
-                        <StarIcon />
-                        <span>{rating}</span>
-                      </div>
-                    </div>
-                  </section>
-                </a>
-              </Link>
-            )
-          }
-        )}
+        {restaurants.map((restaurant) => (
+          <RestaurantImageGroup {...restaurant} key={restaurant.id} />
+        ))}
       </ItemContainer>
     </>
   )
