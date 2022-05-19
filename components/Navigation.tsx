@@ -4,7 +4,12 @@ import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
-import { MenuAlt4Icon, XIcon, ShoppingCartIcon } from '@heroicons/react/solid'
+import {
+  MenuAlt4Icon,
+  XIcon,
+  ShoppingCartIcon,
+  SearchIcon,
+} from '@heroicons/react/solid'
 import SignInSignOutArea from './SignInSignOutArea'
 
 const Navigation = ({ cart }: { cart: CartItem[] }) => {
@@ -39,7 +44,32 @@ const Navigation = ({ cart }: { cart: CartItem[] }) => {
 
   return (
     <nav className='top-0 z-10 bg-white py-4 dark:bg-gray-900 md:sticky'>
-      <div className='mx-auto flex max-w-4xl flex-wrap items-center gap-x-4 gap-y-2'>
+      <div className='mx-auto flex max-w-4xl flex-wrap items-center gap-x-8 gap-y-2'>
+        <Link href='/'>
+          <a className='text-xl font-bold md:text-4xl'>SML Eats</a>
+        </Link>
+        <Link href='/delivery-details'>
+          <a>Delivery details</a>
+        </Link>
+        {showCartButton && (
+          <Link href='/cart'>
+            <a className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static button'>
+              <ShoppingCartIcon />
+              <span>Cart • {totalQuantity}</span>
+            </a>
+          </Link>
+        )}
+
+        <Link href='/favorited-restaurants'>
+          <a>Favorites</a>
+        </Link>
+
+        <Link href='/search'>
+          <a>
+            <SearchIcon />
+          </a>
+        </Link>
+        
         <MenuAlt4Icon onClick={openMenu} className='cursor-pointer' />
         {showMenu && (
           <div className='fixed inset-0 bg-white dark:bg-gray-900 z-20 p-4 flex flex-col gap-y-6 max-w-md'>
@@ -54,27 +84,7 @@ const Navigation = ({ cart }: { cart: CartItem[] }) => {
             <button onClick={toggleTheme}>Change theme</button>
           </div>
         )}
-        <Link href='/'>
-          <a className='text-xl font-bold md:text-4xl'>SML Eats</a>
-        </Link>
-        <Link href='/delivery-details'>
-          <a className='button'>Delivery details</a>
-        </Link>
-        <Link href='/search'>
-          <a className='button'>Search</a>
-        </Link>
-        {showCartButton && (
-          <Link href='/cart'>
-            <a className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static button'>
-              <ShoppingCartIcon />
-              <span>Cart • {totalQuantity}</span>
-            </a>
-          </Link>
-        )}
 
-        <Link href='/favorited-restaurants'>
-          <a>Favorites</a>
-        </Link>
         <SignInSignOutArea />
       </div>
     </nav>
