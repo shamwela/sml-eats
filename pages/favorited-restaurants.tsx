@@ -6,15 +6,18 @@ import RestaurantImageGroup from 'components/RestaurantImageGroup'
 import Link from 'next/link'
 import ItemContainer from 'components/ItemContainer'
 import Spinner from 'components/Spinner'
+import { useRouter } from 'next/router'
 
 const FavoritedRestaurants = () => {
   const [user, loading, error] = useAuthenticationState()
   const [favoritedRestaurants, setFavoritedRestaurants] = useState<
     Restaurant[] | undefined
   >(undefined)
+  const router = useRouter()
 
   useEffect(() => {
     if (!user) {
+      router.push('/')
       return
     }
 
@@ -33,7 +36,7 @@ const FavoritedRestaurants = () => {
       setFavoritedRestaurants(favoritedRestaurants)
     }
     getFavoritedRestaurants()
-  }, [user])
+  }, [router, user])
 
   if (loading) {
     return <Spinner />
