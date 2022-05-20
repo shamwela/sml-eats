@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useAuthenticationState } from 'utilities/firebase'
+import Spinner from './Spinner'
 
 const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   const [user] = useAuthenticationState()
@@ -19,6 +20,8 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
         },
       })
       const { favorited } = await favoritedResponse.json()
+      
+
       setFavorited(favorited)
     }
     getData()
@@ -58,7 +61,10 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
     })
   }
 
-  if (!favorited) {
+  if (typeof favorited === 'undefined') {
+    // This is loading state
+    return null
+  } else if (favorited === false) {
     return <button onClick={addToFavorites}>Add to favorites</button>
   } else {
     return <button onClick={unFavorite}>Remove from favorites</button>

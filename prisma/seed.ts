@@ -20,12 +20,6 @@ const main = async () => {
   await prisma.item.createMany({ data: items })
   await prisma.restaurant.createMany({ data: restaurants })
 
-  try {
-  } catch (error) {
-    console.error(error)
-    process.exit(1)
-  } finally {
-    await prisma.$disconnect()
-  }
+  await prisma.$disconnect()
 }
 main()
