@@ -17,7 +17,7 @@ const apiHandler: NextApiHandler = async (request, response) => {
       },
     })
 
-    // If the row exists, that means the user has already favorited the restaurant
+    // If this object is not undefined, then the user has already favorited this restaurant
     if (restaurantUserObject) {
       return response.status(200).json({ favorited: true })
     } else {

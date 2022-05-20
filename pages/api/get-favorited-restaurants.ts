@@ -3,7 +3,11 @@ import { prisma } from 'prisma/prismaClient'
 
 const apiHandler: NextApiHandler = async (request, response) => {
   if (request.method === 'POST') {
-    const userId = request.body.userId as string
+    const { userId } = request.body
+    if (!userId) {
+      return response.status(400).json({ error: 'userId is required' })
+    }
+    
     const favoritedRestaurants = await prisma.restaurant.findMany({
       where: {
         users: {
