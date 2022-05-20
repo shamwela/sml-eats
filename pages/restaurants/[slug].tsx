@@ -51,7 +51,10 @@ const RestaurantPage = ({
     <>
       <Head title={restaurantName} />
       <h1>{restaurantName}</h1>
-      <FavoriteButtonArea restaurantId={restaurantId} />
+      {/* This empty div prevents layout shift while the button is loading */}
+      <div className='h-10'>
+        <FavoriteButtonArea restaurantId={restaurantId} />
+      </div>
       <span>
         <strong>Rating</strong>: {rating}
       </span>
