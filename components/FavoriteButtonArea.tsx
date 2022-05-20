@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useAuthenticationState } from 'utilities/firebase'
-import Spinner from './Spinner'
 
 const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   const [user] = useAuthenticationState()
@@ -20,7 +19,6 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
         },
       })
       const { favorited } = await favoritedResponse.json()
-      
 
       setFavorited(favorited)
     }
