@@ -65,11 +65,11 @@ const Navigation = ({ cart }: { cart: CartItem[] }) => {
         </Link>
 
         <Link href='/search'>
-          <a>
+          <a aria-label='Search'>
             <SearchIcon />
           </a>
         </Link>
-        
+
         <MenuAlt4Icon onClick={openMenu} className='cursor-pointer' />
         {showMenu && (
           <div className='fixed inset-0 bg-white dark:bg-gray-900 z-20 p-4 flex flex-col gap-y-6 max-w-md'>
