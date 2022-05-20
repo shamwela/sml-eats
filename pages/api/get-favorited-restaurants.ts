@@ -14,7 +14,7 @@ const apiHandler: NextApiHandler = async (request, response) => {
       },
     })
 
-    response.json(favoritedRestaurants)
+    return response.status(200).json(favoritedRestaurants)
   }
 }
 

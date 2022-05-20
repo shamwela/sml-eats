@@ -3,17 +3,20 @@ import { prisma } from 'prisma/prismaClient'
 
 const apiHandler: NextApiHandler = async (request, response) => {
   if (request.method === 'POST') {
-    const id = request.body.userId as string
+    const { userId } = request.body
+    if (!userId) {
+      return response.status(400).json({ error: 'userId is required' })
+    }
 
     await prisma.user.upsert({
       where: {
-        id,
+        id: userId,
       },
       // If the user already exists, do nothing
       update: {},
       // If the user doesn't exist, create a new user
       create: {
-        id,
+        id: userId,
       },
     })
   }

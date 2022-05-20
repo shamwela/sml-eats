@@ -3,8 +3,12 @@ import { prisma } from 'prisma/prismaClient'
 
 const apiHandler: NextApiHandler = async (request, response) => {
   if (request.method === 'POST') {
-    const restaurantId = request.body.restaurantId as number
-    const userId = request.body.userId as string
+    const { restaurantId, userId } = request.body
+    if (!restaurantId || !userId) {
+      return response
+        .status(400)
+        .json({ error: 'Both restaurantId and userId are required' })
+    }
 
     const restaurantUserObject = await prisma.restaurantsOnUsers.findFirst({
       where: {
@@ -14,11 +18,8 @@ const apiHandler: NextApiHandler = async (request, response) => {
     })
 
     // If the row exists, that means the user has already favorited the restaurant
-    if (restaurantUserObject) {
-      response.json({ favorited: true })
-    } else {
-      response.json({ favorited: false })
-    }
+    const favorited = restaurantUserObject ? true : false
+    return response.status(200).json(favorited)
   }
 }
 

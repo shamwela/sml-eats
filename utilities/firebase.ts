@@ -32,7 +32,7 @@ export const signIn = async () => {
 
     // This is mixing two concerns
     // Fix this later?
-    await fetch('/api/create-user', {
+    await fetch('/api/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

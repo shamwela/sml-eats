@@ -3,7 +3,7 @@ import { useAuthenticationState } from 'utilities/firebase'
 
 const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   const [user] = useAuthenticationState()
-  const [favorited, setFavorited] = useState(false)
+  const [favorited, setFavorited] = useState<boolean | undefined>(undefined)
 
   useEffect(() => {
     if (!user) {
