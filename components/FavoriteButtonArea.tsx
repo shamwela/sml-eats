@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import { useAuthenticationState } from 'utilities/firebase'
+import { useEffect, useState } from 'react'
 
 const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   const [user] = useAuthenticationState()
@@ -19,7 +19,6 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
         },
       })
       const { favorited } = await favoritedResponse.json()
-
       setFavorited(favorited)
     }
     getData()
@@ -29,9 +28,8 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   }
   const userId = user.uid
 
-  const addToFavorites = async () => {
-    // This might lead to bugs
-    // Fix later
+  const favorite = async () => {
+    // Change the state first to make it look faster
     setFavorited(true)
     await fetch('/api/favorite', {
       body: JSON.stringify({
@@ -60,10 +58,10 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   }
 
   if (typeof favorited === 'undefined') {
-    // This is loading state
+    // If it's undefined, it's still loading
     return null
   } else if (favorited === false) {
-    return <button onClick={addToFavorites}>Add to favorites</button>
+    return <button onClick={favorite}>Add to favorites</button>
   } else {
     return <button onClick={unFavorite}>Remove from favorites</button>
   }

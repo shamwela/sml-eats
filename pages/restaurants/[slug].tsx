@@ -42,7 +42,9 @@ export const getStaticProps = async (context: any) => {
 const RestaurantPage = ({
   restaurant,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  if (!restaurant) return null
+  if (!restaurant) {
+    return <p>Sorry. Couldn't find that restaurant.</p>
+  }
   const { id: restaurantId, name: restaurantName, rating, items } = restaurant
 
   return (
