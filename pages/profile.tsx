@@ -9,10 +9,10 @@ const Profile = () => {
   const router = useRouter()
 
   useEffect(() => {
-    if (!user) {
+    if (!loading && !user) {
       router.push('/')
     }
-  }, [user, router])
+  }, [loading, user, router])
 
   if (error) {
     alert(error.message)
