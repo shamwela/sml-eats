@@ -2,7 +2,7 @@ import { useAuthenticationState } from 'utilities/firebase'
 import { useEffect, useState } from 'react'
 
 const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
-  const [user] = useAuthenticationState()
+  const [user, userLoading, userError] = useAuthenticationState()
   const [favorited, setFavorited] = useState<boolean | undefined>(undefined)
 
   useEffect(() => {
@@ -10,7 +10,7 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
       return
     }
 
-    const getData = async () => {
+    const getAndSetFavorited = async () => {
       const favoritedResponse = await fetch('/api/favorited', {
         body: JSON.stringify({ restaurantId, userId: user.uid }),
         method: 'POST',
@@ -21,9 +21,13 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
       const { favorited } = await favoritedResponse.json()
       setFavorited(favorited)
     }
-    getData()
+    getAndSetFavorited()
   }, [restaurantId, user])
-  if (!user) {
+
+  if (userError) {
+    alert(userError.message)
+  }
+  if (userLoading || !user) {
     return null
   }
   const userId = user.uid

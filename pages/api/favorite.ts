@@ -23,6 +23,7 @@ const apiHandler: NextApiHandler = async (request, response) => {
         userId,
       },
     })
+    return response.status(200).json({ success: true })
   } else if (request.method === 'DELETE') {
     await prisma.restaurantsOnUsers.deleteMany({
       where: {
@@ -30,9 +31,10 @@ const apiHandler: NextApiHandler = async (request, response) => {
         userId,
       },
     })
+    return response.status(200).json({ success: true })
+  } else {
+    return response.status(405).json({ error: 'Method not allowed' })
   }
-
-  return response.status(405).json({ error: 'Method not allowed' })
 }
 
 export default apiHandler

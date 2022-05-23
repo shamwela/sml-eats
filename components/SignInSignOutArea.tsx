@@ -7,13 +7,16 @@ const SignInSignOutArea = () => {
   const [isSSR, setIsSSR] = useState(true)
   useEffect(() => setIsSSR(false), [])
 
+  if (isSSR) {
+    return null
+  }
   if (loading) {
     return null
   }
   if (error) {
     alert(error.message)
   }
-  if (!user && !isSSR) {
+  if (!user) {
     return <button onClick={signIn}>Continue with Google</button>
   }
   return <button onClick={signOut}>Sign out</button>

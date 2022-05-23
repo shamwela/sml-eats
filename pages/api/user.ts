@@ -19,7 +19,7 @@ const apiHandler: NextApiHandler = async (request, response) => {
         id: userId,
       },
     })
-    return
+    return response.status(200).json({ success: true })
   }
 
   return response.status(405).json({ error: 'Method not allowed' })
