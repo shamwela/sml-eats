@@ -30,14 +30,14 @@ export const signIn = async () => {
     }
     const userId = currentUser.uid
 
-    // This is mixing two concerns
-    // Fix this later?
+    // Also need to create a new user on PlanetScale
+    // because Firebase is only used for authentication
     await fetch('/api/user', {
+      body: JSON.stringify({ userId }),
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userId }),
     })
   } catch (error: any) {
     alert(error.message)
