@@ -1,5 +1,5 @@
 import Head from 'components/Head'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useAuthenticationState } from 'utilities/firebase'
 import type { Restaurant } from '@prisma/client'
 import RestaurantImageGroup from 'components/RestaurantImageGroup'
@@ -7,45 +7,44 @@ import Link from 'next/link'
 import ItemContainer from 'components/ItemContainer'
 import Spinner from 'components/Spinner'
 import { useRouter } from 'next/router'
+import useSWR from 'swr'
 
 const FavoritedRestaurants = () => {
-  const [user, loading, error] = useAuthenticationState()
-  const [favoritedRestaurants, setFavoritedRestaurants] = useState<
-    Restaurant[] | undefined
-  >(undefined)
+  const [user, userLoading, userError] = useAuthenticationState()
+  const fetcher = async (url: string) => {
+    if (!user) {
+      return null
+    }
+    const favoritedRestaurantsResponse = await fetch(url, {
+      body: JSON.stringify({ userId: user.uid }),
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    const favoritedRestaurants: Restaurant[] =
+      await favoritedRestaurantsResponse.json()
+    return favoritedRestaurants
+  }
+  const { data: favoritedRestaurants, error: favoritedRestaurantsError } =
+    useSWR('/api/get-favorited-restaurants', fetcher)
   const router = useRouter()
 
   useEffect(() => {
-    if (!user) {
+    if (!userLoading && !user) {
       router.push('/')
       return
     }
+  }, [userLoading, user, router])
 
-    const getFavoritedRestaurants = async () => {
-      const favoritedRestaurantsResponse = await fetch(
-        '/api/get-favorited-restaurants',
-        {
-          method: 'POST',
-          body: JSON.stringify({ userId: user.uid }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      const favoritedRestaurants = await favoritedRestaurantsResponse.json()
-      setFavoritedRestaurants(favoritedRestaurants)
-    }
-    getFavoritedRestaurants()
-  }, [router, user])
-
-  if (loading) {
+  if (userLoading || !favoritedRestaurants) {
     return <Spinner />
   }
-  if (error) {
-    alert(error.message)
+  if (userError) {
+    alert(userError.message)
   }
-  if (!favoritedRestaurants) {
-    return null
+  if (favoritedRestaurantsError) {
+    alert(favoritedRestaurantsError.message)
   }
 
   return (
