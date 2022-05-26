@@ -4,8 +4,13 @@ import type { CartItem } from 'types/cartItem'
 import Navigation from 'components/Navigation'
 import { ThemeProvider } from 'next-themes'
 import { useLocalStorage } from 'usehooks-ts'
+import { UserContext } from 'contexts/user'
+import { UserLoadingContext } from 'contexts/userLoading'
+import { UserErrorContext } from 'contexts/userError'
+import { useAuthenticationState } from 'utilities/firebase'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const [user, userLoading, userError] = useAuthenticationState()
   const [cart, setCart] = useLocalStorage<CartItem[]>('cart', [])
 
   const addItem = (newCartItem: CartItem) => {
@@ -42,15 +47,21 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <ThemeProvider attribute='class' defaultTheme='system'>
-      <Navigation cart={cart} emptyCart={emptyCart} />
-      <main className='mx-auto mb-24 flex max-w-4xl flex-col gap-y-4'>
-        <Component
-          {...pageProps}
-          cart={cart}
-          addItem={addItem}
-          changeItemQuantity={changeItemQuantity}
-        />
-      </main>
+      <UserContext.Provider value={user}>
+        <UserLoadingContext.Provider value={userLoading}>
+          <UserErrorContext.Provider value={userError}>
+            <Navigation cart={cart} emptyCart={emptyCart} />
+            <main className='mx-auto mb-24 flex max-w-4xl flex-col gap-y-4'>
+              <Component
+                {...pageProps}
+                cart={cart}
+                addItem={addItem}
+                changeItemQuantity={changeItemQuantity}
+              />
+            </main>
+          </UserErrorContext.Provider>
+        </UserLoadingContext.Provider>
+      </UserContext.Provider>
     </ThemeProvider>
   )
 }
