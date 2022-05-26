@@ -12,7 +12,13 @@ import {
 } from '@heroicons/react/solid'
 import SignInSignOutArea from './SignInSignOutArea'
 
-const Navigation = ({ cart }: { cart: CartItem[] }) => {
+const Navigation = ({
+  cart,
+  emptyCart,
+}: {
+  cart: CartItem[]
+  emptyCart: () => void
+}) => {
   const { theme, setTheme } = useTheme()
   const totalQuantity = useMemo(
     () =>
@@ -84,7 +90,7 @@ const Navigation = ({ cart }: { cart: CartItem[] }) => {
             </a>
           </Link>
         )}
-        <SignInSignOutArea />
+        <SignInSignOutArea emptyCart={emptyCart} />
       </div>
     </nav>
   )

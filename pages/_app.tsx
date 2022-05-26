@@ -38,9 +38,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     }
   }
 
+  const emptyCart = () => setCart([])
+
   return (
     <ThemeProvider attribute='class' defaultTheme='system'>
-      <Navigation cart={cart} />
+      <Navigation cart={cart} emptyCart={emptyCart} />
       <main className='mx-auto mb-24 flex max-w-4xl flex-col gap-y-4'>
         <Component
           {...pageProps}
