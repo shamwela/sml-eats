@@ -1,5 +1,4 @@
-import { useEffect, useState, useMemo } from 'react'
-import { useAuthenticationState } from 'utilities/firebase'
+import { useEffect, useState, useMemo, useContext } from 'react'
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -11,6 +10,7 @@ import {
   SearchIcon,
 } from '@heroicons/react/solid'
 import SignInSignOutArea from './SignInSignOutArea'
+import { UserContext } from 'contexts/user'
 
 const Navigation = ({
   cart,
@@ -43,7 +43,7 @@ const Navigation = ({
     setTheme(newTheme)
   }
 
-  const [user] = useAuthenticationState()
+  const user = useContext(UserContext)
   const [showMenu, setShowMenu] = useState(false)
   const openMenu = () => setShowMenu(true)
   const closeMenu = () => setShowMenu(false)
@@ -63,13 +63,15 @@ const Navigation = ({
             <Link href='/delivery-details'>
               <a>Delivery details</a>
             </Link>
-            <Link href='/favorited-restaurants'>
-              <a>Favorites</a>
-            </Link>
             {user && (
-              <Link href='/profile'>
-                <a>Profile</a>
-              </Link>
+              <>
+                <Link href='/favorited-restaurants'>
+                  <a>Favorites</a>
+                </Link>
+                <Link href='/profile'>
+                  <a>Profile</a>
+                </Link>
+              </>
             )}
             <button onClick={toggleTheme}>Change theme</button>
           </div>
