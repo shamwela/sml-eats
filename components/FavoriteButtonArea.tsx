@@ -13,10 +13,11 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
 
     const userId = user.uid
     const getAndSetFavorited = async () => {
-      const { data: favorited } = await axios.post('/api/favorited', {
+      const { data } = await axios.post('/api/favorited', {
         restaurantId,
         userId,
       })
+      const { favorited } = data
       setFavorited(favorited)
     }
     getAndSetFavorited()
@@ -44,7 +45,7 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   if (typeof favorited === 'undefined') {
     // If it's undefined, it's still loading
     return null
-  } else if (favorited === false) {
+  } else if (!favorited) {
     return <button onClick={favorite}>Add to favorites</button>
   } else {
     return <button onClick={unFavorite}>Remove from favorites</button>
