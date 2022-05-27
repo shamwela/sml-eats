@@ -57,6 +57,7 @@ const Navigation = ({
   useEffect(() => closeMenu(), [pathname])
   const handleSignOut = () => {
     emptyCart()
+    closeMenu()
     signOut()
   }
 
