@@ -2,7 +2,8 @@ import type { NextApiHandler } from 'next'
 import { prisma } from 'prisma/prismaClient'
 
 const apiHandler: NextApiHandler = async (request, response) => {
-  if (request.method === 'POST') {
+  const {method} = request
+  if (method === 'POST') {
     const { restaurantId, userId } = request.body
     if (!restaurantId || !userId) {
       return response

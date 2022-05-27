@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { initializeApp } from 'firebase/app'
 import {
   GoogleAuthProvider,
@@ -30,15 +31,8 @@ export const signIn = async () => {
     }
     const userId = currentUser.uid
 
-    // Also need to create a new user on PlanetScale
-    // because Firebase is only used for authentication
-    await fetch('/api/user', {
-      body: JSON.stringify({ userId }),
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    // This is because Firebase is only used for authentication
+    await axios.post('/api/user', { userId })
   } catch (error: any) {
     alert(error.message)
   }

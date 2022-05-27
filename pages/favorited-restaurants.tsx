@@ -8,6 +8,7 @@ import ItemContainer from 'components/ItemContainer'
 import Spinner from 'components/Spinner'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
+import axios from 'axios'
 
 const FavoritedRestaurants = () => {
   const [user, userLoading, userError] = useAuthenticationState()
@@ -15,16 +16,9 @@ const FavoritedRestaurants = () => {
     if (!user) {
       return null
     }
-    const favoritedRestaurantsResponse = await fetch(url, {
-      body: JSON.stringify({ userId: user.uid }),
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    const favoritedRestaurants: Restaurant[] =
-      await favoritedRestaurantsResponse.json()
-    return favoritedRestaurants
+    const userId = user.uid
+    const { data: favoritedRestaurants } = await axios.post(url, { userId })
+    return favoritedRestaurants as Restaurant[]
   }
   const { data: favoritedRestaurants, error: favoritedRestaurantsError } =
     useSWR('/api/get-favorited-restaurants', fetcher)

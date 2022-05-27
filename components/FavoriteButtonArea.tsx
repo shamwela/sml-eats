@@ -1,5 +1,6 @@
 import { useAuthenticationState } from 'utilities/firebase'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   const [user, userLoading, userError] = useAuthenticationState()
@@ -10,15 +11,12 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
       return
     }
 
+    const userId = user.uid
     const getAndSetFavorited = async () => {
-      const favoritedResponse = await fetch('/api/favorited', {
-        body: JSON.stringify({ restaurantId, userId: user.uid }),
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const { data: favorited } = await axios.post('/api/favorited', {
+        restaurantId,
+        userId,
       })
-      const { favorited } = await favoritedResponse.json()
       setFavorited(favorited)
     }
     getAndSetFavorited()
@@ -35,30 +33,12 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   const favorite = async () => {
     // Change the state first to make it look faster
     setFavorited(true)
-    await fetch('/api/favorite', {
-      body: JSON.stringify({
-        restaurantId,
-        userId,
-      }),
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    await axios.post('/api/favorite', { restaurantId, userId })
   }
 
   const unFavorite = async () => {
     setFavorited(false)
-    await fetch('/api/favorite', {
-      body: JSON.stringify({
-        restaurantId,
-        userId,
-      }),
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    await axios.put('/api/unfavorite', { restaurantId, userId })
   }
 
   if (typeof favorited === 'undefined') {
