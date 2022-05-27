@@ -1,8 +1,9 @@
 import type { AddItem } from 'types/addItem'
-import { ChangeEvent, useState } from 'react'
+import { useState } from 'react'
 import Head from 'components/Head'
 import Order from 'components/Order'
 import { prisma } from 'prisma/prismaClient'
+import type { Input } from '@prisma/client'
 import Image from 'next/image'
 import type { NestedItem } from 'types/nestedItem'
 
@@ -108,18 +109,17 @@ const ItemPage = ({
   }
   const oneItemPrice = basePrice + additionalPrice
 
-  const eventHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name: optionName } = event.target
-
+  const handleInput = (optionName: string, newInput: Input) => {
     const newSelectedOptions = selectedOptions.map((selectedOption) => {
-      if (selectedOption.name !== optionName) {
-        return selectedOption
+      // For example, Size, Crust
+      if (selectedOption.name === optionName) {
+        // Change the selected input
+        const newSelectedOption = { ...selectedOption, inputs: [newInput] }
+        return newSelectedOption
       } else {
-        selectedOption.name = optionName
         return selectedOption
       }
     })
-
     setSelectedOptions(newSelectedOptions)
   }
 
@@ -146,22 +146,25 @@ const ItemPage = ({
           return (
             <div key={id} className='flex flex-col gap-4'>
               <h2>Choose {name}</h2>
-              {inputs.map(({ id, name, additionalPrice }) => (
-                <div key={id} className='flex items-center gap-x-4'>
-                  <input
-                    id={name}
-                    name={option.name}
-                    value={additionalPrice}
-                    onChange={eventHandler}
-                    defaultChecked={additionalPrice === 0 && true}
-                    type='radio'
-                  />
-                  <label htmlFor={name} className='mr-auto'>
-                    {name}
-                  </label>
-                  <div>+${additionalPrice}</div>
-                </div>
-              ))}
+              {inputs.map((input) => {
+                const { id, name, additionalPrice } = input
+                return (
+                  <div key={id} className='flex items-center gap-x-4'>
+                    <input
+                      id={name}
+                      name={option.name}
+                      value={additionalPrice}
+                      onChange={() => handleInput(option.name, input)}
+                      defaultChecked={additionalPrice === 0 && true}
+                      type='radio'
+                    />
+                    <label htmlFor={name} className='mr-auto'>
+                      {name}
+                    </label>
+                    <div>+${additionalPrice}</div>
+                  </div>
+                )
+              })}
             </div>
           )
         })}
