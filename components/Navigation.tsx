@@ -104,9 +104,7 @@ const Navigation = ({
             </a>
           </Link>
         )}
-        {!userLoading && !user && (
-          <button onClick={signIn}>Continue with Google</button>
-        )}
+        {!userLoading && !user && <button onClick={signIn}>Sign in</button>}
       </div>
     </nav>
   )
