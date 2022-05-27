@@ -9,8 +9,10 @@ import {
   ShoppingCartIcon,
   SearchIcon,
 } from '@heroicons/react/solid'
-import SignInSignOutArea from './SignInSignOutArea'
 import { UserContext } from 'contexts/user'
+import { UserLoadingContext } from 'contexts/userLoading'
+import { UserErrorContext } from 'contexts/userError'
+import { signIn, signOut } from 'utilities/firebase'
 
 const Navigation = ({
   cart,
@@ -44,10 +46,19 @@ const Navigation = ({
   }
 
   const user = useContext(UserContext)
+  const userLoading = useContext(UserLoadingContext)
+  const userError = useContext(UserErrorContext)
+  if (userError) {
+    alert(userError.message)
+  }
   const [showMenu, setShowMenu] = useState(false)
   const openMenu = () => setShowMenu(true)
   const closeMenu = () => setShowMenu(false)
   useEffect(() => closeMenu(), [pathname])
+  const handleSignOut = () => {
+    emptyCart()
+    signOut()
+  }
 
   return (
     <nav className='top-0 z-10 bg-white py-4 dark:bg-gray-900 md:sticky'>
@@ -74,6 +85,7 @@ const Navigation = ({
               </>
             )}
             <button onClick={toggleTheme}>Change theme</button>
+            {user && <button onClick={handleSignOut}>Sign out</button>}
           </div>
         )}
         <Link href='/'>
@@ -92,7 +104,9 @@ const Navigation = ({
             </a>
           </Link>
         )}
-        <SignInSignOutArea emptyCart={emptyCart} />
+        {!userLoading && !user && (
+          <button onClick={signIn}>Continue with Google</button>
+        )}
       </div>
     </nav>
   )
