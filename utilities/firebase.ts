@@ -23,18 +23,16 @@ export const useAuthenticationState = () => useAuthState(auth)
 export const signIn = async () => {
   const googleAuthProvider = new GoogleAuthProvider()
   try {
-    await signInWithPopup(auth, googleAuthProvider)
-    const { currentUser } = auth
-    if (!currentUser) {
-      alert('Sorry, there was an error. Please try again later.')
-      return
-    }
-    const userId = currentUser.uid
+    const { user } = await signInWithPopup(auth, googleAuthProvider)
+    const userId = user.uid
 
     // This is because Firebase is only used for authentication
     await axios.post('/api/user', { userId })
   } catch (error: any) {
-    alert(error.message)
+    alert(
+      'Sorry. There was an error while you sign in. Please try again later.'
+    )
+    console.error(error)
   }
 }
 
