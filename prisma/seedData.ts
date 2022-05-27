@@ -186,7 +186,7 @@ export const items: Prisma.ItemCreateManyInput[] = [
     imageWidth: 550,
     imageHeight: 440,
     description:
-      'Your choice of a 2.5 oz. scoop of ice cream topped with your choice of wet topping, chopped almonds, and a cherry. Delivered products will not include whipped cream.',
+      'A 2.5 oz. scoop of ice cream topped with chopped almonds, and a cherry. Delivered products will not include whipped cream.',
     categoryId: 4,
     basePrice: 5,
     restaurantId: 4,
@@ -199,7 +199,7 @@ export const items: Prisma.ItemCreateManyInput[] = [
     imageWidth: 550,
     imageHeight: 440,
     description:
-      'Your choice of 2-2.5 oz. scoops of ice cream topped with your choice of wet topping, chopped almonds, and a cherry. Delivered products will not include whipped cream.',
+      'Two 2.5 oz. scoops of ice cream topped with chopped almonds, and a cherry. Delivered products will not include whipped cream.',
     categoryId: 4,
     basePrice: 7,
     restaurantId: 4,
