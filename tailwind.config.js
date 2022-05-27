@@ -1,10 +1,8 @@
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 module.exports = {
   darkMode: 'class',
-  content: [
-    './components/**/*.{ts,tsx}',
-    './pages/**/*.{ts,tsx}',
-    './ui/**/*.{ts,tsx}',
-  ],
+  content: ['./components/**/*.{ts,tsx}', './pages/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -14,6 +12,9 @@ module.exports = {
       },
       borderRadius: {
         custom: '0.5rem',
+      },
+      fontFamily: {
+        logo: ['Bebas Neue', ...fontFamily.sans],
       },
     },
   },

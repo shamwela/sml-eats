@@ -43,6 +43,13 @@ const Head = ({
       <meta property='og:site_name' content='SML Eats' />
 
       <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+      <link
+        rel='preload'
+        href='/fonts/bebas-neue.woff2'
+        as='font'
+        type='font/woff2'
+        crossOrigin='anonymous'
+      />
     </NextHead>
   )
 }

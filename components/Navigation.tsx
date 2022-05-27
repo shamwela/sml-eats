@@ -90,7 +90,7 @@ const Navigation = ({
           </div>
         )}
         <Link href='/'>
-          <a className='text-xl font-bold md:text-4xl'>SML Eats</a>
+          <a className='text-4xl md:text-5xl font-logo'>SML Eats</a>
         </Link>
         <Link href='/search'>
           <a aria-label='Search'>
