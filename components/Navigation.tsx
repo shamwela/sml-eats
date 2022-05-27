@@ -76,14 +76,9 @@ const Navigation = ({
               <a>Delivery details</a>
             </Link>
             {user && (
-              <>
-                <Link href='/favorited-restaurants'>
-                  <a>Favorites</a>
-                </Link>
-                <Link href='/profile'>
-                  <a>Profile</a>
-                </Link>
-              </>
+              <Link href='/favorited-restaurants'>
+                <a>Favorites</a>
+              </Link>
             )}
             <button onClick={toggleTheme}>Change theme</button>
             {user && <button onClick={handleSignOut}>Sign out</button>}
