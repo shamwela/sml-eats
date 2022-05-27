@@ -28,7 +28,7 @@ export const categories: Prisma.CategoryCreateManyInput[] = [
 ]
 
 export const inputs: Prisma.InputCreateManyInput[] = [
-  // Coffee inputs, not pizza inputs
+  // Coffee inputs
   {
     name: 'Small',
     additionalPrice: 0,
@@ -44,6 +44,7 @@ export const inputs: Prisma.InputCreateManyInput[] = [
     additionalPrice: 4,
     optionId: 1,
   },
+  // Seafood Cocktail crust inputs
   {
     name: 'Crispy Thin',
     additionalPrice: 0,
@@ -64,6 +65,7 @@ export const inputs: Prisma.InputCreateManyInput[] = [
     additionalPrice: 3,
     optionId: 2,
   },
+  // Seafood cocktail size inputs
   {
     name: 'Small',
     additionalPrice: 0,
@@ -79,23 +81,70 @@ export const inputs: Prisma.InputCreateManyInput[] = [
     additionalPrice: 5,
     optionId: 3,
   },
+  // BBQ Pork Deluxe crust inputs
+  {
+    name: 'Crispy Thin',
+    additionalPrice: 0,
+    optionId: 4,
+  },
+  {
+    name: 'Pan',
+    additionalPrice: 2,
+    optionId: 4,
+  },
+  {
+    name: 'Extra Cheesy Sausage Bites',
+    additionalPrice: 3,
+    optionId: 4,
+  },
+  {
+    name: 'Extreme',
+    additionalPrice: 3,
+    optionId: 4,
+  },
+  // BBQ Pork Deluxe size inputs
+  {
+    name: 'Small',
+    additionalPrice: 0,
+    optionId: 5,
+  },
+  {
+    name: 'Medium',
+    additionalPrice: 2,
+    optionId: 5,
+  },
+  {
+    name: 'Large',
+    additionalPrice: 4,
+    optionId: 5,
+  },
 ]
 
 export const options: Prisma.OptionCreateManyInput[] = [
-  // The first option is Coffee Size, the last option is Pizza Size
-  // A better way should be used later
+  // Coffee size
   {
     name: 'Size',
     itemId: 4,
   },
+  // Seafood Cocktail crust
   {
     name: 'Crust',
     itemId: 1,
   },
+  // Seafood Cocktail size
   {
-    // Pizza Size
     name: 'Size',
     itemId: 1,
+  },
+  // BBQ Pork Deluxe crust
+  {
+    name: 'Crust',
+    itemId: 2,
+  },
+  // BBQ Pork Deluxe size
+  {
+    name: 'Size',
+    itemId: 2,
   },
 ]
 
