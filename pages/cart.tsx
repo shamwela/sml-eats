@@ -1,5 +1,4 @@
 import type { CartItem } from 'types/cartItem'
-import type { ChangeEvent } from 'react'
 import { useState, useEffect, useMemo } from 'react'
 import Head from 'components/Head'
 import Link from 'next/link'
@@ -17,14 +16,6 @@ const Cart = ({
   // This is the code to fix this issue (https://github.com/vercel/next.js/discussions/35773).
   const [isSSR, setIsSSR] = useState(true)
   useEffect(() => setIsSSR(false), [])
-
-  const handleQuantityChange = (
-    id: number,
-    event: ChangeEvent<HTMLSelectElement>
-  ) => {
-    const quantity = Number(event.target.value)
-    changeItemQuantity(id, quantity)
-  }
 
   const checkoutPrice = useMemo(
     () => cart.reduce((total, item) => total + item.finalPrice, 0),
@@ -51,7 +42,7 @@ const Cart = ({
                   <div key={id} className='flex items-start gap-x-4'>
                     <select
                       value={quantity}
-                      onChange={(event) => handleQuantityChange(id, event)}
+                      onChange={() => changeItemQuantity(id, quantity)}
                     >
                       {zeroToHundred.map((value) => (
                         <option value={value} key={value}>
