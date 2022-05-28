@@ -2,7 +2,7 @@ import type { NextApiHandler } from 'next'
 import { prisma } from 'prisma/prismaClient'
 
 const apiHandler: NextApiHandler = async (request, response) => {
-  const {method} = request
+  const { method } = request
   if (method === 'POST') {
     const { restaurantId, userId } = request.body
     if (!restaurantId || !userId) {
@@ -20,9 +20,9 @@ const apiHandler: NextApiHandler = async (request, response) => {
 
     // If this object is not undefined, then the user has already favorited this restaurant
     if (restaurantUserObject) {
-      return response.status(200).json({ favorited: true })
+      return response.status(200).json(true)
     } else {
-      return response.status(200).json({ favorited: false })
+      return response.status(200).json(false)
     }
   }
 

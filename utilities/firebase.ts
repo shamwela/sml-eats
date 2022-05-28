@@ -28,9 +28,9 @@ export const signIn = async () => {
 
     // This is because Firebase is only used for authentication
     await axios.post('/api/user', { userId })
-  } catch (error: any) {
+  } catch (error) {
     alert(
-      'Sorry. There was an error while you sign in. Please try again later.'
+      'Sorry. There was an error while you sign in. Please sign in again or try again later.'
     )
     console.error(error)
   }

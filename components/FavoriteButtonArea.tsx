@@ -13,12 +13,17 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
 
     const userId = user.uid
     const getAndSetFavorited = async () => {
-      const { data } = await axios.post('/api/favorited', {
-        restaurantId,
-        userId,
-      })
-      const { favorited } = data
-      setFavorited(favorited)
+      try {
+        const { data: favorited } = await axios.post('/api/favorited', {
+          restaurantId,
+          userId,
+        })
+        setFavorited(favorited)
+      } catch (error) {
+        setFavorited(undefined)
+        // Setting it as undefined will remove the "favorite" feature completely
+        console.error(error)
+      }
     }
     getAndSetFavorited()
   }, [restaurantId, user])
@@ -34,12 +39,26 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   const favorite = async () => {
     // Change the state first to make it look faster
     setFavorited(true)
-    await axios.post('/api/favorite', { restaurantId, userId })
+    try {
+      await axios.post('/api/favorite', { restaurantId, userId })
+    } catch (error) {
+      // Revert back to the previous state
+      setFavorited(false)
+      alert("Couldn't add to favorites. Please try again.")
+      console.error(error)
+    }
   }
 
+  // This function is similar to the `favorite` function
   const unFavorite = async () => {
     setFavorited(false)
-    await axios.put('/api/unfavorite', { restaurantId, userId })
+    try {
+      await axios.put('/api/unfavorite', { restaurantId, userId })
+    } catch (error) {
+      setFavorited(true)
+      alert("Couldn't remove from favorites. Please try again.")
+      console.error(error)
+    }
   }
 
   if (typeof favorited === 'undefined') {

@@ -17,8 +17,15 @@ const FavoritedRestaurants = () => {
       return null
     }
     const userId = user.uid
-    const { data: favoritedRestaurants } = await axios.post(url, { userId })
-    return favoritedRestaurants as Restaurant[]
+    try {
+      const { data: favoritedRestaurants } = await axios.post(url, { userId })
+      return favoritedRestaurants as Restaurant[]
+    } catch (error) {
+      alert(
+        "Couldn't fetch the favorited restaurants. Please refresh this page or come back later."
+      )
+      console.error(error)
+    }
   }
   const { data: favoritedRestaurants, error: favoritedRestaurantsError } =
     useSWR('/api/get-favorited-restaurants', fetcher)
