@@ -62,7 +62,7 @@ const Order = ({
       >
         <PlusIcon />
       </button>
-      <button onClick={addToOrder} className='w-full'>
+      <button onClick={addToOrder} className='max-w-full w-full'>
         Add {quantity} to order (${finalPrice})
       </button>
     </div>

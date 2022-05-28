@@ -137,8 +137,11 @@ const ItemPage = ({
           />
         </div>
         <h1>{name}</h1>
+        <span>
+          {/* If there are options to select, it should be called "Base price" */}
+          {options.length > 0 && 'Base price: '}${basePrice}
+        </span>
         <span>{description}</span>
-        <span>Base price: ${basePrice}</span>
 
         {options.map((option) => {
           const { id, name, inputs } = option

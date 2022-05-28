@@ -80,7 +80,9 @@ const Cart = ({
                 )
               )}
               <Link href='/checkout'>
-                <a className='button'>Go to checkout (${checkoutPrice})</a>
+                <a className='button max-w-full w-full'>
+                  Go to checkout (${checkoutPrice})
+                </a>
               </Link>
             </>
           )}
