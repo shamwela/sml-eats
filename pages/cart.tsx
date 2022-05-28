@@ -2,6 +2,7 @@ import type { CartItem } from 'types/cartItem'
 import { useState, useEffect, useMemo } from 'react'
 import Head from 'components/Head'
 import Link from 'next/link'
+import type { ChangeEvent } from 'react'
 
 const zeroToHundred = Array.from(Array(100).keys())
 
@@ -21,6 +22,14 @@ const Cart = ({
     () => cart.reduce((total, item) => total + item.finalPrice, 0),
     [cart]
   )
+
+  const handleQuantityChange = (
+    id: number,
+    event: ChangeEvent<HTMLSelectElement>
+  ) => {
+    const quantity = Number(event.target.value)
+    changeItemQuantity(id, quantity)
+  }
 
   return (
     <>
@@ -42,7 +51,7 @@ const Cart = ({
                   <div key={id} className='flex items-start gap-x-4'>
                     <select
                       value={quantity}
-                      onChange={() => changeItemQuantity(id, quantity)}
+                      onChange={(event) => handleQuantityChange(id, event)}
                     >
                       {zeroToHundred.map((value) => (
                         <option value={value} key={value}>
