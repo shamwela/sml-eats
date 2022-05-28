@@ -4,7 +4,7 @@ import Head from 'components/Head'
 import Link from 'next/link'
 import type { ChangeEvent } from 'react'
 
-const zeroToHundred = Array.from(Array(100).keys())
+const zeroToHundred = Array.from(Array(101).keys())
 
 const Cart = ({
   cart,
