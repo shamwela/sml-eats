@@ -5,8 +5,14 @@
 @layer base {
   @font-face {
     font-family: 'Bebas Neue';
-    src: local('Bebas Neue'),
-      url('/fonts/bebas-neue.woff2') format('woff2');
+    src: local('Bebas Neue'), url('/fonts/bebas-neue.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: local('Inter'), url('/fonts/inter-variable.woff2') format('woff2');
+    font-weight: 400 600;
+    font-display: swap;
   }
 
   *,
@@ -45,7 +51,7 @@
 
   button,
   .button {
-    @apply rounded-custom bg-accent text-center text-white max-w-fit;
+    @apply rounded-full bg-accent text-center text-white max-w-fit;
   }
 
   input[type='radio'] {

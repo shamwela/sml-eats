@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "headers": [
     {
-      "source": "/fonts/bebas-neue.woff2",
+      "source": "/fonts/(.*).woff2",
       "headers": [
         {
           "key": "Cache-Control",

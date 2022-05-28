@@ -38,9 +38,9 @@ const Cart = ({
         <div className='mx-auto flex flex-col gap-y-[inherit] w-full max-w-md'>
           {cart.length === 0 ? (
             <>
-              <h1>Your cart is empty.</h1>
+              <h1 className='self-center'>Your cart is empty.</h1>
               <Link href='/'>
-                <a className='button'>Find food</a>
+                <a className='button self-center'>Find food</a>
               </Link>
             </>
           ) : (

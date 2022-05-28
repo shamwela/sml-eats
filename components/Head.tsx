@@ -50,6 +50,13 @@ const Head = ({
         type='font/woff2'
         crossOrigin='anonymous'
       />
+      <link
+        rel='preload'
+        href='/fonts/inter-variable.woff2'
+        as='font'
+        type='font/woff2'
+        crossOrigin='anonymous'
+      />
     </NextHead>
   )
 }
