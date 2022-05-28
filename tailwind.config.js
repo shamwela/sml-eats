@@ -15,6 +15,7 @@ module.exports = {
       },
       fontFamily: {
         logo: ['Bebas Neue', ...fontFamily.sans],
+        sans: ['Inter', ...fontFamily.sans],
       },
     },
   },

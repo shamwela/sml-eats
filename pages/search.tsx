@@ -127,7 +127,7 @@ const Search = ({
                         objectFit='cover'
                         priority
                       />
-                      <span className='font-bold'>{name}</span>
+                      <span className='font-semibold'>{name}</span>
                       <span>Category: {category.name}</span>
                     </div>
                   </a>
