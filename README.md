@@ -13,3 +13,4 @@ https://smleats.vercel.app
 - Full-stack framework is Next.js
 - Static types with TypeScript
 - Styling with Tailwind CSS
+- Analytics with Google Analytics
