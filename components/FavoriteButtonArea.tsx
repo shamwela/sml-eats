@@ -1,9 +1,9 @@
-import { useAuthenticationState } from 'utilities/firebase'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useUser } from 'hooks/useUser'
 
 const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
-  const [user, userLoading, userError] = useAuthenticationState()
+  const { user, userLoading, userError } = useUser()
   const [favorited, setFavorited] = useState<boolean | undefined>(undefined)
 
   useEffect(() => {

@@ -1,6 +1,5 @@
 import Head from 'components/Head'
 import { useEffect } from 'react'
-import { useAuthenticationState } from 'utilities/firebase'
 import type { Restaurant } from '@prisma/client'
 import RestaurantImageGroup from 'components/RestaurantImageGroup'
 import Link from 'next/link'
@@ -9,9 +8,10 @@ import Spinner from 'components/Spinner'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import axios from 'axios'
+import { useUser } from 'hooks/useUser'
 
 const FavoritedRestaurants = () => {
-  const [user, userLoading, userError] = useAuthenticationState()
+  const { user, userLoading, userError } = useUser()
   const fetcher = async (url: string) => {
     if (!user) {
       return null

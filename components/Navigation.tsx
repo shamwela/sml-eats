@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useContext } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import type { CartItem } from 'types/cartItem'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -9,8 +9,8 @@ import {
   ShoppingCartIcon,
   SearchIcon,
 } from '@heroicons/react/solid'
-import { AuthenticationContext } from 'contexts/authentication'
 import { signIn, signOut } from 'utilities/firebase'
+import { useUser } from 'hooks/useUser'
 
 const Navigation = ({
   cart,
@@ -43,7 +43,7 @@ const Navigation = ({
     setTheme(newTheme)
   }
 
-  const { user, userLoading, userError } = useContext(AuthenticationContext)
+  const { user, userLoading, userError } = useUser()
   if (userError) {
     alert(userError.message)
   }
