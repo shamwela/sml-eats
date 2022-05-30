@@ -9,9 +9,7 @@ import {
   ShoppingCartIcon,
   SearchIcon,
 } from '@heroicons/react/solid'
-import { UserContext } from 'contexts/user'
-import { UserLoadingContext } from 'contexts/userLoading'
-import { UserErrorContext } from 'contexts/userError'
+import { AuthenticationContext } from 'contexts/authentication'
 import { signIn, signOut } from 'utilities/firebase'
 
 const Navigation = ({
@@ -45,9 +43,7 @@ const Navigation = ({
     setTheme(newTheme)
   }
 
-  const user = useContext(UserContext)
-  const userLoading = useContext(UserLoadingContext)
-  const userError = useContext(UserErrorContext)
+  const { user, userLoading, userError } = useContext(AuthenticationContext)
   if (userError) {
     alert(userError.message)
   }
