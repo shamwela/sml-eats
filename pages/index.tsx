@@ -22,14 +22,6 @@ const Home = ({
   return (
     <>
       <Head title='Order food online' />
-      <button
-        type='button'
-        onClick={() => {
-          throw new Error('Sentry Frontend Error')
-        }}
-      >
-        Throw error
-      </button>
       <h2>Explore by category</h2>
       <ItemContainer>
         {categories.map(
