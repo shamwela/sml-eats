@@ -1,5 +1,6 @@
 import type { NextApiHandler } from 'next'
 import { prisma } from 'prisma/prismaClient'
+import { withSentry } from '@sentry/nextjs'
 
 const apiHandler: NextApiHandler = async (request, response) => {
   const { method, body } = request
@@ -30,4 +31,4 @@ const apiHandler: NextApiHandler = async (request, response) => {
   }
 }
 
-export default apiHandler
+export default withSentry(apiHandler)

@@ -1,5 +1,6 @@
 import type { NextApiHandler } from 'next'
 import { prisma } from 'prisma/prismaClient'
+import { withSentry } from '@sentry/nextjs'
 
 const apiHandler: NextApiHandler = async (request, response) => {
   if (request.method === 'POST') {
@@ -24,4 +25,4 @@ const apiHandler: NextApiHandler = async (request, response) => {
   return response.status(405).json({ error: 'Method not allowed' })
 }
 
-export default apiHandler
+export default withSentry(apiHandler)
