@@ -14,3 +14,4 @@ https://smleats.vercel.app
 - Static types with TypeScript
 - Styling with Tailwind CSS
 - Analytics with Google Analytics
+- Error and performance monitoring with Sentry
