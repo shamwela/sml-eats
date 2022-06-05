@@ -52,7 +52,7 @@ const Head = ({
       />
       <link
         rel='preload'
-        href='/fonts/inter-variable.woff2'
+        href='/fonts/inter.woff2'
         as='font'
         type='font/woff2'
         crossOrigin='anonymous'
