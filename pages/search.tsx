@@ -12,7 +12,11 @@ export const getStaticProps = async () => {
   const restaurants = await prisma.restaurant.findMany({
     include: {
       category: true,
-      items: { include: { category: true } },
+      items: {
+        include: {
+          category: true,
+        },
+      },
     },
   })
   return {
@@ -30,48 +34,44 @@ const Search = ({
   }
 
   const [isPending, startTransition] = useTransition()
-  const [results, setResults] = useState<typeof restaurants | undefined>(
-    undefined
-  )
+  const [results, setResults] = useState<typeof restaurants | null>(null)
 
   useEffect(() => {
     if (query === '') {
-      setResults(undefined)
+      setResults(null)
       return
     }
 
-    // Generating results is interruptible
-    startTransition(() => {
+    const matchesNameOrCategory = (name: string, category: string) => {
+      const matchesName = name.toLowerCase().includes(query.toLowerCase())
+      const matchesCategory = category
+        .toLowerCase()
+        .includes(query.toLowerCase())
+      return matchesName || matchesCategory
+    }
+
+    const generateResults = () => {
       const matchedRestaurants = restaurants.filter((restaurant) => {
         const { name, category } = restaurant
-
-        const matchesName = name.toLowerCase().includes(query.toLowerCase())
-        const matchesCategory = category.name
-          .toLowerCase()
-          .includes(query.toLowerCase())
-
-        if (matchesName || matchesCategory) {
+        const match = matchesNameOrCategory(name, category.name)
+        if (match) {
           return restaurant
         }
       })
-      const finalRestaurants = matchedRestaurants.filter(({ items }) => {
+
+      const matchedRestaurantsAndItems = matchedRestaurants.filter(({ items }) => {
         const matchedItems = items.filter((item) => {
           const { name, category } = item
-
-          const matchesName = name.toLowerCase().includes(query.toLowerCase())
-          const matchesCategory = category.name
-            .toLowerCase()
-            .includes(query.toLowerCase())
-
-          if (matchesName || matchesCategory) {
+          const match = matchesNameOrCategory(name, category.name)
+          if (match) {
             return item
           }
         })
-
         return matchedItems
       })
-      setResults(finalRestaurants)
-    })
+      setResults(matchedRestaurantsAndItems)
+    }
+    startTransition(generateResults)
   }, [query, restaurants])
 
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
