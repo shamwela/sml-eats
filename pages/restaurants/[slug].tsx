@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { prisma } from 'prisma/prismaClient'
 import { InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
-import FavoriteButtonArea from 'components/FavoriteButtonArea/FavoriteButtonArea'
+import FavoriteButtonArea from 'components/FavoriteButtonArea'
 
 export const getStaticPaths = async () => {
   const restaurants = await prisma.restaurant.findMany({

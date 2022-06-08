@@ -3,10 +3,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "test": "jest --watch",
     "lint": "next lint",
-    "test": "jest --watch"
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
@@ -23,6 +23,7 @@
     "usehooks-ts": "^2.5.3"
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.2.0",
@@ -34,7 +35,7 @@
     "eslint-config-next": "^12.1.6",
     "eslint-config-prettier": "^8.5.0",
     "jest": "^28.1.0",
-    "jest-environment-jsdom": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.1",
     "postcss": "^8.4.14",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.11",

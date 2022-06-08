@@ -1,7 +1,7 @@
 import 'styles/globals.css'
 import type { AppProps } from 'next/app'
 import type { CartItem } from 'types/cartItem'
-import Navigation from 'components/Navigation'
+import Navigation from 'components/Navigation/Navigation'
 import { ThemeProvider } from 'next-themes'
 import { useLocalStorage } from 'usehooks-ts'
 import { AuthenticationContext } from 'contexts/authentication'
