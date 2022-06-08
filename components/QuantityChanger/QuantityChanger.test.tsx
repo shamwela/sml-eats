@@ -11,7 +11,7 @@ it('should render 1 initially', () => {
   expect(quantity).toBe('1')
 })
 
-it('should call the setQuantity function', async () => {
+it('should call the setQuantity function when the increase button is clicked', async () => {
   const user = userEvent.setup()
   const setQuantity = jest.fn()
   render(<QuantityChanger quantity={1} setQuantity={setQuantity} />)
