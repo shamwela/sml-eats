@@ -1,7 +1,7 @@
 import type { AddItem } from 'types/addItem'
 import { useState } from 'react'
 import Head from 'components/Head'
-import Order from 'components/Order'
+import Order from 'components/Order/Order'
 import { prisma } from 'prisma/prismaClient'
 import type { Input } from '@prisma/client'
 import Image from 'next/image'
