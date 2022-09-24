@@ -1,5 +1,5 @@
 {
-  "name": "sml-eats-frontend",
+  "name": "client",
   "private": true,
   "scripts": {
     "dev": "next dev",

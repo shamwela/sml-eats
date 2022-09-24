@@ -3,7 +3,15 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["build/**", ".next/**"]
+    },
+    "server#build": {
+      "dependsOn": ["$DATABASE_URL", "$PORT"],
+      "outputs": ["build/**"]
+    },
+    "client#build": {
+      "dependsOn": ["$NEXT_PUBLIC_GOOGLE_ANALYTICS"],
+      "outputs": [".next/**"]
     },
     "lint": {
       "outputs": []
