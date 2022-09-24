@@ -1,6 +1,5 @@
 {
-  "name": "sml-eats-api",
-  "private": "true",
+  "name": "server",
   "main": "build/index.js",
   "scripts": {
     "dev": "concurrently \"tsc --watch\" \"nodemon -q build/index.js\"",
