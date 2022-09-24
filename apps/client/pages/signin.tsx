@@ -78,7 +78,7 @@ const SignIn = () => {
           <EmailInput />
           <PasswordInput />
 
-          <div className='flex gap-x-2'>
+          <div className='flex gap-x-2 items-center'>
             <input
               type='checkbox'
               name='remember'
