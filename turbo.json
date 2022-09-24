@@ -2,16 +2,32 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["build/**", ".next/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "build/**",
+        ".next/**"
+      ]
     },
     "server#build": {
-      "dependsOn": ["$DATABASE_URL", "$PORT"],
-      "outputs": ["build/**"]
+      "dependsOn": [],
+      "outputs": [
+        "build/**"
+      ],
+      "env": [
+        "DATABASE_URL",
+        "PORT"
+      ]
     },
     "client#build": {
-      "dependsOn": ["$NEXT_PUBLIC_GOOGLE_ANALYTICS"],
-      "outputs": [".next/**"]
+      "dependsOn": [],
+      "outputs": [
+        ".next/**"
+      ],
+      "env": [
+        "NEXT_PUBLIC_GOOGLE_ANALYTICS"
+      ]
     },
     "lint": {
       "outputs": []
