@@ -30,6 +30,7 @@
     "typescript": "^4.8.3"
   },
   "prisma": {
+    "schema": "apps/server/prisma/schema.prisma",
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }
