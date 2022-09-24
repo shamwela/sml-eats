@@ -13,7 +13,12 @@ import { prisma } from './prisma/prismaClient'
 import type { RestaurantsOnUsers } from '@prisma/client'
 
 const app = express()
-app.use(cors({ origin: frontendUrl }))
+app.use(
+  cors({
+    origin: frontendUrl,
+    credentials: true,
+  })
+)
 app.use(xssClean())
 app.use(helmet())
 app.use(express.json())
