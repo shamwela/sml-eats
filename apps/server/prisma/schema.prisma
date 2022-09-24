@@ -1,0 +1,101 @@
+// If this file is edited, also edit the types in the frontend
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+model Restaurant {
+  id          Int                  @id @default(autoincrement())
+  name        String               @unique
+  slug        String               @unique
+  rating      Float
+  imageSource String               @unique
+  imageWidth  Int
+  imageHeight Int
+  items       Item[]
+  category    Category             @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  users       RestaurantsOnUsers[]
+
+  // Adding index to foreign keys make it faster and cheaper to query
+  @@index([categoryId])
+}
+
+model Item {
+  id           Int         @id @default(autoincrement())
+  name         String      @unique
+  slug         String      @unique
+  path         String      @unique
+  imageSource  String      @unique
+  imageWidth   Int
+  imageHeight  Int
+  description  String      @db.TinyText
+  basePrice    Float
+  options      Option[]
+  Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
+  restaurantId Int?
+  category     Category    @relation(fields: [categoryId], references: [id])
+  categoryId   Int
+
+  @@index([restaurantId])
+  @@index([categoryId])
+}
+
+model Option {
+  id     Int     @id @default(autoincrement())
+  name   String
+  inputs Input[]
+  Item   Item?   @relation(fields: [itemId], references: [id])
+  itemId Int?
+
+  @@index([itemId])
+}
+
+model Input {
+  id              Int     @id @default(autoincrement())
+  name            String
+  additionalPrice Float
+  Option          Option? @relation(fields: [optionId], references: [id])
+  optionId        Int?
+
+  @@index([optionId])
+}
+
+model Category {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  imageSource String       @unique
+  imageWidth  Int
+  imageHeight Int
+  Restaurant  Restaurant[]
+  Item        Item[]
+}
+
+model User {
+  id          String               @id
+  email       String               @unique
+  password    String
+  restaurants RestaurantsOnUsers[]
+  sessionIds  Session[]
+}
+
+model RestaurantsOnUsers {
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId Int
+  User         User       @relation(fields: [userId], references: [id])
+  userId       String
+
+  @@id([restaurantId, userId])
+}
+
+model Session {
+  id     String @id
+  User   User   @relation(fields: [userId], references: [id])
+  userId String
+}

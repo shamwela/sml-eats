@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Bebas Neue';
+    src: local('Bebas Neue'), url('/fonts/bebas-neue.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: local('Inter'), url('/fonts/inter.woff2') format('woff2');
+    font-weight: 400 600;
+    font-display: swap;
+  }
+
+  *,
+  ::before,
+  ::after {
+    @apply dark:text-white;
+  }
+
+  body {
+    @apply px-4 dark:bg-gray-900;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-semibold;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  img {
+    @apply rounded-custom;
+  }
+
+  button,
+  .button,
+  input {
+    @apply px-4 py-2;
+  }
+
+  button,
+  .button,
+  [type='submit'] {
+    @apply rounded-full bg-accent text-center text-white max-w-fit;
+  }
+
+  input[type='radio'] {
+    @apply h-4 w-4 accent-accent;
+  }
+
+  input[type='search'],
+  input[type='text'],
+  input[type='time'],
+  input[type='datetime-local'] {
+    @apply appearance-none rounded-custom bg-light-elevation outline-none focus:ring-2 focus:ring-accent dark:bg-dark-elevation;
+  }
+
+  select,
+  option {
+    @apply dark:text-white;
+  }
+
+  select {
+    @apply bg-light-elevation dark:bg-dark-elevation w-14 rounded-custom px-2 outline-none focus:ring-2 focus:ring-accent;
+  }
+
+  svg {
+    @apply w-6 fill-current;
+  }
+
+  input[type='radio'],
+  label {
+    @apply cursor-pointer;
+  }
+}

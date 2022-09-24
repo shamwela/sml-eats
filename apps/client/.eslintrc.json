@@ -1,0 +1,15 @@
+{
+  "extends": ["next/core-web-vitals", "prettier"],
+  "rules": {
+    "no-unused-vars": "warn",
+
+    // Because this was throwing an error if I use single quote,
+    // I removed single quote from the "forbid" array.
+    "react/no-unescaped-entities": [
+      "error",
+      {
+        "forbid": [">", "\"", "}"]
+      }
+    ]
+  }
+}
