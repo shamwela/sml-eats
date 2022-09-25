@@ -32,11 +32,11 @@ const Search = ({
 
   useEffect(() => {
     const delayAndSearch = setTimeout(() => {
-      setLoading(true)
       if (query === '') {
         setResults(null)
         return
       }
+      setLoading(true)
       const matchesNameOrCategory = (name: string, category: string) => {
         const matchesName = name.toLowerCase().includes(query.toLowerCase())
         const matchesCategory = category
@@ -92,7 +92,7 @@ const Search = ({
       <div className='grid gap-4 md:grid-cols-2'>
         {loading && <Spinner />}
         {/* If the user searched and found no results */}
-        {query !== '' && results?.length === 0 ? (
+        {!loading && query !== '' && results?.length === 0 ? (
           <span>
             No results found for <strong>{query}</strong>
           </span>
