@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { InferGetStaticPropsType } from 'next'
 import axios from 'utilities/axios'
 import type { NestedRestaurant } from 'types/nestedRestaurant'
+import Spinner from 'components/Spinner'
 
 export const getStaticProps = async () => {
   const restaurantResponse = await axios.get('/restaurants', {
@@ -26,9 +27,12 @@ const Search = ({
   if (typeof router.query.query === 'string') {
     query = router.query.query.trim()
   }
+  const [loading, setLoading] = useState<boolean | null>(null)
   const [results, setResults] = useState<typeof restaurants | null>(null)
+
   useEffect(() => {
     const delayAndSearch = setTimeout(() => {
+      setLoading(true)
       if (query === '') {
         setResults(null)
         return
@@ -61,7 +65,8 @@ const Search = ({
         }
       )
       setResults(matchedRestaurantsAndItems)
-    }, 2000)
+      setLoading(false)
+    }, 1000)
     return () => clearTimeout(delayAndSearch)
   }, [query, restaurants])
 
@@ -85,6 +90,7 @@ const Search = ({
         placeholder='Pizza, coffee, etc'
       />
       <div className='grid gap-4 md:grid-cols-2'>
+        {loading && <Spinner />}
         {/* If the user searched and found no results */}
         {query !== '' && results?.length === 0 ? (
           <span>
