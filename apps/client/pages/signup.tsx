@@ -8,6 +8,7 @@ import toast from 'react-hot-toast'
 import EmailInput from 'components/EmailInput'
 import PasswordInput from 'components/PasswordInput'
 import FormContainer from 'components/FormContainer'
+import { checkXSS } from 'utilities/checkXSS'
 
 const SignUp = () => {
   useCheckIfSignedIn()
@@ -22,16 +23,7 @@ const SignUp = () => {
       .toLowerCase()
     const password = (elements.namedItem('password') as HTMLInputElement).value
 
-    if (name.toLowerCase().includes('<script>')) {
-      toast.error('Name cannot contain "<script>".')
-      return
-    }
-    if (email.toLowerCase().includes('<script>')) {
-      toast.error('Email cannot contain "<script>".')
-      return
-    }
-    if (password.toLowerCase().includes('<script>')) {
-      toast.error('Password cannot contain "<script>".')
+    if (checkXSS([name, email, password])) {
       return
     }
 

@@ -9,6 +9,7 @@ import type { AxiosResponse } from 'axios'
 import EmailInput from 'components/EmailInput'
 import PasswordInput from 'components/PasswordInput'
 import FormContainer from 'components/FormContainer'
+import { checkXSS } from 'utilities/checkXSS'
 
 const SignIn = () => {
   useCheckIfSignedIn()
@@ -24,12 +25,7 @@ const SignIn = () => {
     const remember = (elements.namedItem('remember') as HTMLInputElement)
       .checked
 
-    if (email.toLowerCase().includes('<script>')) {
-      toast.error('Email cannot contain "<script>".')
-      return
-    }
-    if (password.toLowerCase().includes('<script>')) {
-      toast.error('Password cannot contain "<script>".')
+    if (checkXSS([email, password])) {
       return
     }
 
@@ -90,12 +86,6 @@ const SignIn = () => {
 
           <button type='submit'>Sign in</button>
         </form>
-        <p>
-          Don't have an account?{' '}
-          <Link href='/signup'>
-            <a>Sign up</a>
-          </Link>
-        </p>
       </FormContainer>
     </>
   )
