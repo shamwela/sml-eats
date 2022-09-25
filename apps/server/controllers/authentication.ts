@@ -6,8 +6,8 @@ import type { Request, Response } from 'express'
 import type { User } from '@prisma/client'
 
 export const signup = async (request: Request, response: Response) => {
+  const { name, password } = request.body
   const email = request.body.email.toLowerCase()
-  const { password } = request.body
 
   let existingUser: User | null = null
   try {
@@ -30,9 +30,16 @@ export const signup = async (request: Request, response: Response) => {
     return response.status(500).json({ message: 'Server error occurred.' })
   }
   const userId = randomUUID()
-  const newUser = { id: userId, email, password: hashedPassword }
+
   try {
-    await prisma.user.create({ data: newUser })
+    await prisma.user.create({
+      data: {
+        id: userId,
+        name,
+        email,
+        password: hashedPassword,
+      },
+    })
   } catch (error) {
     console.error(error)
     return response.status(500).json({ message: 'Server error occurred.' })

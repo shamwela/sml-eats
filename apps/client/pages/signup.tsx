@@ -16,11 +16,16 @@ const SignUp = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const { elements } = event.currentTarget
+    const name = (elements.namedItem('name') as HTMLInputElement).value.trim()
     const email = (elements.namedItem('email') as HTMLInputElement).value
       .trim()
       .toLowerCase()
     const password = (elements.namedItem('password') as HTMLInputElement).value
 
+    if (name.toLowerCase().includes('<script>')) {
+      toast.error('Name cannot contain "<script>".')
+      return
+    }
     if (email.toLowerCase().includes('<script>')) {
       toast.error('Email cannot contain "<script>".')
       return
@@ -33,7 +38,7 @@ const SignUp = () => {
     let signUpPromise: Promise<AxiosResponse<any, any>>
     let sessionId: string
     try {
-      signUpPromise = axios.post('/auth/signup', { email, password })
+      signUpPromise = axios.post('/auth/signup', { name, email, password })
 
       toast.promise(signUpPromise, {
         loading: 'Signing up',
@@ -68,6 +73,22 @@ const SignUp = () => {
           onSubmit={handleSubmit}
           className='flex flex-col gap-y-4 items-center'
         >
+          <input
+            placeholder='Name'
+            aria-label='Name'
+            type='text'
+            name='name'
+            id='name'
+            autoComplete='off'
+            autoCorrect='off'
+            spellCheck='false'
+            autoCapitalize='off'
+            required
+            aria-required='true'
+            // These lengths should be the same as the API
+            minLength={3}
+            maxLength={100}
+          />
           <EmailInput />
           <PasswordInput />
           <button type='submit'>Sign up</button>

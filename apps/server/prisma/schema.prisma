@@ -79,6 +79,7 @@ model Category {
 
 model User {
   id          String               @id
+  name        String               @db.VarChar(100)
   email       String               @unique
   password    String
   restaurants RestaurantsOnUsers[]

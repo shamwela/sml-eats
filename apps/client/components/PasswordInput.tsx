@@ -11,8 +11,6 @@ const PasswordInput = () => (
     // These lengths should be the same as the API
     minLength={8}
     maxLength={128}
-    // Implement this later
-    // aria-invalid='false'
   />
 )
 
