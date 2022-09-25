@@ -7,7 +7,6 @@ import RestaurantImageGroup from 'components/RestaurantImageGroup'
 import axios from 'utilities/axios'
 import type { Category } from 'types/category'
 import type { Restaurant } from 'types/restaurant'
-import type { Test } from '../../server/index'
 
 export const getStaticProps = async () => {
   const categoryResponse = await axios.get('/categories')
@@ -28,9 +27,6 @@ const Home = ({
   categories,
   restaurants,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const test: Test = { message: 'test' }
-  console.log(test)
-
   return (
     <>
       <Head title='Order food online' />
