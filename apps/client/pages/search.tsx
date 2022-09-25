@@ -1,25 +1,14 @@
-import { useEffect, useState, useTransition } from 'react'
+import { useEffect, useState } from 'react'
 import type { ChangeEvent } from 'react'
 import Head from 'components/Head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { InferGetStaticPropsType } from 'next'
-import Spinner from 'components/Spinner'
 import axios from 'utilities/axios'
 import type { NestedRestaurant } from 'types/nestedRestaurant'
 
 export const getStaticProps = async () => {
-  // const restaurants = await prisma.restaurant.findMany({
-  //   include: {
-  //     category: true,
-  //     items: {
-  //       include: {
-  //         category: true,
-  //       },
-  //     },
-  //   },
-  // })
   const restaurantResponse = await axios.get('/restaurants', {
     params: { includeItems: true },
   })
@@ -37,21 +26,21 @@ const Search = ({
   if (typeof router.query.query === 'string') {
     query = router.query.query.trim()
   }
-  const [isPending, startTransition] = useTransition()
   const [results, setResults] = useState<typeof restaurants | null>(null)
   useEffect(() => {
-    if (query === '') {
-      setResults(null)
-      return
-    }
-    const matchesNameOrCategory = (name: string, category: string) => {
-      const matchesName = name.toLowerCase().includes(query.toLowerCase())
-      const matchesCategory = category
-        .toLowerCase()
-        .includes(query.toLowerCase())
-      return matchesName || matchesCategory
-    }
-    const generateResults = () => {
+    const delayAndSearch = setTimeout(() => {
+      if (query === '') {
+        setResults(null)
+        return
+      }
+      const matchesNameOrCategory = (name: string, category: string) => {
+        const matchesName = name.toLowerCase().includes(query.toLowerCase())
+        const matchesCategory = category
+          .toLowerCase()
+          .includes(query.toLowerCase())
+        return matchesName || matchesCategory
+      }
+
       const matchedRestaurants = restaurants.filter((restaurant) => {
         const { name, category } = restaurant
         const match = matchesNameOrCategory(name, category.name)
@@ -72,9 +61,10 @@ const Search = ({
         }
       )
       setResults(matchedRestaurantsAndItems)
-    }
-    startTransition(generateResults)
+    }, 2000)
+    return () => clearTimeout(delayAndSearch)
   }, [query, restaurants])
+
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value
     router.push({
@@ -82,6 +72,7 @@ const Search = ({
       query: { query },
     })
   }
+
   return (
     <>
       <Head title='Search' />
@@ -94,7 +85,6 @@ const Search = ({
         placeholder='Pizza, coffee, etc'
       />
       <div className='grid gap-4 md:grid-cols-2'>
-        {isPending && <Spinner />}
         {/* If the user searched and found no results */}
         {query !== '' && results?.length === 0 ? (
           <span>
