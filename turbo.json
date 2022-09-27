@@ -12,8 +12,7 @@
     },
     "client#build": {
       "dependsOn": [],
-      "outputs": [".next/**"],
-      "env": ["NEXT_PUBLIC_GOOGLE_ANALYTICS"]
+      "outputs": [".next/**"]
     },
     "dev": {
       "cache": false
