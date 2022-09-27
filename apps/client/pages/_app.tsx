@@ -1,11 +1,12 @@
 import 'styles/globals.css'
 import type { AppProps } from 'next/app'
 import type { CartItem } from 'types/cartItem'
-import Navigation from 'components/Navigation/Navigation'
+import Navigation from 'components/Navigation'
 import { ThemeProvider } from 'next-themes'
 import { useLocalStorage } from 'usehooks-ts'
 import GoogleAnalyticsScripts from 'components/GoogleAnalyticsScripts'
 import { Toaster } from 'react-hot-toast'
+import type { EmptyCart } from 'types/EmptyCart'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [cart, setCart] = useLocalStorage<CartItem[]>('cart', [])
@@ -39,13 +40,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     }
   }
 
-  const emptyCart = () => setCart([])
+  const emptyCart: EmptyCart = () => setCart([])
 
   return (
     <>
       <GoogleAnalyticsScripts />
       <ThemeProvider attribute='class' defaultTheme='system'>
-        <Toaster  />
+        <Toaster />
         <Navigation cart={cart} emptyCart={emptyCart} />
         <main className='mx-auto mb-24 flex max-w-4xl flex-col gap-y-4'>
           <Component

@@ -4,15 +4,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ShoppingCartIcon, SearchIcon } from '@heroicons/react/solid'
 import Menu from 'components/Menu/Menu'
-import SignOutButton from 'components/SignOutButton'
-import { useSignedIn } from 'hooks/useSignedIn'
+import type { EmptyCart } from 'types/EmptyCart'
 
 const Navigation = ({
   cart,
   emptyCart,
 }: {
   cart: CartItem[]
-  emptyCart: () => void
+  emptyCart: EmptyCart
 }) => {
   const totalQuantity = useMemo(
     () =>
@@ -31,12 +30,11 @@ const Navigation = ({
   useEffect(() => setIsSSR(false), [])
 
   const showCartButton = isNotCartPage && cartExists && !isSSR
-  const { signedIn, loading } = useSignedIn()
 
   return (
     <nav className='top-0 z-10 bg-white py-4 dark:bg-gray-900 md:sticky'>
       <div className='mx-auto flex max-w-4xl flex-wrap items-center gap-x-8 gap-y-2'>
-        <Menu />
+        <Menu emptyCart={emptyCart} />
         <Link href='/'>
           <a className='text-4xl md:text-5xl font-logo'>SML Eats</a>
         </Link>
@@ -53,17 +51,6 @@ const Navigation = ({
             </a>
           </Link>
         )}
-        {!signedIn && !loading && (
-          <>
-            <Link href='/signup'>
-              <a>Sign up</a>
-            </Link>
-            <Link href='/signin'>
-              <a>Sign in</a>
-            </Link>
-          </>
-        )}
-        <SignOutButton emptyCart={emptyCart} />
       </div>
     </nav>
   )
