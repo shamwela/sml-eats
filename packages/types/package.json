@@ -1,7 +1,0 @@
-{
-  "name": "types",
-  "devDependencies": {
-    "tsconfig": "*",
-    "typescript": "^4.7.2"
-  }
-}
