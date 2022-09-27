@@ -46,7 +46,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <>
       <GoogleAnalyticsScripts />
       <ThemeProvider attribute='class' defaultTheme='system'>
-        <Toaster />
+        <Toaster
+          toastOptions={{ className: 'dark:bg-dark-elevation dark:text-white' }}
+        />
         <Navigation cart={cart} emptyCart={emptyCart} />
         <main className='mx-auto mb-24 flex max-w-4xl flex-col gap-y-4'>
           <Component
