@@ -62,7 +62,7 @@ app.get('/slugs', async (request, response) => {
     console.error(error)
     return response.status(500).json({ message: 'Server error.' })
   }
-  return response.status(200).json(slugs)
+  return response.json(slugs)
 })
 
 app.get('/item', async (request, response) => {
@@ -94,7 +94,7 @@ app.get('/item', async (request, response) => {
     console.error(error)
     return response.status(500).json({ message: 'Server error.' })
   }
-  return response.status(200).json(nestedItem)
+  return response.json(nestedItem)
 })
 
 app.get('/favorited', authenticationMiddleware, async (request, response) => {
@@ -121,9 +121,9 @@ app.get('/favorited', authenticationMiddleware, async (request, response) => {
   }
 
   if (restaurantUserObject) {
-    return response.status(200).json(true)
+    return response.json(true)
   } else {
-    return response.status(200).json(false)
+    return response.json(false)
   }
 })
 
@@ -158,7 +158,7 @@ app.post('/favorite', authenticationMiddleware, async (request, response) => {
     console.error(error)
     return response.status(500).json({ message: 'Server error.' })
   }
-  return response.status(200).json({ message: 'Favorited.' })
+  return response.json({ message: 'Favorited.' })
 })
 
 app.delete(
@@ -188,7 +188,7 @@ app.delete(
       console.error(error)
       return response.status(500).json({ message: 'Server error.' })
     }
-    return response.status(200).json({ message: 'Unfavorited.' })
+    return response.json({ message: 'Unfavorited.' })
   }
 )
 

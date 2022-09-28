@@ -10,5 +10,5 @@ export const getCategories = async (request: Request, response: Response) => {
     console.error(error)
     return response.status(500).json({ message: 'Could not get categories.' })
   }
-  return response.status(200).json(categories)
+  return response.json(categories)
 }

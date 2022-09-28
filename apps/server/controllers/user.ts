@@ -28,5 +28,5 @@ export const getFavoritedRestaurants = async (
       },
     },
   })
-  return response.status(200).json(favoritedRestaurants)
+  return response.json(favoritedRestaurants)
 }

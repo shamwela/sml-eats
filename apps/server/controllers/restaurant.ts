@@ -26,5 +26,5 @@ export const getRestaurants = async (request: Request, response: Response) => {
     console.error(error)
     return response.status(500).json({ message: 'Could not get restaurants.' })
   }
-  return response.status(200).json(restaurants)
+  return response.json(restaurants)
 }

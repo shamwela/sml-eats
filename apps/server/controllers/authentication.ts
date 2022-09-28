@@ -80,5 +80,5 @@ export const signin = async (request: Request, response: Response) => {
     return response.status(500).json({ message: 'Server error.' })
   }
 
-  return response.status(200).json({ message: 'Signed in.', sessionId })
+  return response.json({ message: 'Signed in.', sessionId })
 }
