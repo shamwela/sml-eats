@@ -1,7 +1,6 @@
 import Head from 'components/Head'
 import type { FormEvent } from 'react'
 import axios from 'utilities/axios'
-import Link from 'next/link'
 import { useCheckIfSignedIn } from 'hooks/useCheckIfSignedIn'
 import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
