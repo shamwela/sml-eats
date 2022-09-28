@@ -216,5 +216,7 @@ app.delete('/signout', authenticationMiddleware, async (request, response) => {
   return response.status(204).json({ message: 'Session ID is deleted.' })
 })
 
+app.use((request, response)=> response.status(404).json({ message: 'Page not found.' }))
+
 const port = process.env.PORT || 2000
 app.listen(port, () => console.log('Server is running on port ' + port))
