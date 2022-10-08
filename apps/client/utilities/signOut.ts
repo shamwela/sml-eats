@@ -2,7 +2,7 @@ import { toast } from 'react-hot-toast'
 import type { NextRouter } from 'next/router'
 import axios from './axios'
 
-export const signOut = async (emptyCart: () => void, router: NextRouter) => {
+export const signOut = async (router: NextRouter) => {
   const signOutPromise = axios.delete('/signout')
   toast.promise(signOutPromise, {
     loading: 'Signing out',
@@ -20,7 +20,6 @@ export const signOut = async (emptyCart: () => void, router: NextRouter) => {
     // If there's an error, don't do the following things
     return
   }
-  emptyCart()
   localStorage.removeItem('sessionId')
   sessionStorage.removeItem('sessionId')
   await router.push('/')

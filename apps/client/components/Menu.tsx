@@ -5,9 +5,8 @@ import Link from 'next/link'
 import ThemeButton from 'components/ThemeButton'
 import { useSignedIn } from 'hooks/useSignedIn'
 import SignOutButton from 'components/SignOutButton'
-import type { EmptyCart } from 'types/EmptyCart'
 
-const Menu = ({ emptyCart }: { emptyCart: EmptyCart }) => {
+const Menu = () => {
   const [showMenu, setShowMenu] = useState(false)
   const { pathname } = useRouter()
   // If the user goes to another page, close the menu
@@ -49,7 +48,7 @@ const Menu = ({ emptyCart }: { emptyCart: EmptyCart }) => {
               <Link href='/favorited-restaurants'>
                 <a>Favorites</a>
               </Link>
-              <SignOutButton emptyCart={emptyCart} />
+              <SignOutButton />
             </>
           )}
           <ThemeButton />

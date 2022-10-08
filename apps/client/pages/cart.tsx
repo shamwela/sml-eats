@@ -1,37 +1,35 @@
-import type { CartItem } from 'types/cartItem'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'components/Head'
 import Link from 'next/link'
 import type { ChangeEvent } from 'react'
 import { useProtectedRoute } from 'hooks/useProtectedRoute'
+import { useAppSelector, useAppDispatch } from 'store/hooks'
+import { remove, changeQuantity } from 'store/cartSlice'
 
 const zeroToHundred = Array.from(Array(101).keys())
 
-const Cart = ({
-  cart,
-  changeItemQuantity,
-}: {
-  cart: CartItem[]
-  // eslint-disable-next-line no-unused-vars
-  changeItemQuantity: (id: number, quantity: number) => void
-}) => {
+const Cart = () => {
   useProtectedRoute()
-  
+
   // This is the code to fix this issue (https://github.com/vercel/next.js/discussions/35773).
   const [isSSR, setIsSSR] = useState(true)
   useEffect(() => setIsSSR(false), [])
 
-  const checkoutPrice = useMemo(
-    () => cart.reduce((total, item) => total + item.finalPrice, 0),
-    [cart]
-  )
+  const cart = useAppSelector((store) => store.cart)
+  const checkoutPrice = cart.reduce((total, item) => total + item.finalPrice, 0)
+  const dispatch = useAppDispatch()
 
   const handleQuantityChange = (
     id: number,
     event: ChangeEvent<HTMLSelectElement>
   ) => {
     const quantity = Number(event.target.value)
-    changeItemQuantity(id, quantity)
+
+    if (quantity === 0) {
+      dispatch(remove(id))
+    } else {
+      dispatch(changeQuantity({ id, quantity }))
+    }
   }
 
   return (

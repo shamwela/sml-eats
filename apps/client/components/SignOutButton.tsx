@@ -1,13 +1,14 @@
 import { useRouter } from 'next/router'
 import { signOut } from 'utilities/signOut'
 
-const SignOutButton = ({ emptyCart }: { emptyCart: () => void }) => {
+const SignOutButton = () => {
   const router = useRouter()
-  return (
-    <button onClick={async () => await signOut(emptyCart, router)}>
-      Sign out
-    </button>
-  )
+
+  const handleClick = async () => {
+    await signOut(router)
+  }
+
+  return <button onClick={handleClick}>Sign out</button>
 }
 
 export default SignOutButton

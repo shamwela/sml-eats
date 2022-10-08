@@ -1,26 +1,17 @@
-import { useEffect, useState, useMemo } from 'react'
-import type { CartItem } from 'types/cartItem'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ShoppingCartIcon, SearchIcon } from '@heroicons/react/solid'
-import Menu from 'components/Menu/Menu'
-import type { EmptyCart } from 'types/EmptyCart'
+import Menu from 'components/Menu'
+import { useAppSelector } from 'store/hooks'
 
-const Navigation = ({
-  cart,
-  emptyCart,
-}: {
-  cart: CartItem[]
-  emptyCart: EmptyCart
-}) => {
-  const totalQuantity = useMemo(
-    () =>
-      cart.reduce(
-        (previousQuantity, cartItem) => previousQuantity + cartItem.quantity,
-        0
-      ),
-    [cart]
+const Navigation = () => {
+  const cart = useAppSelector((store) => store.cart)
+  const totalQuantity = cart.reduce(
+    (previousQuantity, cartItem) => previousQuantity + cartItem.quantity,
+    0
   )
+
   const { pathname } = useRouter()
   const isNotCartPage = pathname !== '/cart'
   const cartExists = cart.length > 0
@@ -34,7 +25,7 @@ const Navigation = ({
   return (
     <nav className='top-0 z-10 bg-white py-4 dark:bg-gray-900 md:sticky'>
       <div className='mx-auto flex max-w-4xl flex-wrap items-center gap-x-8 gap-y-2'>
-        <Menu emptyCart={emptyCart} />
+        <Menu />
         <Link href='/'>
           <a className='text-4xl md:text-5xl font-logo'>SML Eats</a>
         </Link>

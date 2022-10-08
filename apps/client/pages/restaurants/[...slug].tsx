@@ -1,7 +1,6 @@
-import type { AddItem } from 'types/addItem'
 import { useState } from 'react'
 import Head from 'components/Head'
-import Order from 'components/Order/Order'
+import Order from 'components/Order'
 import type { Input } from 'types/input'
 import Image from 'next/image'
 import type { NestedItem } from 'types/nestedItem'
@@ -53,13 +52,7 @@ export const getStaticProps = async (context: {
   }
 }
 
-const ItemPage = ({
-  item,
-  addItem,
-}: {
-  item: NestedItem
-  addItem: AddItem
-}) => {
+const ItemPage = ({ item }: { item: NestedItem }) => {
   const {
     imageSource,
     imageWidth,
@@ -158,7 +151,6 @@ const ItemPage = ({
         <Order
           item={item}
           oneItemPrice={oneItemPrice}
-          addItem={addItem}
           selectedOptions={selectedOptions}
         />
       </section>

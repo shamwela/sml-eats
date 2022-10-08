@@ -1,28 +1,25 @@
-import type { AddItem } from 'types/addItem'
 import { useState } from 'react'
 import type { CartItem } from 'types/cartItem'
 import { useRouter } from 'next/router'
 import type { Item } from 'types/item'
 import type { NestedOption } from 'types/nestedOption'
 import QuantityChanger from 'components/QuantityChanger/QuantityChanger'
+import { useAppDispatch } from 'store/hooks'
+import { add } from 'store/cartSlice'
 
 type OrderProps = {
   item: Item
   oneItemPrice: number
-  addItem: AddItem
   selectedOptions: NestedOption[]
 }
 
-const Order = ({
-  item,
-  oneItemPrice,
-  addItem,
-  selectedOptions,
-}: OrderProps) => {
+const Order = ({ item, oneItemPrice, selectedOptions }: OrderProps) => {
   const [quantity, setQuantity] = useState(1)
   const finalPrice = oneItemPrice * quantity
 
   const router = useRouter()
+  const dispatch = useAppDispatch()
+
   const addToOrder = () => {
     const newCartItem: CartItem = {
       ...item,
@@ -31,7 +28,7 @@ const Order = ({
       finalPrice,
       selectedOptions,
     }
-    addItem(newCartItem)
+    dispatch(add(newCartItem))
 
     router.back()
   }
