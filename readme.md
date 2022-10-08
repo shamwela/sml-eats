@@ -23,6 +23,7 @@ A food delivery app
 - Node.js
 - Next.js
 - React
+- Redux Toolkit
 - TypeScript
 - JavaScript
 - Tailwind CSS
