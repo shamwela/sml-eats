@@ -2,7 +2,7 @@
   "name": "client",
   "scripts": {
     "dev": "next dev",
-    "test": "jest --watch",
+    "test": "cypress open",
     "lint": "next lint",
     "build": "next build",
     "start": "next start"
