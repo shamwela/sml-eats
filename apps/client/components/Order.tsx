@@ -3,7 +3,7 @@ import type { CartItem } from 'types/cartItem'
 import { useRouter } from 'next/router'
 import type { Item } from 'types/item'
 import type { NestedOption } from 'types/nestedOption'
-import QuantityChanger from 'components/QuantityChanger/QuantityChanger'
+import QuantityChanger from 'components/QuantityChanger'
 import { useAppDispatch } from 'store/hooks'
 import { add } from 'store/cartSlice'
 
