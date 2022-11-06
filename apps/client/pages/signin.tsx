@@ -8,7 +8,6 @@ import type { AxiosResponse } from 'axios'
 import EmailInput from 'components/EmailInput'
 import PasswordInput from 'components/PasswordInput'
 import FormContainer from 'components/FormContainer'
-import { checkXSS } from 'utilities/checkXSS'
 
 const SignIn = () => {
   useCheckIfSignedIn()
@@ -23,10 +22,6 @@ const SignIn = () => {
     const password = (elements.namedItem('password') as HTMLInputElement).value
     const remember = (elements.namedItem('remember') as HTMLInputElement)
       .checked
-
-    if (checkXSS([email, password])) {
-      return
-    }
 
     let signInPromise: Promise<AxiosResponse<any, any>>
     let sessionId: string

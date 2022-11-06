@@ -13,7 +13,6 @@ A food delivery app
 - Edit quantity in the cart and the price automatically updates
 - Remove items in the cart
 - Protected routes
-- Cross Site Scripting (XSS) protection on both frontend and backend and more.
 
 ## Tech stack
 
