@@ -28,4 +28,5 @@ A food delivery app
 - Tailwind CSS
 - CSS
 - Google Analytics
-- Sentry and more.
+- Sentry
+- Cypress
