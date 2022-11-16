@@ -10,7 +10,7 @@ describe('User journey', () => {
     cy.get('[aria-label="Increase quantity"]').click()
     cy.get('[data-cy="order-button"]').click()
     cy.get('[data-cy="cart-button"]').click()
-    // Since the quantity's increased once
+    // Since the quantity is increased once
     cy.get('[data-cy="quantity-select"]').contains('2')
     cy.get('[data-cy="item-name"]').should('eq', itemName)
   })
