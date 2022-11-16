@@ -36,7 +36,11 @@ const Order = ({ item, oneItemPrice, selectedOptions }: OrderProps) => {
   return (
     <div className='flex items-center gap-x-4'>
       <QuantityChanger quantity={quantity} setQuantity={setQuantity} />
-      <button onClick={addToOrder} className='max-w-full w-full'>
+      <button
+        onClick={addToOrder}
+        className='max-w-full w-full'
+        data-cy='order-button'
+      >
         Add {quantity} to order (${finalPrice})
       </button>
     </div>

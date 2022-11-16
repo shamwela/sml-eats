@@ -19,7 +19,7 @@ importers:
       '@types/react': ^18.0.9
       autoprefixer: ^10.4.7
       axios: ^0.27.2
-      cypress: ^10.11.0
+      cypress: ^11.1.0
       eslint: ^8.16.0
       eslint-config-next: ^12.1.6
       eslint-config-prettier: ^8.5.0
@@ -53,7 +53,7 @@ importers:
       '@types/node': 17.0.45
       '@types/react': 18.0.21
       autoprefixer: 10.4.12_postcss@8.4.16
-      cypress: 10.11.0
+      cypress: 11.1.0
       eslint: 8.24.0
       eslint-config-next: 12.3.1_ypn2ylkkyfa5i233caldtndbqa
       eslint-config-prettier: 8.5.0_eslint@8.24.0
@@ -1431,8 +1431,8 @@ packages:
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
 
-  /cypress/10.11.0:
-    resolution: {integrity: sha512-lsaE7dprw5DoXM00skni6W5ElVVLGAdRUUdZjX2dYsGjbY/QnpzWZ95Zom1mkGg0hAaO/QVTZoFVS7Jgr/GUPA==}
+  /cypress/11.1.0:
+    resolution: {integrity: sha512-kzizbG9s3p3ahWqxUwG/21NqLWEGtScMevMyUPeYlcmMX9RzVxWM18MkA3B4Cb3jKx72hSyIE2mHgHymfCM1bg==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     requiresBuild: true
@@ -2149,7 +2149,7 @@ packages:
     dev: true
 
   /extsprintf/1.3.0:
-    resolution: {integrity: sha1-lpGEQOMEGnpBT4xS48V06zw+HgU=}
+    resolution: {integrity: sha512-11Ndz7Nv+mvAC1j0ktTa7fAb0vLyGGX+rMHNBYQviQDGU0Hw7lhctJANqbPhu9nV9/izT/IntTgZ7Im/9LJs9g==}
     engines: {'0': node >=0.6.0}
     dev: true
 

@@ -53,6 +53,7 @@ const Cart = () => {
                     <select
                       value={quantity}
                       onChange={(event) => handleQuantityChange(id, event)}
+                      data-cy='quantity-select'
                     >
                       {zeroToHundred.map((value) => (
                         <option value={value} key={value}>
@@ -62,7 +63,7 @@ const Cart = () => {
                     </select>
                     <Link href={path}>
                       <a>
-                        <strong>{name}</strong>
+                        <strong data-cy='item-name'>{name}</strong>
                         {selectedOptions.map(({ id, name, inputs }) => {
                           const optionName = name
                           // Since there will be only 1 input

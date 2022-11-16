@@ -11,6 +11,7 @@ const PasswordInput = () => (
     // These lengths should be the same as the API
     minLength={8}
     maxLength={128}
+    data-cy='password'
   />
 )
 

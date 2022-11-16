@@ -78,7 +78,9 @@ const SignIn = () => {
             <label htmlFor='remember'>Remember me</label>
           </div>
 
-          <button type='submit'>Sign in</button>
+          <button type='submit' data-cy='sign-in-button'>
+            Sign in
+          </button>
         </form>
       </FormContainer>
     </>

@@ -36,7 +36,10 @@ const Navigation = () => {
         </Link>
         {showCartButton && (
           <Link href='/cart'>
-            <a className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static button'>
+            <a
+              className='fixed right-5 left-5 bottom-5 z-10 flex items-center justify-center gap-x-2 md:static button'
+              data-cy='cart-button'
+            >
               <ShoppingCartIcon />
               <span>Cart • {totalQuantity}</span>
             </a>
