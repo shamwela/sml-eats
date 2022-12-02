@@ -12,7 +12,6 @@ A food delivery app
 - Favorite and unfavorite restaurants and see the favorited restaurants
 - Edit quantity in the cart and the price automatically updates
 - Remove items in the cart
-- Protected routes
 
 ## Tech stack
 
