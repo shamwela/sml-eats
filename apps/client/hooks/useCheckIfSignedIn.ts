@@ -9,9 +9,7 @@ export const useCheckIfSignedIn = () => {
   const router = useRouter()
 
   useEffect(() => {
-    if (loading) {
-      return
-    }
+    if (loading) return
     if (signedIn) {
       toast.error("You've already signed in.")
       router.push('/')
