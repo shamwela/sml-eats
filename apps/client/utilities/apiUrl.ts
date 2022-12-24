@@ -1,4 +1,4 @@
 export const apiUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://sml-eats-api.up.railway.app'
+    ? 'https://sml-eats-server.onrender.com'
     : 'http://localhost:2000'
