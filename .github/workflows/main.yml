@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install pnpm
-        uses: npm i -g pnpm
+        run: npm i -g pnpm
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
