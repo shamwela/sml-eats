@@ -2,7 +2,7 @@
   "name": "client",
   "scripts": {
     "dev": "next dev",
-    "test": "cypress open",
+    "test": "cypress run",
     "lint": "next lint",
     "build": "next build",
     "start": "next start"

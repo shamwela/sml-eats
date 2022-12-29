@@ -12,7 +12,7 @@ describe('User journey', () => {
     cy.get('[data-cy="cart-button"]').click()
     // Since the quantity is increased once
     cy.get('[data-cy="quantity-select"]').contains('2')
-    cy.get('[data-cy="item-name"]').should('eq', itemName)
+    cy.get('[data-cy="item-name"]').should('contain.text', itemName)
   })
 })
 
