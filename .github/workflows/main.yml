@@ -1,4 +1,4 @@
-name: Cypress tests
+name: End-to-end tests
 on: [push]
 jobs:
   cypress-run:
@@ -7,8 +7,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Do stuffs
-        run: |
-          npm install -g pnpm
-          pnpm install
-          pnpm dev & cd apps/client & pnpm test
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Run end-to-end tests
+        uses: cypress-io/github-action@v5
+        with:
+          build: pnpm build
+          start: pnpm dev
