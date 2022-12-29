@@ -11,6 +11,4 @@ jobs:
         run: |
           npm install -g pnpm
           pnpm install
-          pnpm dev
-          cd apps/client
-          pnpm test
+          pnpm dev & cd apps/client & pnpm test
