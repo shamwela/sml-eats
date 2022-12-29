@@ -13,7 +13,7 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Run end-to-end tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v4
         with:
           build: pnpm build
           start: pnpm dev
