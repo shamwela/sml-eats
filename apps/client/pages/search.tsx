@@ -88,7 +88,6 @@ const Search = ({
         type='search'
         aria-label='Search'
         placeholder='Pizza, coffee, etc'
-        data-cy='search-input'
       />
       <div className='grid gap-4 md:grid-cols-2'>
         {loading && <Spinner />}

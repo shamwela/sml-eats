@@ -11,6 +11,7 @@ it('tests user journey', () => {
   cy.get('[data-cy="password"]').type('password')
   cy.get('[data-cy="sign-in-button"]').click()
 
+  // Test the cart UI
   cy.get('[alt="The Pizza Company"]').click()
   const sampleItem = 'Seafood Cocktail'
   cy.get(`[alt="${sampleItem}"]`).click()

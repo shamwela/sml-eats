@@ -31,7 +31,7 @@ const Navigation = () => {
         </Link>
         <Link href='/search'>
           <a aria-label='Search'>
-            <SearchIcon data-cy='search-icon' />
+            <SearchIcon />
           </a>
         </Link>
         {showCartButton && (
