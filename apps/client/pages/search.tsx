@@ -88,6 +88,7 @@ const Search = ({
         type='search'
         aria-label='Search'
         placeholder='Pizza, coffee, etc'
+        data-cy='search-input'
       />
       <div className='grid gap-4 md:grid-cols-2'>
         {loading && <Spinner />}
@@ -121,7 +122,7 @@ const Search = ({
                         priority
                       />
                       <span className='font-semibold'>{name}</span>
-                      <span>Category: {category.name}</span>
+                      <span data-cy='category-name'>Category: {category.name}</span>
                     </div>
                   </a>
                 </Link>
