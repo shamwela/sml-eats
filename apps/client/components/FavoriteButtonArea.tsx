@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 
 const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   const { signedIn, loading } = useSignedIn()
-  const [favorited, setFavorited] = useState<boolean | null>(null)
+  const [favorited, setFavorited] = useState(false)
 
   useEffect(() => {
     if (!signedIn) {
@@ -14,12 +14,11 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
 
     const getAndSetFavorited = async () => {
       try {
-        const { data: favorited } = await axios.get('/favorited', {
+        const { data: favorited } = await axios.get<boolean>('/favorited', {
           params: {
             restaurantId,
           },
         })
-
         setFavorited(favorited)
       } catch (error) {
         toast.error('"Favorite" feature is not available at this time.')
@@ -28,11 +27,6 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
     }
     getAndSetFavorited()
   }, [restaurantId, signedIn])
-
-  if (loading) {
-    // In this case, showing nothing is better than showing a spinner
-    return null
-  }
 
   const favorite = async () => {
     // Change the state first to make it look faster
@@ -61,13 +55,13 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
     }
   }
 
-  if (favorited === null) {
+  if (loading || !signedIn) {
     return null
-  } else if (favorited) {
-    return <button onClick={unFavorite}>Remove from favorites</button>
-  } else {
-    return <button onClick={favorite}>Add to favorites</button>
   }
+  if (favorited) {
+    return <button onClick={unFavorite}>Remove from favorites</button>
+  }
+  return <button onClick={favorite}>Add to favorites</button>
 }
 
 export default FavoriteButtonArea
