@@ -15,13 +15,15 @@ const SignIn = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const { elements } = event.currentTarget
-    const email = (elements.namedItem('email') as HTMLInputElement).value
-      .trim()
-      .toLowerCase()
-    const password = (elements.namedItem('password') as HTMLInputElement).value
-    const remember = (elements.namedItem('remember') as HTMLInputElement)
-      .checked
+    type Inputs = {
+      email: { value: string }
+      password: { value: string }
+      remember: { checked: boolean }
+    }
+    const target = event.target as typeof event.target & Inputs
+    const email = target.email.value.trim().toLowerCase()
+    const password = target.password.value
+    const remember = target.remember.checked
 
     let signInPromise: Promise<AxiosResponse<any, any>>
     let sessionId: string

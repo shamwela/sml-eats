@@ -15,19 +15,14 @@ const SignUp = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    type Input = {
-      value: string
-    }
     type Inputs = {
-      name: Input
-      email: Input
-      password: Input
+      name: { value: string }
+      email: { value: string }
+      password: { value: string }
     }
     const target = event.target as typeof event.target & Inputs
     const name = target.name.value.trim()
     const email = target.email.value.trim().toLowerCase()
-    console.log(email);
-    
     const password = target.password.value
 
     let signUpPromise: Promise<AxiosResponse<any, any>>
