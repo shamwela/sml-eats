@@ -2,7 +2,6 @@ import { z } from 'zod'
 
 const name = z
   .string({ required_error: 'Name is required.' })
-  .regex(/^[A-Za-z\s]*$/, { message: 'Please use English alphabets only.' })
   .min(3, { message: 'Name should be at least 3 characters long.' })
   .max(100, { message: 'Name should not be longer than 100 characters.' })
 

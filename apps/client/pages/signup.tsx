@@ -15,12 +15,20 @@ const SignUp = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const { elements } = event.currentTarget
-    const name = (elements.namedItem('name') as HTMLInputElement).value.trim()
-    const email = (elements.namedItem('email') as HTMLInputElement).value
-      .trim()
-      .toLowerCase()
-    const password = (elements.namedItem('password') as HTMLInputElement).value
+    type Input = {
+      value: string
+    }
+    type Inputs = {
+      name: Input
+      email: Input
+      password: Input
+    }
+    const target = event.target as typeof event.target & Inputs
+    const name = target.name.value.trim()
+    const email = target.email.value.trim().toLowerCase()
+    console.log(email);
+    
+    const password = target.password.value
 
     let signUpPromise: Promise<AxiosResponse<any, any>>
     let sessionId: string
@@ -72,7 +80,6 @@ const SignUp = () => {
             autoCapitalize='off'
             required
             aria-required='true'
-            // These lengths should be the same as the API
             minLength={3}
             maxLength={100}
           />
