@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 import { prisma } from '../prisma/prismaClient'
 import { randomUUID } from 'crypto'
 import type { Request, Response } from 'express'
-import type { User } from '@prisma/client'
+import { type User } from '@prisma/client'
 
 export const signup = async (request: Request, response: Response) => {
   const { name, password } = request.body

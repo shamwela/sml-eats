@@ -10,7 +10,7 @@ import authenticationMiddleware from './middlewares/authentication'
 import categoryRouter from './routers/category'
 import restaurantRouter from './routers/restaurant'
 import { prisma } from './prisma/prismaClient'
-import type { RestaurantsOnUsers } from '@prisma/client'
+import { type RestaurantsOnUsers } from '@prisma/client'
 import { rateLimit } from 'express-rate-limit'
 
 const app = express()
@@ -216,7 +216,9 @@ app.delete('/signout', authenticationMiddleware, async (request, response) => {
   return response.status(204).json({ message: 'Session ID is deleted.' })
 })
 
-app.use((request, response)=> response.status(404).json({ message: 'Page not found.' }))
+app.use((request, response) =>
+  response.status(404).json({ message: 'Page not found.' })
+)
 
 const port = process.env.PORT || 2000
 app.listen(port, () => console.log('Server is running on port ' + port))

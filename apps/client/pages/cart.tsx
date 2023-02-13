@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Head from 'components/Head'
 import Link from 'next/link'
-import type { ChangeEvent } from 'react'
+import { type ChangeEvent } from 'react'
 import { useProtectedRoute } from 'hooks/useProtectedRoute'
 import { useAppSelector, useAppDispatch } from 'store/hooks'
 import { remove, changeQuantity } from 'store/cartSlice'

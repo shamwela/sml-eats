@@ -1,5 +1,5 @@
 import 'styles/globals.css'
-import type { AppProps } from 'next/app'
+import { type AppProps } from 'next/app'
 import Navigation from 'components/Navigation'
 import { ThemeProvider } from 'next-themes'
 import GoogleAnalyticsScripts from 'components/GoogleAnalyticsScripts'

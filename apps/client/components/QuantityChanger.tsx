@@ -1,5 +1,5 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/solid'
-import type { Dispatch, SetStateAction } from 'react'
+import { type Dispatch, SetStateAction } from 'react'
 
 const QuantityChanger = ({
   quantity,

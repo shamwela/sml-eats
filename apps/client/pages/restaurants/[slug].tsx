@@ -1,12 +1,12 @@
 import Head from 'components/Head'
 import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
-import type { InferGetStaticPropsType } from 'next'
+import { type InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
 import FavoriteButtonArea from 'components/FavoriteButtonArea'
 import axios from 'utilities/axios'
-import type { nestedSlug } from 'types/nestedSlug'
-import type { NestedRestaurant } from 'types/nestedRestaurant'
+import { type nestedSlug } from 'types/nestedSlug'
+import { type NestedRestaurant } from 'types/nestedRestaurant'
 
 export const getStaticPaths = async () => {
   const slugResponse = await axios.get('/slugs')

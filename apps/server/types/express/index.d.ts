@@ -1,4 +1,4 @@
-import type { User } from '../user'
+import { type User } from '../user'
 
 // To make the file a module and avoid the TypeScript error
 export {}

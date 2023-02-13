@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { InferGetStaticPropsType } from 'next'
 import RestaurantImageGroup from 'components/RestaurantImageGroup'
 import axios from 'utilities/axios'
-import type { Category } from 'types/category'
-import type { Restaurant } from 'types/restaurant'
+import { type Category } from 'types/category'
+import { type Restaurant } from 'types/restaurant'
 
 export const getStaticProps = async () => {
   const categoryResponse = await axios.get('/categories')

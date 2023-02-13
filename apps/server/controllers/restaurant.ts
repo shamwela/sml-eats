@@ -1,7 +1,7 @@
-import type { Restaurant } from '@prisma/client'
+import { type Restaurant } from '@prisma/client'
 import { prisma } from '../prisma/prismaClient'
 import type { Request, Response } from 'express'
-import type { NestedRestaurant } from '../types/nestedRestaurant'
+import { type NestedRestaurant } from '../types/nestedRestaurant'
 
 export const getRestaurants = async (request: Request, response: Response) => {
   const includeItems = Boolean(request.query.includeItems)

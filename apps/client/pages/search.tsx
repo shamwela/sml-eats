@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import type { ChangeEvent } from 'react'
+import { type ChangeEvent } from 'react'
 import Head from 'components/Head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { InferGetStaticPropsType } from 'next'
 import axios from 'utilities/axios'
-import type { NestedRestaurant } from 'types/nestedRestaurant'
+import { type NestedRestaurant } from 'types/nestedRestaurant'
 import Spinner from 'components/Spinner'
 
 export const getStaticProps = async () => {
@@ -121,7 +121,9 @@ const Search = ({
                         priority
                       />
                       <span className='font-semibold'>{name}</span>
-                      <span data-cy='category-name'>Category: {category.name}</span>
+                      <span data-cy='category-name'>
+                        Category: {category.name}
+                      </span>
                     </div>
                   </a>
                 </Link>

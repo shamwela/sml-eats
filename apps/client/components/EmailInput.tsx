@@ -11,7 +11,6 @@ const EmailInput = () => (
     autoCapitalize='off'
     required
     aria-required='true'
-    // These lengths should be the same as the API
     minLength={3}
     maxLength={254}
     data-cy='email'

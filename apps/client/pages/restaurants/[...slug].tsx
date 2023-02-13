@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import Head from 'components/Head'
 import Order from 'components/Order'
-import type { Input } from 'types/input'
+import { type Input } from 'types/input'
 import Image from 'next/image'
-import type { NestedItem } from 'types/nestedItem'
+import { type NestedItem } from 'types/nestedItem'
 import axios from 'utilities/axios'
-import type { nestedSlug } from 'types/nestedSlug'
+import { type nestedSlug } from 'types/nestedSlug'
 
 export const getStaticPaths = async () => {
   const slugResponse = await axios.get('/slugs')

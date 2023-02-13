@@ -1,6 +1,6 @@
-import type { Restaurant } from './restaurant'
-import type { Item } from './item'
-import type { Category } from './category'
+import { type Restaurant } from './restaurant'
+import { type Item } from './item'
+import { type Category } from './category'
 
 type RestaurantWithCategory = Restaurant & { category: Category }
 type ItemWithCategory = Item & { category: Category }

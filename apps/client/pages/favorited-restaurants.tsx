@@ -7,7 +7,7 @@ import useSWR from 'swr'
 import axios from 'utilities/axios'
 import toast from 'react-hot-toast'
 import { useProtectedRoute } from 'hooks/useProtectedRoute'
-import type { Restaurant } from 'types/restaurant'
+import { type Restaurant } from 'types/restaurant'
 
 const FavoritedRestaurants = () => {
   useProtectedRoute()

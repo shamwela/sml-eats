@@ -1,4 +1,4 @@
-import type { Restaurant } from 'types/restaurant'
+import { type Restaurant } from 'types/restaurant'
 import Link from 'next/link'
 import Image from 'next/image'
 import { StarIcon } from '@heroicons/react/solid'

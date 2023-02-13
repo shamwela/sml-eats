@@ -1,5 +1,5 @@
-import type { Session } from '@prisma/client'
-import type { Request, Response, NextFunction } from 'express'
+import { type Session } from '@prisma/client'
+import { type Request, Response, NextFunction } from 'express'
 import { prisma } from '../prisma/prismaClient'
 
 const authenticationMiddleware = async (

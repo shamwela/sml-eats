@@ -1,5 +1,5 @@
 import { toast } from 'react-hot-toast'
-import type { NextRouter } from 'next/router'
+import { type NextRouter } from 'next/router'
 import axios from './axios'
 
 export const signOut = async (router: NextRouter) => {

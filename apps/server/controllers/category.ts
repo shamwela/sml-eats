@@ -1,4 +1,4 @@
-import type { Category } from '@prisma/client'
+import { type Category } from '@prisma/client'
 import { prisma } from '../prisma/prismaClient'
 import type { Request, Response } from 'express'
 

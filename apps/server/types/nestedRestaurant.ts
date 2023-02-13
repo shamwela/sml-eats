@@ -1,4 +1,4 @@
-import type { Restaurant, Item, Category } from '@prisma/client'
+import { type Restaurant, Item, Category } from '@prisma/client'
 
 type RestaurantWithCategory = Restaurant & { category: Category }
 type ItemWithCategory = Item & { category: Category }
