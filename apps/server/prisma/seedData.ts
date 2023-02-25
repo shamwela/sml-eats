@@ -3,24 +3,28 @@ import { Prisma } from '@prisma/client'
 export const categories: Prisma.CategoryCreateManyInput[] = [
   {
     name: 'Pizza',
+    nameInMyanmar: 'ပီဇာ',
     imageSource: '/images/pizza.png',
     imageWidth: 144,
     imageHeight: 168,
   },
   {
     name: 'Coffee',
+    nameInMyanmar: 'ကော်ဖီ',
     imageSource: '/images/coffee.png',
     imageWidth: 147,
     imageHeight: 168,
   },
   {
     name: 'Fast food',
+    nameInMyanmar: 'အမြန်ပြင်အစားအစာ',
     imageSource: '/images/fast-food.png',
     imageWidth: 144,
     imageHeight: 168,
   },
   {
     name: 'Dessert',
+    nameInMyanmar: 'အချိုပွဲ',
     imageSource: '/images/dessert.png',
     imageWidth: 144,
     imageHeight: 168,

@@ -68,13 +68,14 @@ model Input {
 }
 
 model Category {
-  id          Int          @id @default(autoincrement())
-  name        String       @unique
-  imageSource String       @unique
-  imageWidth  Int
-  imageHeight Int
-  Restaurant  Restaurant[]
-  Item        Item[]
+  id            Int          @id @default(autoincrement())
+  name          String       @unique
+  nameInMyanmar String       @unique
+  imageSource   String       @unique
+  imageWidth    Int
+  imageHeight   Int
+  Restaurant    Restaurant[]
+  Item          Item[]
 }
 
 model User {

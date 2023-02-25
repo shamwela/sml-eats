@@ -38,16 +38,25 @@ const Home = ({
       <h2>{isEnglish ? 'Explore by category' : 'အမျိုးအစားအလိုက်ရှာမယ်'}</h2>
       <ItemContainer>
         {categories.map(
-          ({ id, name, imageSource, imageWidth, imageHeight }) => {
+          ({
+            id,
+            name,
+            nameInMyanmar,
+            imageSource,
+            imageWidth,
+            imageHeight,
+          }) => {
             const href = '/search?query=' + name.toLowerCase()
 
             return (
               <Link href={href} key={id}>
                 <a>
                   <div className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation justify-center'>
-                    <span className='self-center'>{name}</span>
+                    <span className='self-center'>
+                      {isEnglish ? name : nameInMyanmar}
+                    </span>
                     <Image
-                      alt={name}
+                      alt={isEnglish ? name : nameInMyanmar}
                       src={imageSource}
                       width={imageWidth}
                       height={imageHeight}
