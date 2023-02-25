@@ -10,8 +10,7 @@ import { type NestedRestaurant } from 'types/nestedRestaurant'
 import { locales } from 'utilities/locales'
 
 export const getStaticPaths = async () => {
-  const slugResponse = await axios.get('/slugs')
-  const slugs: nestedSlug[] = await slugResponse.data
+  const { data: slugs } = await axios.get<nestedSlug[]>('/slugs')
   const restaurantSlugs = slugs.map(({ slug }) => slug)
 
   type Path = {
