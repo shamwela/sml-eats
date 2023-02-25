@@ -7,12 +7,13 @@ import FavoriteButtonArea from 'components/FavoriteButtonArea'
 import axios from 'utilities/axios'
 import { type nestedSlug } from 'types/nestedSlug'
 import { type NestedRestaurant } from 'types/nestedRestaurant'
+import { locales } from 'utilities/locales'
 
 export const getStaticPaths = async () => {
   const slugResponse = await axios.get('/slugs')
   const slugs: nestedSlug[] = await slugResponse.data
   const restaurantSlugs = slugs.map(({ slug }) => slug)
-  
+
   type Path = {
     params: {
       slug: string
@@ -21,8 +22,16 @@ export const getStaticPaths = async () => {
   }
   let paths: Path[] = []
   restaurantSlugs.forEach((slug) => {
-    paths.push({ params: { slug }, locale: 'en' })
-    paths.push({ params: { slug }, locale: 'mm' })
+    // Add paths for each locale
+    locales.forEach((locale) => {
+      const path = {
+        params: {
+          slug,
+        },
+        locale,
+      }
+      paths.push(path)
+    })
   })
 
   return {
@@ -40,20 +49,24 @@ export const getStaticProps = async (context: any) => {
   const restaurants: NestedRestaurant[] = restaurantResponse.data
   const currentPageSlug = context.params.slug
   const restaurant = restaurants.find(({ slug }) => slug === currentPageSlug)
+  if (!restaurant) {
+    throw new Error('Restaurant is not found.')
+  }
+  const { locale } = context
+  const isEnglish = locale === 'en'
 
   return {
     props: {
       restaurant,
+      isEnglish,
     },
   }
 }
 
 const RestaurantPage = ({
   restaurant,
+  isEnglish,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  if (!restaurant) {
-    return <p>Sorry. Couldn't find that restaurant.</p>
-  }
   const { id: restaurantId, name: restaurantName, rating, items } = restaurant
 
   return (
@@ -62,7 +75,7 @@ const RestaurantPage = ({
       <h1>{restaurantName}</h1>
       <FavoriteButtonArea restaurantId={restaurantId} />
       <span>
-        <strong>Rating</strong>: {rating}
+        {isEnglish ? 'Rating' : 'အဆင့်သတ်မှတ်ချက်'}: {rating}
       </span>
       <ItemContainer>
         {items.map(

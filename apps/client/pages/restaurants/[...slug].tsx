@@ -6,26 +6,34 @@ import Image from 'next/image'
 import { type NestedItem } from 'types/nestedItem'
 import axios from 'utilities/axios'
 import { type nestedSlug } from 'types/nestedSlug'
+import { locales } from 'utilities/locales'
 
 export const getStaticPaths = async () => {
-  const slugResponse = await axios.get('/slugs')
-  // This type is copied from the API
-  const slugs: nestedSlug[] = slugResponse.data
+  const { data: slugs } = await axios.get<nestedSlug[]>('/slugs')
 
-  const paths = slugs
-    .map((restaurant) => {
-      return restaurant.items.map((item) => {
-        // For example, ['the-pizza-company', 'seafood-cocktail']
-        const slugArray = [restaurant.slug, item.slug]
+  type Path = {
+    params: {
+      slug: string[]
+    }
+    locale: string
+  }
+  let paths: Path[] = []
+  slugs.forEach((restaurant) => {
+    restaurant.items.forEach((item) => {
+      // For example, ['the-pizza-company', 'seafood-cocktail']
+      const slugArray = [restaurant.slug, item.slug]
+      // Add paths for each locale
+      locales.forEach((locale) => {
         const path = {
           params: {
             slug: slugArray,
           },
+          locale,
         }
-        return path
+        paths.push(path)
       })
     })
-    .flat()
+  })
 
   return {
     paths,
