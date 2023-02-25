@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'utilities/axios'
 import { useSignedIn } from 'hooks/useSignedIn'
 import toast from 'react-hot-toast'
+import { useRouter } from 'next/router'
 
 const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   const { signedIn, loading } = useSignedIn()
@@ -55,13 +56,24 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
     }
   }
 
+  const { locale } = useRouter()
+  const isEnglish = locale === 'en'
+
   if (loading || !signedIn) {
     return null
   }
   if (favorited) {
-    return <button onClick={unFavorite}>Remove from favorites</button>
+    return (
+      <button onClick={unFavorite}>
+        {isEnglish ? 'Remove from favorites' : 'စိတ်ကြိုက်များမှ ဖယ်ရှားမယ်'}
+      </button>
+    )
   }
-  return <button onClick={favorite}>Add to favorites</button>
+  return (
+    <button onClick={favorite}>
+      {isEnglish ? 'Add to favorites' : 'စိတ်ကြိုက်များထဲသို့ ထည့်မယ်'}
+    </button>
+  )
 }
 
 export default FavoriteButtonArea

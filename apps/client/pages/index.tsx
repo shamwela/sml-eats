@@ -32,7 +32,7 @@ const Home = ({
         title={
           isEnglish
             ? 'Order food online'
-            : 'အစားအသောက်ကို အွန်လိုင်းမှာ မှာယူပါ'
+            : 'အွန်လိုင်းမှာ အစားအသောက်ကို မှာယူပါ'
         }
       />
       <h2>{isEnglish ? 'Explore by category' : 'အမျိုးအစားအလိုက်ရှာမယ်'}</h2>
