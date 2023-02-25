@@ -8,14 +8,11 @@ import SignOutButton from 'components/SignOutButton'
 
 const Menu = () => {
   const [showMenu, setShowMenu] = useState(false)
-  const { pathname } = useRouter()
+  const { pathname, locale } = useRouter()
+  const isEnglish = locale === 'en'
   // If the user goes to another page, close the menu
   useEffect(() => setShowMenu(false), [pathname])
-
-  const { signedIn, loading } = useSignedIn()
-  if (loading) {
-    return null
-  }
+  const { signedIn } = useSignedIn()
 
   return (
     <>
@@ -30,25 +27,24 @@ const Menu = () => {
             onClick={() => setShowMenu(false)}
             className='cursor-pointer'
           />
-          {!signedIn && (
-            <>
-              <Link href='/signup'>
-                <a>Sign up</a>
-              </Link>
-              <Link href='/signin'>
-                <a>Sign in</a>
-              </Link>
-            </>
-          )}
-          {signedIn && (
+          {signedIn ? (
             <>
               <Link href='/delivery-details'>
-                <a>Delivery details</a>
+                <a>{isEnglish ? 'Delivery details' : 'ပို့ဆောင်မှုအသေးစိတ်'}</a>
               </Link>
               <Link href='/favorited-restaurants'>
-                <a>Favorites</a>
+                <a>{isEnglish ? 'Favorites' : 'အကြိုက်ဆုံးများ'}</a>
               </Link>
               <SignOutButton />
+            </>
+          ) : (
+            <>
+              <Link href='/signup'>
+                <a>{isEnglish ? 'Sign up' : 'အကောင့်ဖွင့်မယ်'}</a>
+              </Link>
+              <Link href='/signin'>
+                <a>{isEnglish ? 'Sign in' : 'အကောင့်ဝင်မယ်'}</a>
+              </Link>
             </>
           )}
           <ThemeButton />

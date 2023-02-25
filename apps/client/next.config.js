@@ -1,7 +1,12 @@
 const { withSentryConfig } = require('@sentry/nextjs')
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  i18n: {
+    locales: ['en', 'mm'],
+    defaultLocale: 'en',
+  },
 }
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that

@@ -2,35 +2,40 @@ import Head from 'components/Head'
 import Image from 'next/image'
 import ItemContainer from 'components/ItemContainer'
 import Link from 'next/link'
-import { InferGetStaticPropsType } from 'next'
 import RestaurantImageGroup from 'components/RestaurantImageGroup'
 import axios from 'utilities/axios'
 import { type Category } from 'types/category'
 import { type Restaurant } from 'types/restaurant'
+import { type InferGetStaticPropsType } from 'next'
 
-export const getStaticProps = async () => {
-  const categoryResponse = await axios.get('/categories')
-  const categories: Category[] = categoryResponse.data
-
-  const restaurantResponse = await axios.get('/restaurants')
-  const restaurants: Restaurant[] = restaurantResponse.data
-
-  return {
-    props: {
-      categories,
-      restaurants,
-    },
+export const getStaticProps = async (context: any) => {
+  const { data: categories } = await axios.get<Category[]>('/categories')
+  const { data: restaurants } = await axios.get<Restaurant[]>('/restaurants')
+  const { locale } = context
+  const isEnglish = locale === 'en'
+  const props = {
+    categories,
+    restaurants,
+    isEnglish,
   }
+  return { props }
 }
 
 const Home = ({
   categories,
   restaurants,
+  isEnglish,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Head title='Order food online' />
-      <h2>Explore by category</h2>
+      <Head
+        title={
+          isEnglish
+            ? 'Order food online'
+            : 'အစားအသောက်ကို အွန်လိုင်းမှာ မှာယူပါ'
+        }
+      />
+      <h2>{isEnglish ? 'Explore by category' : 'အမျိုးအစားအလိုက်ရှာမယ်'}</h2>
       <ItemContainer>
         {categories.map(
           ({ id, name, imageSource, imageWidth, imageHeight }) => {
@@ -57,7 +62,7 @@ const Home = ({
         )}
       </ItemContainer>
 
-      <h2>Popular near you</h2>
+      <h2>{isEnglish ? 'Popular near you' : 'ရောင်းကောင်းသောဆိုင်များ'}</h2>
       <ItemContainer>
         {restaurants.map((restaurant) => (
           <RestaurantImageGroup {...restaurant} key={restaurant.id} />

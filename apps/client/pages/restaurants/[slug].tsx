@@ -12,11 +12,18 @@ export const getStaticPaths = async () => {
   const slugResponse = await axios.get('/slugs')
   const slugs: nestedSlug[] = await slugResponse.data
   const restaurantSlugs = slugs.map(({ slug }) => slug)
-  const paths = restaurantSlugs.map((slug) => ({
+  
+  type Path = {
     params: {
-      slug,
-    },
-  }))
+      slug: string
+    }
+    locale: string
+  }
+  let paths: Path[] = []
+  restaurantSlugs.forEach((slug) => {
+    paths.push({ params: { slug }, locale: 'en' })
+    paths.push({ params: { slug }, locale: 'mm' })
+  })
 
   return {
     paths,
