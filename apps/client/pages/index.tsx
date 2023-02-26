@@ -30,9 +30,7 @@ const Home = ({
     <>
       <Head
         title={
-          isEnglish
-            ? 'Order food online'
-            : 'အွန်လိုင်းမှာ အစားအသောက်မှာယူပါ'
+          isEnglish ? 'Order food online' : 'အွန်လိုင်းမှာ အစားအသောက်မှာယူပါ'
         }
       />
       <h2>{isEnglish ? 'Explore by category' : 'အမျိုးအစားအလိုက်ရှာမယ်'}</h2>
@@ -50,7 +48,7 @@ const Home = ({
 
             return (
               <Link href={href} key={id}>
-                <div className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation justify-center'>
+                <div className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation justify-between'>
                   <span className='self-center'>
                     {isEnglish ? name : nameInMyanmar}
                   </span>
@@ -60,7 +58,7 @@ const Home = ({
                     width={imageWidth}
                     height={imageHeight}
                     priority
-                    className='object-contain'
+                    className='object-contain w-auto'
                   />
                 </div>
               </Link>
