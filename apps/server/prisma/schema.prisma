@@ -1,13 +1,12 @@
 // If this file is edited, also edit the types in the frontend
 datasource db {
-  provider             = "mysql"
-  url                  = env("DATABASE_URL")
-  referentialIntegrity = "prisma"
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["referentialIntegrity"]
+  provider = "prisma-client-js"
 }
 
 model Restaurant {
@@ -94,10 +93,14 @@ model RestaurantsOnUsers {
   userId       String
 
   @@id([restaurantId, userId])
+  @@index([restaurantId])
+  @@index([userId])
 }
 
 model Session {
   id     String @id
   User   User   @relation(fields: [userId], references: [id])
   userId String
+
+  @@index([userId])
 }
