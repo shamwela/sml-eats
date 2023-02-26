@@ -4,18 +4,19 @@ import Link from 'next/link'
 import ThemeButton from 'components/ThemeButton'
 import { useSignedIn } from 'hooks/useSignedIn'
 import SignOutButton from 'components/SignOutButton'
+import { LanguageChanger } from 'components/LanguageChanger'
 
 const Menu = () => {
   const { locale } = useRouter()
   const isEnglish = locale === 'en'
   const { signedIn } = useSignedIn()
-  const menu = isEnglish ? 'Menu' : 'မန်နူး'
+  const menuText = isEnglish ? 'Menu' : 'မန်နူး'
 
   return (
     <>
-      <Head title={menu} />
+      <Head title={menuText} />
       <div className='flex flex-col gap-y-8'>
-        <h1>{menu}</h1>
+        <h1>{menuText}</h1>
         {signedIn ? (
           <>
             <Link href='/delivery-details'>
@@ -37,6 +38,7 @@ const Menu = () => {
           </>
         )}
         <ThemeButton />
+        <LanguageChanger />
       </div>
     </>
   )
