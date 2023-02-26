@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import {
   MagnifyingGlassIcon,
   ShoppingCartIcon,
-} from '@heroicons/react/24/solid'
+} from '@heroicons/react/24/outline'
 import Menu from 'components/Menu'
 import { useAppSelector } from 'store/hooks'
 
