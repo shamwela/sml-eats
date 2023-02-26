@@ -5,6 +5,14 @@ const ThemeButton = () => {
   const { theme, setTheme } = useTheme()
   const { locale } = useRouter()
   const isEnglish = locale === 'en'
+  const lightThemeText = isEnglish
+    ? 'Use light theme'
+    : 'လင်းတဲ့အရောင်ကိုသုံးမယ်'
+  const darkThemeText = isEnglish
+    ? 'Use dark theme'
+    : 'မှောင်တဲ့အရောင်ကိုသုံးမယ်'
+  const finalText = theme === 'light' ? darkThemeText : lightThemeText
+
   const toggleTheme = () => {
     if (theme === 'dark') {
       setTheme('light')
@@ -13,11 +21,7 @@ const ThemeButton = () => {
     }
   }
 
-  return (
-    <button onClick={toggleTheme}>
-      {isEnglish ? 'Toggle theme' : 'အရောင်ပြောင်းမယ်'}
-    </button>
-  )
+  return <button onClick={toggleTheme}>{finalText}</button>
 }
 
 export default ThemeButton
