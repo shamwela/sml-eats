@@ -50,21 +50,19 @@ const Home = ({
 
             return (
               <Link href={href} key={id}>
-                <a>
-                  <div className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation justify-center'>
-                    <span className='self-center'>
-                      {isEnglish ? name : nameInMyanmar}
-                    </span>
-                    <Image
-                      alt={isEnglish ? name : nameInMyanmar}
-                      src={imageSource}
-                      width={imageWidth}
-                      height={imageHeight}
-                      priority
-                      className='object-contain'
-                    />
-                  </div>
-                </a>
+                <div className='flex h-20 rounded-lg bg-light-elevation p-4 dark:bg-dark-elevation justify-center'>
+                  <span className='self-center'>
+                    {isEnglish ? name : nameInMyanmar}
+                  </span>
+                  <Image
+                    alt={isEnglish ? name : nameInMyanmar}
+                    src={imageSource}
+                    width={imageWidth}
+                    height={imageHeight}
+                    priority
+                    className='object-contain'
+                  />
+                </div>
               </Link>
             )
           }

@@ -38,8 +38,8 @@ const FavoritedRestaurants = () => {
       {favoritedRestaurants.length === 0 ? (
         <>
           <h1>No favorites saved.</h1>
-          <Link href='/'>
-            <a className='button'>Find some favorites</a>
+          <Link href='/' className='button'>
+            Find some favorites
           </Link>
         </>
       ) : (

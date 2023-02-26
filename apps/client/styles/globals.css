@@ -78,7 +78,7 @@
   }
 
   svg {
-    @apply w-6 fill-current;
+    @apply w-6;
   }
 
   input[type='radio'],

@@ -10,8 +10,8 @@ const Checkout = () => {
       <Head title='Checkout' />
       <section className='flex flex-col gap-y-4 items-center'>
         <h1>This is a fake app. So, you can't checkout.</h1>
-        <Link href='/'>
-          <a className='button'>Go back to home</a>
+        <Link href='/' className='button'>
+          Go back to home
         </Link>
       </section>
     </>

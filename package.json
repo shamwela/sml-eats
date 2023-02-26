@@ -11,10 +11,9 @@
     "dev": "turbo run dev --parallel",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
-  "dependencies": {},
   "devDependencies": {
-    "prettier": "latest",
-    "turbo": "latest"
+    "prettier": "^2.8.4",
+    "turbo": "^1.8.2"
   },
   "engines": {
     "node": ">=14.0.0"

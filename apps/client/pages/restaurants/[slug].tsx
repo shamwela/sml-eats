@@ -88,19 +88,17 @@ const RestaurantPage = ({
             basePrice,
           }) => (
             <Link key={id} href={path}>
-              <a>
-                <div className='flex flex-col'>
-                  <Image
-                    alt={name}
-                    src={imageSource}
-                    width={imageWidth}
-                    height={imageHeight}
-                    priority
-                  />
-                  <span>{name}</span>
-                  <span>${basePrice}</span>
-                </div>
-              </a>
+              <div className='flex flex-col'>
+                <Image
+                  alt={name}
+                  src={imageSource}
+                  width={imageWidth}
+                  height={imageHeight}
+                  priority
+                />
+                <span>{name}</span>
+                <span>${basePrice}</span>
+              </div>
             </Link>
           )
         )}

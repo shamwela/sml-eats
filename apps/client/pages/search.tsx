@@ -110,22 +110,20 @@ const Search = ({
             }) => (
               <div key={id} className='flex flex-col gap-2'>
                 <Link href={'/restaurants/' + slug}>
-                  <a>
-                    <div className='flex flex-col gap-y-2'>
-                      <Image
-                        alt={name}
-                        src={imageSource}
-                        width={imageWidth}
-                        height={imageHeight}
-                        objectFit='cover'
-                        priority
-                      />
-                      <span className='font-semibold'>{name}</span>
-                      <span data-cy='category-name'>
-                        Category: {category.name}
-                      </span>
-                    </div>
-                  </a>
+                  <div className='flex flex-col gap-y-2'>
+                    <Image
+                      alt={name}
+                      src={imageSource}
+                      width={imageWidth}
+                      height={imageHeight}
+                      objectFit='cover'
+                      priority
+                    />
+                    <span className='font-semibold'>{name}</span>
+                    <span data-cy='category-name'>
+                      Category: {category.name}
+                    </span>
+                  </div>
                 </Link>
                 <div className='flex gap-x-4'>
                   {items.map(
@@ -139,19 +137,17 @@ const Search = ({
                       path,
                     }) => (
                       <Link key={id} href={path}>
-                        <a>
-                          <div className='flex flex-col rounded-custom bg-light-elevation p-4 shadow-lg dark:bg-dark-elevation'>
-                            <Image
-                              alt={name}
-                              src={imageSource}
-                              width={imageWidth}
-                              height={imageHeight}
-                              priority
-                            />
-                            <span>{name}</span>
-                            <span>${basePrice}</span>
-                          </div>
-                        </a>
+                        <div className='flex flex-col rounded-custom bg-light-elevation p-4 shadow-lg dark:bg-dark-elevation'>
+                          <Image
+                            alt={name}
+                            src={imageSource}
+                            width={imageWidth}
+                            height={imageHeight}
+                            priority
+                          />
+                          <span>{name}</span>
+                          <span>${basePrice}</span>
+                        </div>
                       </Link>
                     )
                   )}

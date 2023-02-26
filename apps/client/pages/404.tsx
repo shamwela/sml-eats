@@ -7,8 +7,8 @@ const Custom404 = () => {
       <Head title='Page not found' />
       <div className='flex flex-col items-center gap-y-[inherit]'>
         <h1>Sorry, page not found.</h1>
-        <Link href='/'>
-          <a className='button'>Find food</a>
+        <Link href='/' className='button'>
+          Find food
         </Link>
       </div>
     </>

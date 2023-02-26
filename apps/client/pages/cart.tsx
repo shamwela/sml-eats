@@ -40,8 +40,8 @@ const Cart = () => {
           {cart.length === 0 ? (
             <>
               <h1 className='self-center'>Your cart is empty.</h1>
-              <Link href='/'>
-                <a className='button self-center'>Find food</a>
+              <Link href='/' className='button self-center'>
+                Find food
               </Link>
             </>
           ) : (
@@ -62,7 +62,6 @@ const Cart = () => {
                       ))}
                     </select>
                     <Link href={path}>
-                      <a>
                         <strong data-cy='item-name'>{name}</strong>
                         {selectedOptions.map(({ id, name, inputs }) => {
                           const optionName = name
@@ -75,16 +74,13 @@ const Cart = () => {
                             </div>
                           )
                         })}
-                      </a>
                     </Link>
                     <span className='ml-auto'>${finalPrice}</span>
                   </div>
                 )
               )}
-              <Link href='/checkout'>
-                <a className='button max-w-full w-full'>
-                  Go to checkout (${checkoutPrice})
-                </a>
+              <Link href='/checkout' className='button max-w-full w-full'>
+                Go to checkout (${checkoutPrice})
               </Link>
             </>
           )}

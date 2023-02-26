@@ -1,4 +1,4 @@
-import { MenuIcon, XIcon } from '@heroicons/react/solid'
+import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -16,34 +16,34 @@ const Menu = () => {
 
   return (
     <>
-      <MenuIcon
+      <Bars2Icon
         onClick={() => setShowMenu(true)}
         aria-label='Navigation menu'
         className='cursor-pointer'
       />
       {showMenu && (
         <div className='fixed inset-0 bg-white dark:bg-gray-900 z-20 p-4 flex flex-col gap-y-6 max-w-md'>
-          <XIcon
+          <XMarkIcon
             onClick={() => setShowMenu(false)}
             className='cursor-pointer'
           />
           {signedIn ? (
             <>
               <Link href='/delivery-details'>
-                <a>{isEnglish ? 'Delivery details' : 'ပို့ဆောင်မှုအသေးစိတ်'}</a>
+                {isEnglish ? 'Delivery details' : 'ပို့ဆောင်မှုအသေးစိတ်'}
               </Link>
               <Link href='/favorited-restaurants'>
-                <a>{isEnglish ? 'Favorites' : 'အကြိုက်ဆုံးများ'}</a>
+                {isEnglish ? 'Favorites' : 'အကြိုက်ဆုံးများ'}
               </Link>
               <SignOutButton />
             </>
           ) : (
             <>
               <Link href='/signup'>
-                <a>{isEnglish ? 'Sign up' : 'အကောင့်ဖွင့်မယ်'}</a>
+                {isEnglish ? 'Sign up' : 'အကောင့်ဖွင့်မယ်'}
               </Link>
               <Link href='/signin'>
-                <a>{isEnglish ? 'Sign in' : 'အကောင့်ဝင်မယ်'}</a>
+                {isEnglish ? 'Sign in' : 'အကောင့်ဝင်မယ်'}
               </Link>
             </>
           )}
