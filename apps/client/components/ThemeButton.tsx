@@ -1,10 +1,9 @@
 import { useTheme } from 'next-themes'
-import { useRouter } from 'next/router'
+import { useIsEnglish } from 'hooks/useIsEnglish'
 
 const ThemeButton = () => {
   const { theme, setTheme } = useTheme()
-  const { locale } = useRouter()
-  const isEnglish = locale === 'en'
+  const isEnglish = useIsEnglish()
   const lightThemeText = isEnglish
     ? 'Use light theme'
     : 'လင်းတဲ့အရောင်ကိုသုံးမယ်'

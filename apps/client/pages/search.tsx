@@ -8,6 +8,7 @@ import { InferGetStaticPropsType } from 'next'
 import axios from 'utilities/axios'
 import { type NestedRestaurant } from 'types/nestedRestaurant'
 import Spinner from 'components/Spinner'
+import { useIsEnglish } from 'hooks/useIsEnglish'
 
 export const getStaticProps = async () => {
   const restaurantResponse = await axios.get('/restaurants', {
@@ -29,6 +30,8 @@ const Search = ({
   }
   const [loading, setLoading] = useState<boolean | null>(null)
   const [results, setResults] = useState<typeof restaurants | null>(null)
+  const isEnglish = useIsEnglish()
+  const title = isEnglish ? 'Search' : 'ရှာရန်'
 
   useEffect(() => {
     const delayAndSearch = setTimeout(() => {
@@ -80,8 +83,8 @@ const Search = ({
 
   return (
     <>
-      <Head title='Search' />
-      <h1>Search</h1>
+      <Head title={title} />
+      <h1>{title}</h1>
       <input
         value={query}
         onChange={handleQueryChange}

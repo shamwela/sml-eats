@@ -1,5 +1,5 @@
 import Head from 'components/Head'
-import { useRouter } from 'next/router'
+import { useIsEnglish } from 'hooks/useIsEnglish'
 import Link from 'next/link'
 import ThemeButton from 'components/ThemeButton'
 import { useSignedIn } from 'hooks/useSignedIn'
@@ -7,8 +7,7 @@ import SignOutButton from 'components/SignOutButton'
 import { LanguageChanger } from 'components/LanguageChanger'
 
 const Menu = () => {
-  const { locale } = useRouter()
-  const isEnglish = locale === 'en'
+  const isEnglish = useIsEnglish()
   const { signedIn } = useSignedIn()
   const menuText = isEnglish ? 'Menu' : 'မန်နူး'
 
@@ -23,7 +22,7 @@ const Menu = () => {
               {isEnglish ? 'Delivery details' : 'ပို့ဆောင်မှုအသေးစိတ်'}
             </Link>
             <Link href='/favorited-restaurants'>
-              {isEnglish ? 'Favorites' : 'အကြိုက်ဆုံးများ'}
+              {isEnglish ? 'Favorites' : 'အကြိုက်ဆုံးဆိုင်များ'}
             </Link>
             <SignOutButton />
           </>

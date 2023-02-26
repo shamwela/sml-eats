@@ -8,6 +8,7 @@ import axios from 'utilities/axios'
 import toast from 'react-hot-toast'
 import { useProtectedRoute } from 'hooks/useProtectedRoute'
 import { type Restaurant } from 'types/restaurant'
+import { useIsEnglish } from 'hooks/useIsEnglish'
 
 const FavoritedRestaurants = () => {
   useProtectedRoute()
@@ -21,20 +22,27 @@ const FavoritedRestaurants = () => {
         toast.error(
           "Couldn't fetch your favorited restaurants. Please refresh this page or come back later."
         )
-        console.error(error)
-        throw new Error()
+        if (error instanceof Error) {
+          throw new Error(error.message)
+        } else {
+          throw new Error('An unknown error occurred.')
+        }
       }
     }
   )
-  if (error) {
-    return null
+  const isEnglish = useIsEnglish()
+  const title = isEnglish ? 'Favorited restaurants' : 'အကြိုက်ဆုံးဆိုင်များ'
+
+  if (error instanceof Error) {
+    return <p className='text-red-500'>{error.message}</p>
   }
   if (!favoritedRestaurants) {
     return <Spinner />
   }
   return (
     <>
-      <Head title='Favorited restaurants' />
+      <Head title={title} />
+      <h1>{title}</h1>
       {favoritedRestaurants.length === 0 ? (
         <>
           <h1>No favorites saved.</h1>

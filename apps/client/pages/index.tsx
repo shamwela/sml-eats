@@ -26,13 +26,13 @@ const Home = ({
   restaurants,
   isEnglish,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const title = isEnglish
+    ? 'Order food online'
+    : 'အွန်လိုင်းမှာ အစားအသောက်မှာယူပါ'
+
   return (
     <>
-      <Head
-        title={
-          isEnglish ? 'Order food online' : 'အွန်လိုင်းမှာ အစားအသောက်မှာယူပါ'
-        }
-      />
+      <Head title={title} />
       <h2>{isEnglish ? 'Explore by category' : 'အမျိုးအစားအလိုက်ရှာမယ်'}</h2>
       <ItemContainer>
         {categories.map(

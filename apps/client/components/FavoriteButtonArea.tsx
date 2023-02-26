@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'utilities/axios'
 import { useSignedIn } from 'hooks/useSignedIn'
 import toast from 'react-hot-toast'
-import { useRouter } from 'next/router'
+import { useIsEnglish } from 'hooks/useIsEnglish'
 
 const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
   const { signedIn, loading } = useSignedIn()
@@ -56,8 +56,7 @@ const FavoriteButtonArea = ({ restaurantId }: { restaurantId: number }) => {
     }
   }
 
-  const { locale } = useRouter()
-  const isEnglish = locale === 'en'
+  const isEnglish = useIsEnglish()
 
   if (loading || !signedIn) {
     return null

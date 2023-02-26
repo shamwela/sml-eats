@@ -42,7 +42,9 @@ const Navigation = () => {
             data-cy='cart-button'
           >
             <ShoppingCartIcon />
-            <span>Cart • {totalQuantity}</span>
+            <span>
+              {isEnglish ? 'Cart' : 'ပစ္စည်းများ'} • {totalQuantity}
+            </span>
           </Link>
         )}
       </div>

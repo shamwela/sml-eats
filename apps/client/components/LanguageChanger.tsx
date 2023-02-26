@@ -1,9 +1,8 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { useIsEnglish } from 'hooks/useIsEnglish'
 
 export const LanguageChanger = () => {
-  const { locale } = useRouter()
-  const isEnglish = locale === 'en'
+  const isEnglish = useIsEnglish()
   const text = isEnglish ? 'မြန်မာစာသုံးမယ်' : 'Use English'
 
   return (
