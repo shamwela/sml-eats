@@ -9,12 +9,12 @@ const authenticationMiddleware = async (
 ) => {
   const authorizationHeader = request.headers.authorization
   if (!authorizationHeader) {
-    return response.status(403).json({
+    return response.status(401).json({
       message: 'No authorization header. Please sign out and sign in again.',
     })
   }
   if (!authorizationHeader.startsWith('sessionId')) {
-    return response.status(403).json({
+    return response.status(400).json({
       message:
         'Invalid authorization header. Please sign out and sign in again.',
     })
@@ -22,11 +22,11 @@ const authenticationMiddleware = async (
   const sessionId = authorizationHeader.split(' ')[1]
   if (!sessionId) {
     return response
-      .status(403)
+      .status(400)
       .json({ message: 'No session ID. Please sign out and sign in again.' })
   }
   if (typeof sessionId !== 'string') {
-    return response.status(403).json({
+    return response.status(400).json({
       message:
         'Session ID should be a string. Please sign out and sign in again.',
     })
@@ -40,7 +40,7 @@ const authenticationMiddleware = async (
       },
     })
   } catch {
-    return response.status(403).json({
+    return response.status(500).json({
       message: 'Database error. Please try again later.',
     })
   }
