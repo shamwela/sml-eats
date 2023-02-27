@@ -8,10 +8,14 @@ import toast from 'react-hot-toast'
 import EmailInput from 'components/EmailInput'
 import PasswordInput from 'components/PasswordInput'
 import FormContainer from 'components/FormContainer'
+import { useIsEnglish } from 'hooks/useIsEnglish'
 
 const SignUp = () => {
   useCheckIfSignedIn()
   const router = useRouter()
+  const isEnglish = useIsEnglish()
+  const title = isEnglish ? 'Sign up' : 'အကောင့်ဖွင့်မယ်'
+  const nameText = isEnglish ? 'Name' : 'နာမည်'
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -56,16 +60,16 @@ const SignUp = () => {
 
   return (
     <>
-      <Head title='Sign up' />
+      <Head title={title} />
       <FormContainer>
-        <h1>Sign up</h1>
+        <h1>{title}</h1>
         <form
           onSubmit={handleSubmit}
           className='flex flex-col gap-y-4 items-center'
         >
           <input
-            placeholder='Name'
-            aria-label='Name'
+            placeholder={nameText}
+            aria-label={nameText}
             type='text'
             name='name'
             id='name'
@@ -80,7 +84,7 @@ const SignUp = () => {
           />
           <EmailInput />
           <PasswordInput />
-          <button type='submit'>Sign up</button>
+          <button type='submit'>{title}</button>
         </form>
       </FormContainer>
     </>

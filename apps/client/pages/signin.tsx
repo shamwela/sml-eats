@@ -4,14 +4,16 @@ import axios from 'utilities/axios'
 import { useCheckIfSignedIn } from 'hooks/useCheckIfSignedIn'
 import { useRouter } from 'next/router'
 import toast from 'react-hot-toast'
-import { type AxiosResponse } from 'axios'
 import EmailInput from 'components/EmailInput'
 import PasswordInput from 'components/PasswordInput'
 import FormContainer from 'components/FormContainer'
+import { useIsEnglish } from 'hooks/useIsEnglish'
 
 const SignIn = () => {
   useCheckIfSignedIn()
   const router = useRouter()
+  const isEnglish = useIsEnglish()
+  const title = isEnglish ? 'Sign in' : 'အကောင့်ဝင်မယ်'
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -25,10 +27,9 @@ const SignIn = () => {
     const password = target.password.value
     const remember = target.remember.checked
 
-    let signInPromise: Promise<AxiosResponse<any, any>>
     let sessionId: string
     try {
-      signInPromise = axios.post('/auth/signin', { email, password })
+      const signInPromise = axios.post('/auth/signin', { email, password })
 
       toast.promise(signInPromise, {
         loading: 'Signing in',
@@ -60,9 +61,9 @@ const SignIn = () => {
 
   return (
     <>
-      <Head title='Sign in' />
+      <Head title={title} />
       <FormContainer>
-        <h1>Sign in</h1>
+        <h1>{title}</h1>
         <form
           onSubmit={handleSubmit}
           className='flex flex-col gap-y-4 items-center'
@@ -77,11 +78,13 @@ const SignIn = () => {
               id='remember'
               defaultChecked
             />
-            <label htmlFor='remember'>Remember me</label>
+            <label htmlFor='remember'>
+              {isEnglish ? 'Remember me' : 'စကားဝှက်ကိုမှတ်ထားပါ'}
+            </label>
           </div>
 
           <button type='submit' data-cy='sign-in-button'>
-            Sign in
+            {title}
           </button>
         </form>
       </FormContainer>
