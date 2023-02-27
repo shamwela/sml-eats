@@ -15,7 +15,7 @@ export const useCheckIfSignedIn = () => {
     if (signedIn) {
       const errorMessage = isEnglish
         ? 'You have already signed in.'
-        : 'အကောင့်ဝင်ပြီးသားပါ'
+        : 'အကောင့်ဝင်ပြီးသားပါ။'
       toast.error(errorMessage)
       router.push('/')
     }

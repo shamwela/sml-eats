@@ -16,7 +16,7 @@ export const useProtectedRoute = () => {
     if (!signedIn) {
       const errorMessage = isEnglish
         ? 'Please sign up first.'
-        : 'အကောင့်အရင်ဖွင့်ပေးပါ'
+        : 'အကောင့်အရင်ဖွင့်ပေးပါ။'
       toast.error(errorMessage)
       router.push('/signup')
     }
