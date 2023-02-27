@@ -7,6 +7,7 @@ import { type NestedItem } from 'types/nestedItem'
 import axios from 'utilities/axios'
 import { type nestedSlug } from 'types/nestedSlug'
 import { locales } from 'utilities/locales'
+import { useIsEnglish } from 'hooks/useIsEnglish'
 
 export const getStaticPaths = async () => {
   const { data: slugs } = await axios.get<nestedSlug[]>('/slugs')
@@ -92,6 +93,7 @@ const ItemPage = ({ item }: { item: NestedItem }) => {
     )
   }
   const oneItemPrice = basePrice + additionalPrice
+  const isEnglish = useIsEnglish()
 
   const handleInput = (optionName: string, newInput: Input) => {
     const newSelectedOptions = selectedOptions.map((selectedOption) => {
@@ -121,18 +123,16 @@ const ItemPage = ({ item }: { item: NestedItem }) => {
           />
         </div>
         <h1>{name}</h1>
-        <span>
-          {/* If there are options to select, it should be called "Base price" */}
-          {options.length > 0 && 'Base price: '}${basePrice}
-        </span>
+        <span>{'$' + basePrice}</span>
         <span>{description}</span>
 
         {options.map((option) => {
           const { id, name, inputs } = option
+          const chooseText = isEnglish ? `Choose ${name}` : `${name} ရွေးပါ`
 
           return (
             <div key={id} className='flex flex-col gap-4'>
-              <h2>Choose {name}</h2>
+              <h2>{chooseText}</h2>
               {inputs.map((input) => {
                 const { id, name, additionalPrice } = input
                 return (

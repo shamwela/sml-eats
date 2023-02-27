@@ -16,6 +16,7 @@ const Navigation = () => {
 
   const { pathname, locale } = useRouter()
   const isEnglish = locale === 'en'
+  const searchText = isEnglish ? 'Search' : 'ရှာရန်'
   const isNotCartPage = pathname !== '/cart'
   const cartExists = cart.length > 0
 
@@ -31,7 +32,7 @@ const Navigation = () => {
         <Link href='/' className='text-4xl md:text-5xl font-logo'>
           SML Eats
         </Link>
-        <Link href='/search' aria-label='Search'>
+        <Link href='/search' aria-label={searchText} title={searchText}>
           <MagnifyingGlassIcon />
         </Link>
         <Link href='/menu'>{isEnglish ? 'Menu' : 'မန်နူး'}</Link>

@@ -6,6 +6,7 @@ import { type NestedOption } from 'types/nestedOption'
 import QuantityChanger from 'components/QuantityChanger'
 import { useAppDispatch } from 'store/hooks'
 import { add } from 'store/cartSlice'
+import { useIsEnglish } from 'hooks/useIsEnglish'
 
 type OrderProps = {
   item: Item
@@ -19,6 +20,12 @@ const Order = ({ item, oneItemPrice, selectedOptions }: OrderProps) => {
 
   const router = useRouter()
   const dispatch = useAppDispatch()
+
+  const isEnglish = useIsEnglish()
+  const addToOrderText = isEnglish
+    ? `Add ${quantity} to order`
+    : `${quantity}ခုမှာမယ်`
+  const finalText = `${addToOrderText} ($${finalPrice})`
 
   const addToOrder = () => {
     const newCartItem: CartItem = {
@@ -41,7 +48,7 @@ const Order = ({ item, oneItemPrice, selectedOptions }: OrderProps) => {
         className='max-w-full w-full'
         data-cy='order-button'
       >
-        Add {quantity} to order (${finalPrice})
+        {finalText}
       </button>
     </div>
   )
