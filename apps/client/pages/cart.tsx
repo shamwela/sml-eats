@@ -21,6 +21,7 @@ const Cart = () => {
   const dispatch = useAppDispatch()
   const isEnglish = useIsEnglish()
   const title = isEnglish ? 'Your cart' : 'သင့်ပစ္စည်းများ'
+  const checkoutText = isEnglish ? 'Go to checkout' : 'ငွေရှင်းမယ်'
 
   const handleQuantityChange = (
     id: number,
@@ -83,7 +84,7 @@ const Cart = () => {
                 )
               )}
               <Link href='/checkout' className='button max-w-full w-full'>
-                Go to checkout (${checkoutPrice})
+                {`${checkoutText} ($${checkoutPrice})`}
               </Link>
             </>
           )}
