@@ -2,6 +2,7 @@ import Head from 'components/Head'
 import { useLocalStorage } from 'usehooks-ts'
 import { useEffect, useState } from 'react'
 import { useProtectedRoute } from 'hooks/useProtectedRoute'
+import { useIsEnglish } from 'hooks/useIsEnglish'
 
 const DeliveryDetails = () => {
   useProtectedRoute()
@@ -35,13 +36,14 @@ const DeliveryDetails = () => {
   const nextWeek = new Date()
   nextWeek.setDate(today.getDate() + 7)
   const nextWeekDOMString = nextWeek.toISOString().split('.')[0]
+  const isEnglish = useIsEnglish()
+  const title = isEnglish ? 'Delivery Details' : 'ပို့ဆောင်မှုအသေးစိတ်'
 
   return (
     <>
-      <Head title='Delivery details' />
-
+      <Head title={title} />
       <div className='mx-auto flex max-w-md flex-col gap-y-[inherit]'>
-        <h1>Delivery details</h1>
+        <h1>{title}</h1>
         <div className='flex items-center justify-between gap-x-4'>
           {!showAddressInput && (
             <>
