@@ -7,12 +7,12 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "dev": "turbo run dev --parallel --no-daemon",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
     "prettier": "^2.8.4",
-    "turbo": "^1.8.2"
+    "turbo": "^1.8.3"
   },
   "engines": {
     "node": ">=14.0.0"
