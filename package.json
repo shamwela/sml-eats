@@ -20,8 +20,5 @@
   "packageManager": "pnpm@7.12.2",
   "prisma": {
     "schema": "apps/server/prisma/schema.prisma"
-  },
-  "dependencies": {
-    "turbo-ignore": "^1.8.3"
   }
 }

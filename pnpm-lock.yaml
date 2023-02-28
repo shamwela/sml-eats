@@ -6,9 +6,6 @@ importers:
     specifiers:
       prettier: ^2.8.4
       turbo: ^1.8.3
-      turbo-ignore: ^1.8.3
-    dependencies:
-      turbo-ignore: 1.8.3
     devDependencies:
       prettier: 2.8.4
       turbo: 1.8.3
@@ -4577,11 +4574,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /turbo-ignore/1.8.3:
-    resolution: {integrity: sha512-xbk9GwGnvOyG2XN9JxzTey8jwxxy2yk+YsNv64kOIf4uTvtoWethJ/j8HISHr5C7zxk+t21D2Ci0+XD9pl0Q6w==}
-    hasBin: true
-    dev: false
 
   /turbo-linux-64/1.8.3:
     resolution: {integrity: sha512-uvX2VKotf5PU14FCxJA5iHItPQno2JWzerMd+g3/h/Asay6dvxvtVjc39MQeGT0H5njSvzVKFkT+3/5q8lgOEg==}
