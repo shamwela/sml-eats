@@ -10,7 +10,7 @@ import PasswordInput from 'components/PasswordInput'
 import FormContainer from 'components/FormContainer'
 import { useIsEnglish } from 'hooks/useIsEnglish'
 
-const SignUp = () => {
+const SignUpPage = () => {
   useCheckIfSignedIn()
   const router = useRouter()
   const isEnglish = useIsEnglish()
@@ -38,11 +38,9 @@ const SignUp = () => {
         loading: 'Signing up',
         success: 'Signed up.',
         error: (error) => {
-          const { message } = error.response.data
-          return (
-            message ||
-            "Couldn't sign up. Please make sure your email is correct."
-          )
+          const errorMessage =
+            error?.response?.data?.message || "Couldn't sign up."
+          return errorMessage
         },
       })
 
@@ -91,4 +89,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default SignUpPage

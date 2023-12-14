@@ -11,12 +11,11 @@ import Spinner from 'components/Spinner'
 import { useIsEnglish } from 'hooks/useIsEnglish'
 
 export const getStaticProps = async () => {
-  const restaurantResponse = await axios.get('/restaurants', {
+  const { data } = await axios.get<NestedRestaurant[]>('/restaurants', {
     params: { includeItems: true },
   })
-  const restaurants: NestedRestaurant[] = restaurantResponse.data
   return {
-    props: { restaurants },
+    props: { restaurants: data },
   }
 }
 
@@ -69,7 +68,7 @@ const Search = ({
       )
       setResults(matchedRestaurantsAndItems)
       setLoading(false)
-    }, 1000)
+    }, 500)
     return () => clearTimeout(delayAndSearch)
   }, [query, restaurants])
 
